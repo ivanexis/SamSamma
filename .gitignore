@@ -1,0 +1,18 @@
+# Web_design/ 已納入私密倉庫（ivanexis/blog_uiux）。公開部署時仍可用 FTP/R2 補圖。
+
+# 系統與暫存
+.DS_Store
+Thumbs.db
+desktop.ini
+*.log
+*.tmp
+
+# 依賴（若日後有 npm）
+node_modules/
+dist/
+.lab/
+
+# 編輯器
+.cursor/
+.vscode/
+*.swp

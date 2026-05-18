@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>山莎蔓岸竹木產業生產合作社</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --primary-green: #2c5530;
+      --secondary-green: #4a7c59;
+      --light-green: #a8d5ba;
+      --bg-light: #f8f9fa;
+      --text-dark: #333;
+      --text-light: #666;
+      --gold: #d4af37;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Noto Sans TC', sans-serif;
+      line-height: 1.6;
+      color: var(--text-dark);
+      overflow-x: hidden;
+    }
+
+    /* 導航欄樣式 */
+    .navbar {
+      background: rgba(44, 85, 48, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 1rem 0;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .navbar-brand {
+      font-weight: 700;
+      color: var(--gold) !important;
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+    }
+
+    .navbar-logo {
+      width: 50px;
+      height: 50px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 2px solid var(--gold);
+      margin-right: 12px;
+      transition: transform 0.3s ease;
+    }
+
+    .navbar-logo:hover {
+      transform: scale(1.1);
+    }
+
+    .navbar-nav .nav-link {
+      color: white !important;
+      font-weight: 500;
+      margin: 0 0.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .navbar-nav .nav-link:hover {
+      color: var(--gold) !important;
+      transform: translateY(-2px);
+    }
+
+    .navbar-toggler {
+      border: none;
+      color: white;
+    }
+
+    /* 主要內容區域 */
+    .hero-section {
+      background: linear-gradient(135deg, var(--primary-green) 0%, var(--secondary-green) 100%);
+      color: white;
+      padding: 120px 0 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        radial-gradient(2px 2px at 20px 30px, var(--gold), transparent),
+        radial-gradient(2px 2px at 40px 70px, rgba(212, 175, 55, 0.5), transparent);
+      background-repeat: repeat;
+      background-size: 200px 100px;
+      opacity: 0.3;
+      animation: twinkle 4s ease-in-out infinite alternate;
+    }
+
+    @keyframes twinkle {
+      0% { opacity: 0.3; }
+      100% { opacity: 0.7; }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+    
+    .hero-title {
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      color: var(--gold);
+    }
+    
+    .hero-subtitle {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+      opacity: 0.9;
+    }
+    
+    .hero-description {
+      font-size: 1.1rem;
+      margin-bottom: 2.5rem;
+      opacity: 0.8;
+    }
+
+    .btn-primary-custom {
+      background: var(--gold);
+      border: none;
+      color: var(--primary-green);
+      padding: 12px 30px;
+      font-weight: 600;
+      border-radius: 25px;
+      transition: all 0.3s ease;
+      margin: 0.5rem;
+    }
+
+    .btn-primary-custom:hover {
+      background: #b8941f;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+    }
+
+    .btn-outline-custom {
+      border: 2px solid var(--gold);
+      color: var(--gold);
+      background: transparent;
+      padding: 10px 30px;
+      font-weight: 600;
+      border-radius: 25px;
+      transition: all 0.3s ease;
+      margin: 0.5rem;
+    }
+
+    .btn-outline-custom:hover {
+      background: var(--gold);
+      color: var(--primary-green);
+      transform: translateY(-2px);
+    }
+
+    /* 關於我們區塊 */
+    .about-section {
+      padding: 80px 0;
+      background: var(--bg-light);
+    }
+    
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--primary-green);
+      margin-bottom: 3rem;
+      text-align: center;
+    }
+
+    .about-content {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .about-text h3 {
+      color: var(--primary-green);
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .about-text p {
+      color: var(--text-light);
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .stat-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--primary-green);
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      color: var(--text-light);
+      font-weight: 500;
+    }
+
+    /* 文化體驗活動區塊 */
+    .culture-section {
+      padding: 80px 0;
+      background: white;
+    }
+
+    .activities-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .activity-card {
+      background: white;
+      border-radius: 15px;
+      padding: 2rem;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      border-left: 5px solid var(--gold);
+    }
+
+    .activity-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .activity-icon {
+      font-size: 3rem;
+      color: var(--primary-green);
+      margin-bottom: 1rem;
+    }
+
+    .activity-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary-green);
+      margin-bottom: 1rem;
+    }
+
+    .activity-duration {
+      background: var(--light-green);
+      color: var(--primary-green);
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      display: inline-block;
+      margin-bottom: 1rem;
+    }
+
+    .activity-description {
+      color: var(--text-light);
+      margin-bottom: 1.5rem;
+    }
+
+    .activity-features {
+      list-style: none;
+      padding: 0;
+    }
+
+    .activity-features li {
+      color: var(--text-light);
+      margin-bottom: 0.5rem;
+      padding-left: 1.5rem;
+      position: relative;
+    }
+
+    .activity-features li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--primary-green);
+      font-weight: bold;
+    }
+
+    /* 場域建設進度區塊 */
+    .progress-section {
+      padding: 80px 0;
+      background: var(--bg-light);
+    }
+
+    .progress-timeline {
+      position: relative;
+      max-width: 800px;
+      margin: 3rem auto;
+    }
+
+    .progress-timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--primary-green);
+      transform: translateX(-50%);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 3rem;
+      width: 50%;
+    }
+
+    .timeline-item:nth-child(odd) {
+      left: 0;
+      text-align: right;
+      padding-right: 3rem;
+    }
+
+    .timeline-item:nth-child(even) {
+      left: 50%;
+      text-align: left;
+      padding-left: 3rem;
+    }
+
+    .timeline-content {
+      background: white;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
+
+    .timeline-content::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      width: 0;
+      height: 0;
+      border: 15px solid transparent;
+    }
+
+    .timeline-item:nth-child(odd) .timeline-content::before {
+      right: -30px;
+      border-left-color: white;
+    }
+
+    .timeline-item:nth-child(even) .timeline-content::before {
+      left: -30px;
+      border-right-color: white;
+    }
+
+    .timeline-date {
+      color: var(--gold);
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .timeline-title {
+      color: var(--primary-green);
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .timeline-description {
+      color: var(--text-light);
+    }
+
+    .timeline-image {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .timeline-image:hover {
+      transform: scale(1.02);
+    }
+
+    .timeline-dot {
+      position: absolute;
+      top: 50%;
+      width: 20px;
+      height: 20px;
+      background: var(--gold);
+      border-radius: 50%;
+      transform: translateY(-50%);
+    }
+
+    .timeline-item:nth-child(odd) .timeline-dot {
+      right: -10px;
+    }
+
+    .timeline-item:nth-child(even) .timeline-dot {
+      left: -10px;
+    }
+
+    /* 預約資訊區塊 */
+    .booking-section {
+      padding: 80px 0;
+      background: var(--primary-green);
+      color: white;
+    }
+
+    .booking-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .booking-info h3 {
+      color: var(--gold);
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .booking-info p {
+      margin-bottom: 1rem;
+      opacity: 0.9;
+    }
+
+    .booking-form {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 2rem;
+      border-radius: 15px;
+      backdrop-filter: blur(10px);
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-control {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: white;
+      border-radius: 10px;
+      padding: 12px 15px;
+    }
+
+    .form-control::placeholder {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .form-control:focus {
+      background: rgba(255, 255, 255, 0.2);
+      border-color: var(--gold);
+      box-shadow: 0 0 0 0.2rem rgba(212, 175, 55, 0.25);
+      color: white;
+    }
+
+    /* 頁尾樣式 */
+    .footer {
+      background: #1a1a1a;
+      color: white;
+      padding: 3rem 0 2rem;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .footer-section h5 {
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .footer-section p,
+    .footer-section li {
+      color: #ccc;
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-section ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #333;
+      padding-top: 2rem;
+      text-align: center;
+      color: #999;
+    }
+
+    /* 響應式設計 */
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 2.5rem;
+      }
+
+      .hero-subtitle {
+      font-size: 1.2rem;
+      }
+
+      .about-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .activities-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .progress-timeline::before {
+        left: 20px;
+      }
+
+      .timeline-item {
+      width: 100%;
+        left: 0 !important;
+        text-align: left !important;
+        padding-left: 3rem !important;
+        padding-right: 0 !important;
+      }
+
+      .timeline-item .timeline-dot {
+        left: 10px !important;
+        right: auto !important;
+      }
+
+      .timeline-item .timeline-content::before {
+        left: -30px !important;
+        right: auto !important;
+        border-right-color: white !important;
+        border-left-color: transparent !important;
+      }
+
+      .booking-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .section-title {
+      font-size: 2rem;
+      }
+    }
+
+    /* 動畫效果 */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* 回到頂部按鈕 */
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: var(--primary-green);
+      color: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      opacity: 0;
+      visibility: hidden;
+      z-index: 1000;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-to-top:hover {
+      background: var(--gold);
+      color: var(--primary-green);
+      transform: translateY(-3px);
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 導航欄 -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#home">
+        <img src="../images/sa.png" alt="山莎蔓岸合作社" class="navbar-logo">
+        <span>山莎蔓岸合作社</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#home">首頁</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#about">關於我們</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#culture">文化體驗</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#progress">建設進度</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#booking">預約體驗</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#contact">聯絡我們</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 首頁區塊 -->
+  <section id="home" class="hero-section">
+        <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6">
+          <div class="hero-content" data-aos="fade-right">
+            <h1 class="hero-title">山莎蔓岸竹木產業生產合作社</h1>
+            <p class="hero-subtitle">傳承賽夏族竹文化，永續發展竹炭產業</p>
+            <p class="hero-description">
+              100%原住民合作社，結合傳統文化與現代技術，致力於竹炭產業發展與賽夏族文化傳承。
+              目前場域建設進行中，歡迎學校團體預約文化體驗活動。
+            </p>
+            <div class="hero-buttons">
+              <a href="#culture" class="btn btn-primary-custom">文化體驗活動</a>
+              <a href="#booking" class="btn btn-outline-custom">立即預約</a>
+        </div>
+                        </div>
+                    </div>
+        <div class="col-lg-6">
+          <div class="hero-visual" data-aos="fade-left">
+            <div class="text-center">
+              <img src="../images/sa.png" alt="山莎蔓岸合作社" style="width: 200px; height: 200px; object-fit: cover; border-radius: 50%; border: 4px solid var(--gold); box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);">
+              <h3 class="mt-3" style="color: var(--gold);">竹文化傳承</h3>
+              <p style="opacity: 0.8;">永續發展 • 文化傳承 • 產業創新</p>
+                </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+  <!-- 關於我們區塊 -->
+  <section id="about" class="about-section">
+        <div class="container">
+      <h2 class="section-title" data-aos="fade-up">關於我們</h2>
+      <div class="about-content">
+        <div class="about-text" data-aos="fade-right">
+          <h3>組織簡介</h3>
+          <p>
+            山莎蔓岸竹木產業生產合作社成立於2024年，是100%原住民合作社，
+            位於新竹縣五峰鄉大隘村。我們致力於傳承賽夏族竹文化，
+            發展永續的竹炭產業，結合傳統技藝與現代技術。
+          </p>
+          <h3>核心價值</h3>
+          <p>
+            我們相信文化傳承與產業發展可以並行，透過竹炭產業的發展，
+            不僅能創造經濟價值，更能保存和傳承珍貴的賽夏族文化。
+          </p>
+          <h3>使命願景</h3>
+          <p>
+            成為台灣竹炭產業的標竿合作社，推廣永續發展理念，
+            讓更多人認識和體驗賽夏族竹文化的魅力。
+          </p>
+                    </div>
+        <div class="stats-grid" data-aos="fade-left">
+          <div class="stat-card">
+            <div class="stat-number">100%</div>
+            <div class="stat-label">原住民合作社</div>
+                </div>
+          <div class="stat-card">
+            <div class="stat-number">2024</div>
+            <div class="stat-label">成立年份</div>
+                    </div>
+          <div class="stat-card">
+            <div class="stat-number">新竹</div>
+            <div class="stat-label">五峰鄉大隘村</div>
+                </div>
+          <div class="stat-card">
+            <div class="stat-number">賽夏族</div>
+            <div class="stat-label">文化傳承</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+  <!-- 文化體驗活動區塊 -->
+  <section id="culture" class="culture-section">
+        <div class="container">
+      <h2 class="section-title" data-aos="fade-up">文化體驗活動</h2>
+      <p class="text-center text-muted mb-5" data-aos="fade-up" data-aos-delay="100">
+        在場域建設期間，我們開放學校團體體驗竹文化工藝，讓學生了解賽夏族傳統文化
+      </p>
+      
+      <div class="activities-grid">
+        <div class="activity-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="activity-icon">
+            <i class="fas fa-hands"></i>
+                        </div>
+          <div class="activity-duration">2-3小時</div>
+          <h3 class="activity-title">竹編工藝體驗</h3>
+          <p class="activity-description">
+            學習賽夏族竹編六道工序，親手編織竹藝品，了解竹編在賽夏族文化中的意義。
+          </p>
+          <ul class="activity-features">
+            <li>傳統技法教學</li>
+            <li>實作體驗</li>
+            <li>文化故事分享</li>
+            <li>作品可帶回家</li>
+          </ul>
+                    </div>
+
+        <div class="activity-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="activity-icon">
+            <i class="fas fa-hammer"></i>
+                </div>
+          <div class="activity-duration">1-2小時</div>
+          <h3 class="activity-title">場域建設參觀</h3>
+          <p class="activity-description">
+            參觀竹炭爐建設過程，見證傳統工藝與現代技術的結合，學習永續發展理念。
+          </p>
+          <ul class="activity-features">
+            <li>竹炭爐參觀</li>
+            <li>建設過程見證</li>
+            <li>環保理念學習</li>
+            <li>未來規劃了解</li>
+          </ul>
+                        </div>
+
+        <div class="activity-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="activity-icon">
+            <i class="fas fa-tree"></i>
+                    </div>
+          <div class="activity-duration">1.5-2小時</div>
+          <h3 class="activity-title">竹林生態導覽</h3>
+          <p class="activity-description">
+            認識竹子的生長環境與特性，學習「存三去四不留七」的永續管理理念。
+          </p>
+          <ul class="activity-features">
+            <li>竹林生態認識</li>
+            <li>伐竹智慧學習</li>
+            <li>自然觀察體驗</li>
+            <li>環保教育</li>
+          </ul>
+                </div>
+        </div>
+      </div>
+    </section>
+
+  <!-- 場域建設進度區塊 -->
+  <section id="progress" class="progress-section">
+    <div class="container">
+      <h2 class="section-title" data-aos="fade-up">場域建設進度</h2>
+      <p class="text-center text-muted mb-5" data-aos="fade-up" data-aos-delay="100">
+        見證合作社從發起到建設的完整歷程
+      </p>
+      
+      <div class="progress-timeline">
+        <div class="timeline-item" data-aos="fade-right">
+          <div class="timeline-content">
+            <div class="timeline-date">113年6月</div>
+            <h3 class="timeline-title">合作社發起</h3>
+            <img src="../images/初步構想圖.jpg" alt="合作社初步構想圖" class="timeline-image">
+            <p class="timeline-description">開始籌組合作社，凝聚共識，確立發展方向。</p>
+                            </div>
+          <div class="timeline-dot"></div>
+                        </div>
+
+        <div class="timeline-item" data-aos="fade-left">
+          <div class="timeline-content">
+            <div class="timeline-date">113年9月</div>
+            <h3 class="timeline-title">正式成立</h3>
+            <p class="timeline-description">山莎蔓岸竹木產業生產合作社正式成立，開始運作。</p>
+                            </div>
+          <div class="timeline-dot"></div>
+                        </div>
+
+        <div class="timeline-item" data-aos="fade-right">
+          <div class="timeline-content">
+            <div class="timeline-date">114年2月</div>
+            <h3 class="timeline-title">開工典禮</h3>
+            <p class="timeline-description">舉行開工典禮，正式啟動場域建設工程。</p>
+                            </div>
+          <div class="timeline-dot"></div>
+                        </div>
+
+        <div class="timeline-item" data-aos="fade-left">
+          <div class="timeline-content">
+            <div class="timeline-date">114年8月</div>
+            <h3 class="timeline-title">竹屋建設完成</h3>
+            <img src="../images/竹屋建置.jpg" alt="竹屋建置過程" class="timeline-image">
+            <p class="timeline-description">竹屋設備入場，砌磚工程持續進行中。</p>
+                            </div>
+          <div class="timeline-dot"></div>
+        </div>
+
+        <div class="timeline-item" data-aos="fade-right">
+          <div class="timeline-content">
+            <div class="timeline-date">114年9月</div>
+            <h3 class="timeline-title">與明新科大USR合作學生來訪</h3>
+            <img src="../images/竹工藝工作坊.jpg" alt="9/6-7竹工藝工作坊活動" class="timeline-image">
+            <p class="timeline-description">
+              <strong>9/6-7竹工藝工作坊</strong><br>
+              • 師大、北教大學生參與竹柵欄施作<br>
+              • 工藝師現場教學指導<br>
+              • USR實踐基地實作<br>
+              • 跨校合作學習交流
+            </p>
+          </div>
+          <div class="timeline-dot"></div>
+        </div>
+            </div>
+        </div>
+    </section>
+
+  <!-- 預約資訊區塊 -->
+  <section id="booking" class="booking-section">
+        <div class="container">
+      <h2 class="section-title" style="color: var(--gold);" data-aos="fade-up">預約體驗活動</h2>
+      <div class="booking-content">
+        <div class="booking-info" data-aos="fade-right">
+          <h3>適合對象</h3>
+          <p>國小、國中、高中學生團體、教育機構、文化團體</p>
+          
+          <h3>團體規模</h3>
+          <p>建議人數：15-30人（可依需求調整）</p>
+          
+          <h3>活動時間</h3>
+          <p>平日：週一至週五 09:00-17:00</p>
+          <p>週末：可依需求安排</p>
+          
+          <h3>預約方式</h3>
+          <p>請提前一週預約</p>
+          <p>電話：0972797XXX</p>
+          <p>信箱：jeff11051212@gmail.com</p>
+                        </div>
+
+        <div class="booking-form" data-aos="fade-left">
+          <h3 style="color: var(--gold); margin-bottom: 1.5rem;">線上預約表單</h3>
+          <form id="bookingForm">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="學校/機構名稱">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="聯絡人姓名">
+            </div>
+            <div class="form-group">
+              <input type="email" class="form-control" placeholder="電子郵件">
+            </div>
+            <div class="form-group">
+              <input type="tel" class="form-control" placeholder="聯絡電話">
+            </div>
+            <div class="form-group">
+              <input type="number" class="form-control" placeholder="參與人數">
+            </div>
+            <div class="form-group">
+              <input type="date" class="form-control" placeholder="希望日期">
+            </div>
+            <div class="form-group">
+              <textarea class="form-control" rows="3" placeholder="特殊需求或備註"></textarea>
+                        </div>
+            <button type="submit" class="btn btn-primary-custom w-100">送出預約申請</button>
+          </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+  <!-- 聯絡我們區塊 -->
+  <section id="contact" class="footer">
+        <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h5>合作社資訊</h5>
+          <p>山莎蔓岸竹木產業生產合作社</p>
+          <p>傳承賽夏族竹文化</p>
+          <p>永續發展竹炭產業</p>
+              </div>
+        
+        <div class="footer-section">
+          <h5>聯絡資訊</h5>
+          <p><i class="fas fa-map-marker-alt me-2"></i>新竹縣五峰鄉大隘村14鄰大隘266-1號臨</p>
+          <p><i class="fas fa-phone me-2"></i>0972797XXX</p>
+          <p><i class="fas fa-envelope me-2"></i>jeff11051212@gmail.com</p>
+          <p><i class="fas fa-clock me-2"></i>週一至週五 09:00-17:00</p>
+                        </div>
+        
+        <div class="footer-section">
+          <h5>快速連結</h5>
+          <ul>
+            <li><a href="#about" style="color: #ccc; text-decoration: none;">關於我們</a></li>
+            <li><a href="#culture" style="color: #ccc; text-decoration: none;">文化體驗</a></li>
+            <li><a href="#progress" style="color: #ccc; text-decoration: none;">建設進度</a></li>
+            <li><a href="#booking" style="color: #ccc; text-decoration: none;">預約體驗</a></li>
+          </ul>
+                    </div>
+                        </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2025 山莎蔓岸竹木產業生產合作社. 版權所有.</p>
+        </div>
+      </div>
+    </section>
+
+  <!-- 回到頂部按鈕 -->
+  <div class="back-to-top" id="backToTop">
+    <i class="fas fa-chevron-up"></i>
+                </div>
+
+  <!-- JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    // 初始化 AOS 動畫
+    AOS.init({
+      duration: 1000,
+      once: true,
+      offset: 100
+    });
+
+    // 平滑滾動導航
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          const offsetTop = target.offsetTop - 80;
+          window.scrollTo({
+            top: offsetTop,
+          behavior: 'smooth'
+        });
+        }
+      });
+    });
+
+    // 回到頂部按鈕
+    const backToTop = document.getElementById('backToTop');
+
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        backToTop.classList.add('visible');
+      } else {
+        backToTop.classList.remove('visible');
+      }
+    });
+
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // Google Forms 直接導向處理
+    document.getElementById('bookingForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // 直接導向到 Google Forms，不進行表單驗證
+      const googleFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSfhSYzYnh8V59c-zchjE0SjthxKK4H8t_9teOzj4EJuhsJXDQ/viewform';
+      window.open(googleFormUrl, '_blank');
+    });
+
+    // 導航欄滾動效果
+    window.addEventListener('scroll', () => {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 50) {
+        navbar.style.background = 'rgba(44, 85, 48, 0.98)';
+            } else {
+        navbar.style.background = 'rgba(44, 85, 48, 0.95)';
+      }
+    });
+  </script>
+</body>
+
+</html>

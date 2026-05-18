@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>宇宙互動動畫</title>
+  <!-- 載入 Google 字型 -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+  
+  <!-- 載入最新版本的 Three.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+  <!-- 載入 OrbitControls -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.134.0/examples/js/controls/OrbitControls.js"></script>
+  <!-- 載入 GSAP 動畫庫 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+  <style>
+    /* 基本重置与背景设定 */
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background: #2b003b;
+      font-family: 'Noto Sans TC', sans-serif;
+    }
+    /* 全屏 Canvas */
+    #universeCanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+    /* 前景标语与互动提示，使用 pointer-events: none 让画布互动不受遮挡 */
+    .overlay {
+      position: absolute;
+      top: 40%;
+      width: 100%;
+      text-align: center;
+      z-index: 2;
+      pointer-events: none;
+      color: #fff;
+      opacity: 0;
+      animation: fadeInOut 6s ease-in-out infinite;
+      user-select: none;
+    }
+    .title {
+      font-size: 3.5em;
+      font-weight: 700;
+      margin-bottom: 0.5em;
+      text-shadow: 0 0 10px rgba(157, 78, 221, 0.8);
+    }
+    .subtitle {
+      font-size: 1.5em;
+      font-weight: 300;
+      opacity: 0.8;
+    }
+    .interaction-info {
+      position: absolute;
+      bottom: 20px;
+      width: 100%;
+      text-align: center;
+      z-index: 3;
+      pointer-events: none;
+      font-size: 1em;
+      color: #fff;
+      opacity: 0;
+      animation: fadeIn 2s ease-in-out 6s forwards;
+    }
+    @keyframes fadeInOut {
+      0% { opacity: 0; transform: translateY(20px); }
+      20% { opacity: 1; transform: translateY(0); }
+      80% { opacity: 1; transform: translateY(0); }
+      100% { opacity: 0; transform: translateY(-20px); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 0.6; }
+    }
+    .back-button {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 4;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: white;
+      padding: 8px 16px;
+      border-radius: 20px;
+      text-decoration: none;
+      backdrop-filter: blur(5px);
+      transition: all 0.3s ease;
+    }
+    .back-button:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body>
+  <canvas id="universeCanvas"></canvas>
+  <div class="overlay">
+    <div class="title">探索宇宙</div>
+    <div class="subtitle">在無限星空中尋找靈感</div>
+  </div>
+  <div class="interaction-info">拖曳滑鼠探索宇宙 ✨</div>
+  <a href="../index_ivan.html" class="back-button">返回首頁</a>
+  
+  <script>
+    const canvas = document.getElementById("universeCanvas");
+    const ctx = canvas.getContext("2d");
+    
+    // 动画控制参数
+    const introDuration = 6000;   // 6秒内完成缩放动画
+    const pauseDuration = 3000;   // 动画结束后停留3秒
+    let isPausedForReset = false; // 是否处于暂停状态
+    let pauseStart = 0;           // 暂停开始时间
+    let introStart = Date.now();  // 动画开始时间
+    
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      bgGradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+      bgGradient.addColorStop(0, "#2b003b");
+      bgGradient.addColorStop(1, "#000000");
+    }
+    window.addEventListener("resize", resizeCanvas);
+    resizeCanvas();
+
+    let bgGradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+    bgGradient.addColorStop(0, "#2b003b");
+    bgGradient.addColorStop(1, "#000000");
+
+    const stars = [];
+    const numStars = 300;
+    for (let i = 0; i < numStars; i++) {
+      stars.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        radius: Math.random() * 1.2,
+        alpha: Math.random(),
+        twinkleSpeed: Math.random() * 0.05 + 0.01
+      });
+    }
+    
+    const planets = [];
+    const numPlanets = 5;
+    const planetColors = ["#9d4edd", "#e0aaff", "#bf40bf", "#a64ca6", "#d18cd1"];
+    for (let i = 0; i < numPlanets; i++){
+      planets.push({
+        orbitRadius: Math.random() * 200 + 100,
+        angle: Math.random() * Math.PI * 2,
+        speed: (Math.random() * 0.001 + 0.0005) * (Math.random() > 0.5 ? 1 : -1),
+        size: Math.random() * 20 + 10,
+        color: planetColors[i % planetColors.length]
+      });
+    }
+    
+    let offsetX = 0;
+    let offsetY = 0;
+    let isDragging = false;
+    let lastMouse = { x: 0, y: 0 };
+
+    canvas.addEventListener("mousedown", function(e){
+      isDragging = true;
+      lastMouse.x = e.clientX;
+      lastMouse.y = e.clientY;
+    });
+    
+    canvas.addEventListener("mousemove", function(e){
+      if(isDragging){
+        let dx = e.clientX - lastMouse.x;
+        let dy = e.clientY - lastMouse.y;
+        offsetX += dx;
+        offsetY += dy;
+        lastMouse.x = e.clientX;
+        lastMouse.y = e.clientY;
+      }
+    });
+    
+    canvas.addEventListener("mouseup", () => isDragging = false);
+    canvas.addEventListener("mouseleave", () => isDragging = false);
+    
+    function drawStars() {
+      ctx.fillStyle = bgGradient;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      for (let star of stars){
+        star.alpha += star.twinkleSpeed;
+        if (star.alpha > 1 || star.alpha < 0) {
+          star.twinkleSpeed = -star.twinkleSpeed;
+        }
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.radius, 0, Math.PI*2);
+        ctx.fillStyle = "rgba(255,255,255," + star.alpha.toFixed(2) + ")";
+        ctx.fill();
+      }
+    }
+
+    function drawPlanets() {
+      let elapsed = Date.now() - introStart;
+      let scaleFactor = 1;
+
+      if (elapsed < introDuration) {
+        // 前6秒，从小变大
+        scaleFactor = 0.2 + (1 - 0.2) * (elapsed / introDuration);
+      } else {
+        // 6秒后，检查是否需要暂停
+        if (!isPausedForReset) {
+          isPausedForReset = true;
+          pauseStart = Date.now();
+        }
+        
+        let pauseElapsed = Date.now() - pauseStart;
+        if (pauseElapsed >= pauseDuration) {
+          // 暂停3秒后，重置动画
+          introStart = Date.now();
+          isPausedForReset = false;
+        }
+        // 维持正常大小
+        scaleFactor = 1;
+      }
+
+      for (let planet of planets) {
+        planet.angle += planet.speed;
+        let planetX = canvas.width/2 + (planet.orbitRadius * scaleFactor) * Math.cos(planet.angle + offsetX * 0.002);
+        let planetY = canvas.height/2 + (planet.orbitRadius * scaleFactor) * Math.sin(planet.angle + offsetY * 0.002);
+        
+        ctx.beginPath();
+        ctx.arc(planetX, planetY, planet.size * scaleFactor, 0, Math.PI*2);
+        let grad = ctx.createRadialGradient(
+          planetX - planet.size*0.3, 
+          planetY - planet.size*0.3, 
+          planet.size*0.1 * scaleFactor,
+          planetX, 
+          planetY, 
+          planet.size * scaleFactor
+        );
+        grad.addColorStop(0, "#ffffff");
+        grad.addColorStop(0.5, planet.color);
+        grad.addColorStop(1, "#000000");
+        ctx.fillStyle = grad;
+        ctx.fill();
+      }
+    }
+
+    function animate(){
+      drawStars();
+      drawPlanets();
+      requestAnimationFrame(animate);
+    }
+    animate();
+
+    function init3D(){
+        // ... 保持原有的基礎設置不變 ...
+
+        // 添加星空背景
+        const starGeometry = new THREE.BufferGeometry();
+        const starMaterial = new THREE.PointsMaterial({
+            color: 0xFFFFFF,
+            size: 0.5,
+            transparent: true
+        });
+
+        const starVertices = [];
+        for(let i = 0; i < 10000; i++) {
+            const x = (Math.random() - 0.5) * 2000;
+            const y = (Math.random() - 0.5) * 2000;
+            const z = (Math.random() - 0.5) * 2000;
+            starVertices.push(x, y, z);
+        }
+        starGeometry.setAttribute('position', new THREE.Float32BufferAttribute(starVertices, 3));
+        const stars = new THREE.Points(starGeometry, starMaterial);
+        scene.add(stars);
+
+        // 添加行星軌道
+        planetsData.forEach(data => {
+            const orbitGeometry = new THREE.RingGeometry(data.distance, data.distance + 0.1, 128);
+            const orbitMaterial = new THREE.MeshBasicMaterial({
+                color: 0x444444,
+                side: THREE.DoubleSide,
+                transparent: true,
+                opacity: 0.3
+            });
+            const orbit = new THREE.Mesh(orbitGeometry, orbitMaterial);
+            orbit.rotation.x = Math.PI / 2;
+            solarSystem.add(orbit);
+        });
+
+        // 優化相機控制
+        controls.minDistance = 100;
+        controls.maxDistance = 800;
+        controls.enablePan = false;
+        controls.autoRotate = true;
+        controls.autoRotateSpeed = 0.5;
+
+        // 添加太陽發光效果
+        const sunLight = new THREE.PointLight(0xffcc00, 2, 300);
+        sun.add(sunLight);
+
+        // 添加切換視角按鈕
+        const viewButtons = document.createElement('div');
+        viewButtons.style.position = 'fixed';
+        viewButtons.style.bottom = '20px';
+        viewButtons.style.right = '20px';
+        viewButtons.style.zIndex = '1000';
+        
+        const views = [
+            { name: '俯視', position: [0, 400, 0], rotation: [0, 0, 0] },
+            { name: '側視', position: [400, 0, 0], rotation: [0, Math.PI/2, 0] },
+            { name: '自由視角', position: [200, 200, 200], rotation: [0, 0, 0] }
+        ];
+
+        views.forEach(view => {
+            const button = document.createElement('button');
+            button.textContent = view.name;
+            button.style.margin = '5px';
+            button.style.padding = '8px 16px';
+            button.style.background = 'rgba(255, 255, 255, 0.1)';
+            button.style.border = '1px solid rgba(255, 255, 255, 0.2)';
+            button.style.color = 'white';
+            button.style.borderRadius = '20px';
+            button.style.cursor = 'pointer';
+            
+            button.addEventListener('click', () => {
+                controls.autoRotate = false;
+                gsap.to(camera.position, {
+                    x: view.position[0],
+                    y: view.position[1],
+                    z: view.position[2],
+                    duration: 2,
+                    ease: 'power2.inOut'
+                });
+            });
+            
+            viewButtons.appendChild(button);
+        });
+        
+        document.body.appendChild(viewButtons);
+
+        // 優化動畫循環
+        function animate3D() {
+            requestAnimationFrame(animate3D);
+            
+            // 更新星空旋轉
+            stars.rotation.y += 0.0001;
+            
+            // 更新行星動畫
+            planetPivots.forEach(item => {
+                item.pivot.rotation.y += item.speed;
+                if (item.moonPivot) {
+                    item.moonPivot.rotation.y += 0.05;
+                }
+            });
+
+            controls.update();
+            renderer.render(scene, camera);
+        }
+        animate3D();
+    }
+  </script>
+</body>
+</html>
