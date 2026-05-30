@@ -12,6 +12,10 @@ node_modules/
 dist/
 .lab/
 
+# Wrangler 本機快取
+.wrangler/
+.dev.vars
+
 # 編輯器
 .cursor/
 .vscode/

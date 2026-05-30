@@ -1,0 +1,13 @@
+# Workers Static Assets：與 .gitignore 相同語法（官方文件）
+.git/
+**/.git/**
+node_modules/
+**/.DS_Store
+.wrangler/
+.cursor/
+.vscode/
+*.md
+.gitignore
+.wranglerignore
+wrangler.jsonc
+pages/專案狀態/
