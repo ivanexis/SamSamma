@@ -1,0 +1,48 @@
+﻿{
+    "case":  "7.Technology website/1",
+    "scanned_at":  "2026-05-20",
+    "hero_source":  "首頁-V1.jpg",
+    "files":  [
+                  {
+                      "outputs":  [
+                                      "hero",
+                                      "slide-1"
+                                  ],
+                      "label":  "首頁-V1",
+                      "height":  8267,
+                      "src":  "首頁-V1.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-2"
+                                  ],
+                      "label":  "專業領域",
+                      "height":  5751,
+                      "src":  "專業領域.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-3"
+                                  ],
+                      "label":  "聯絡我們",
+                      "height":  2295,
+                      "src":  "聯絡我們.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-4"
+                                  ],
+                      "label":  "關於我們",
+                      "height":  9713,
+                      "src":  "關於我們.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-5"
+                                  ],
+                      "label":  "首頁-V2",
+                      "height":  8209,
+                      "src":  "首頁-V2.jpg"
+                  }
+              ]
+}

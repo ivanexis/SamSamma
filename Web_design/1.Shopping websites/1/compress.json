@@ -1,0 +1,40 @@
+﻿{
+    "case":  "1.Shopping websites/1",
+    "scanned_at":  "2026-05-20",
+    "hero_source":  "首頁.jpg",
+    "files":  [
+                  {
+                      "outputs":  [
+                                      "hero",
+                                      "slide-1"
+                                  ],
+                      "label":  "首頁",
+                      "height":  6185,
+                      "src":  "首頁.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-2"
+                                  ],
+                      "label":  "全部商品",
+                      "height":  2685,
+                      "src":  "主視覺商品.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-3"
+                                  ],
+                      "label":  "商品分類",
+                      "height":  2424,
+                      "src":  "商品分類.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-4"
+                                  ],
+                      "label":  "商品列表",
+                      "height":  4309,
+                      "src":  "動物分類.jpg"
+                  }
+              ]
+}

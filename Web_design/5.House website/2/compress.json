@@ -1,0 +1,48 @@
+﻿{
+    "case":  "5.House website/2",
+    "scanned_at":  "2026-05-20",
+    "hero_source":  "首頁.jpg",
+    "files":  [
+                  {
+                      "outputs":  [
+                                      "hero",
+                                      "slide-1"
+                                  ],
+                      "label":  "首頁",
+                      "height":  5543,
+                      "src":  "首頁.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-2"
+                                  ],
+                      "label":  "Group 923",
+                      "height":  6796,
+                      "src":  "Group 923.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-3"
+                                  ],
+                      "label":  "個人介紹",
+                      "height":  3192,
+                      "src":  "個人介紹.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-4"
+                                  ],
+                      "label":  "商品全頁",
+                      "height":  4296,
+                      "src":  "商品全頁.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-5"
+                                  ],
+                      "label":  "商品資訊",
+                      "height":  2194,
+                      "src":  "商品資訊.jpg"
+                  }
+              ]
+}

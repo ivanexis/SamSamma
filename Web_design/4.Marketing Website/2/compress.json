@@ -1,0 +1,88 @@
+﻿{
+    "case":  "4.Marketing Website/2",
+    "scanned_at":  "2026-05-20",
+    "hero_source":  "首頁.jpg",
+    "files":  [
+                  {
+                      "outputs":  [
+                                      "hero",
+                                      "slide-1"
+                                  ],
+                      "label":  "首頁",
+                      "height":  6949,
+                      "src":  "首頁.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-2"
+                                  ],
+                      "label":  "企業形象網站",
+                      "height":  2353,
+                      "src":  "企業形象網站.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-3"
+                                  ],
+                      "label":  "作品集",
+                      "height":  3102,
+                      "src":  "作品集.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-4"
+                                  ],
+                      "label":  "合作經驗",
+                      "height":  4410,
+                      "src":  "合作經驗.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-5"
+                                  ],
+                      "label":  "客製化網站",
+                      "height":  2353,
+                      "src":  "客製化網站.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-6"
+                                  ],
+                      "label":  "影片規劃",
+                      "height":  4040,
+                      "src":  "影片規劃.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-7"
+                                  ],
+                      "label":  "服務項目",
+                      "height":  6522,
+                      "src":  "服務項目.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-8"
+                                  ],
+                      "label":  "聯絡我們",
+                      "height":  3221,
+                      "src":  "聯絡我們.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-9"
+                                  ],
+                      "label":  "購物系統網站",
+                      "height":  2353,
+                      "src":  "購物系統網站.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-10"
+                                  ],
+                      "label":  "關於我們",
+                      "height":  4698,
+                      "src":  "關於我們.jpg"
+                  }
+              ]
+}

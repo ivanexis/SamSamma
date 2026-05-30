@@ -16,3 +16,6 @@ dist/
 .cursor/
 .vscode/
 *.swp
+
+# 私人筆記（面試/策略，勿上傳、勿公開部署）
+pages/專案狀態/

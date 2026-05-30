@@ -1,0 +1,48 @@
+﻿{
+    "case":  "7.Technology website/3",
+    "scanned_at":  "2026-05-20",
+    "hero_source":  "首頁.jpg",
+    "files":  [
+                  {
+                      "outputs":  [
+                                      "hero",
+                                      "slide-1"
+                                  ],
+                      "label":  "首頁",
+                      "height":  7670,
+                      "src":  "首頁.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-2"
+                                  ],
+                      "label":  "最新消息 內頁",
+                      "height":  5136,
+                      "src":  "最新消息 內頁.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-3"
+                                  ],
+                      "label":  "最新消息",
+                      "height":  3379,
+                      "src":  "最新消息.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-4"
+                                  ],
+                      "label":  "產品介紹 內文",
+                      "height":  3536,
+                      "src":  "產品介紹 內文.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-5"
+                                  ],
+                      "label":  "產品介紹",
+                      "height":  3565,
+                      "src":  "產品介紹.jpg"
+                  }
+              ]
+}

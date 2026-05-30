@@ -1,0 +1,72 @@
+﻿{
+    "case":  "2.Interior Design Website/2",
+    "scanned_at":  "2026-05-20",
+    "hero_source":  "首頁-1.jpg",
+    "files":  [
+                  {
+                      "outputs":  [
+                                      "hero",
+                                      "slide-1"
+                                  ],
+                      "label":  "首頁-1",
+                      "height":  1407,
+                      "src":  "首頁-1.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-2"
+                                  ],
+                      "label":  "最新消息-內頁",
+                      "height":  3032,
+                      "src":  "最新消息-內頁.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-3"
+                                  ],
+                      "label":  "最新消息",
+                      "height":  3167,
+                      "src":  "最新消息.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-4"
+                                  ],
+                      "label":  "案例作品-內頁",
+                      "height":  4029,
+                      "src":  "案例作品-內頁.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-5"
+                                  ],
+                      "label":  "案例作品",
+                      "height":  3012,
+                      "src":  "案例作品.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-6"
+                                  ],
+                      "label":  "聯絡我們",
+                      "height":  1924,
+                      "src":  "聯絡我們.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-7"
+                                  ],
+                      "label":  "關於紘皓",
+                      "height":  4758,
+                      "src":  "關於紘皓.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-8"
+                                  ],
+                      "label":  "首頁",
+                      "height":  8137,
+                      "src":  "首頁.jpg"
+                  }
+              ]
+}

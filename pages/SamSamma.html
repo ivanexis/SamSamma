@@ -1,0 +1,3189 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    /* 雙語防閃爍：在 body 渲染前依 ?lang 決定語言，無參數預設英文 */
+    (function () {
+      var p = new URLSearchParams(location.search).get('lang');
+      var lang = (p === 'zh') ? 'zh' : 'en';
+      var d = document.documentElement;
+      d.classList.add('i18n-' + lang);
+      d.setAttribute('lang', lang === 'zh' ? 'zh-TW' : 'en');
+      var s = document.createElement('style');
+      s.textContent = '.i18n-en [data-i18n-lang="zh"]{display:none!important}.i18n-zh [data-i18n-lang="en"]{display:none!important}'
+        + '.lang-switch{display:inline-flex;gap:.25rem}'
+        + '.lang-switch a{display:inline-block;padding:.2rem .6rem;border:1px solid rgba(212,175,55,.6);border-radius:999px;color:#d4af37;font-size:.8rem;font-weight:600;text-decoration:none;transition:all .2s}'
+        + '.lang-switch a:hover{background:rgba(212,175,55,.25);color:#d4af37}'
+        + '.i18n-en .lang-switch a[data-lang-btn=en],.i18n-zh .lang-switch a[data-lang-btn=zh]{background:#d4af37;color:#1a3d22;pointer-events:none}';
+      d.appendChild(s);
+    })();
+  </script>
+  <title>山莎蔓岸 數位轉型｜PM × 前端案例研究 - Ivan's Portfolio</title>
+  <meta name="description" content="賽夏族 12 公頃竹林聚落數位轉型案例 ── 我作為參與核心討論的 PM 與前端開發者，把雜亂的田野紀錄結構化、親手打造合作社官方網站與零伺服器預約工作流。">
+  <link rel="icon" type="image/webp" href="../images/logo_2.webp">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="山莎蔓岸 數位轉型｜PM × 前端案例研究">
+  <meta property="og:description" content="賽夏族 12 公頃竹林聚落數位轉型案例 ── 結構化田野紀錄、零伺服器預約工作流。">
+  <meta property="og:image" content="../images/saa.webp">
+  <meta property="og:url" content="https://ivangoldaura.dpdns.org/pages/SamSamma.html">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../scss/custom.css" />
+
+  <style>
+    /* ============================================================
+       Design Tokens
+       ============================================================ */
+    :root {
+      --bamboo-deep: #1a3d22;
+      --bamboo: #2c5530;
+      --bamboo-mid: #4a7c59;
+      --bamboo-soft: #a8d5ba;
+      --gold: #d4af37;
+      --gold-soft: #f0d97a;
+      --ivory: #faf8f3;
+      --cloud: #f3f4f1;
+      --ink: #14181c;
+      --slate-900: #1f2937;
+      --slate-700: #374151;
+      --slate-500: #6b7280;
+      --slate-300: #d1d5db;
+      --slate-100: #f3f4f6;
+      --white: #ffffff;
+      --data-blue: #2563eb;
+      --data-blue-soft: #dbeafe;
+      --warn: #d97706;
+      --warn-soft: #fef3c7;
+      --success: #16a34a;
+      --success-soft: #dcfce7;
+      --danger: #dc2626;
+
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --radius-xl: 28px;
+
+      --shadow-sm: 0 1px 2px rgba(20, 24, 28, 0.04), 0 1px 3px rgba(20, 24, 28, 0.06);
+      --shadow-md: 0 4px 12px rgba(20, 24, 28, 0.06), 0 2px 4px rgba(20, 24, 28, 0.04);
+      --shadow-lg: 0 12px 32px rgba(20, 24, 28, 0.08), 0 4px 12px rgba(20, 24, 28, 0.06);
+      --shadow-xl: 0 24px 60px rgba(26, 61, 34, 0.16);
+
+      --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* ============================================================
+       Base
+       ============================================================ */
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 110px;
+    }
+
+    body {
+      font-family: 'Noto Sans TC', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+      background: var(--ivory);
+      color: var(--ink);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    .num,
+    .data-figure {
+      font-family: 'Inter', 'Noto Sans TC', sans-serif;
+      font-feature-settings: 'tnum';
+      letter-spacing: -0.01em;
+    }
+
+    a {
+      color: var(--bamboo);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+
+    a:hover {
+      color: var(--bamboo-deep);
+    }
+
+    /* ============================================================
+       Reading Progress Bar
+       ============================================================ */
+    .reading-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--bamboo-mid), var(--gold));
+      width: 0;
+      z-index: 1100;
+      transition: width 0.1s linear;
+    }
+
+    /* ============================================================
+       Navbar
+       ============================================================ */
+    .navbar-pm {
+      background: rgba(250, 248, 243, 0.92);
+      backdrop-filter: saturate(180%) blur(14px);
+      -webkit-backdrop-filter: saturate(180%) blur(14px);
+      border-bottom: 1px solid rgba(26, 61, 34, 0.08);
+      padding: 0.85rem 0;
+      transition: all var(--transition);
+    }
+
+    .navbar-pm.scrolled {
+      padding: 0.6rem 0;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .navbar-pm .navbar-brand {
+      font-weight: 700;
+      color: var(--bamboo-deep);
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    .navbar-pm .navbar-logo {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--gold);
+      transition: transform var(--transition);
+    }
+
+    .navbar-pm .navbar-brand:hover .navbar-logo {
+      transform: rotate(8deg) scale(1.05);
+    }
+
+    .navbar-pm .nav-link {
+      color: var(--slate-700) !important;
+      font-weight: 500;
+      font-size: 0.94rem;
+      padding: 0.45rem 0.85rem !important;
+      border-radius: var(--radius-sm);
+      transition: all var(--transition);
+    }
+
+    .navbar-pm .nav-link:hover {
+      color: var(--bamboo-deep) !important;
+      background: rgba(168, 213, 186, 0.25);
+    }
+
+    .navbar-pm .nav-link.active {
+      color: var(--bamboo-deep) !important;
+      background: rgba(168, 213, 186, 0.35);
+    }
+
+    .navbar-pm .navbar-toggler {
+      border: 1px solid rgba(26, 61, 34, 0.2);
+      padding: 0.35rem 0.55rem;
+    }
+
+    .navbar-pm .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%231a3d22' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
+
+    .deep-dive-note {
+      margin: 0 auto;
+      max-width: 920px;
+      padding: 1rem 1.25rem;
+      background: linear-gradient(135deg, rgba(74, 124, 89, 0.10) 0%, rgba(74, 124, 89, 0.03) 100%);
+      border-left: 3px solid var(--bamboo-mid);
+      border-radius: 6px;
+      font-size: 0.9rem;
+      line-height: 1.7;
+      color: var(--slate-700);
+    }
+    .deep-dive-note i {
+      color: var(--bamboo-mid);
+      margin-right: 0.4rem;
+    }
+
+    .nav-cta {
+      background: var(--bamboo-deep);
+      color: var(--white) !important;
+      padding: 0.5rem 1.1rem !important;
+      border-radius: 999px !important;
+      font-weight: 500;
+    }
+
+    .nav-cta:hover {
+      background: var(--bamboo) !important;
+      color: var(--white) !important;
+      transform: translateY(-1px);
+    }
+
+    /* ============================================================
+       Hero
+       ============================================================ */
+    .pm-hero {
+      position: relative;
+      padding: 9rem 0 5rem;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(212, 175, 55, 0.1), transparent 45%),
+        radial-gradient(circle at 85% 80%, rgba(168, 213, 186, 0.35), transparent 50%),
+        linear-gradient(180deg, var(--ivory) 0%, #f0eee5 100%);
+      overflow: hidden;
+    }
+
+    .pm-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(26, 61, 34, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(26, 61, 34, 0.04) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black, transparent 70%);
+      -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black, transparent 70%);
+      pointer-events: none;
+    }
+
+    .pm-hero .container {
+      position: relative;
+      z-index: 2;
+    }
+
+    .pm-badge-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .pm-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(26, 61, 34, 0.08);
+      color: var(--bamboo-deep);
+      padding: 0.35rem 0.85rem;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+    }
+
+    .pm-badge i {
+      font-size: 0.75rem;
+    }
+
+    .pm-badge-gold {
+      background: linear-gradient(135deg, rgba(212, 175, 55, 0.18), rgba(212, 175, 55, 0.08));
+      color: #6b5217;
+      border: 1px solid rgba(212, 175, 55, 0.35);
+    }
+
+    .pm-hero h1 {
+      font-size: clamp(2rem, 5vw, 3.6rem);
+      font-weight: 700;
+      color: var(--bamboo-deep);
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      margin-bottom: 1.25rem;
+    }
+
+    .pm-hero h1 .accent {
+      color: var(--bamboo);
+      background: linear-gradient(120deg, transparent 0%, transparent 50%, rgba(212, 175, 55, 0.35) 50%, rgba(212, 175, 55, 0.35) 95%, transparent 95%);
+      padding: 0 0.15em;
+    }
+
+    .pm-hero .lede {
+      font-size: clamp(1rem, 1.8vw, 1.2rem);
+      color: var(--slate-700);
+      max-width: 720px;
+      line-height: 1.7;
+      margin-bottom: 2.25rem;
+    }
+
+    .pm-hero .lede strong {
+      color: var(--bamboo-deep);
+      font-weight: 600;
+    }
+
+    .pm-hero .eng-subtitle {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.92rem;
+      color: var(--slate-500);
+      letter-spacing: 0.04em;
+      margin-bottom: 0.8rem;
+      text-transform: uppercase;
+    }
+
+    .pm-hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+    }
+
+    .btn-pm-primary {
+      background: var(--bamboo-deep);
+      color: var(--white);
+      padding: 0.85rem 1.6rem;
+      border-radius: 999px;
+      font-weight: 500;
+      font-size: 0.98rem;
+      transition: all var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      border: none;
+    }
+
+    .btn-pm-primary:hover {
+      background: var(--bamboo);
+      color: var(--white);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .btn-pm-ghost {
+      background: transparent;
+      color: var(--bamboo-deep);
+      padding: 0.85rem 1.6rem;
+      border-radius: 999px;
+      font-weight: 500;
+      font-size: 0.98rem;
+      border: 1.5px solid var(--bamboo-deep);
+      transition: all var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btn-pm-ghost:hover {
+      background: var(--bamboo-deep);
+      color: var(--white);
+      transform: translateY(-2px);
+    }
+
+    /* Hero side visual */
+    .hero-visual {
+      position: relative;
+      aspect-ratio: 4 / 3;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow-xl);
+      background: linear-gradient(135deg, var(--bamboo) 0%, var(--bamboo-mid) 100%);
+    }
+
+    .hero-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      mix-blend-mode: luminosity;
+      opacity: 0.85;
+    }
+
+    .hero-visual-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(26, 61, 34, 0.45), rgba(74, 124, 89, 0.3));
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 2rem;
+      color: var(--white);
+    }
+
+    .hero-visual-overlay .tag {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      padding: 0.3rem 0.8rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      align-self: flex-start;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-visual-overlay h3 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .hero-visual-overlay p {
+      font-size: 0.88rem;
+      opacity: 0.9;
+      margin: 0;
+    }
+
+    /* ============================================================
+       Quick Stats Strip
+       ============================================================ */
+    .stats-strip {
+      background: var(--white);
+      border-top: 1px solid rgba(26, 61, 34, 0.08);
+      border-bottom: 1px solid rgba(26, 61, 34, 0.08);
+      padding: 2.25rem 0;
+      position: relative;
+    }
+
+    .stat-item {
+      text-align: center;
+      padding: 0.5rem 0.75rem;
+      position: relative;
+    }
+
+    .stat-item::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 20%;
+      bottom: 20%;
+      width: 1px;
+      background: var(--slate-300);
+    }
+
+    .stat-item:last-child::after {
+      display: none;
+    }
+
+    .stat-value {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(1.6rem, 2.6vw, 2.4rem);
+      font-weight: 700;
+      color: var(--bamboo-deep);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+
+    .stat-unit {
+      font-size: 0.78rem;
+      color: var(--slate-500);
+      font-weight: 500;
+      margin-left: 0.15rem;
+    }
+
+    .stat-label {
+      font-size: 0.82rem;
+      color: var(--slate-500);
+      margin-top: 0.4rem;
+      letter-spacing: 0.04em;
+    }
+
+    @media (max-width: 768px) {
+      .stat-item::after {
+        display: none;
+      }
+
+      .stat-item {
+        border-bottom: 1px solid var(--slate-100);
+        padding-bottom: 1rem;
+        margin-bottom: 1rem;
+      }
+
+      .stat-item:last-child {
+        border-bottom: none;
+      }
+    }
+
+    /* ============================================================
+       Section base
+       ============================================================ */
+    .pm-section {
+      padding: 6rem 0;
+    }
+
+    .pm-section.bg-cloud {
+      background: var(--cloud);
+    }
+
+    .pm-section.bg-deep {
+      background: linear-gradient(180deg, var(--bamboo-deep) 0%, #102b18 100%);
+      color: var(--white);
+    }
+
+    .pm-section.bg-deep .section-eyebrow {
+      color: var(--gold);
+    }
+
+    .pm-section.bg-deep .section-title {
+      color: var(--white);
+    }
+
+    .pm-section.bg-deep .section-desc {
+      color: rgba(255, 255, 255, 0.75);
+    }
+
+    .section-head {
+      max-width: 760px;
+      margin-bottom: 3.5rem;
+    }
+
+    .section-head.text-center {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .section-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--bamboo);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.85rem;
+    }
+
+    .section-eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 28px;
+      height: 2px;
+      background: currentColor;
+    }
+
+    .section-title {
+      font-size: clamp(1.6rem, 3.2vw, 2.3rem);
+      font-weight: 700;
+      color: var(--bamboo-deep);
+      line-height: 1.3;
+      margin-bottom: 0.85rem;
+    }
+
+    .section-desc {
+      font-size: 1.02rem;
+      color: var(--slate-700);
+      line-height: 1.75;
+    }
+
+    /* ============================================================
+       North Star Card
+       ============================================================ */
+    .north-star-card {
+      background: linear-gradient(135deg, var(--bamboo-deep) 0%, var(--bamboo) 60%, var(--bamboo-mid) 100%);
+      color: var(--white);
+      padding: 3rem 2.5rem;
+      border-radius: var(--radius-xl);
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-xl);
+    }
+
+    .north-star-card::before {
+      content: '★';
+      position: absolute;
+      right: -20px;
+      top: -20px;
+      font-size: 12rem;
+      color: rgba(212, 175, 55, 0.12);
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .north-star-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: rgba(212, 175, 55, 0.18);
+      color: var(--gold);
+      padding: 0.35rem 0.9rem;
+      border-radius: 999px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      margin-bottom: 1.25rem;
+    }
+
+    .north-star-quote {
+      font-size: clamp(1.3rem, 2.6vw, 1.85rem);
+      font-weight: 600;
+      line-height: 1.45;
+      margin-bottom: 1.25rem;
+    }
+
+    .north-star-formula {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(212, 175, 55, 0.25);
+      border-radius: var(--radius-md);
+      padding: 1.1rem 1.5rem;
+      font-family: 'Inter', 'Noto Sans TC', sans-serif;
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.95);
+      position: relative;
+      z-index: 1;
+    }
+
+    .north-star-formula .equiv {
+      color: var(--gold);
+      margin: 0 0.5rem;
+      font-weight: 700;
+    }
+
+    /* ============================================================
+       Problem — 情境敘事卡 (4 張)
+       ============================================================ */
+    .pain-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    @media (max-width: 768px) {
+      .pain-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .pain-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid rgba(26, 61, 34, 0.06);
+      transition: all var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pain-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-color: rgba(26, 61, 34, 0.15);
+    }
+
+    .pain-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--warn);
+    }
+
+    .pain-card-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.25rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--slate-100);
+    }
+
+    .pain-card-num {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--warn);
+      letter-spacing: 0.08em;
+      background: var(--warn-soft);
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+    }
+
+    .pain-card-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: var(--warn-soft);
+      color: var(--warn);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+    }
+
+    .pain-card h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--bamboo-deep);
+      margin-bottom: 0.3rem;
+      line-height: 1.4;
+    }
+
+    .pain-card .eng {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      color: var(--slate-500);
+      letter-spacing: 0.02em;
+      margin-bottom: 1.25rem;
+      display: block;
+    }
+
+    .pain-row {
+      display: flex;
+      gap: 0.75rem;
+      margin-bottom: 0.85rem;
+      align-items: flex-start;
+    }
+
+    .pain-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .pain-label {
+      flex-shrink: 0;
+      width: 64px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--slate-500);
+      letter-spacing: 0.04em;
+      padding-top: 0.15rem;
+    }
+
+    .pain-text {
+      flex: 1;
+      font-size: 0.92rem;
+      color: var(--slate-700);
+      line-height: 1.65;
+    }
+
+    .pain-row.solution {
+      background: var(--bamboo-soft);
+      background: linear-gradient(135deg, rgba(168, 213, 186, 0.25), rgba(168, 213, 186, 0.08));
+      padding: 0.85rem 1rem;
+      border-radius: var(--radius-sm);
+      margin-top: 1rem;
+    }
+
+    .pain-row.solution .pain-label {
+      color: var(--bamboo-deep);
+    }
+
+    .pain-row.solution .pain-text {
+      color: var(--bamboo-deep);
+      font-weight: 500;
+    }
+
+    /* ============================================================
+       Roadmap — Two-Year Strategy Timeline
+       ============================================================ */
+    .roadmap-axis {
+      display: grid;
+      grid-template-columns: 140px 1fr 1fr;
+      gap: 1rem;
+      align-items: stretch;
+    }
+
+    .roadmap-module-col {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 0.85rem;
+      padding-top: 4rem;
+    }
+
+    .roadmap-phase-col {
+      position: relative;
+    }
+
+    .roadmap-phase-head {
+      padding: 1rem 1.25rem;
+      border-radius: var(--radius-md) var(--radius-md) 0 0;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 0;
+    }
+
+    .roadmap-phase-head.phase-1 {
+      background: linear-gradient(135deg, var(--bamboo) 0%, var(--bamboo-mid) 100%);
+    }
+
+    .roadmap-phase-head.phase-2 {
+      background: linear-gradient(135deg, var(--bamboo-deep) 0%, var(--bamboo) 100%);
+    }
+
+    .roadmap-phase-head .phase-year {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      opacity: 0.85;
+      text-transform: uppercase;
+    }
+
+    .roadmap-phase-head .phase-title {
+      font-size: 1.1rem;
+      margin-top: 0.15rem;
+    }
+
+    .roadmap-phase-head .phase-budget {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      margin-top: 0.25rem;
+      opacity: 0.9;
+    }
+
+    .roadmap-phase-body {
+      background: var(--white);
+      border: 1px solid var(--slate-100);
+      border-top: none;
+      border-radius: 0 0 var(--radius-md) var(--radius-md);
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .module-tag {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--bamboo-deep);
+      color: var(--white);
+      padding: 0.7rem 0.9rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.88rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      height: 54px;
+    }
+
+    .module-tag i {
+      font-size: 0.95rem;
+      color: var(--gold);
+    }
+
+    .roadmap-cell {
+      background: var(--cloud);
+      padding: 0.7rem 0.9rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.86rem;
+      color: var(--slate-700);
+      line-height: 1.55;
+      border-left: 3px solid var(--bamboo-mid);
+      min-height: 54px;
+      display: flex;
+      align-items: center;
+    }
+
+    .checkpoint-row {
+      display: grid;
+      grid-template-columns: 140px 1fr 1fr;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .checkpoint-label {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--slate-500);
+      letter-spacing: 0.04em;
+      display: flex;
+      align-items: center;
+      padding-left: 0.5rem;
+    }
+
+    .checkpoint-cell {
+      background: linear-gradient(135deg, rgba(212, 175, 55, 0.12), rgba(212, 175, 55, 0.05));
+      border: 1px dashed rgba(212, 175, 55, 0.45);
+      padding: 0.85rem 1rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.85rem;
+      color: var(--slate-700);
+    }
+
+    .checkpoint-cell strong {
+      color: var(--bamboo-deep);
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+
+    @media (max-width: 992px) {
+
+      .roadmap-axis,
+      .checkpoint-row {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+      }
+
+      .roadmap-module-col {
+        padding-top: 0;
+      }
+
+      .module-tag {
+        background: var(--bamboo);
+      }
+    }
+
+    /* ============================================================
+       Stakeholder Map — 3 axis cards
+       ============================================================ */
+    .stake-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    @media (max-width: 992px) {
+      .stake-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .stake-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      box-shadow: var(--shadow-sm);
+      border-top: 4px solid var(--bamboo-mid);
+      transition: all var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .stake-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .stake-card.axis-a {
+      border-top-color: var(--data-blue);
+    }
+
+    .stake-card.axis-b {
+      border-top-color: var(--gold);
+    }
+
+    .stake-card.axis-c {
+      border-top-color: var(--bamboo);
+    }
+
+    .stake-head {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .stake-head-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+
+    .axis-a .stake-head-icon {
+      background: var(--data-blue-soft);
+      color: var(--data-blue);
+    }
+
+    .axis-b .stake-head-icon {
+      background: rgba(212, 175, 55, 0.18);
+      color: #8a6d18;
+    }
+
+    .axis-c .stake-head-icon {
+      background: var(--bamboo-soft);
+      color: var(--bamboo-deep);
+    }
+
+    .stake-axis-tag {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.74rem;
+      letter-spacing: 0.12em;
+      color: var(--slate-500);
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-bottom: 0.1rem;
+    }
+
+    .stake-head h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--bamboo-deep);
+      margin: 0;
+    }
+
+    .stake-mission {
+      font-size: 0.9rem;
+      font-style: italic;
+      color: var(--slate-700);
+      background: var(--cloud);
+      padding: 0.75rem 1rem;
+      border-radius: var(--radius-sm);
+      margin-bottom: 1.25rem;
+      border-left: 3px solid currentColor;
+    }
+
+    .stake-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 1.25rem;
+      flex: 1;
+    }
+
+    .stake-list li {
+      padding: 0.55rem 0;
+      font-size: 0.92rem;
+      color: var(--slate-700);
+      line-height: 1.55;
+      border-bottom: 1px dashed var(--slate-100);
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+    }
+
+    .stake-list li:last-child {
+      border-bottom: none;
+    }
+
+    .stake-list li i {
+      color: var(--bamboo-mid);
+      font-size: 0.75rem;
+      padding-top: 0.4rem;
+      flex-shrink: 0;
+    }
+
+    .stake-delivery {
+      background: linear-gradient(135deg, var(--cloud) 0%, var(--white) 100%);
+      border-radius: var(--radius-sm);
+      padding: 1rem;
+      font-size: 0.85rem;
+      color: var(--slate-700);
+      line-height: 1.6;
+    }
+
+    .stake-delivery strong {
+      display: block;
+      color: var(--bamboo-deep);
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+    }
+
+    /* ============================================================
+       OKR Block
+       ============================================================ */
+    .okr-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+      margin-top: 2rem;
+    }
+
+    .okr-card {
+      background: rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      transition: all var(--transition);
+    }
+
+    .okr-card:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-3px);
+    }
+
+    .okr-card .obj-tag {
+      display: inline-block;
+      background: rgba(212, 175, 55, 0.2);
+      color: var(--gold);
+      padding: 0.2rem 0.7rem;
+      border-radius: 999px;
+      font-size: 0.76rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.7rem;
+    }
+
+    .okr-card h4 {
+      color: var(--white);
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      line-height: 1.45;
+    }
+
+    .okr-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .okr-list li {
+      padding: 0.5rem 0;
+      font-size: 0.88rem;
+      color: rgba(255, 255, 255, 0.82);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      gap: 0.6rem;
+      line-height: 1.5;
+    }
+
+    .okr-list li:last-child {
+      border-bottom: none;
+    }
+
+    .okr-list li .kr {
+      font-family: 'Inter', sans-serif;
+      color: var(--gold);
+      font-weight: 600;
+      flex-shrink: 0;
+      min-width: 42px;
+    }
+
+    /* SDGs Strip */
+    .sdg-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      margin-top: 2.5rem;
+    }
+
+    @media (max-width: 768px) {
+      .sdg-strip {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .sdg-tile {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      text-align: center;
+      transition: all var(--transition);
+    }
+
+    .sdg-tile:hover {
+      background: rgba(255, 255, 255, 0.13);
+      transform: scale(1.02);
+    }
+
+    .sdg-num {
+      font-family: 'Inter', sans-serif;
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 0.35rem;
+    }
+
+    .sdg-name {
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 0.4rem;
+      font-weight: 600;
+    }
+
+    .sdg-link {
+      font-size: 0.78rem;
+      color: rgba(255, 255, 255, 0.62);
+      line-height: 1.4;
+    }
+
+    /* Budget Bar */
+    .budget-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      margin-top: 3rem;
+    }
+
+    .budget-total {
+      font-family: 'Inter', sans-serif;
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: -0.02em;
+    }
+
+    .budget-total .small {
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.6);
+      font-weight: 400;
+      margin-left: 0.4rem;
+    }
+
+    .budget-bar {
+      display: flex;
+      height: 32px;
+      border-radius: 999px;
+      overflow: hidden;
+      margin: 1.5rem 0 1rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    }
+
+    .budget-seg {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      font-size: 0.84rem;
+      font-weight: 600;
+      transition: filter var(--transition);
+    }
+
+    .budget-seg:hover {
+      filter: brightness(1.15);
+    }
+
+    .budget-seg.capital {
+      background: var(--bamboo-mid);
+      flex-grow: 85;
+    }
+
+    .budget-seg.operating {
+      background: var(--gold);
+      color: var(--bamboo-deep);
+      flex-grow: 15;
+    }
+
+    .budget-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.75);
+    }
+
+    .budget-legend .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      display: inline-block;
+      margin-right: 0.4rem;
+      vertical-align: middle;
+    }
+
+    .self-fund-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+    }
+
+    @media (max-width: 768px) {
+      .self-fund-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .fund-tile {
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: var(--radius-sm);
+      padding: 0.85rem;
+      text-align: center;
+    }
+
+    .fund-tile .src {
+      font-size: 0.74rem;
+      color: rgba(255, 255, 255, 0.6);
+      letter-spacing: 0.06em;
+      margin-bottom: 0.3rem;
+    }
+
+    .fund-tile .amt {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--gold);
+    }
+
+    /* ============================================================
+       Bridge — 5 段踩過的坑 + 反思
+       ============================================================ */
+    .lesson-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sm);
+      border: 1px solid rgba(26, 61, 34, 0.06);
+      margin-bottom: 1.25rem;
+      overflow: hidden;
+      transition: all var(--transition);
+    }
+
+    .lesson-card:hover {
+      box-shadow: var(--shadow-md);
+      border-color: rgba(26, 61, 34, 0.12);
+    }
+
+    .lesson-head {
+      display: grid;
+      grid-template-columns: 60px 1fr auto;
+      gap: 1.25rem;
+      padding: 1.5rem 1.75rem;
+      align-items: center;
+      cursor: pointer;
+      transition: background var(--transition);
+    }
+
+    .lesson-head:hover {
+      background: var(--cloud);
+    }
+
+    .lesson-num {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--bamboo-deep), var(--bamboo));
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .lesson-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--bamboo-deep);
+      margin-bottom: 0.2rem;
+      line-height: 1.35;
+    }
+
+    .lesson-skill {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.78rem;
+      color: var(--slate-500);
+      letter-spacing: 0.04em;
+    }
+
+    .lesson-skill .pill {
+      background: var(--bamboo-soft);
+      color: var(--bamboo-deep);
+      padding: 0.18rem 0.55rem;
+      border-radius: 999px;
+      font-weight: 600;
+      margin-left: 0.4rem;
+    }
+
+    .lesson-toggle {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--cloud);
+      color: var(--bamboo-deep);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all var(--transition);
+    }
+
+    details[open] .lesson-toggle {
+      background: var(--bamboo-deep);
+      color: var(--white);
+      transform: rotate(45deg);
+    }
+
+    .lesson-body {
+      padding: 0 1.75rem 1.75rem;
+      border-top: 1px solid var(--slate-100);
+    }
+
+    .lesson-body-inner {
+      padding-top: 1.25rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    @media (max-width: 768px) {
+      .lesson-body-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .lesson-head {
+        grid-template-columns: 48px 1fr 36px;
+        gap: 0.85rem;
+        padding: 1.2rem 1.25rem;
+      }
+
+      .lesson-num {
+        width: 40px;
+        height: 40px;
+        font-size: 0.95rem;
+      }
+
+      .lesson-body {
+        padding: 0 1.25rem 1.5rem;
+      }
+    }
+
+    .lesson-block h5 {
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--slate-500);
+      margin-bottom: 0.6rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .lesson-block h5 .badge-letter {
+      width: 24px;
+      height: 24px;
+      border-radius: 6px;
+      background: var(--bamboo-soft);
+      color: var(--bamboo-deep);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
+    .lesson-block p {
+      color: var(--slate-700);
+      font-size: 0.94rem;
+      line-height: 1.7;
+      margin-bottom: 0;
+    }
+
+    .lesson-result {
+      background: linear-gradient(135deg, rgba(22, 163, 74, 0.08), rgba(22, 163, 74, 0.03));
+      border: 1px solid rgba(22, 163, 74, 0.2);
+      border-radius: var(--radius-sm);
+      padding: 1rem 1.1rem;
+      margin-top: 1.25rem;
+      font-size: 0.92rem;
+      color: var(--bamboo-deep);
+      line-height: 1.7;
+    }
+
+    .lesson-result strong {
+      color: var(--success);
+    }
+
+    /* ============================================================
+       Value Stream Map
+       ============================================================ */
+    .vsm-wrapper {
+      background: var(--white);
+      border-radius: var(--radius-xl);
+      padding: 2.5rem;
+      box-shadow: var(--shadow-md);
+      border: 1px solid rgba(26, 61, 34, 0.06);
+    }
+
+    .vsm-grid {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr auto 1fr;
+      gap: 1rem;
+      align-items: stretch;
+    }
+
+    @media (max-width: 992px) {
+      .vsm-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .vsm-arrow {
+        transform: rotate(90deg);
+        margin: 0.5rem 0;
+      }
+    }
+
+    .vsm-col {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .vsm-col-head {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.76rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 2px solid currentColor;
+    }
+
+    .vsm-col.input .vsm-col-head {
+      color: var(--data-blue);
+    }
+
+    .vsm-col.role .vsm-col-head {
+      color: var(--bamboo-deep);
+    }
+
+    .vsm-col.output .vsm-col-head {
+      color: var(--success);
+    }
+
+    .vsm-item {
+      background: var(--cloud);
+      border-radius: var(--radius-sm);
+      padding: 0.85rem 1rem;
+      margin-bottom: 0.6rem;
+      font-size: 0.9rem;
+      color: var(--slate-700);
+      line-height: 1.5;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+    }
+
+    .vsm-item i {
+      color: var(--bamboo);
+      padding-top: 0.2rem;
+    }
+
+    .vsm-col.role .vsm-item {
+      background: linear-gradient(135deg, var(--bamboo-deep), var(--bamboo));
+      color: var(--white);
+    }
+
+    .vsm-col.role .vsm-item i {
+      color: var(--gold);
+    }
+
+    .vsm-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--bamboo-mid);
+      font-size: 1.8rem;
+      padding-top: 2.5rem;
+    }
+
+    /* ============================================================
+       Project Info Card
+       ============================================================ */
+    .project-info {
+      background: linear-gradient(135deg, var(--ivory) 0%, var(--cloud) 100%);
+      border-radius: var(--radius-xl);
+      padding: 3rem;
+      box-shadow: var(--shadow-md);
+      border: 1px solid rgba(26, 61, 34, 0.08);
+    }
+
+    .project-info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .info-block {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .info-key {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.76rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--slate-500);
+      margin-bottom: 0.4rem;
+    }
+
+    .info-val {
+      font-size: 1.02rem;
+      font-weight: 600;
+      color: var(--bamboo-deep);
+      line-height: 1.5;
+    }
+
+    .info-val.num {
+      font-size: 1.4rem;
+      font-weight: 700;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(26, 61, 34, 0.1);
+    }
+
+    .disclaimer {
+      margin-top: 2rem;
+      padding: 1rem 1.25rem;
+      background: rgba(212, 175, 55, 0.08);
+      border-left: 3px solid var(--gold);
+      border-radius: var(--radius-sm);
+      font-size: 0.83rem;
+      color: var(--slate-700);
+      line-height: 1.65;
+    }
+
+    .disclaimer strong {
+      color: var(--bamboo-deep);
+    }
+
+    /* ============================================================
+       Footer
+       ============================================================ */
+    .pm-footer {
+      background: var(--ink);
+      color: rgba(255, 255, 255, 0.78);
+      padding: 4rem 0 2rem;
+    }
+
+    .pm-footer h5 {
+      color: var(--white);
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 1.25rem;
+    }
+
+    .pm-footer a {
+      color: rgba(255, 255, 255, 0.7);
+      transition: color var(--transition);
+    }
+
+    .pm-footer a:hover {
+      color: var(--gold);
+    }
+
+    .pm-footer .social-links a {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 0.5rem;
+      transition: all var(--transition);
+    }
+
+    .pm-footer .social-links a:hover {
+      background: var(--gold);
+      color: var(--ink);
+      transform: translateY(-2px);
+    }
+
+    /* ============================================================
+       Print styles
+       ============================================================ */
+    @media print {
+
+      .navbar-pm,
+      .reading-progress,
+      .pm-hero-actions,
+      .cta-row,
+      .pm-footer,
+      .nav-cta,
+      .lesson-toggle {
+        display: none !important;
+      }
+
+      details {
+        display: block !important;
+      }
+
+      details summary {
+        display: none;
+      }
+
+      .lesson-body {
+        display: block !important;
+      }
+
+      .pm-section {
+        padding: 2.5rem 0;
+        page-break-inside: avoid;
+      }
+
+      body {
+        background: white;
+        color: black;
+      }
+
+      .pm-section.bg-deep {
+        background: white;
+        color: black;
+      }
+
+      .pm-section.bg-deep .section-title,
+      .pm-section.bg-deep .section-desc,
+      .pm-section.bg-deep .section-eyebrow {
+        color: black;
+      }
+    }
+
+    /* ============================================================
+       Reduced motion
+       ============================================================ */
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    /* ============================================================
+       Phase 3 Additions: Mini Carbon Dashboard + Tech Stack
+       ============================================================ */
+
+    /* --- Mini Carbon Dashboard (放在 §03 Impact 區) --- */
+    .carbon-dashboard {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem;
+      margin: 0 0 3rem;
+    }
+
+    .dash-card {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      position: relative;
+      transition: all var(--transition);
+    }
+
+    .dash-card:hover {
+      background: rgba(212, 175, 55, 0.1);
+      border-color: rgba(212, 175, 55, 0.4);
+      transform: translateY(-3px);
+    }
+
+    .dash-card .dash-label {
+      font-family: 'Inter', sans-serif;
+      color: var(--gold);
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    .dash-value {
+      font-family: 'Inter', monospace;
+      color: var(--white);
+      font-size: 2.4rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+
+    .dash-value .unit {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.6);
+      margin-left: 0.25rem;
+    }
+
+    .dash-desc {
+      margin-top: 0.6rem;
+      color: rgba(255,255,255,0.7);
+      font-size: 0.85rem;
+      line-height: 1.55;
+    }
+
+    .dash-info {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      width: 24px;
+      height: 24px;
+      border: 1px solid rgba(212, 175, 55, 0.5);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      font-size: 0.75rem;
+      cursor: help;
+      background: transparent;
+    }
+
+    .dash-tooltip {
+      position: absolute;
+      bottom: calc(100% + 10px);
+      right: 0;
+      background: var(--ink);
+      color: var(--white);
+      padding: 0.85rem 1rem;
+      border-radius: 8px;
+      font-size: 0.78rem;
+      line-height: 1.55;
+      width: 280px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(8px);
+      transition: all 0.25s ease;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+      pointer-events: none;
+      z-index: 10;
+      border: 1px solid rgba(212, 175, 55, 0.5);
+    }
+
+    .dash-tooltip::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      right: 14px;
+      border: 6px solid transparent;
+      border-top-color: rgba(212, 175, 55, 0.5);
+    }
+
+    .dash-card:hover .dash-tooltip,
+    .dash-card:focus-within .dash-tooltip {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    /* --- Tech Stack Section (放在 Project Info 之前) --- */
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem;
+      margin-top: 2.5rem;
+    }
+
+    .tech-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem 1.5rem;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid rgba(26, 61, 34, 0.06);
+      transition: all var(--transition);
+      text-align: left;
+    }
+
+    .tech-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--gold);
+    }
+
+    .tech-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--bamboo-deep), var(--bamboo));
+      color: var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+      box-shadow: 0 6px 14px rgba(26, 61, 34, 0.15);
+    }
+
+    .tech-card h4 {
+      color: var(--bamboo-deep);
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin: 0 0 0.35rem;
+    }
+
+    .tech-tag {
+      display: inline-block;
+      font-family: 'Inter', sans-serif;
+      background: var(--bamboo-soft);
+      color: var(--bamboo-deep);
+      padding: 0.18rem 0.55rem;
+      border-radius: 4px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.85rem;
+    }
+
+    .tech-card p {
+      color: var(--slate-700);
+      font-size: 0.88rem;
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    .pm-pov {
+      background: linear-gradient(135deg, var(--bamboo-deep), var(--bamboo));
+      color: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 2.25rem 2rem;
+      margin-top: 2.5rem;
+      position: relative;
+      text-align: center;
+      border: 1px solid var(--gold);
+    }
+
+    .pm-pov i {
+      color: var(--gold);
+      font-size: 1.8rem;
+      margin-bottom: 0.75rem;
+      opacity: 0.7;
+    }
+
+    .pm-pov p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      margin: 0;
+      font-weight: 500;
+      color: var(--white);
+    }
+
+    .pm-pov .pov-cite {
+      margin-top: 1rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Reading progress bar -->
+  <div class="reading-progress" id="readingProgress" aria-hidden="true"></div>
+
+  <!-- ============================================================
+       Navbar
+       ============================================================ -->
+  <nav class="navbar navbar-expand-lg fixed-top navbar-pm" id="navbar">
+    <div class="container">
+      <a class="navbar-brand" href="../index.html">
+        <img src="../images/logo_2.webp" alt="Ivan Zhao Logo" class="navbar-logo">
+        <span>Ivan Zhao</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
+          <li class="nav-item"><a class="nav-link" href="#problem"><span data-i18n-lang="zh">挑戰</span><span data-i18n-lang="en">Challenge</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="#execution"><span data-i18n-lang="zh">解法</span><span data-i18n-lang="en">Approach</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="#impact"><span data-i18n-lang="zh">成果</span><span data-i18n-lang="en">Impact</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="#bridge"><span data-i18n-lang="zh">沉澱</span><span data-i18n-lang="en">Reflection</span></a></li>
+          <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
+            <a class="nav-link nav-cta" href="index_SamSamma.html">
+              <i class="fas fa-external-link-alt me-1"></i><span data-i18n-lang="zh">查看合作社網站</span><span data-i18n-lang="en">Visit Co-op Site</span>
+            </a>
+          </li>
+          <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+            <span class="lang-switch" aria-label="Language switch">
+              <a href="?lang=en" data-lang-btn="en" data-i18n-skip>EN</a>
+              <a href="?lang=zh" data-lang-btn="zh" data-i18n-skip>繁中</a>
+            </span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ============================================================
+       Hero
+       ============================================================ -->
+  <header class="pm-hero">
+    <div class="container">
+      <div class="deep-dive-note" style="margin-bottom: 2.5rem;">
+        <i class="fas fa-info-circle"></i><span data-i18n-lang="zh">※ 本案例研究提供完整中英雙語。核心系統架構與技術術語維持英文標準。可透過導覽列右上的 [EN ⇄ 繁中] 切換語系。</span><span data-i18n-lang="en">※ This case study is available in full English and Traditional Chinese. Core architecture and technical terms remain in English. Use the [EN ⇄ 繁中] switch at the top-right to change language.</span>
+      </div>
+      <div class="row align-items-center g-5">
+        <div class="col-lg-7" data-aos="fade-up">
+          <div class="pm-badge-group">
+            <span class="pm-badge"><i class="fas fa-seedling"></i><span data-i18n-lang="zh">地方創生</span><span data-i18n-lang="en">Regional Revitalization</span></span>
+            <span class="pm-badge"><i class="fas fa-cubes"></i><span data-i18n-lang="zh">跨域整合</span><span data-i18n-lang="en">Cross-domain Integration</span></span>
+            <span class="pm-badge pm-badge-gold"><i class="fas fa-star"></i><span data-i18n-lang="zh">數位轉型 PM × 前端開發</span><span data-i18n-lang="en">Digital Transformation PM × Frontend</span></span>
+          </div>
+
+          <div class="eng-subtitle">Case Study · Sansamaan Bamboo Cluster · 2024–2026</div>
+
+          <h1>
+            <span data-i18n-lang="zh">在賽夏族 <span class="accent">12 公頃竹林聚落</span><br>做數位轉型 PM 與前端的<br>兩個角色</span>
+            <span data-i18n-lang="en">Two roles in a Saisiyat <span class="accent">12-hectare bamboo cluster</span><br>— Digital Transformation PM<br>and Frontend Developer</span>
+          </h1>
+
+          <p class="lede">
+            <span data-i18n-lang="zh">我是這個專案<strong>參與核心討論的數位轉型 PM 兼前端開發者</strong>。
+            計畫策略由團隊共同擬定，我負責兩件「我說了算」的事：
+            <strong>(1)</strong> 把現場龐雜的田野紀錄、學術訪視成果、聚落活動照片，
+            <strong>結構化梳理成清晰的數位內容</strong>；
+            <strong>(2)</strong> 獨立完成合作社官方網站 UI/UX 與前端（Vanilla JS），
+            並建置一套<strong>零伺服器成本的自動化預約工作流</strong>，
+            解決偏鄉沒有預算養工程師的真實痛點。</span>
+            <span data-i18n-lang="en">I served as the <strong>Digital Transformation PM and frontend developer at the core of this project's discussions</strong>.
+            The overall strategy was set collectively by the team; I owned two things end-to-end:
+            <strong>(1)</strong> turning chaotic field notes, academic site-visit findings, and cluster event photos
+            into <strong>clean, structured digital content</strong>; and
+            <strong>(2)</strong> single-handedly building the co-op's official website UI/UX and frontend (Vanilla JS),
+            plus a <strong>zero-server-cost automated reservation workflow</strong>
+            that solved a real rural pain point — no budget to hire engineers.</span>
+          </p>
+
+          <div class="pm-hero-actions">
+            <a href="#problem" class="btn-pm-primary">
+              <i class="fas fa-arrow-down"></i><span data-i18n-lang="zh">看這份案例研究</span><span data-i18n-lang="en">Read the Case Study</span>
+            </a>
+            <a href="index_SamSamma.html" class="btn-pm-ghost">
+              <i class="fas fa-globe"></i><span data-i18n-lang="zh">看合作社官網</span><span data-i18n-lang="en">Visit the Co-op Site</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="col-lg-5" data-aos="fade-left" data-aos-delay="100">
+          <div class="hero-visual">
+            <img src="../images/saa.webp" alt="山莎蔓岸竹炭合作社主視覺" loading="eager">
+            <div class="hero-visual-overlay">
+              <span class="tag"><i class="fas fa-map-marker-alt me-1"></i><span data-i18n-lang="zh">新竹縣五峰鄉</span><span data-i18n-lang="en">Wufeng, Hsinchu County</span></span>
+              <h3>山莎蔓岸 SamSamma:an</h3>
+              <p><span data-i18n-lang="zh">賽夏族低碳竹產業聚落 × Saisiyat Raromaeh 共用品牌</span><span data-i18n-lang="en">Saisiyat low-carbon bamboo industry cluster × Saisiyat Raromaeh shared brand</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============================================================
+       Quick Stats Strip
+       ============================================================ -->
+  <section class="stats-strip" aria-label="專案核心場域數據與我親手完成的交付">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-6 col-md stat-item" data-aos="fade-up" data-aos-delay="0">
+          <div class="stat-value num">12<span class="stat-unit"><span data-i18n-lang="zh">公頃</span><span data-i18n-lang="en">ha</span></span></div>
+          <div class="stat-label"><span data-i18n-lang="zh">跨四村竹林場域</span><span data-i18n-lang="en">Bamboo field across 4 villages</span></div>
+        </div>
+        <div class="col-6 col-md stat-item" data-aos="fade-up" data-aos-delay="100">
+          <div class="stat-value num">3<span class="stat-unit"><span data-i18n-lang="zh">大利害關係人</span><span data-i18n-lang="en">stakeholders</span></span></div>
+          <div class="stat-label"><span data-i18n-lang="zh">公部門 × 在地 × 產學</span><span data-i18n-lang="en">Government × Local × Academia</span></div>
+        </div>
+        <div class="col-6 col-md stat-item" data-aos="fade-up" data-aos-delay="200">
+          <div class="stat-value num">1<span class="stat-unit"><span data-i18n-lang="zh">人</span><span data-i18n-lang="en">person</span></span></div>
+          <div class="stat-label"><span data-i18n-lang="zh">官網 UI/UX + 前端獨立完成</span><span data-i18n-lang="en">Site UI/UX + frontend, built solo</span></div>
+        </div>
+        <div class="col-6 col-md stat-item" data-aos="fade-up" data-aos-delay="300">
+          <div class="stat-value num">0<span class="stat-unit"><span data-i18n-lang="zh">後端</span><span data-i18n-lang="en">backend</span></span></div>
+          <div class="stat-label"><span data-i18n-lang="zh">零伺服器預約工作流</span><span data-i18n-lang="en">Zero-server reservation workflow</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       North Star Pitch
+       ============================================================ -->
+  <section class="pm-section" style="padding-top: 4rem; padding-bottom: 3rem;">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-10" data-aos="fade-up">
+          <div class="north-star-card">
+            <span class="north-star-label">
+              <i class="fas fa-star"></i> <span data-i18n-lang="zh">一句話定調</span><span data-i18n-lang="en">In one sentence</span>
+            </span>
+            <p class="north-star-quote mb-0">
+              <span data-i18n-lang="zh">這份案例研究真正想說的是：
+              在資源有限、現場資訊雜亂的地方創生現場，
+              <strong style="color: var(--gold);">PM 的核心價值是「資訊轉化」，前端的核心價值是「親手把事做出來」</strong>。</span>
+              <span data-i18n-lang="en">What this case study is really about:
+              on a resource-scarce, information-chaotic regional-revitalization site,
+              <strong style="color: var(--gold);">a PM's core value is "translating information," and a frontend developer's is "building it with your own hands."</strong></span>
+            </p>
+            <div class="north-star-formula mt-4">
+              <strong><span data-i18n-lang="zh">我的兩條主軸</span><span data-i18n-lang="en">My two pillars</span></strong>
+              <span class="equiv">≡</span>
+              <span data-i18n-lang="zh">把雜亂田野資料結構化 ＋ 親自打造合作社官網與零伺服器預約系統</span>
+              <span data-i18n-lang="en">Structuring messy field data ＋ hand-building the co-op site and a zero-server reservation system</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       Section 1 — The Problem (混沌與挑戰)
+       ============================================================ -->
+  <section class="pm-section bg-cloud" id="problem">
+    <div class="container">
+      <div class="section-head" data-aos="fade-up">
+        <div class="section-eyebrow">01 · The Problem</div>
+        <h2 class="section-title"><span data-i18n-lang="zh">當時，我們面對的是這樣的現場</span><span data-i18n-lang="en">This was the reality we were facing</span></h2>
+        <p class="section-desc">
+          <span data-i18n-lang="zh">這個專案最難的不是「做」一件事，而是「同時」處理四個看起來毫不相關的爛攤子。
+          下面這四張卡片，是我接手時親眼看見、親手觸碰的真實困境 ──
+          沒有人盤點過的竹林、各做各的村落、被瓦斯爐鎖死的產線、賣不出去的好東西。</span>
+          <span data-i18n-lang="en">The hardest part wasn't doing one thing — it was handling four seemingly unrelated messes at once.
+          The four cards below are the real difficulties I saw and touched firsthand when I came on board:
+          a forest no one had ever measured, villages each doing their own thing, a production line capped by a single gas kiln, and great products no one could buy.</span>
+        </p>
+      </div>
+
+      <div class="pain-grid">
+        <!-- Pain 1 -->
+        <article class="pain-card" data-aos="fade-up" data-aos-delay="0">
+          <div class="pain-card-head">
+            <span class="pain-card-num">PAIN 01</span>
+            <div class="pain-card-icon"><i class="fas fa-database"></i></div>
+          </div>
+          <h3><span data-i18n-lang="zh">沒有人盤點過的 12 公頃竹林</span><span data-i18n-lang="en">12 hectares of forest no one had ever measured</span></h3>
+          <span class="eng">No one ever measured the forest</span>
+
+          <div class="pain-row">
+            <span class="pain-label"><span data-i18n-lang="zh">情境</span><span data-i18n-lang="en">Context</span></span>
+            <span class="pain-text"><span data-i18n-lang="zh">族人從祖父輩開始種竹，但「到底有多少棵、能吸多少碳」沒人說得出來</span><span data-i18n-lang="en">The community has grown bamboo since their grandparents' generation, yet no one could say how many stems there were or how much carbon they captured</span></span>
+          </div>
+          <div class="pain-row">
+            <span class="pain-label"><span data-i18n-lang="zh">為什麼難</span><span data-i18n-lang="en">Why it's hard</span></span>
+            <span class="pain-text"><span data-i18n-lang="zh">沒有基線，就沒辦法跟企業講「我的竹林值多少」</span><span data-i18n-lang="en">Without a baseline, there's no way to tell enterprises "what my bamboo forest is worth"</span></span>
+          </div>
+          <div class="pain-row">
+            <span class="pain-label"><span data-i18n-lang="zh">我看到的缺口</span><span data-i18n-lang="en">The gap I saw</span></span>
+            <span class="pain-text"><span data-i18n-lang="zh">需要一份「可量化、可驗證」的數據，否則談 ESG 都是空話</span><span data-i18n-lang="en">We needed quantifiable, verifiable data — otherwise any ESG talk was empty</span></span>
+          </div>
+          <div class="pain-row solution">
+            <span class="pain-label"><i class="fas fa-key me-1"></i><span data-i18n-lang="zh">我怎麼做</span><span data-i18n-lang="en">What I did</span></span>
+            <span class="pain-text">
+              <span data-i18n-lang="zh">引進空拍 + RTK 多光譜技術，建立 <strong>7,526 m²</strong> 樣區
+              (胸徑 5.7 cm、密度 19,200 株/ha、單位碳儲量 <strong>77.3 tC/ha</strong>) ── 從這裡開始，竹林才「有數字」可以講話</span>
+              <span data-i18n-lang="en">Introduced aerial + RTK multispectral surveying to build a <strong>7,526 m²</strong> sample plot
+              (DBH 5.7 cm, density 19,200 stems/ha, carbon storage <strong>77.3 tC/ha</strong>) — only then did the forest finally have numbers to speak with</span>
+            </span>
+          </div>
+        </article>
+
+        <!-- Pain 2 -->
+        <article class="pain-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="pain-card-head">
+            <span class="pain-card-num">PAIN 02</span>
+            <div class="pain-card-icon"><i class="fas fa-puzzle-piece"></i></div>
+          </div>
+          <h3><span data-i18n-lang="zh">四個村，各做各的</span><span data-i18n-lang="en">Four villages, each going its own way</span></h3>
+          <span class="eng">Four villages, four agendas</span>
+
+          <div class="pain-row">
+            <span class="pain-label"><span data-i18n-lang="zh">情境</span><span data-i18n-lang="en">Context</span></span>
+            <span class="pain-text"><span data-i18n-lang="zh">五峰鄉四村，地理相連但各做各的，誰也說服不了誰</span><span data-i18n-lang="en">Four villages in Wufeng are geographically connected but each does its own thing, with no one able to persuade the others</span></span>
+          </div>
+          <div class="pain-row">
+            <span class="pain-label"><span data-i18n-lang="zh">為什麼難</span><span data-i18n-lang="en">Why it's hard</span></span>
+            <span class="pain-text"><span data-i18n-lang="zh">竹農、加工者、工藝者、民宿主，平常靠交情臨時動員，沒有制度</span><span data-i18n-lang="en">Bamboo farmers, processors, craftspeople, and B&B owners mobilized ad hoc through personal ties — no system in place</span></span>
+          </div>
+          <div class="pain-row">
+            <span class="pain-label"><span data-i18n-lang="zh">我看到的缺口</span><span data-i18n-lang="en">The gap I saw</span></span>
+            <span class="pain-text"><span data-i18n-lang="zh">沒有任何「決策怎麼做、誰分多少、利潤怎麼回到部落」的共識</span><span data-i18n-lang="en">No consensus on how decisions get made, how shares are split, or how profit flows back to the tribe</span></span>
+          </div>
+          <div class="pain-row solution">
+            <span class="pain-label"><i class="fas fa-key me-1"></i><span data-i18n-lang="zh">我怎麼做</span><span data-i18n-lang="en">What I did</span></span>
+            <span class="pain-text">
+              <span data-i18n-lang="zh">發起合作社治理平台、建立跨村協作名冊 (<strong>≥ 25 人/戶</strong>) ── 把「靠人情」升級為「靠制度」，並設立收益回流公共基金</span>
+              <span data-i18n-lang="en">Launched a co-op governance platform and a cross-village collaboration roster (<strong>≥ 25 people/households</strong>) — upgrading "relying on goodwill" to "relying on systems," plus a public revenue-return fund</span>
+            </span>
+          </div>
+        </article>
+
+        <!-- Pain 3 -->
+        <article class="pain-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="pain-card-head">
+            <span class="pain-card-num">PAIN 03</span>
+            <div class="pain-card-icon"><i class="fas fa-fire"></i></div>
+          </div>
+          <h3><span data-i18n-lang="zh">被瓦斯爐鎖死的天花板</span><span data-i18n-lang="en">A ceiling locked by a single gas kiln</span></h3>
+          <span class="eng">A ceiling made of a single gas kiln</span>
+
+          <div class="pain-row">
+            <span class="pain-label"><span data-i18n-lang="zh">情境</span><span data-i18n-lang="en">Context</span></span>
+            <span class="pain-text"><span data-i18n-lang="zh">老一輩留下的瓦斯爐只能燒到 <strong>600°C</strong>，做出來的竹炭只能賣最低階的價</span><span data-i18n-lang="en">The elders' gas kiln only reached <strong>600°C</strong>, so the bamboo charcoal could only fetch the lowest-grade price</span></span>
+          </div>
+          <div class="pain-row">
+            <span class="pain-label"><span data-i18n-lang="zh">為什麼難</span><span data-i18n-lang="en">Why it's hard</span></span>
+            <span class="pain-text"><span data-i18n-lang="zh">每次砍竹剩下的枝梢、邊角料就直接燒掉，可惜也賺不到</span><span data-i18n-lang="en">Leftover branches and offcuts from each harvest were simply burned — wasteful and unprofitable</span></span>
+          </div>
+          <div class="pain-row">
+            <span class="pain-label"><span data-i18n-lang="zh">我看到的缺口</span><span data-i18n-lang="en">The gap I saw</span></span>
+            <span class="pain-text"><span data-i18n-lang="zh">沒有高溫窯、沒有前處理設備，產線就只能停在這層樓</span><span data-i18n-lang="en">Without a high-temperature kiln or pre-processing equipment, the production line was stuck on this floor</span></span>
+          </div>
+          <div class="pain-row solution">
+            <span class="pain-label"><i class="fas fa-key me-1"></i><span data-i18n-lang="zh">我怎麼做</span><span data-i18n-lang="en">What I did</span></span>
+            <span class="pain-text">
+              <span data-i18n-lang="zh">提案兩座機械爐升級至 <strong>900-1000°C</strong>、導入零廢棄 SOP，搭配 10 kW 太陽能與 1 噸淨水循環 ── 從「燒炭」升級為「碳負循環產線」</span>
+              <span data-i18n-lang="en">Proposed upgrading two mechanical kilns to <strong>900–1000°C</strong>, introduced a zero-waste SOP, paired with 10 kW solar and a 1-tonne water-recycling loop — upgrading "burning charcoal" into a "carbon-negative circular production line"</span>
+            </span>
+          </div>
+        </article>
+
+        <!-- Pain 4 -->
+        <article class="pain-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="pain-card-head">
+            <span class="pain-card-num">PAIN 04</span>
+            <div class="pain-card-icon"><i class="fas fa-store"></i></div>
+          </div>
+          <h3><span data-i18n-lang="zh">賣不出去的好東西</span><span data-i18n-lang="en">Great products that couldn't be sold</span></h3>
+          <span class="eng">A great story no one could buy</span>
+
+          <div class="pain-row">
+            <span class="pain-label"><span data-i18n-lang="zh">情境</span><span data-i18n-lang="en">Context</span></span>
+            <span class="pain-text"><span data-i18n-lang="zh">賽夏文化、raromaeh 互助精神都很動人，但企業要採購時找不到「窗口」</span><span data-i18n-lang="en">Saisiyat culture and the raromaeh spirit of mutual aid are moving, but enterprises wanting to buy couldn't find a single point of contact</span></span>
+          </div>
+          <div class="pain-row">
+            <span class="pain-label"><span data-i18n-lang="zh">為什麼難</span><span data-i18n-lang="en">Why it's hard</span></span>
+            <span class="pain-text"><span data-i18n-lang="zh">工藝戶、民宿戶各賣各的，沒有聚落級對外的統一語言</span><span data-i18n-lang="en">Craft households and B&Bs each sold on their own — no unified, cluster-level external messaging</span></span>
+          </div>
+          <div class="pain-row">
+            <span class="pain-label"><span data-i18n-lang="zh">我看到的缺口</span><span data-i18n-lang="en">The gap I saw</span></span>
+            <span class="pain-text"><span data-i18n-lang="zh">企業 ESG 採購需要「一份合約、一個對口」，現在連這個都沒有</span><span data-i18n-lang="en">Enterprise ESG procurement needs "one contract, one contact" — and even that didn't exist yet</span></span>
+          </div>
+          <div class="pain-row solution">
+            <span class="pain-label"><i class="fas fa-key me-1"></i><span data-i18n-lang="zh">我怎麼做</span><span data-i18n-lang="en">What I did</span></span>
+            <span class="pain-text">
+              <span data-i18n-lang="zh">建立「<strong>Saisiyat Raromaeh</strong>」共用品牌、做 ESG 採購提案包 (企業低碳禮盒 / ESG 參訪 / 永續採購) ── 讓部落第一次有「一份對外提案」可以遞出去</span>
+              <span data-i18n-lang="en">Built the "<strong>Saisiyat Raromaeh</strong>" shared brand and an ESG procurement package (corporate low-carbon gift sets / ESG visits / sustainable sourcing) — giving the tribe its first ever external proposal to hand out</span>
+            </span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       Section 2.1 — The Execution · 對齊目標
+       ============================================================ -->
+  <section class="pm-section" id="execution">
+    <div class="container">
+      <div class="section-head" data-aos="fade-up">
+        <div class="section-eyebrow">02 · The Execution · <span data-i18n-lang="zh">對齊目標</span><span data-i18n-lang="en">Aligning Goals</span></div>
+        <h2 class="section-title"><span data-i18n-lang="zh">我在 Roadmap 討論桌上做的事：把抽象目標拆成可追的進度</span><span data-i18n-lang="en">What I did at the roadmap table: breaking abstract goals into trackable progress</span></h2>
+        <p class="section-desc">
+          <span data-i18n-lang="zh">「地方創生」太大、太模糊，沒人扛得動。團隊討論時我協助把它拆成
+          <strong>治理 → 空間 → 資源 → 產線 → 品牌</strong> 五件具體事，
+          再切成分階段、每季有交付物的節奏 ──
+          第一階段先把基礎制度立起來，第二階段才談量產與上市。
+          這樣公部門看得到進度，族人也知道下一步該做什麼。</span>
+          <span data-i18n-lang="en">"Regional revitalization" is too big and vague for anyone to carry. In team discussions I helped break it into
+          five concrete tracks — <strong>Governance → Space → Resources → Production → Brand</strong> —
+          then sliced them into phased, quarter-by-quarter deliverables:
+          Phase 1 stands up the foundational systems; Phase 2 tackles scale-up and go-to-market.
+          This way the government sees progress, and the community knows what's next.</span>
+        </p>
+      </div>
+
+      <div data-aos="fade-up">
+        <div class="roadmap-axis">
+          <!-- Module column -->
+          <div class="roadmap-module-col">
+            <div class="module-tag"><i class="fas fa-users-cog"></i><span data-i18n-lang="zh">治理</span><span data-i18n-lang="en">Governance</span></div>
+            <div class="module-tag"><i class="fas fa-map-marked-alt"></i><span data-i18n-lang="zh">空間</span><span data-i18n-lang="en">Space</span></div>
+            <div class="module-tag"><i class="fas fa-recycle"></i><span data-i18n-lang="zh">資源</span><span data-i18n-lang="en">Resources</span></div>
+            <div class="module-tag"><i class="fas fa-industry"></i><span data-i18n-lang="zh">產線</span><span data-i18n-lang="en">Production</span></div>
+            <div class="module-tag"><i class="fas fa-bullhorn"></i><span data-i18n-lang="zh">品牌</span><span data-i18n-lang="en">Brand</span></div>
+          </div>
+
+          <!-- Phase 1 -->
+          <div class="roadmap-phase-col">
+            <div class="roadmap-phase-head phase-1">
+              <div class="phase-year">PHASE 1 · 2026 / <span data-i18n-lang="zh">115 年度</span><span data-i18n-lang="en">FY2026</span></div>
+              <div class="phase-title">Foundation &amp; Systems — <span data-i18n-lang="zh">建置期</span><span data-i18n-lang="en">Build Phase</span></div>
+            </div>
+            <div class="roadmap-phase-body">
+              <div class="roadmap-cell"><span data-i18n-lang="zh">聚落治理平台成立 + 跨村協作名冊（≥ 20 人/戶）</span><span data-i18n-lang="en">Cluster governance platform founded + cross-village roster (≥ 20 people/households)</span></div>
+              <div class="roadmap-cell"><span data-i18n-lang="zh">竹徑文化講堂一期 + 櫻花步道一期（0.8 km）</span><span data-i18n-lang="en">Bamboo-path culture hall (phase 1) + cherry-blossom trail (phase 1, 0.8 km)</span></div>
+              <div class="roadmap-cell"><span data-i18n-lang="zh">供材分級制度 + 採伐→分類→集運 SOP（先行版）</span><span data-i18n-lang="en">Material grading system + harvest→sort→haul SOP (preliminary)</span></div>
+              <div class="roadmap-cell"><span data-i18n-lang="zh">碎竹/剖竹/砂磨/乾燥機到位 + 高溫窯升級規格書</span><span data-i18n-lang="en">Crushing/splitting/sanding/drying machines in place + high-temp kiln upgrade spec</span></div>
+              <div class="roadmap-cell"><span data-i18n-lang="zh">Saisiyat Raromaeh 品牌雛形 + 培力一期（≥ 80 人次）</span><span data-i18n-lang="en">Saisiyat Raromaeh brand prototype + training phase 1 (≥ 80 participant-times)</span></div>
+            </div>
+          </div>
+
+          <!-- Phase 2 -->
+          <div class="roadmap-phase-col">
+            <div class="roadmap-phase-head phase-2">
+              <div class="phase-year">PHASE 2 · 2027 / <span data-i18n-lang="zh">116 年度</span><span data-i18n-lang="en">FY2027</span></div>
+              <div class="phase-title">Scale &amp; Output — <span data-i18n-lang="zh">量產期</span><span data-i18n-lang="en">Scale Phase</span></div>
+            </div>
+            <div class="roadmap-phase-body">
+              <div class="roadmap-cell"><span data-i18n-lang="zh">制度文件定稿 + 收益回流上線 + 跨村聯動試營運</span><span data-i18n-lang="en">Governance docs finalized + revenue-return live + cross-village trial operation</span></div>
+              <div class="roadmap-cell"><span data-i18n-lang="zh">講堂/服務站二期完工 + 步道二期完工（1.5 km）+ 解說系統</span><span data-i18n-lang="en">Hall/service-station phase 2 + trail phase 2 (1.5 km) + interpretation system</span></div>
+              <div class="roadmap-cell"><span data-i18n-lang="zh">供材紀錄全年化 + 公共基金入帳 + 導覽點位</span><span data-i18n-lang="en">Year-round supply records + public fund funded + guided-tour points</span></div>
+              <div class="roadmap-cell"><span data-i18n-lang="zh">兩座爐升級 900-1000°C + 10 kW 太陽能 + 1 噸淨水</span><span data-i18n-lang="en">Two kilns upgraded to 900–1000°C + 10 kW solar + 1-tonne water recycling</span></div>
+              <div class="roadmap-cell"><span data-i18n-lang="zh">3 款產品上市 + 2 套遊程上架 + ESG 提案包與企業媒合</span><span data-i18n-lang="en">3 products launched + 2 tour packages live + ESG package & enterprise matchmaking</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Checkpoints -->
+        <div class="checkpoint-row" data-aos="fade-up" data-aos-delay="100">
+          <div class="checkpoint-label"><i class="fas fa-flag-checkered me-2"></i><span data-i18n-lang="zh">Q2 期中查核</span><span data-i18n-lang="en">Q2 Mid-term Review</span></div>
+          <div class="checkpoint-cell">
+            <strong><span data-i18n-lang="zh">115 Q2 · 45% 進度</span><span data-i18n-lang="en">FY26 Q2 · 45% progress</span></strong>
+            <span data-i18n-lang="zh">盤點完成、平台發起會議、設計圖說、設備發包</span><span data-i18n-lang="en">Inventory done, platform kickoff meeting, design drawings, equipment tendered</span>
+          </div>
+          <div class="checkpoint-cell">
+            <strong><span data-i18n-lang="zh">116 Q2 · 50% 進度</span><span data-i18n-lang="en">FY27 Q2 · 50% progress</span></strong>
+            <span data-i18n-lang="zh">設備進度過半、品牌手冊定稿、產品打樣、遊程試營運</span><span data-i18n-lang="en">Equipment past halfway, brand manual finalized, product prototyping, tour trial run</span>
+          </div>
+        </div>
+        <div class="checkpoint-row" data-aos="fade-up" data-aos-delay="200">
+          <div class="checkpoint-label"><i class="fas fa-trophy me-2"></i><span data-i18n-lang="zh">Q4 期末查核</span><span data-i18n-lang="en">Q4 Year-end Review</span></div>
+          <div class="checkpoint-cell">
+            <strong><span data-i18n-lang="zh">115 Q4 · 100% 完工</span><span data-i18n-lang="en">FY26 Q4 · 100% complete</span></strong>
+            <span data-i18n-lang="zh">一期工程完工、設備試運轉與 SOP、升級規格書定稿</span><span data-i18n-lang="en">Phase-1 construction done, equipment commissioning & SOP, upgrade spec finalized</span>
+          </div>
+          <div class="checkpoint-cell">
+            <strong><span data-i18n-lang="zh">116 Q4 · 100% 量產</span><span data-i18n-lang="en">FY27 Q4 · 100% in production</span></strong>
+            <span data-i18n-lang="zh">窯升級量產、綠能水循環啟用、品牌上架、ESG 合作成果、SROI 評估</span><span data-i18n-lang="en">Kiln-upgraded production, green energy & water loop online, brand launched, ESG outcomes, SROI assessment</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       Section 2.2 — The Execution · 溝通機制
+       ============================================================ -->
+  <section class="pm-section bg-cloud" id="stakeholders">
+    <div class="container">
+      <div class="section-head" data-aos="fade-up">
+        <div class="section-eyebrow">02 · The Execution · <span data-i18n-lang="zh">溝通機制</span><span data-i18n-lang="en">Communication</span></div>
+        <h2 class="section-title"><span data-i18n-lang="zh">我如何讓三個世界的人，坐在同一張桌子</span><span data-i18n-lang="en">How I got three different worlds to sit at the same table</span></h2>
+        <p class="section-desc">
+          <span data-i18n-lang="zh">這個專案最難的不是技術，是「翻譯」。
+          地方長輩聽不懂教授的學術術語、教授看不懂部落的人情脈絡、
+          公部門只認得自己的格式。
+          身為 PM 我做的事，就是讓他們「對著同一份目標」說話 ──
+          下面這三軸，是我每天在切換的三種語言。</span>
+          <span data-i18n-lang="en">The hardest part of this project wasn't technology — it was "translation."
+          Local elders couldn't follow professors' academic jargon, professors couldn't read the tribe's social fabric,
+          and the government only recognized its own formats.
+          As PM, my job was to get them all speaking toward the same goal —
+          the three axes below are the three languages I switched between every day.</span>
+        </p>
+      </div>
+
+      <div class="stake-grid">
+        <!-- Axis A — Tech -->
+        <article class="stake-card axis-a" data-aos="fade-up">
+          <div class="stake-head">
+            <div class="stake-head-icon"><i class="fas fa-microscope"></i></div>
+            <div>
+              <div class="stake-axis-tag">Axis A · Tech</div>
+              <h3><span data-i18n-lang="zh">產學技術團隊</span><span data-i18n-lang="en">Industry–Academia Tech Team</span></h3>
+            </div>
+          </div>
+          <div class="stake-mission" style="color: var(--data-blue);">
+            <span data-i18n-lang="zh">把「自然資產」轉成「可揭露的數據」</span><span data-i18n-lang="en">Turning "natural assets" into "disclosable data"</span>
+          </div>
+          <ul class="stake-list">
+            <li><i class="fas fa-check"></i><span data-i18n-lang="zh">明新科大 彭政雄／趙俊雄（化材／企管）：1000°C 高溫窯升級與 SOP</span><span data-i18n-lang="en">MUST — Peng & Chao (Chem. Eng. / Business): 1000°C kiln upgrade & SOP</span></li>
+            <li><i class="fas fa-check"></i><span data-i18n-lang="zh">明新科大 張崑宗（土木／環境）：RTK 多光譜空拍 + 碳匯分析</span><span data-i18n-lang="en">MUST — Chang (Civil / Environmental): RTK multispectral survey + carbon-sink analysis</span></li>
+            <li><i class="fas fa-check"></i><span data-i18n-lang="zh">明新科大 林致遠（休閒系）：低碳遊程動線設計</span><span data-i18n-lang="en">MUST — Lin (Leisure Studies): low-carbon tour route design</span></li>
+            <li><i class="fas fa-check"></i><span data-i18n-lang="zh">宜蘭大學 王進發（原資中心主任）：永續森林經營</span><span data-i18n-lang="en">NIU — Wang (Indigenous Resource Center Director): sustainable forest management</span></li>
+            <li><i class="fas fa-check"></i><span data-i18n-lang="zh">業界顧問群：品牌策略、ESG 揭露、低碳建材、工程管理</span><span data-i18n-lang="en">Industry advisors: brand strategy, ESG disclosure, low-carbon materials, engineering management</span></li>
+          </ul>
+          <div class="stake-delivery">
+            <strong>DELIVERY</strong>
+            <span data-i18n-lang="zh">碳匯 Baseline 報告、無人機證照（族人 4 位）、空拍 7,526 m²、
+            SROI 評估架構、季度顧問會議制度</span><span data-i18n-lang="en">Carbon baseline report, drone licenses (4 community members), 7,526 m² aerial survey,
+            SROI assessment framework, quarterly advisory meeting system</span>
+          </div>
+        </article>
+
+        <!-- Axis B — Local -->
+        <article class="stake-card axis-b" data-aos="fade-up" data-aos-delay="100">
+          <div class="stake-head">
+            <div class="stake-head-icon"><i class="fas fa-house-user"></i></div>
+            <div>
+              <div class="stake-axis-tag">Axis B · Local</div>
+              <h3><span data-i18n-lang="zh">在地利害關係人</span><span data-i18n-lang="en">Local Stakeholders</span></h3>
+            </div>
+          </div>
+          <div class="stake-mission" style="color: #8a6d18;">
+            <span data-i18n-lang="zh">把「個體戶」轉成「聚落協作體」</span><span data-i18n-lang="en">Turning "individual operators" into a "collaborative cluster"</span>
+          </div>
+          <ul class="stake-list">
+            <li><i class="fas fa-check"></i><span data-i18n-lang="zh">合作社核心：理事長趙英文、CEO 林杏（tiwaS.tara）</span><span data-i18n-lang="en">Co-op core: Chairman Chao Ying-wen, CEO Lin Hsing (tiwaS.tara)</span></li>
+            <li><i class="fas fa-check"></i><span data-i18n-lang="zh">監事、行政管理 + 待聘專案經理 2 名</span><span data-i18n-lang="en">Supervisors, administration + 2 project managers to be hired</span></li>
+            <li><i class="fas fa-check"></i><span data-i18n-lang="zh">賽夏族大隘部落耆老與文化代表</span><span data-i18n-lang="en">Saisiyat Daai-tribe elders and cultural representatives</span></li>
+            <li><i class="fas fa-check"></i><span data-i18n-lang="zh">五峰四村：花園（梯田）、桃山（溫泉）、竹林（泰雅）、上大隘（基地）</span><span data-i18n-lang="en">Four Wufeng villages: Huayuan (terraces), Taoshan (hot springs), Zhulin (Atayal), Shangdaai (base)</span></li>
+            <li><i class="fas fa-check"></i><span data-i18n-lang="zh">法律前置：地主同意書、林產物搬運許可證（13,615 公斤）、稅籍證明</span><span data-i18n-lang="en">Legal prerequisites: landowner consent, forest-product transport permit (13,615 kg), tax registration</span></li>
+          </ul>
+          <div class="stake-delivery">
+            <strong>DELIVERY</strong>
+            <span data-i18n-lang="zh">聚落治理平台會議 ≥ 6 場、跨村合作備忘錄 3 份、
+            協作名冊 25 人/戶、聚落分工藍圖、收益回流辦法</span><span data-i18n-lang="en">≥ 6 governance-platform meetings, 3 cross-village MOUs,
+            roster of 25 people/households, cluster division-of-labor blueprint, revenue-return rules</span>
+          </div>
+        </article>
+
+        <!-- Axis C — Gov & External -->
+        <article class="stake-card axis-c" data-aos="fade-up" data-aos-delay="200">
+          <div class="stake-head">
+            <div class="stake-head-icon"><i class="fas fa-landmark"></i></div>
+            <div>
+              <div class="stake-axis-tag">Axis C · Gov &amp; External</div>
+              <h3><span data-i18n-lang="zh">公部門與外部資源</span><span data-i18n-lang="en">Government & External Resources</span></h3>
+            </div>
+          </div>
+          <div class="stake-mission" style="color: var(--bamboo-deep);">
+            <span data-i18n-lang="zh">把「補助申請」轉成「合規可驗收交付」</span><span data-i18n-lang="en">Turning "grant applications" into "compliant, acceptance-ready deliverables"</span>
+          </div>
+          <ul class="stake-list">
+            <li><i class="fas fa-check"></i><span data-i18n-lang="zh">原住民族委員會（產業推升計畫主辦單位）</span><span data-i18n-lang="en">Council of Indigenous Peoples (industry-upgrade program host)</span></li>
+            <li><i class="fas fa-check"></i><span data-i18n-lang="zh">農業部林業署新竹分署（合法竹材 + 竹東林業展示館聯動）</span><span data-i18n-lang="en">Forestry Agency Hsinchu Branch (legal bamboo + Zhudong Forestry Hall linkage)</span></li>
+            <li><i class="fas fa-check"></i><span data-i18n-lang="zh">教育部 USR（114 年成果延續，明新科大協力）</span><span data-i18n-lang="en">MOE USR program (FY25 continuation, with MUST)</span></li>
+            <li><i class="fas fa-check"></i><span data-i18n-lang="zh">新竹縣政府原民處、五峰鄉公所</span><span data-i18n-lang="en">Hsinchu County Indigenous Affairs Dept., Wufeng Township Office</span></li>
+            <li><i class="fas fa-check"></i><span data-i18n-lang="zh">國際：日本京都府龜岡市（2026 京都綠色博覽會）</span><span data-i18n-lang="en">International: Kameoka, Kyoto, Japan (2026 Kyoto Green Expo)</span></li>
+            <li><i class="fas fa-check"></i><span data-i18n-lang="zh">市場端：ESG 採購企業夥伴</span><span data-i18n-lang="en">Market side: ESG-procurement enterprise partners</span></li>
+          </ul>
+          <div class="stake-delivery">
+            <strong>DELIVERY</strong>
+            <span data-i18n-lang="zh">協助整理迎檢資料、會議紀錄與簡報、Q2/Q4 期中期末查核文件，
+            把現場進度翻譯為公部門看得懂的格式</span><span data-i18n-lang="en">Compiled audit-prep materials, meeting minutes & decks, Q2/Q4 review documents —
+            translating on-the-ground progress into formats the government understands</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       Section 3 — The Impact (可衡量的成果)
+       ============================================================ -->
+  <section class="pm-section bg-deep" id="impact">
+    <div class="container">
+      <div class="section-head text-center" data-aos="fade-up">
+        <div class="section-eyebrow" style="justify-content: center; display: inline-flex;">03 · The Impact</div>
+        <h2 class="section-title"><span data-i18n-lang="zh">這些努力，最後交出了什麼？</span><span data-i18n-lang="en">What did all this effort actually deliver?</span></h2>
+        <p class="section-desc">
+          <span data-i18n-lang="zh">公部門的指標看「合規」、PM 看「能不能用」。
+          團隊這段期間的努力，整理成下面三件可以對外回答的事：
+          <strong>數據儀表板、五個面向的目標達成、SDGs / ESG 對接</strong>。
+          每一個數字背後，都有一份可以驗收的交付物。</span>
+          <span data-i18n-lang="en">Government metrics measure "compliance"; a PM measures "is it usable."
+          The team's work over this period boils down to three things we can answer externally:
+          <strong>a data dashboard, goal attainment across five dimensions, and SDG / ESG alignment</strong>.
+          Behind every number sits an acceptance-ready deliverable.</span>
+        </p>
+      </div>
+
+      <!-- Mini Carbon Dashboard（3 大核心數據 + 來源 tooltip） -->
+      <div class="carbon-dashboard" data-aos="fade-up" aria-label="碳數據儀表板">
+        <div class="dash-card" tabindex="0">
+          <div class="dash-info" aria-label="資料來源說明">
+            <i class="fas fa-info"></i>
+          </div>
+          <div class="dash-label">Carbon Storage / <span data-i18n-lang="zh">碳儲量</span><span data-i18n-lang="en">Carbon Storage</span></div>
+          <div class="dash-value">77.3<span class="unit">tC/ha</span></div>
+          <div class="dash-desc"><span data-i18n-lang="zh">場域樣區竹林平均碳儲量，可換算為企業 ESG 報告書揭露的「林業碳匯潛力」。</span><span data-i18n-lang="en">Average carbon storage of the site's bamboo sample plot — convertible into the "forest carbon-sink potential" disclosed in corporate ESG reports.</span></div>
+          <div class="dash-tooltip" role="tooltip">
+            <strong><span data-i18n-lang="zh">資料源：</span><span data-i18n-lang="en">Source: </span></strong><span data-i18n-lang="zh">明新科大 USR 計畫 2025 樣區實測 7,526 m² 抽樣調查；
+            參照農業部林業及自然保育署「竹林碳匯換算公式」。</span><span data-i18n-lang="en">MUST USR 2025 field measurement, 7,526 m² sample survey;
+            referencing the Forestry & Nature Conservation Agency's "bamboo carbon-sink conversion formula."</span>
+          </div>
+        </div>
+
+        <div class="dash-card" tabindex="0">
+          <div class="dash-info" aria-label="資料來源說明">
+            <i class="fas fa-info"></i>
+          </div>
+          <div class="dash-label">Sample Area / <span data-i18n-lang="zh">樣區面積</span><span data-i18n-lang="en">Sample Area</span></div>
+          <div class="dash-value">7,526<span class="unit">m²</span></div>
+          <div class="dash-desc"><span data-i18n-lang="zh">已完成科學樣區建置，可承接企業「碳匯認養 / 採購」需求的計算基礎。</span><span data-i18n-lang="en">A completed scientific sample plot — the calculation basis for enterprise "carbon-sink adoption / procurement" needs.</span></div>
+          <div class="dash-tooltip" role="tooltip">
+            <strong><span data-i18n-lang="zh">資料源：</span><span data-i18n-lang="en">Source: </span></strong><span data-i18n-lang="zh">2025 年度 USR 樣區建置完成資料；
+            樣區位於主竹林經營區，採系統取樣法（systematic sampling）。</span><span data-i18n-lang="en">FY2025 USR sample-plot completion data;
+            located in the main bamboo management zone, using systematic sampling.</span>
+          </div>
+        </div>
+
+        <div class="dash-card" tabindex="0">
+          <div class="dash-info" aria-label="資料來源說明">
+            <i class="fas fa-info"></i>
+          </div>
+          <div class="dash-label">CO₂e Target / <span data-i18n-lang="zh">累計減碳目標</span><span data-i18n-lang="en">Cumulative Reduction Target</span></div>
+          <div class="dash-value">25<span class="unit"><span data-i18n-lang="zh">噸 CO₂e</span><span data-i18n-lang="en">t CO₂e</span></span></div>
+          <div class="dash-desc"><span data-i18n-lang="zh">115-116 年度累計減碳目標，含太陽能 10 kW + 高溫窯體升級節能。</span><span data-i18n-lang="en">FY2026–2027 cumulative carbon-reduction target, including 10 kW solar + high-temp kiln efficiency gains.</span></div>
+          <div class="dash-tooltip" role="tooltip">
+            <strong><span data-i18n-lang="zh">資料源：</span><span data-i18n-lang="en">Source: </span></strong><span data-i18n-lang="zh">原住民族委員會 115-116 年度產業推升計畫
+            「聚落建構類」KPI；含 1 噸淨水循環 + 太陽能 10 kW 系統。</span><span data-i18n-lang="en">Council of Indigenous Peoples FY2026–2027 industry-upgrade program,
+            "Cluster Building" KPI; includes 1-tonne water loop + 10 kW solar system.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- OKR Grid -->
+      <div class="okr-grid">
+        <div class="okr-card" data-aos="fade-up">
+          <span class="obj-tag">O1 · GOVERNANCE</span>
+          <h4><span data-i18n-lang="zh">把分散個體整合為聚落協作體</span><span data-i18n-lang="en">Integrate scattered individuals into a collaborative cluster</span></h4>
+          <ul class="okr-list">
+            <li><span class="kr">KR 1.1</span><span><span data-i18n-lang="zh">治理平台成員 25 人/戶</span><span data-i18n-lang="en">25 governance-platform members/households</span></span></li>
+            <li><span class="kr">KR 1.2</span><span><span data-i18n-lang="zh">治理平台會議 10 場（2 年）</span><span data-i18n-lang="en">10 governance meetings (over 2 years)</span></span></li>
+            <li><span class="kr">KR 1.3</span><span><span data-i18n-lang="zh">跨村合作備忘錄 3 份 + 收益回流制度通過</span><span data-i18n-lang="en">3 cross-village MOUs + revenue-return system passed</span></span></li>
+          </ul>
+        </div>
+
+        <div class="okr-card" data-aos="fade-up" data-aos-delay="80">
+          <span class="obj-tag">O2 · PRODUCTION</span>
+          <h4><span data-i18n-lang="zh">建立全物質循環的高值產線</span><span data-i18n-lang="en">Build a high-value, full-material-circular production line</span></h4>
+          <ul class="okr-list">
+            <li><span class="kr">KR 2.1</span><span><span data-i18n-lang="zh">兩座機械爐升級 900-1000°C 完工驗收</span><span data-i18n-lang="en">Two kilns upgraded to 900–1000°C, completed & accepted</span></span></li>
+            <li><span class="kr">KR 2.2</span><span><span data-i18n-lang="zh">3 款高值產品上市（白炭、竹醋液、機能應用）</span><span data-i18n-lang="en">3 high-value products launched (white charcoal, bamboo vinegar, functional applications)</span></span></li>
+            <li><span class="kr">KR 2.3</span><span><span data-i18n-lang="zh">竹材全物質利用率 100%</span><span data-i18n-lang="en">100% full-material utilization of bamboo</span></span></li>
+          </ul>
+        </div>
+
+        <div class="okr-card" data-aos="fade-up" data-aos-delay="160">
+          <span class="obj-tag">O3 · SUSTAINABILITY</span>
+          <h4><span data-i18n-lang="zh">把碳匯轉成可揭露 ESG 資產</span><span data-i18n-lang="en">Turn carbon sinks into disclosable ESG assets</span></h4>
+          <ul class="okr-list">
+            <li><span class="kr">KR 3.1</span><span><span data-i18n-lang="zh">累計減碳 25 噸 CO₂e、固碳 20 噸 tCO₂e</span><span data-i18n-lang="en">Cumulative reduction 25 t CO₂e, sequestration 20 t CO₂e</span></span></li>
+            <li><span class="kr">KR 3.2</span><span><span data-i18n-lang="zh">10 kW 太陽能 + 1 噸淨水循環運轉</span><span data-i18n-lang="en">10 kW solar + 1-tonne water-recycling loop in operation</span></span></li>
+            <li><span class="kr">KR 3.3</span><span><span data-i18n-lang="zh">ESG 指標儀表板與企業可揭露資料包</span><span data-i18n-lang="en">ESG-metrics dashboard and enterprise-disclosable data pack</span></span></li>
+          </ul>
+        </div>
+
+        <div class="okr-card" data-aos="fade-up" data-aos-delay="240">
+          <span class="obj-tag">O4 · MARKET</span>
+          <h4><span data-i18n-lang="zh">讓聚落產品被企業看見、買單、共創</span><span data-i18n-lang="en">Get cluster products seen, bought, and co-created by enterprises</span></h4>
+          <ul class="okr-list">
+            <li><span class="kr">KR 4.1</span><span><span data-i18n-lang="zh">品牌上架 5 項產品、2 套遊程</span><span data-i18n-lang="en">5 products and 2 tour packages live under the brand</span></span></li>
+            <li><span class="kr">KR 4.2</span><span><span data-i18n-lang="zh">跨域合作單位 5 個（產學／公部門／企業）</span><span data-i18n-lang="en">5 cross-domain partners (academia / government / enterprise)</span></span></li>
+            <li><span class="kr">KR 4.3</span><span><span data-i18n-lang="zh">年度營收 180 萬（115:30 + 116:150）</span><span data-i18n-lang="en">Annual revenue NT$1.8M (FY26: 0.3M + FY27: 1.5M)</span></span></li>
+          </ul>
+        </div>
+
+        <div class="okr-card" data-aos="fade-up" data-aos-delay="320">
+          <span class="obj-tag">O5 · TALENT</span>
+          <h4><span data-i18n-lang="zh">建立聚落綠領團隊</span><span data-i18n-lang="en">Build a green-collar team for the cluster</span></h4>
+          <ul class="okr-list">
+            <li><span class="kr">KR 5.1</span><span><span data-i18n-lang="zh">培力人次 230（115:80 + 116:150）</span><span data-i18n-lang="en">230 training participant-times (FY26: 80 + FY27: 150)</span></span></li>
+            <li><span class="kr">KR 5.2</span><span><span data-i18n-lang="zh">專業證照 10 人取得</span><span data-i18n-lang="en">10 people obtain professional licenses</span></span></li>
+            <li><span class="kr">KR 5.3</span><span><span data-i18n-lang="zh">穩定在地就業 6 人</span><span data-i18n-lang="en">6 stable local jobs created</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- SDGs Strip -->
+      <div class="row mt-5 pt-3" data-aos="fade-up">
+        <div class="col-12">
+          <h4 style="color: var(--white); font-weight: 600; font-size: 1.1rem; margin-bottom: 0.5rem;">
+            <i class="fas fa-globe-asia me-2" style="color: var(--gold);"></i>
+            <span data-i18n-lang="zh">SDGs × ESG 對齊（給企業說故事用）</span><span data-i18n-lang="en">SDGs × ESG Alignment (for enterprise storytelling)</span>
+          </h4>
+          <p style="color: rgba(255, 255, 255, 0.65); font-size: 0.9rem;">
+            <span data-i18n-lang="zh">把計畫的環境、社會、治理成果，翻譯為企業可揭露、可採購、可共創的合作語言。</span><span data-i18n-lang="en">Translating the project's environmental, social, and governance outcomes into a language enterprises can disclose, procure, and co-create with.</span>
+          </p>
+        </div>
+      </div>
+      <div class="sdg-strip" data-aos="fade-up" data-aos-delay="100">
+        <div class="sdg-tile">
+          <div class="sdg-num">08</div>
+          <div class="sdg-name"><span data-i18n-lang="zh">體面工作與經濟成長</span><span data-i18n-lang="en">Decent Work & Economic Growth</span></div>
+          <div class="sdg-link"><span data-i18n-lang="zh">綠領青年返鄉 · 6 人在地就業</span><span data-i18n-lang="en">Green-collar youth return · 6 local jobs</span></div>
+        </div>
+        <div class="sdg-tile">
+          <div class="sdg-num">12</div>
+          <div class="sdg-name"><span data-i18n-lang="zh">責任消費與生產</span><span data-i18n-lang="en">Responsible Consumption & Production</span></div>
+          <div class="sdg-link"><span data-i18n-lang="zh">竹材全物質利用 · 零廢棄製程</span><span data-i18n-lang="en">Full bamboo utilization · zero-waste process</span></div>
+        </div>
+        <div class="sdg-tile">
+          <div class="sdg-num">13</div>
+          <div class="sdg-name"><span data-i18n-lang="zh">氣候行動</span><span data-i18n-lang="en">Climate Action</span></div>
+          <div class="sdg-link"><span data-i18n-lang="zh">太陽能 · 節能窯體 · 25 噸減碳</span><span data-i18n-lang="en">Solar · efficient kilns · 25 t reduction</span></div>
+        </div>
+        <div class="sdg-tile">
+          <div class="sdg-num">15</div>
+          <div class="sdg-name"><span data-i18n-lang="zh">陸域生態</span><span data-i18n-lang="en">Life on Land</span></div>
+          <div class="sdg-link"><span data-i18n-lang="zh">竹林撫育 · 友善疏伐 · 生態教育</span><span data-i18n-lang="en">Bamboo tending · friendly thinning · eco-education</span></div>
+        </div>
+      </div>
+
+      <!-- v4 補丁：Budget Card 整塊移除 -->
+      <!--
+        說明：v3 版這裡有一張顯示「NT$ 12,000,000 / 資本門 85% / 自籌 200 萬」的預算治理卡。
+        v4 改版定位為「誠實降維」── 我不是這個計畫的補助負責人，
+        把預算數字放大會誤導面試官對我的角色認知，因此整塊移除。
+        完整預算結構與核銷紀錄已存檔於 PM履歷頁_SamSamma.txt §7 (v4 補丁區)。
+      -->
+    </div>
+  </section>
+
+  <!-- ============================================================
+       Section 4 — The Bridge (專業沉澱)
+       ============================================================ -->
+  <section class="pm-section" id="bridge">
+    <div class="container">
+      <div class="section-head" data-aos="fade-up">
+        <div class="section-eyebrow">04 · The Bridge</div>
+        <h2 class="section-title"><span data-i18n-lang="zh">這些經驗，為什麼可以平移到科技大廠</span><span data-i18n-lang="en">Why this experience transfers to a big tech company</span></h2>
+        <p class="section-desc">
+          <span data-i18n-lang="zh">策略漂亮，現場才知道哪裡會卡。
+          下面這三段是真實踩過的坑 ── 跟長輩講不通、補助錢不夠用、教授和部落不同頻。
+          每一段我都誠實寫下「當時做了什麼、結果如何、現在回頭看哪裡可以更好」。
+          這些經驗本質上和大廠軟體 PM 處理的問題是一樣的:
+          <strong>跨部門協作、利害關係人對齊、在資源受限下達標</strong>。
+          點擊任一張卡片展開細節。</span>
+          <span data-i18n-lang="en">A strategy looks great until the field shows you where it breaks.
+          The three stories below are real pitfalls I hit — failing to get through to elders, grants running short, professors and the tribe on different wavelengths.
+          For each, I honestly note what I did, how it turned out, and what I'd do better in hindsight.
+          These are fundamentally the same problems a big-tech software PM handles:
+          <strong>cross-functional collaboration, stakeholder alignment, and hitting targets under constraints</strong>.
+          Click any card to expand the details.</span>
+        </p>
+      </div>
+
+      <!-- Lesson 1【已於 v3.1 隱藏 — 涉及偏鄉勞動爭議，敏感案例，保留於 PM履歷頁_SamSamma.txt】 -->
+      <details class="lesson-card" data-aos="fade-up" hidden>
+        <summary class="lesson-head">
+          <div class="lesson-num">01</div>
+          <div>
+            <div class="lesson-title">用「里程碑誘因」搞定偏鄉工班的點工困局</div>
+            <div class="lesson-skill">
+              SKILL ·
+              <span class="pill">Incentive Design</span>
+              <span class="pill">Vendor Mgmt</span>
+              <span class="pill">Budget Control</span>
+            </div>
+          </div>
+          <div class="lesson-toggle"><i class="fas fa-plus"></i></div>
+        </summary>
+        <div class="lesson-body">
+          <div class="lesson-body-inner">
+            <div class="lesson-block">
+              <h5><span class="badge-letter">S</span>Situation</h5>
+              <p>偏鄉工人不接統包（Fixed-price）合約，堅持日薪點工結算。為了多領工資刻意拖延進度，導致施工品質下滑、預算開始失控。</p>
+            </div>
+            <div class="lesson-block">
+              <h5><span class="badge-letter">T</span>Task</h5>
+              <p>在「不破壞地方關係」的前提下，重新設計合作模式，把進度與品質拉回軌道，並守住預算。</p>
+            </div>
+            <div class="lesson-block">
+              <h5><span class="badge-letter">A</span>Action</h5>
+              <p>導入「里程碑激勵機制（Milestone-based Incentive）」，把工程拆成週查核點（如本週完成地基灌漿），準時／提前達標即結清該段費用 + 達標獎金。同時部署「可視化進度看板（Visual Kanban）」貼在部落會議室，建立工班榮譽感。</p>
+            </div>
+            <div class="lesson-block">
+              <h5><span class="badge-letter">R</span>Result</h5>
+              <p>工期追回 <strong>15%</strong>，預算超支風險鎖定在可控範圍。學到 PM 在資源受限環境下，必須具備「因地制宜的利益協調能力」，不能只靠合約條文壓人。</p>
+            </div>
+          </div>
+          <div class="lesson-result">
+            <strong>現在回頭看：</strong>
+            真正讓工班動起來的不是「合約條文」，是「他們看得到自己的進度」。
+            這跟科技大廠跨部門協作很像 ── 強壓 KPI 沒用，
+            讓工程師看見自己的 ticket 從 backlog 移到 done，比 1000 句催促有效。
+          </div>
+        </div>
+      </details>
+
+      <!-- Lesson 2【已於 v3.1 隱藏 — 涉及廠商衝突管理,敏感案例,保留於 PM履歷頁_SamSamma.txt】 -->
+      <details class="lesson-card" data-aos="fade-up" data-aos-delay="50" hidden>
+        <summary class="lesson-head">
+          <div class="lesson-num">02</div>
+          <div>
+            <div class="lesson-title">獨家廠商換不掉？用「規格降維 + 學術施壓」破局</div>
+            <div class="lesson-skill">
+              SKILL ·
+              <span class="pill">Single-source Risk</span>
+              <span class="pill">Scope De-scoping</span>
+              <span class="pill">Resource Leverage</span>
+            </div>
+          </div>
+          <div class="lesson-toggle"><i class="fas fa-plus"></i></div>
+        </summary>
+        <div class="lesson-body">
+          <div class="lesson-body-inner">
+            <div class="lesson-block">
+              <h5><span class="badge-letter">S</span>Situation</h5>
+              <p>研發竹炭爐的合作企業進度嚴重落後、炭質達不到商業化標準。但因在地深厚人脈與技術獨佔性，戰略上「無法汰換」。</p>
+            </div>
+            <div class="lesson-block">
+              <h5><span class="badge-letter">T</span>Task</h5>
+              <p>在不換廠商的前提下，限縮其影響範圍、引進外部資源施壓、保住計畫期程。</p>
+            </div>
+            <div class="lesson-block">
+              <h5><span class="badge-letter">A</span>Action</h5>
+              <p><strong>(1) 規格降維（Scope De-scoping）：</strong>把 115 年度交付物降為「核心功能 MVP 驗證」，先確保最基礎炭化功能，把研發風險分攤到 116 年度。<br><strong>(2) 跨界資源槓桿：</strong>邀請明新科大教授團隊以「第三方技術顧問」身份進入產線進行技術審計（Audit），用溫度曲線、多孔隙率等客觀科學數據建立每日 Debug 日誌。</p>
+            </div>
+            <div class="lesson-block">
+              <h5><span class="badge-letter">R</span>Result</h5>
+              <p>合作企業在學術數據佐證下，無法再推諉是原料問題，被迫調整研發方向。最終在「沒有更換廠商」的前提下，將研發時程導回正軌，並在期末產出符合經濟效益的常備炭品質。</p>
+            </div>
+          </div>
+          <div class="lesson-result">
+            <strong>現在回頭看：</strong>
+            這段我真正學到的是：當你換不掉一個夥伴，就要學會「縮小他的破壞半徑」。
+            這跟大廠處理「無法更換的供應商」或「歷史包袱重的舊系統」邏輯一樣 ──
+            隔離風險、用外部資源建立客觀標準、別讓單點故障拖垮整個專案。
+          </div>
+        </div>
+      </details>
+
+      <!-- Lesson 3 → 顯示為 01 (v3.1 重新編號) -->
+      <details class="lesson-card" data-aos="fade-up">
+        <summary class="lesson-head">
+          <div class="lesson-num">01</div>
+          <div>
+            <div class="lesson-title"><span data-i18n-lang="zh">把「碳匯經濟」翻譯成「設備跟青農補助」拿下長輩同意書</span><span data-i18n-lang="en">Translating "carbon-sink economics" into "equipment and youth-farmer subsidies" to win the elders' consent</span></div>
+            <div class="lesson-skill">
+              SKILL ·
+              <span class="pill">User-Centric Comm</span>
+              <span class="pill">Value Visualization</span>
+              <span class="pill">Trust Building</span>
+            </div>
+          </div>
+          <div class="lesson-toggle"><i class="fas fa-plus"></i></div>
+        </summary>
+        <div class="lesson-body">
+          <div class="lesson-body-inner">
+            <div class="lesson-block">
+              <h5><span class="badge-letter">S</span>Situation</h5>
+              <p><span data-i18n-lang="zh">對外談 ESG 碳匯、數位資產，部落長輩聽不懂，甚至擔心土地產權被外人奪走，前期推動完全卡關。</span><span data-i18n-lang="en">Talking about ESG carbon sinks and digital assets, the tribal elders couldn't follow — some even feared outsiders would seize their land titles, so early progress stalled completely.</span></p>
+            </div>
+            <div class="lesson-block">
+              <h5><span class="badge-letter">T</span>Task</h5>
+              <p><span data-i18n-lang="zh">在短時間內取得高齡地主信任，順利簽下 12 公頃竹林的盤點同意書。</span><span data-i18n-lang="en">Quickly earn the trust of elderly landowners and secure their consent to survey the 12-hectare forest.</span></p>
+            </div>
+            <div class="lesson-block">
+              <h5><span class="badge-letter">A</span>Action</h5>
+              <p><span data-i18n-lang="zh">採取「利益具象化（Value Visualization）」策略：直接帶無人機航拍 3D 圖資到長輩家中，攤開地圖指著熟悉的溪流與竹林，用最直白的語言轉譯——「這台無人機拍您這塊地，明年政府審查通過，就能直接幫部落爭取到割草機設備，還能有經費把在外打工的青農留下來當巡山員。」</span><span data-i18n-lang="en">I used a "value visualization" strategy: bringing drone 3D aerial imagery straight to the elders' homes, spreading out the map, pointing to familiar streams and bamboo groves, and translating in the plainest terms — "This drone mapped your land; once the government approves next year, it can secure mower equipment for the tribe and fund bringing young farmers home to work as forest rangers."</span></p>
+            </div>
+            <div class="lesson-block">
+              <h5><span class="badge-letter">R</span>Result</h5>
+              <p><span data-i18n-lang="zh">原本僵持數週的局面在 3 天內破冰，順利拿下關鍵地主 <strong>100%</strong> 同意書。學到頂級 PM 不是展現技術，而是把複雜技術「降維成用戶有感的實質價值」。</span><span data-i18n-lang="en">A weeks-long stalemate broke in 3 days, securing <strong>100%</strong> consent from the key landowners. The lesson: a top PM doesn't show off technology — they reduce complex tech into tangible value the user actually feels.</span></p>
+            </div>
+          </div>
+          <div class="lesson-result">
+            <strong><span data-i18n-lang="zh">現在回頭看：</span><span data-i18n-lang="en">Looking back: </span></strong>
+            <span data-i18n-lang="zh">這是我最深刻的一課 ── 「不能用用戶的語言講話，再好的方案也賣不出去」。
+            這不只適用部落長輩，也適用對非技術背景的高層或客戶。
+            把 ESG 翻譯成「割草機 + 留青農」，
+            和把 API 翻譯成「使用者打開 App 後 0.3 秒看到結果」，是同一件事。</span>
+            <span data-i18n-lang="en">This was my deepest lesson — "if you can't speak the user's language, even the best solution won't sell."
+            It applies not just to tribal elders, but to non-technical executives and clients too.
+            Translating ESG into "mowers + keeping young farmers home"
+            is the same act as translating an API into "the user sees a result 0.3 seconds after opening the app."</span>
+          </div>
+        </div>
+      </details>
+
+      <!-- Lesson 4 → 顯示為 02 (v3.1 重新編號) -->
+      <details class="lesson-card" data-aos="fade-up" data-aos-delay="50">
+        <summary class="lesson-head">
+          <div class="lesson-num">02</div>
+          <div>
+            <div class="lesson-title"><span data-i18n-lang="zh">主動申請林業署疏伐案，做第二條資金曲線</span><span data-i18n-lang="en">Proactively applying for a Forestry Agency thinning grant as a second funding curve</span></div>
+            <div class="lesson-skill">
+              SKILL ·
+              <span class="pill">Alt-Funding</span>
+              <span class="pill">Stacking Grants</span>
+              <span class="pill">Sustainability</span>
+            </div>
+          </div>
+          <div class="lesson-toggle"><i class="fas fa-plus"></i></div>
+        </summary>
+        <div class="lesson-body">
+          <div class="lesson-body-inner">
+            <div class="lesson-block">
+              <h5><span class="badge-letter">S</span>Situation</h5>
+              <p><span data-i18n-lang="zh">跟團隊一起算 Roadmap 時發現：單一補助來源沒辦法支撐 12 公頃竹林長期人工疏伐的成本，補助一結束、整個專案的維護就會斷掉，商業模式不健康。</span><span data-i18n-lang="en">While running the roadmap numbers with the team, we found a single grant couldn't sustain the long-term cost of manually thinning 12 hectares of bamboo — once the grant ended, maintenance would collapse. The business model wasn't healthy.</span></p>
+            </div>
+            <div class="lesson-block">
+              <h5><span class="badge-letter">T</span>Task</h5>
+              <p><span data-i18n-lang="zh">協助團隊找出第二條資源來源，讓專案具備「自我造血能力」，擴大影響力與可持續性。</span><span data-i18n-lang="en">Help the team find a second funding source so the project could "sustain itself," expanding impact and durability.</span></p>
+            </div>
+            <div class="lesson-block">
+              <h5><span class="badge-letter">A</span>Action</h5>
+              <p><span data-i18n-lang="zh">我盤點各部會的補助方向，找到林業署（前林務局）有「在地林業班維護與疏伐」這條專屬標案。後續團隊一起把原民會「聚落建構」與林業署「森林資源永續」做<strong>戰略綁定</strong>，組合跨部會的資源去支應疏伐成本。</span><span data-i18n-lang="en">I surveyed grant directions across ministries and found the Forestry Agency had a dedicated tender for "local forestry-crew maintenance and thinning." The team then <strong>strategically bound</strong> the Indigenous Council's "cluster building" with the Forestry Agency's "sustainable forest resources," combining cross-ministry resources to cover thinning costs.</span></p>
+            </div>
+            <div class="lesson-block">
+              <h5><span class="badge-letter">R</span>Result</h5>
+              <p><span data-i18n-lang="zh"><strong>(1) 成本降低：</strong>用林業署經費解決原民會人工維護成本過高的痛點。<br><strong>(2) 品質提升：</strong>透過林業班專業疏伐，讓竹林生長品質達到常備炭商業規格。<br><strong>(3) 生態系雙贏：</strong>保護地方樹木資源 + 創造在地就業。</span><span data-i18n-lang="en"><strong>(1) Lower cost:</strong> Forestry Agency funds solved the Indigenous Council's high manual-maintenance cost. <br><strong>(2) Higher quality:</strong> professional thinning by the forestry crew brought bamboo growth up to commercial charcoal grade. <br><strong>(3) Ecosystem win-win:</strong> protecting local tree resources + creating local jobs.</span></p>
+            </div>
+          </div>
+          <div class="lesson-result">
+            <strong><span data-i18n-lang="zh">現在回頭看：</span><span data-i18n-lang="en">Looking back: </span></strong>
+            <span data-i18n-lang="zh">「單一資源養不起整個計畫」是團隊一起算出來的事實，
+            我當時做的是「主動去查還有什麼別的政策可以接」 ──
+            這跟大廠 PM 規劃產品多元化營收結構（廣告 + 訂閱 + 企業版）的思維是一樣的，
+            不能把專案的命壓在單一資源上。</span>
+            <span data-i18n-lang="en">"A single source can't sustain the whole project" was a fact the team computed together;
+            what I did was proactively research what other policies we could tap —
+            the same thinking a big-tech PM applies when designing a diversified revenue mix (ads + subscription + enterprise).
+            You can't pin a project's survival on one source.</span>
+          </div>
+        </div>
+      </details>
+
+      <!-- Lesson 5 → 顯示為 03 (v3.1 重新編號) -->
+      <details class="lesson-card" data-aos="fade-up" data-aos-delay="100">
+        <summary class="lesson-head">
+          <div class="lesson-num">03</div>
+          <div>
+            <div class="lesson-title"><span data-i18n-lang="zh">產學語言對不上部落？建立「顧問會議＋翻譯層」</span><span data-i18n-lang="en">Academic jargon not landing with the tribe? Build an "advisory meeting + translation layer"</span></div>
+            <div class="lesson-skill">
+              SKILL ·
+              <span class="pill">Cross-discipline</span>
+              <span class="pill">Agile Alignment</span>
+              <span class="pill">Knowledge Transfer</span>
+            </div>
+          </div>
+          <div class="lesson-toggle"><i class="fas fa-plus"></i></div>
+        </summary>
+        <div class="lesson-body">
+          <div class="lesson-body-inner">
+            <div class="lesson-block">
+              <h5><span class="badge-letter">S</span>Situation</h5>
+              <p><span data-i18n-lang="zh">明新科大化材／企管／土木／休閒等 4 領域教授團隊提供的是「學術技術語言」（NDVI、SROI、ESG），但部落執行端聽到的是「機器要怎麼用？這個月要做什麼？」</span><span data-i18n-lang="en">MUST's professors across 4 fields (chem. eng. / business / civil / leisure) spoke in "academic-technical language" (NDVI, SROI, ESG), but the tribe's execution side was asking "How do I use this machine? What do we do this month?"</span></p>
+            </div>
+            <div class="lesson-block">
+              <h5><span class="badge-letter">T</span>Task</h5>
+              <p><span data-i18n-lang="zh">讓產學知識能真正落地，避免一次性 USR 計畫結束後技術隨教授離場而失傳。</span><span data-i18n-lang="en">Make the academic knowledge truly land, so the tech wouldn't disappear with the professors once the one-off USR program ended.</span></p>
+            </div>
+            <div class="lesson-block">
+              <h5><span class="badge-letter">A</span>Action</h5>
+              <p><span data-i18n-lang="zh">建立「顧問團—工作包—交付成果」常態制度：每季 1 次聚落顧問會議、每年 4 次現地輔導，並把每位教授的輔導內容拆解為可被部落操作的<strong>工作包（Work Package）</strong>—包含 SOP、訓練教材、設備維保手冊、結訓證明。PM 自己充當「技術語言 ↔ 部落語言」的翻譯層。</span><span data-i18n-lang="en">Built a standing "advisors — work packages — deliverables" system: one quarterly cluster advisory meeting, four on-site coaching sessions a year, and broke each professor's guidance into tribe-operable <strong>work packages</strong> — SOPs, training materials, equipment-maintenance manuals, completion certificates. As PM, I personally served as the "technical language ↔ tribal language" translation layer.</span></p>
+            </div>
+            <div class="lesson-block">
+              <h5><span class="badge-letter">R</span>Result</h5>
+              <p><span data-i18n-lang="zh">把 USR 一次性成果，轉化為合作社可長期維運的 SOP、培力人次 230、證照取得 10 人，形成「自主運作的綠領團隊」。技術不再綁定在外部教授身上。</span><span data-i18n-lang="en">Turned one-off USR outputs into long-term, co-op-maintainable SOPs, 230 training participant-times, and 10 licensed members — forming a "self-operating green-collar team." The know-how was no longer tied to external professors.</span></p>
+            </div>
+          </div>
+          <div class="lesson-result">
+            <strong><span data-i18n-lang="zh">現在回頭看：</span><span data-i18n-lang="en">Looking back: </span></strong>
+            <span data-i18n-lang="zh">這段最讓我有感的，是「知識怎麼留下來」這件事。
+            教授會走、合約會結束、但 SOP / 教材 / 證照人才留下來才是真的。
+            這就跟科技大廠講的「知識管理 (Knowledge Transfer)」是同一件事 ──
+            你的工作不是讓自己變成不可取代，而是讓專案就算沒了你，也跑得起來。</span>
+            <span data-i18n-lang="en">What hit me most here was the question of "how knowledge stays."
+            Professors leave, contracts end — but SOPs / materials / licensed talent staying is what's real.
+            This is exactly what big tech calls "knowledge transfer" —
+            your job isn't to make yourself irreplaceable, but to make the project run even without you.</span>
+          </div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       Section 2.3 — The Execution · 工作流程
+       ============================================================ -->
+  <section class="pm-section bg-cloud">
+    <div class="container">
+      <div class="section-head text-center" data-aos="fade-up">
+        <div class="section-eyebrow" style="display: inline-flex;">02 · The Execution · <span data-i18n-lang="zh">工作流程</span><span data-i18n-lang="en">Workflow</span></div>
+        <h2 class="section-title"><span data-i18n-lang="zh">我如何把「資源」變成「可以交付的成果」</span><span data-i18n-lang="en">How I turned "resources" into "deliverable outcomes"</span></h2>
+        <p class="section-desc">
+          <span data-i18n-lang="zh">一張圖看完我每天在做的事：
+          把「政府補助、學術技術、在地勞動力」這三股原本互不講話的力量，
+          整合成「實體場域、數據資產、品牌商業」三類市場聽得懂的輸出。
+          中間那一欄，是我的核心工作。</span>
+          <span data-i18n-lang="en">One diagram of what I did every day:
+          integrating three forces that didn't talk to each other — "government grants, academic tech, local labor" —
+          into three market-legible outputs: "physical site, data assets, brand & business."
+          The middle column is my core work.</span>
+        </p>
+      </div>
+
+      <div class="vsm-wrapper" data-aos="fade-up">
+        <div class="vsm-grid">
+          <!-- INPUT -->
+          <div class="vsm-col input">
+            <div class="vsm-col-head">INPUT · <span data-i18n-lang="zh">投入資源</span><span data-i18n-lang="en">Resources In</span></div>
+            <div class="vsm-item"><i class="fas fa-folder-open"></i><span data-i18n-lang="zh">雜亂的田野紀錄、會議照片、訪視成果</span><span data-i18n-lang="en">Messy field notes, meeting photos, site-visit findings</span></div>
+            <div class="vsm-item"><i class="fas fa-graduation-cap"></i><span data-i18n-lang="zh">明新科大 5 位教授（學術 + 數據）</span><span data-i18n-lang="en">5 MUST professors (academia + data)</span></div>
+            <div class="vsm-item"><i class="fas fa-handshake"></i><span data-i18n-lang="zh">公部門資源 + 在地工班 + 合作廠商</span><span data-i18n-lang="en">Government resources + local crews + partner vendors</span></div>
+            <div class="vsm-item"><i class="fas fa-leaf"></i><span data-i18n-lang="zh">12 公頃竹林資源</span><span data-i18n-lang="en">12 hectares of bamboo forest</span></div>
+          </div>
+
+          <div class="vsm-arrow"><i class="fas fa-long-arrow-alt-right"></i></div>
+
+          <!-- PM ROLE -->
+          <div class="vsm-col role">
+            <div class="vsm-col-head">MY ROLE · <span data-i18n-lang="zh">我做的事</span><span data-i18n-lang="en">What I Did</span></div>
+            <div class="vsm-item"><i class="fas fa-sitemap"></i><span data-i18n-lang="zh">把雜亂資料結構化成數位內容</span><span data-i18n-lang="en">Structure messy data into digital content</span></div>
+            <div class="vsm-item"><i class="fas fa-code"></i><span data-i18n-lang="zh">獨立完成官網 UI/UX + 前端</span><span data-i18n-lang="en">Build the site UI/UX + frontend solo</span></div>
+            <div class="vsm-item"><i class="fas fa-language"></i><span data-i18n-lang="zh">語言轉譯（技術 ↔ 在地 ↔ 政府）</span><span data-i18n-lang="en">Language translation (tech ↔ local ↔ government)</span></div>
+            <div class="vsm-item"><i class="fas fa-users"></i><span data-i18n-lang="zh">參與核心討論、整理會議共識</span><span data-i18n-lang="en">Join core discussions, distill meeting consensus</span></div>
+          </div>
+
+          <div class="vsm-arrow"><i class="fas fa-long-arrow-alt-right"></i></div>
+
+          <!-- OUTPUT -->
+          <div class="vsm-col output">
+            <div class="vsm-col-head">OUTPUT · <span data-i18n-lang="zh">可被外界看見的成果</span><span data-i18n-lang="en">Visible Outcomes</span></div>
+            <div class="vsm-item"><i class="fas fa-globe"></i><span data-i18n-lang="zh">合作社官方網站（Vanilla JS 獨立完成）</span><span data-i18n-lang="en">Co-op official website (built solo in Vanilla JS)</span></div>
+            <div class="vsm-item"><i class="fas fa-calendar-check"></i><span data-i18n-lang="zh">零伺服器自動化預約工作流</span><span data-i18n-lang="en">Zero-server automated reservation workflow</span></div>
+            <div class="vsm-item"><i class="fas fa-chart-line"></i><span data-i18n-lang="zh">結構化的數據資產：12 公頃碳匯 Baseline</span><span data-i18n-lang="en">Structured data assets: 12-hectare carbon baseline</span></div>
+            <div class="vsm-item"><i class="fas fa-tag"></i><span data-i18n-lang="zh">對外可遞出去的品牌語言與內容</span><span data-i18n-lang="en">Externally shareable brand language and content</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       Section 2.4 — The Execution · 流程導入
+       ============================================================ -->
+  <section class="pm-section bg-cloud" id="tech-stack" style="padding-top: 4rem;">
+    <div class="container">
+      <div class="section-head text-center" data-aos="fade-up">
+        <div class="section-eyebrow" style="justify-content: center; display: inline-flex;">02 · The Execution · <span data-i18n-lang="zh">流程導入</span><span data-i18n-lang="en">Implementation</span></div>
+        <h2 class="section-title"><span data-i18n-lang="zh">我親手做的兩件事：把雜亂資訊變成內容、把預約流程變成系統</span><span data-i18n-lang="en">The two things I built myself: turning messy information into content, and turning the booking process into a system</span></h2>
+        <p class="section-desc">
+          <span data-i18n-lang="zh">這一區是我這個角色「說了算」的範圍 ──
+          別人聊策略時我也參與討論，但<strong>內容轉化</strong>與<strong>網站實作</strong>是我獨立完成的部分。
+          下面這些工具的選擇不是技術秀肌肉，而是回答一個問題：
+          「在偏鄉沒有預算養工程師的條件下，怎麼讓族人 3 天內就能用上一個能跑的預約系統？」</span>
+          <span data-i18n-lang="en">This is the part where my role "called the shots" —
+          I joined the strategy discussions too, but <strong>content transformation</strong> and <strong>site implementation</strong> were mine, done solo.
+          The tool choices below aren't about flexing tech; they answer one question:
+          "With no budget to hire engineers in a rural area, how do you get the community a working reservation system within 3 days?"</span>
+        </p>
+      </div>
+
+      <div class="tech-grid">
+        <div class="tech-card" data-aos="fade-up">
+          <div class="tech-icon"><i class="fab fa-bootstrap"></i></div>
+          <h4>Bootstrap 5</h4>
+          <span class="tech-tag">UI Framework</span>
+          <p><span data-i18n-lang="zh">響應式網格與元件系統，3 天完成原需 2 週的網頁實作，把寶貴時間留給商業設計。</span><span data-i18n-lang="en">Responsive grid and component system — shipped in 3 days what would have taken 2 weeks, freeing time for the business design.</span></p>
+        </div>
+        <div class="tech-card" data-aos="fade-up" data-aos-delay="80">
+          <div class="tech-icon"><i class="fas fa-eye"></i></div>
+          <h4>AOS</h4>
+          <span class="tech-tag">Animation</span>
+          <p><span data-i18n-lang="zh">滾動進場動畫，增強敘事節奏與閱讀體驗，使履歷頁面具備簡報級的視覺說服力。</span><span data-i18n-lang="en">Scroll-reveal animations that strengthen narrative rhythm and reading experience, giving the page presentation-grade visual persuasion.</span></p>
+        </div>
+        <div class="tech-card" data-aos="fade-up" data-aos-delay="160">
+          <div class="tech-icon"><i class="fab fa-google"></i></div>
+          <h4>Google Forms / Sheets</h4>
+          <span class="tech-tag">Zero-Server</span>
+          <p><span data-i18n-lang="zh">零後端預約表單工作流，將補助有限的合作社營運成本壓低 90%，無需 server / DB / 工程師。</span><span data-i18n-lang="en">A zero-backend booking-form workflow that cut the grant-limited co-op's operating cost by 90% — no server, DB, or engineer required.</span></p>
+        </div>
+        <div class="tech-card" data-aos="fade-up" data-aos-delay="240">
+          <div class="tech-icon"><i class="fas fa-icons"></i></div>
+          <h4>Font Awesome + Inter</h4>
+          <span class="tech-tag">Design System</span>
+          <p><span data-i18n-lang="zh">圖示與資料字型統一，建立可複用設計系統，未來新章節 / 新方案可在 1 小時內擴充上線。</span><span data-i18n-lang="en">Unified icons and data typography form a reusable design system — new sections or packages can ship within an hour.</span></p>
+        </div>
+        <div class="tech-card" data-aos="fade-up" data-aos-delay="320">
+          <div class="tech-icon"><i class="fas fa-mobile-alt"></i></div>
+          <h4>Mobile-First RWD</h4>
+          <span class="tech-tag">UX</span>
+          <p><span data-i18n-lang="zh">手機優先排版，學校老師 / 企業 ESG 主管多在通勤 / 會議空檔瀏覽預約，轉換率以行動端為主。</span><span data-i18n-lang="en">Mobile-first layout — teachers and enterprise ESG leads mostly browse and book during commutes or meeting breaks, so conversions are mobile-led.</span></p>
+        </div>
+        <div class="tech-card" data-aos="fade-up" data-aos-delay="400">
+          <div class="tech-icon"><i class="fas fa-universal-access"></i></div>
+          <h4>A11y &amp; WCAG AA</h4>
+          <span class="tech-tag">Accessibility</span>
+          <p><span data-i18n-lang="zh">對比度、語意化 HTML、ARIA 標籤、prefers-reduced-motion，公部門案場標準合規。</span><span data-i18n-lang="en">Contrast ratios, semantic HTML, ARIA labels, and prefers-reduced-motion — compliant with public-sector project standards.</span></p>
+        </div>
+      </div>
+
+      <!-- My Point of View -->
+      <div class="pm-pov" data-aos="fade-up">
+        <i class="fas fa-quote-left"></i>
+        <p>
+          <span data-i18n-lang="zh">「我在這個專案做的兩件硬實力：
+          <strong style="color: var(--gold);">把現場龐雜的活動紀錄、訪視成果、田野照片，
+          結構化梳理成官網上看得懂的內容</strong>；
+          並親自用 Vanilla JS 把官網與
+          <strong style="color: var(--gold);">零伺服器自動化預約工作流</strong>做出來，
+          解決合作社『沒預算養工程師』的真實痛點。」</span>
+          <span data-i18n-lang="en">"The two hard-skill contributions I made on this project:
+          <strong style="color: var(--gold);">structuring the site's chaotic event records, site-visit findings, and field photos
+          into content visitors could actually understand</strong>;
+          and personally building the website and a
+          <strong style="color: var(--gold);">zero-server automated reservation workflow</strong> in Vanilla JS,
+          solving the co-op's real pain point of 'no budget to hire engineers.'"</span>
+        </p>
+        <div class="pov-cite">My Take · <span data-i18n-lang="zh">資訊轉化 × 親手實作</span><span data-i18n-lang="en">Information Translation × Hands-on Build</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       Project Info & CTA
+       ============================================================ -->
+  <section class="pm-section" style="padding-top: 2rem;">
+    <div class="container">
+      <div class="project-info" data-aos="fade-up">
+        <div class="project-info-grid">
+          <div class="info-block">
+            <div class="info-key">PROJECT</div>
+            <div class="info-val"><span data-i18n-lang="zh">山莎蔓岸 115-116 年度<br>產業推升計畫－聚落建構類</span><span data-i18n-lang="en">SamSamma FY2026–2027<br>Industry-Upgrade Program — Cluster Building</span></div>
+          </div>
+          <div class="info-block">
+            <div class="info-key">TIMELINE</div>
+            <div class="info-val">2024.06 — 2027.12<br><span style="font-size: 0.85rem; color: var(--slate-500); font-weight: 400;"><span data-i18n-lang="zh">規劃與執行期間</span><span data-i18n-lang="en">Planning & execution period</span></span></div>
+          </div>
+          <div class="info-block">
+            <div class="info-key">PARTNER</div>
+            <div class="info-val"><span data-i18n-lang="zh">山莎蔓岸竹木產業<br>生產合作社</span><span data-i18n-lang="en">SamSamma Bamboo Industry<br>Production Co-op</span></div>
+          </div>
+          <div class="info-block">
+            <div class="info-key">MY ROLE</div>
+            <div class="info-val"><span data-i18n-lang="zh">數位轉型 PM ×<br>前端開發 × 內容轉化</span><span data-i18n-lang="en">Digital Transformation PM ×<br>Frontend × Content Translation</span></div>
+          </div>
+          <div class="info-block">
+            <div class="info-key">SOLO DELIVERY</div>
+            <div class="info-val"><span data-i18n-lang="zh">合作社官網 UI/UX + 前端<br>零伺服器預約工作流</span><span data-i18n-lang="en">Co-op site UI/UX + frontend<br>Zero-server reservation workflow</span></div>
+          </div>
+          <div class="info-block">
+            <div class="info-key">SCALE</div>
+            <div class="info-val"><span data-i18n-lang="zh">12 公頃 / 五峰四村<br>25 戶聚落協作</span><span data-i18n-lang="en">12 ha / 4 Wufeng villages<br>25-household cluster collaboration</span></div>
+          </div>
+        </div>
+
+        <div class="cta-row">
+          <a href="index_SamSamma.html" class="btn-pm-primary">
+            <i class="fas fa-globe"></i><span data-i18n-lang="zh">查看合作社官方網站</span><span data-i18n-lang="en">Visit the Co-op Website</span>
+          </a>
+          <a href="../index.html#works" class="btn-pm-ghost">
+            <i class="fas fa-arrow-left"></i><span data-i18n-lang="zh">返回作品集</span><span data-i18n-lang="en">Back to Portfolio</span>
+          </a>
+          <a href="../index.html#contact" class="btn-pm-ghost">
+            <i class="fas fa-envelope"></i><span data-i18n-lang="zh">聯絡我</span><span data-i18n-lang="en">Contact Me</span>
+          </a>
+        </div>
+
+        <div class="disclaimer">
+          <strong><span data-i18n-lang="zh">關於這份案例研究｜</span><span data-i18n-lang="en">About this case study | </span></strong>
+          <span data-i18n-lang="zh">這個專案的策略與架構是團隊共同討論出來的成果，我並不是計畫的主導者或補助負責人。
+          我在現場的真實角色是<strong>參與核心討論的數位轉型 PM 兼前端開發者</strong>：
+          負責把雜亂的田野資料結構化、並獨立完成合作社官網與零伺服器預約工作流。
+          本頁所有數據皆為計畫公開資訊或目標值，
+          詳細討論過程與原始素材可於面談時當面說明。</span>
+          <span data-i18n-lang="en">This project's strategy and architecture were the result of collective team discussion; I was not the program lead or grant owner.
+          My real on-the-ground role was a <strong>Digital Transformation PM and frontend developer at the core of the discussions</strong>:
+          responsible for structuring messy field data and single-handedly delivering the co-op site and zero-server reservation workflow.
+          All figures on this page are public program information or target values;
+          the detailed discussion process and source materials can be explained in person during an interview.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       Footer
+       ============================================================ -->
+  <footer class="pm-footer">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-md-5">
+          <h5><span data-i18n-lang="zh">關於這個案例</span><span data-i18n-lang="en">About this case</span></h5>
+          <p style="font-size: 0.92rem; line-height: 1.75;">
+            <span data-i18n-lang="zh">山莎蔓岸是 Ivan Zhao 參與核心討論、並以數位轉型 PM 與前端開發者身份
+            親手交付官網與零伺服器預約系統的真實案例。
+            這份頁面用「挑戰 → 解法 → 成果 → 沉澱」的結構，
+            還原我在現場做過的「資訊轉化」與「親手把網站做出來」這兩件事。</span>
+            <span data-i18n-lang="en">SamSamma is a real case where Ivan Zhao joined the core discussions and, as Digital Transformation PM and frontend developer,
+            hand-delivered the official site and a zero-server reservation system.
+            This page uses a "Challenge → Approach → Impact → Reflection" structure
+            to reconstruct the two things I actually did on the ground: "information translation" and "building the site myself."</span>
+          </p>
+        </div>
+        <div class="col-md-3">
+          <h5><span data-i18n-lang="zh">快速連結</span><span data-i18n-lang="en">Quick Links</span></h5>
+          <ul class="list-unstyled" style="line-height: 2.2;">
+            <li><a href="../index.html"><span data-i18n-lang="zh">作品集首頁</span><span data-i18n-lang="en">Portfolio Home</span></a></li>
+            <li><a href="../aboutme.html"><span data-i18n-lang="zh">關於我</span><span data-i18n-lang="en">About Me</span></a></li>
+            <li><a href="index_SamSamma.html"><span data-i18n-lang="zh">合作社官方網站</span><span data-i18n-lang="en">Co-op Official Site</span></a></li>
+            <li><a href="../index.html#contact"><span data-i18n-lang="zh">聯絡方式</span><span data-i18n-lang="en">Contact</span></a></li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h5><span data-i18n-lang="zh">追蹤我</span><span data-i18n-lang="en">Follow Me</span></h5>
+          <div class="social-links mb-3">
+            <a href="https://github.com/ivanexis" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+              <i class="fab fa-github"></i>
+            </a>
+            <a href="mailto:jeff11051212@gmail.com" aria-label="Email">
+              <i class="far fa-envelope"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/ivan-zhao-b89b9140b/" target="_blank" rel="noopener" aria-label="LinkedIn" style="opacity: 0.5;"><i class="fab fa-linkedin"></i></a>
+          </div>
+          <p style="font-size: 0.85rem; opacity: 0.65;">
+            <i class="far fa-envelope me-2"></i>jeff11051212@gmail.com
+          </p>
+        </div>
+      </div>
+      <hr style="border-color: rgba(255,255,255,0.1); margin: 2.5rem 0 1.5rem;">
+      <div class="d-flex flex-wrap justify-content-between align-items-center"
+        style="font-size: 0.84rem; opacity: 0.6;">
+        <span>© 2026 Ivan Zhao. <span data-i18n-lang="zh">本網站親自設計撰寫並保留所有權利。</span><span data-i18n-lang="en">Personally designed and built. All rights reserved.</span></span>
+        <span>Case Study v4.0 · Honest Recalibration · Updated 2026/05/22</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       Scripts
+       ============================================================ -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    // AOS init
+    AOS.init({
+      duration: 700,
+      easing: 'ease-out-cubic',
+      once: true,
+      offset: 80,
+      disable: window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    });
+
+    // Reading progress + navbar shadow + active section highlight
+    (function () {
+      const progress = document.getElementById('readingProgress');
+      const navbar = document.getElementById('navbar');
+      const sections = ['problem', 'execution', 'stakeholders', 'tech-stack', 'impact', 'bridge']
+        .map(id => document.getElementById(id))
+        .filter(Boolean);
+      const navLinks = document.querySelectorAll('.navbar-pm .nav-link');
+
+      function onScroll() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+        progress.style.width = pct + '%';
+
+        navbar.classList.toggle('scrolled', scrollTop > 20);
+
+        // active link
+        let current = '';
+        sections.forEach(sec => {
+          if (sec.getBoundingClientRect().top <= 140) current = sec.id;
+        });
+        navLinks.forEach(link => {
+          link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+        });
+      }
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    })();
+
+    // Close mobile menu on link click
+    document.querySelectorAll('.navbar-pm .nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        const toggler = document.querySelector('.navbar-toggler');
+        const menu = document.querySelector('#navbarNav');
+        if (menu && menu.classList.contains('show') && toggler) {
+          toggler.click();
+        }
+      });
+    });
+  </script>
+  <script src="../js/i18n.js"></script>
+</body>
+
+</html>

@@ -1,10 +1,18 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-TW">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>作品詳情 - Ivan's Portfolio</title>
+    <title>關於我 - Ivan's Portfolio</title>
+    <meta name="description" content="趙冠柏 Guan-Bo｜Technical PM / 數位轉型 PM。景觀全局思維 × 工程邏輯 × 需求轉譯者。國泰醫院後端首年實戰、山莎蔓岸共同創辦人。">
+    <link rel="icon" type="image/webp" href="../images/logo_2.webp">
+    <meta property="og:type" content="profile">
+    <meta property="og:title" content="About Me · Ivan Zhao (趙冠柏 Guan-Bo)">
+    <meta property="og:description" content="從景觀設計到 Technical PM：跨界整合 × 醫療嚴謹性 × 創生執行力。Cathay 醫院 Legacy 遷移、SamSamma Co-op 共同創辦人。">
+    <meta property="og:image" content="../images/about-hero-banner.webp">
+    <meta property="og:url" content="https://ivangoldaura.dpdns.org/pages/aboutme.html">
+    <meta name="twitter:card" content="summary_large_image">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -86,6 +94,20 @@
             height: auto;
             border-radius: 16px;
             /* 只保留圓角 */
+        }
+
+        /* v2.2：About 頂部 21:9 寬扁橫幅 ── 櫻花側臉精華橫帶 */
+        .about-hero-banner {
+            aspect-ratio: 21 / 9;
+            object-fit: cover;
+            object-position: center 30%;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+        }
+        @media (max-width: 768px) {
+            .about-hero-banner {
+                aspect-ratio: 16 / 9;
+                object-position: center center;
+            }
         }
 
         .portfolio-content {
@@ -386,8 +408,8 @@
     <!-- 導航欄 -->
     <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
         <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="../index_ivan.html">
-                <img src="../images/logo_2.jpg" alt="Ivan_Zhao Logo" class="rounded-circle me-2 navbar-logo">
+            <a class="navbar-brand d-flex align-items-center" href="../index.html">
+                <img src="../images/logo_2.webp" alt="Ivan_Zhao Logo" class="rounded-circle me-2 navbar-logo">
                 <span>Ivan_Zhao</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -396,13 +418,13 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                      <a class="nav-link" href="../index_ivan.html">Home</a>
+                      <a class="nav-link" href="../index.html" data-i18n="nav.home">Home</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="../aboutme.html">About Me</a>
+                      <a class="nav-link" href="../aboutme.html" data-i18n="nav.about">About Me</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="../index_ivan.html#contact">Contact Me</a>
+                      <a class="nav-link" href="../index.html#contact" data-i18n="nav.contact">Contact Me</a>
                     </li>
                   </ul>
             </div>
@@ -412,12 +434,12 @@
     <!-- 作品詳情內容 -->
     <div class="portfolio-header">
         <div class="container">
-            <h1 class="portfolio-title">關於我</h1>
+            <h1 class="portfolio-title" data-i18n="aboutPage.portfolioTitle">關於我</h1>
         </div>
     </div>
 
     <div class="main-image-container">
-        <img src="../images/MEMEMEME.jpg" alt="作品主圖" class="main-image">
+        <img src="../images/about-hero-banner.webp" alt="Ivan Zhao 富士山櫻花橫幅 - 創作者視角的職涯起點" class="main-image about-hero-banner">
         <div class="report-link-container text-center mt-4">
 
         </div>
@@ -429,21 +451,25 @@
             <div class="row align-items-center profile-section">
                 <div class="col-lg-8 order-lg-1 order-2">
                     <div class="profile-text">
-                        <h1 class="about-title">趙冠柏</h1>
-                        <p class="about-subtitle">全端軟體設計師｜曾為景觀設計師｜專注於數位體驗創造</p>
+                        <h1 class="about-title" data-i18n="aboutPage.name">趙冠柏 Guan-Bo</h1>
+                        <p class="about-subtitle" data-i18n="aboutPage.subtitle">Technical PM / 數位轉型 PM｜景觀全局思維 × 工程邏輯 × 需求轉譯者｜國泰醫院後端首年實戰 → 山莎蔓岸共同創辦人</p>
                     </div>
+                    <!-- v1.5.1 同步：對齊 index.html 用詞 ── 工程底氣 → 工程邏輯／醫療嚴謹性、景觀底蘊 → 景觀全局思維 -->
+                    <!-- v2.1 (2026-05-26)：5 段加入 data-i18n + data-i18n-html，英文版獵頭友善敘事 -->
                     <div class="profile-text">
-                        <p>職涯的起點源自景觀設計。大學時期參與多個農村社區營造計畫，深入土地、文化與居民之間。在地圖與模型上勾勒社區未來樣貌，從2D平面設計到3D模型實作，再到成果展示，每一個細節的轉換訓練了從不同角度重新審視問題的能力。然而，這段經歷不僅關乎設計，更關乎溝通與協調——如何讓居民與地方政府對設計願景產生共鳴，成為最大的成長收穫。</p>
-                        
-                        <p>在一次社區規劃的過程中，發現雖然基礎設施逐步完善，但資訊化建設卻停滯不前。這種數位落差突顯了現代社會對數位工具的需求，於是開始轉向軟體開發，希望透過技術解決這些問題，為社區注入更多可能性。</p>
-                        
-                        <p>轉換領域並不輕鬆。在資策會的訓練中，從基礎程式語言到後端邏輯與數據管理，逐步掌握構建應用系統的核心概念。在專題計畫中，與組員攜手合作，共同設計並開發完整的網頁系統，從風格設計到資料庫結構建置，每一步都加深了對軟體開發的理解與熱愛。</p>
-                        
-                        <p>如今，作為全端軟體設計師，將景觀設計的敏銳視覺與軟體工程的邏輯思維相結合，致力於打造直覺且富有美感的數位體驗。技術不僅是工具，更是一種連結方式。就如同景觀設計連結人與自然，軟體設計則連結使用者與世界。希望透過創新技術的應用，為社會與環境創造更多價值。</p>
+                        <p data-i18n="aboutPage.p1" data-i18n-html="true">職涯的起點是<strong>景觀設計</strong>。輔仁大學景觀設計系期間，參與多個農村社區營造計畫，深入土地、文化與居民之間。從 2D 平面、3D 模型到現場成果展示，這段訓練養成的不只是設計能力，更是「<strong>如何讓居民、政府、設計師對同一份願景產生共鳴</strong>」── 這份「全局利害關係人思維」，後來成為做 PM 最核心的底層工具。</p>
+
+                        <p data-i18n="aboutPage.p2" data-i18n-html="true">在社區規劃過程中觀察到一個現象：基礎設施逐步完善，資訊化建設卻明顯停滯。這種<strong>數位落差</strong>促成了第二次跳板 ── 先完成 UX/UI 設計班，再進入<strong>資策會跨域 Java 軟體工程師就業養成班（570 小時）</strong>，從基礎程式語言、後端邏輯到資料庫設計，逐步建立構建應用系統的核心能力。</p>
+
+                        <p data-i18n="aboutPage.p3" data-i18n-html="true">2025 年進入<strong>國泰世華總醫院</strong>擔任資訊維運工程師（助理程式師），完成第一年正職實戰。這一年具體沉澱出對「生產系統」與「練習專案」的差距感：問卷／表單類功能的迭代與訪談、醫療與行政單位的<strong>需求收斂與技術轉譯</strong>、核心 Web 系統由 <strong>IE 遷移到 Chrome／Edge</strong> 的 Legacy 升級專案、跨部門溝通與 UAT 上線。這段大型醫療系統的維運經驗，培養出 Technical PM 最重要的「<strong>嚴謹的工程邏輯</strong>」── 在團隊內用工程師聽得懂的語言進行精準的 MVP 範疇切片。</p>
+
+                        <p data-i18n="aboutPage.p4" data-i18n-html="true">與醫院實務並行，與賽夏族族人共同創辦<strong>山莎蔓岸竹木產業生產合作社</strong>，擔任數位轉型 PM 兼前端開發者。職責是把現場零散的活動紀錄、學術訪視照片與田野素材，<strong>結構化為清晰的數位內容架構</strong>；同時針對偏鄉沒有預算養工程師的真實痛點，獨立打造<strong>零伺服器成本的自動化預約工作流</strong>，取代傳統人工電話登錄。在多方協作的環境中擔任溝通橋樑，把團隊共識轉譯為清晰的技術規格。</p>
+
+                        <p data-i18n="aboutPage.p5" data-i18n-html="true">融合景觀全局思維、創生執行力與醫療嚴謹性，兼具技術硬實力與設計同理心 ── 這就是我現在的職涯定位：<strong>一位精準對接技術與市場的 Technical PM</strong>。在 AI 把「把東西做出來」的門檻民主化之後，市場真正稀缺的能力，已經從「寫代碼」轉為「<strong>把複雜需求收斂成正確的規格</strong>」。我不擅長畫無法落地的商業大餅，但擅長成為技術與業務之間的橋樑 ── 如果你正在找一位能與工程師無縫對齊的夥伴，期待與你聊聊。</p>
                     </div>
                 </div>
                 <div class="col-lg-4 order-lg-2 order-1">
-                    <img src="../images/mememe2.png" alt="Ivan Zhao" class="profile-image">
+                    <img src="../images/about-story-creator.webp" alt="Ivan Zhao 手持相機 - Design Engineer 創作者視角" class="profile-image">
                 </div>
             </div>
         </div>
@@ -454,29 +480,29 @@
         <div class="container">
             <div class="row g-4">
                 <div class="col-md-4">
-                    <h5 class="mb-3">關於我</h5>
-                    <p>致力於提供創新的技術解決方案，專注於網頁開發與使用者體驗設計。</p>
+                    <h5 class="mb-3" data-i18n="footer.about.title">關於我</h5>
+                    <p data-i18n="footer.about.text">致力於提供創新的技術解決方案，專注於網頁開發與使用者體驗設計。</p>
                 </div>
                 <div class="col-md-4">
-                    <h5 class="mb-3">快速連結</h5>
+                    <h5 class="mb-3" data-i18n="footer.links.title">快速連結</h5>
                     <ul class="list-unstyled">
-                        <li><a href="../index_ivan.html#about" class="text-white text-decoration-none">關於我</a></li>
-                        <li><a href="../index_ivan.html#works" class="text-white text-decoration-none">作品集</a></li>
-                        <li><a href="../index_ivan.html#contact" class="text-white text-decoration-none">聯絡方式</a></li>
+                        <li><a href="../index.html#about" class="text-white text-decoration-none" data-i18n="footer.links.about">關於</a></li>
+                        <li><a href="../index.html#works" class="text-white text-decoration-none" data-i18n="footer.links.works">作品集</a></li>
+                        <li><a href="../index.html#contact" class="text-white text-decoration-none" data-i18n="footer.links.contact">聯絡方式</a></li>
                     </ul>
                 </div>
                 <div class="col-md-4">
-                    <h5 class="mb-3">追蹤我</h5>
+                    <h5 class="mb-3" data-i18n="footer.follow.title">追蹤我</h5>
                     <div class="social-links">
-                        <a href="https://github.com/ivanexis" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                        <span aria-label="LinkedIn 連結待補"><i class="fab fa-linkedin"></i></span>
-                        <a href="mailto:jeff11051212@gmail.com" aria-label="Email"><i class="far fa-envelope"></i></a>
+                        <a href="https://github.com/ivanexis" target="_blank" rel="noopener noreferrer" aria-label="GitHub" data-i18n-attr="aria-label:contact.aria.github"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/ivan-zhao-b89b9140b/" target="_blank" rel="noopener" aria-label="LinkedIn" data-i18n-attr="aria-label:contact.aria.linkedin"><i class="fab fa-linkedin"></i></a>
+                        <a href="mailto:jeff11051212@gmail.com" aria-label="Email" data-i18n-attr="aria-label:contact.aria.email"><i class="far fa-envelope"></i></a>
                     </div>
                 </div>
             </div>
             <hr class="my-4">
             <div class="text-center">
-                <p class="mb-0">本網站由 Ivan Zhao 親自設計撰寫並保留所有權利。</p>
+                <p class="mb-0" data-i18n="footer.copyright">本網站由 Ivan Zhao 親自設計撰寫並保留所有權利。</p>
             </div>
         </div>
     </footer>
@@ -484,6 +510,7 @@
     <!-- JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="../js/i18n.js"></script>
 </body>
 
 </html>

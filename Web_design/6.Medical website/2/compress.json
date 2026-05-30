@@ -1,0 +1,64 @@
+﻿{
+    "case":  "6.Medical website/2",
+    "scanned_at":  "2026-05-20",
+    "hero_source":  "首頁v2.jpg",
+    "files":  [
+                  {
+                      "outputs":  [
+                                      "hero",
+                                      "slide-1"
+                                  ],
+                      "label":  "首頁v2",
+                      "height":  7779,
+                      "src":  "首頁v2.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-2"
+                                  ],
+                      "label":  "產品內頁v2",
+                      "height":  3407,
+                      "src":  "產品內頁v2.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-3"
+                                  ],
+                      "label":  "產品列表頁v2",
+                      "height":  2352,
+                      "src":  "產品列表頁v2.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-4"
+                                  ],
+                      "label":  "聯絡我們v2",
+                      "height":  2384,
+                      "src":  "聯絡我們v2.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-5"
+                                  ],
+                      "label":  "醫學新知-內頁v2",
+                      "height":  3191,
+                      "src":  "醫學新知-內頁v2.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-6"
+                                  ],
+                      "label":  "醫學新知v2",
+                      "height":  2864,
+                      "src":  "醫學新知v2.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-7"
+                                  ],
+                      "label":  "關於我們v2",
+                      "height":  5328,
+                      "src":  "關於我們v2.jpg"
+                  }
+              ]
+}

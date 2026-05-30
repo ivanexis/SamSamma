@@ -1,0 +1,72 @@
+﻿{
+    "case":  "8.Uncategorized websites/2",
+    "scanned_at":  "2026-05-20",
+    "hero_source":  "首頁.jpg",
+    "files":  [
+                  {
+                      "outputs":  [
+                                      "hero",
+                                      "slide-1"
+                                  ],
+                      "label":  "首頁",
+                      "height":  6379,
+                      "src":  "首頁.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-2"
+                                  ],
+                      "label":  "最新消息-內頁",
+                      "height":  4101,
+                      "src":  "最新消息-內頁.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-3"
+                                  ],
+                      "label":  "最新消息",
+                      "height":  4060,
+                      "src":  "最新消息.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-4"
+                                  ],
+                      "label":  "聯絡表單",
+                      "height":  4144,
+                      "src":  "聯絡表單.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-5"
+                                  ],
+                      "label":  "門市據點",
+                      "height":  7093,
+                      "src":  "門市據點.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-6"
+                                  ],
+                      "label":  "關於我們",
+                      "height":  4173,
+                      "src":  "關於我們.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-7"
+                                  ],
+                      "label":  "飲品菜單",
+                      "height":  4359,
+                      "src":  "飲品菜單.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-8"
+                                  ],
+                      "label":  "餐館菜單",
+                      "height":  4359,
+                      "src":  "餐館菜單.jpg"
+                  }
+              ]
+}

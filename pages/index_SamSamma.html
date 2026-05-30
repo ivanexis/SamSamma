@@ -1,0 +1,3883 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    /* 雙語防閃爍：在 body 渲染前依 ?lang 決定語言，無參數預設英文 */
+    (function () {
+      var p = new URLSearchParams(location.search).get('lang');
+      var lang = (p === 'zh') ? 'zh' : 'en';
+      var d = document.documentElement;
+      d.classList.add('i18n-' + lang);
+      d.setAttribute('lang', lang === 'zh' ? 'zh-TW' : 'en');
+      var s = document.createElement('style');
+      s.textContent = '.i18n-en [data-i18n-lang="zh"]{display:none!important}.i18n-zh [data-i18n-lang="en"]{display:none!important}'
+        + '.lang-switch{display:inline-flex;gap:.25rem}'
+        + '.lang-switch a{display:inline-block;padding:.2rem .6rem;border:1px solid rgba(212,175,55,.6);border-radius:999px;color:#d4af37;font-size:.8rem;font-weight:600;text-decoration:none;transition:all .2s}'
+        + '.lang-switch a:hover{background:rgba(212,175,55,.25);color:#d4af37}'
+        + '.i18n-en .lang-switch a[data-lang-btn=en],.i18n-zh .lang-switch a[data-lang-btn=zh]{background:#d4af37;color:#1a3d22;pointer-events:none}';
+      d.appendChild(s);
+    })();
+  </script>
+  <title>山莎蔓岸竹木產業生產合作社</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --primary-green: #2c5530;
+      --secondary-green: #4a7c59;
+      --light-green: #a8d5ba;
+      --bg-light: #f8f9fa;
+      --text-dark: #333;
+      --text-light: #666;
+      --gold: #d4af37;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Noto Sans TC', sans-serif;
+      line-height: 1.6;
+      color: var(--text-dark);
+      overflow-x: hidden;
+    }
+
+    /* 導航欄樣式 */
+    .navbar {
+      background: rgba(44, 85, 48, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 1rem 0;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .navbar-brand {
+      font-weight: 700;
+      color: var(--gold) !important;
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+    }
+
+    .navbar-logo {
+      width: 50px;
+      height: 50px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 2px solid var(--gold);
+      margin-right: 12px;
+      transition: transform 0.3s ease;
+    }
+
+    .navbar-logo:hover {
+      transform: scale(1.1);
+    }
+
+    .navbar-nav .nav-link {
+      color: white !important;
+      font-weight: 500;
+      margin: 0 0.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .navbar-nav .nav-link:hover {
+      color: var(--gold) !important;
+      transform: translateY(-2px);
+    }
+
+    .navbar-toggler {
+      border: none;
+      color: white;
+    }
+
+    /* 主要內容區域 */
+    .hero-section {
+      background: linear-gradient(135deg, var(--primary-green) 0%, var(--secondary-green) 100%);
+      color: white;
+      padding: 120px 0 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        radial-gradient(2px 2px at 20px 30px, var(--gold), transparent),
+        radial-gradient(2px 2px at 40px 70px, rgba(212, 175, 55, 0.5), transparent);
+      background-repeat: repeat;
+      background-size: 200px 100px;
+      opacity: 0.3;
+      animation: twinkle 4s ease-in-out infinite alternate;
+    }
+
+    @keyframes twinkle {
+      0% { opacity: 0.3; }
+      100% { opacity: 0.7; }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+    
+    .hero-title {
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      color: var(--gold);
+    }
+    
+    .hero-subtitle {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+      opacity: 0.9;
+    }
+    
+    .hero-description {
+      font-size: 1.1rem;
+      margin-bottom: 2.5rem;
+      opacity: 0.8;
+    }
+
+    .btn-primary-custom {
+      background: var(--gold);
+      border: none;
+      color: var(--primary-green);
+      padding: 12px 30px;
+      font-weight: 600;
+      border-radius: 25px;
+      transition: all 0.3s ease;
+      margin: 0.5rem;
+    }
+
+    .btn-primary-custom:hover {
+      background: #b8941f;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+    }
+
+    .btn-outline-custom {
+      border: 2px solid var(--gold);
+      color: var(--gold);
+      background: transparent;
+      padding: 10px 30px;
+      font-weight: 600;
+      border-radius: 25px;
+      transition: all 0.3s ease;
+      margin: 0.5rem;
+    }
+
+    .btn-outline-custom:hover {
+      background: var(--gold);
+      color: var(--primary-green);
+      transform: translateY(-2px);
+    }
+
+    /* 關於我們區塊 */
+    .about-section {
+      padding: 80px 0;
+      background: var(--bg-light);
+    }
+    
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--primary-green);
+      margin-bottom: 3rem;
+      text-align: center;
+    }
+
+    .about-content {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .about-text h3 {
+      color: var(--primary-green);
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .about-text p {
+      color: var(--text-light);
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .stat-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--primary-green);
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      color: var(--text-light);
+      font-weight: 500;
+    }
+
+    /* 文化體驗活動區塊 */
+    .culture-section {
+      padding: 80px 0;
+      background: white;
+    }
+
+    .activities-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .activity-card {
+      background: white;
+      border-radius: 15px;
+      padding: 2rem;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      border-left: 5px solid var(--gold);
+    }
+
+    .activity-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .activity-icon {
+      font-size: 3rem;
+      color: var(--primary-green);
+      margin-bottom: 1rem;
+    }
+
+    .activity-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary-green);
+      margin-bottom: 1rem;
+    }
+
+    .activity-duration {
+      background: var(--light-green);
+      color: var(--primary-green);
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      display: inline-block;
+      margin-bottom: 1rem;
+    }
+
+    .activity-description {
+      color: var(--text-light);
+      margin-bottom: 1.5rem;
+    }
+
+    .activity-features {
+      list-style: none;
+      padding: 0;
+    }
+
+    .activity-features li {
+      color: var(--text-light);
+      margin-bottom: 0.5rem;
+      padding-left: 1.5rem;
+      position: relative;
+    }
+
+    .activity-features li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--primary-green);
+      font-weight: bold;
+    }
+
+    /* 場域建設進度區塊 */
+    .progress-section {
+      padding: 80px 0;
+      background: var(--bg-light);
+    }
+
+    .progress-timeline {
+      position: relative;
+      max-width: 800px;
+      margin: 3rem auto;
+    }
+
+    .progress-timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--primary-green);
+      transform: translateX(-50%);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 3rem;
+      width: 50%;
+    }
+
+    .timeline-item:nth-child(odd) {
+      left: 0;
+      text-align: right;
+      padding-right: 3rem;
+    }
+
+    .timeline-item:nth-child(even) {
+      left: 50%;
+      text-align: left;
+      padding-left: 3rem;
+    }
+
+    .timeline-content {
+      background: white;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
+
+    .timeline-content::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      width: 0;
+      height: 0;
+      border: 15px solid transparent;
+    }
+
+    .timeline-item:nth-child(odd) .timeline-content::before {
+      right: -30px;
+      border-left-color: white;
+    }
+
+    .timeline-item:nth-child(even) .timeline-content::before {
+      left: -30px;
+      border-right-color: white;
+    }
+
+    .timeline-date {
+      color: var(--gold);
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .timeline-title {
+      color: var(--primary-green);
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .timeline-description {
+      color: var(--text-light);
+    }
+
+    .timeline-image {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .timeline-image:hover {
+      transform: scale(1.02);
+    }
+
+    .timeline-dot {
+      position: absolute;
+      top: 50%;
+      width: 20px;
+      height: 20px;
+      background: var(--gold);
+      border-radius: 50%;
+      transform: translateY(-50%);
+    }
+
+    .timeline-item:nth-child(odd) .timeline-dot {
+      right: -10px;
+    }
+
+    .timeline-item:nth-child(even) .timeline-dot {
+      left: -10px;
+    }
+
+    /* 預約資訊區塊 */
+    .booking-section {
+      padding: 80px 0;
+      background: var(--primary-green);
+      color: white;
+    }
+
+    .booking-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .booking-info h3 {
+      color: var(--gold);
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .booking-info p {
+      margin-bottom: 1rem;
+      opacity: 0.9;
+    }
+
+    .booking-form {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 2rem;
+      border-radius: 15px;
+      backdrop-filter: blur(10px);
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-control {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: white;
+      border-radius: 10px;
+      padding: 12px 15px;
+    }
+
+    .form-control::placeholder {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .form-control:focus {
+      background: rgba(255, 255, 255, 0.2);
+      border-color: var(--gold);
+      box-shadow: 0 0 0 0.2rem rgba(212, 175, 55, 0.25);
+      color: white;
+    }
+
+    /* 頁尾樣式 */
+    .footer {
+      background: #1a1a1a;
+      color: white;
+      padding: 3rem 0 2rem;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .footer-section h5 {
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .footer-section p,
+    .footer-section li {
+      color: #ccc;
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-section ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #333;
+      padding-top: 2rem;
+      text-align: center;
+      color: #999;
+    }
+
+    /* 響應式設計 */
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 2.5rem;
+      }
+
+      .hero-subtitle {
+      font-size: 1.2rem;
+      }
+
+      .about-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .activities-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .progress-timeline::before {
+        left: 20px;
+      }
+
+      .timeline-item {
+      width: 100%;
+        left: 0 !important;
+        text-align: left !important;
+        padding-left: 3rem !important;
+        padding-right: 0 !important;
+      }
+
+      .timeline-item .timeline-dot {
+        left: 10px !important;
+        right: auto !important;
+      }
+
+      .timeline-item .timeline-content::before {
+        left: -30px !important;
+        right: auto !important;
+        border-right-color: white !important;
+        border-left-color: transparent !important;
+      }
+
+      .booking-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .section-title {
+      font-size: 2rem;
+      }
+    }
+
+    /* 動畫效果 */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* 回到頂部按鈕 */
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: var(--primary-green);
+      color: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      opacity: 0;
+      visibility: hidden;
+      z-index: 1000;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-to-top:hover {
+      background: var(--gold);
+      color: var(--primary-green);
+      transform: translateY(-3px);
+    }
+
+    /* ============================================================
+       v2 預約系統升級｜圖片預留系統 + 方案 + 流程 + 信任 + FAQ
+       使用方式：把 <img src="..."> 設定為你的圖片路徑即會自動顯示
+       ============================================================ */
+
+    /* --- 圖片預留插槽 (image slot) --- */
+    .img-slot {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      background: linear-gradient(135deg, rgba(168, 213, 186, 0.35), rgba(74, 124, 89, 0.12));
+      border: 2px dashed rgba(212, 175, 55, 0.55);
+      transition: all 0.3s ease;
+    }
+
+    .img-slot::before {
+      content: '\f03e';
+      font-family: 'Font Awesome 6 Free';
+      font-weight: 900;
+      font-size: 2.4rem;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -110%);
+      color: rgba(44, 85, 48, 0.4);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .img-slot::after {
+      content: attr(data-hint);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, 30%);
+      color: rgba(44, 85, 48, 0.62);
+      font-size: 0.86rem;
+      font-weight: 500;
+      text-align: center;
+      white-space: pre-line;
+      z-index: 1;
+      width: 92%;
+      letter-spacing: 0.02em;
+      line-height: 1.55;
+      pointer-events: none;
+    }
+
+    .img-slot img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      position: relative;
+      z-index: 2;
+    }
+
+    .img-slot img:not([src]),
+    .img-slot img[src=""] {
+      display: none;
+    }
+
+    .img-slot:has(img[src]:not([src=""])) {
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      background: var(--bg-light);
+    }
+
+    .img-slot:has(img[src]:not([src=""]))::before,
+    .img-slot:has(img[src]:not([src=""]))::after {
+      display: none;
+    }
+
+    /* Aspect-ratio variants */
+    .img-slot--banner { aspect-ratio: 3 / 1; }
+    .img-slot--16x9 { aspect-ratio: 16 / 9; }
+    .img-slot--4x3 { aspect-ratio: 4 / 3; }
+    .img-slot--3x2 { aspect-ratio: 3 / 2; }
+    .img-slot--1x1 { aspect-ratio: 1 / 1; }
+
+    @media (max-width: 768px) {
+      .img-slot--banner { aspect-ratio: 16 / 9; }
+    }
+
+    /* --- Booking 整體區塊改為淺底，內部黑綠表單區用 form-zone --- */
+    .booking-section {
+      background: var(--bg-light);
+      color: var(--text-dark);
+    }
+
+    .booking-section .section-title {
+      color: var(--primary-green) !important;
+    }
+
+    .section-subtitle {
+      font-size: 1.6rem;
+      color: var(--primary-green);
+      font-weight: 700;
+      text-align: center;
+      margin: 0 0 0.4rem;
+      line-height: 1.4;
+    }
+
+    .section-subsub {
+      text-align: center;
+      color: var(--text-light);
+      margin-bottom: 2.5rem;
+      font-size: 0.95rem;
+    }
+
+    /* --- Banner --- */
+    .booking-banner {
+      margin-bottom: 4rem;
+      position: relative;
+    }
+
+    .booking-banner .img-slot {
+      border-radius: 24px;
+    }
+
+    .booking-banner-img {
+      border-radius: 24px;
+      overflow: hidden;
+      aspect-ratio: 16 / 7;
+      box-shadow: 0 12px 32px rgba(44, 85, 48, 0.18);
+      position: relative;
+    }
+
+    .booking-banner-img::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 40%, rgba(26, 61, 34, 0.45) 100%);
+      pointer-events: none;
+    }
+
+    .booking-banner-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .booking-banner-text {
+      text-align: center;
+      padding: 0 1rem;
+      margin-top: -3rem;
+      position: relative;
+      z-index: 3;
+    }
+
+    .booking-banner-text h2 {
+      background: white;
+      display: inline-block;
+      padding: 1rem 2.5rem;
+      border-radius: 50px;
+      box-shadow: 0 12px 32px rgba(44, 85, 48, 0.18);
+      color: var(--primary-green);
+      font-size: 1.9rem;
+      font-weight: 700;
+      margin: 0 0 1rem;
+      letter-spacing: 0.02em;
+    }
+
+    .booking-banner-text p {
+      color: white;
+      font-size: 1rem;
+      max-width: 720px;
+      margin: 0 auto;
+      background: rgba(44, 85, 48, 0.9);
+      padding: 0.85rem 1.5rem;
+      border-radius: 12px;
+      backdrop-filter: blur(10px);
+      line-height: 1.7;
+    }
+
+    @media (max-width: 768px) {
+      .booking-banner-text h2 {
+        font-size: 1.4rem;
+        padding: 0.8rem 1.4rem;
+      }
+
+      .booking-banner-text p {
+        font-size: 0.92rem;
+        padding: 0.7rem 1rem;
+      }
+    }
+
+    /* --- Plan cards --- */
+    .plan-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin: 0 0 4rem;
+    }
+
+    .plan-card {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+      border: 2px solid transparent;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+    }
+
+    .plan-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(44, 85, 48, 0.15);
+      border-color: var(--light-green);
+    }
+
+    .plan-card.is-selected {
+      border-color: var(--gold);
+      box-shadow: 0 16px 40px rgba(212, 175, 55, 0.25);
+    }
+
+    .plan-card.is-selected::before {
+      content: '\f00c';
+      font-family: 'Font Awesome 6 Free';
+      font-weight: 900;
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      width: 36px;
+      height: 36px;
+      background: var(--gold);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 5;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .plan-card { position: relative; }
+
+    .plan-card .img-slot {
+      border-radius: 0;
+      border-left: none;
+      border-right: none;
+      border-top: none;
+      aspect-ratio: 4 / 3;
+    }
+
+    .plan-card-body {
+      padding: 1.5rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .plan-tag {
+      display: inline-block;
+      background: var(--light-green);
+      color: var(--primary-green);
+      padding: 0.28rem 0.85rem;
+      border-radius: 999px;
+      font-size: 0.74rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      align-self: flex-start;
+      letter-spacing: 0.04em;
+    }
+
+    .plan-tag.tag-esg {
+      background: rgba(212, 175, 55, 0.2);
+      color: #8a6d18;
+    }
+
+    .plan-tag.tag-custom {
+      background: #ece6d4;
+      color: #6b5217;
+    }
+
+    .plan-card h4 {
+      color: var(--primary-green);
+      font-size: 1.2rem;
+      margin: 0 0 0.4rem;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    .plan-card .plan-eng {
+      color: var(--text-light);
+      font-size: 0.76rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .plan-feat {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 1rem;
+      flex: 1;
+    }
+
+    .plan-feat li {
+      font-size: 0.88rem;
+      color: var(--text-dark);
+      padding: 0.32rem 0;
+      display: flex;
+      gap: 0.55rem;
+      line-height: 1.5;
+    }
+
+    .plan-feat li i {
+      color: var(--gold);
+      font-size: 0.7rem;
+      margin-top: 0.38rem;
+      flex-shrink: 0;
+    }
+
+    .plan-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(0, 0, 0, 0.06);
+      font-size: 0.85rem;
+    }
+
+    .plan-duration {
+      color: var(--text-light);
+    }
+
+    .plan-price {
+      color: var(--primary-green);
+      font-weight: 700;
+    }
+
+    /* --- Process steps --- */
+    .process-section {
+      background: white;
+      padding: 3.5rem 2rem;
+      border-radius: 24px;
+      margin-bottom: 4rem;
+      box-shadow: 0 4px 24px rgba(44, 85, 48, 0.06);
+    }
+
+    .process-section h3 {
+      text-align: center;
+      color: var(--primary-green);
+      font-size: 1.6rem;
+      margin-bottom: 0.4rem;
+      font-weight: 700;
+    }
+
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1.5rem;
+      position: relative;
+      margin-top: 2.5rem;
+    }
+
+    .process-steps::before {
+      content: '';
+      position: absolute;
+      top: 30px;
+      left: 8%;
+      right: 8%;
+      height: 2px;
+      background: repeating-linear-gradient(90deg, var(--light-green) 0, var(--light-green) 8px, transparent 8px, transparent 14px);
+      z-index: 0;
+    }
+
+    @media (max-width: 768px) {
+      .process-steps::before { display: none; }
+    }
+
+    .process-step {
+      background: var(--bg-light);
+      border-radius: 16px;
+      padding: 2rem 1.25rem 1.5rem;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+      transition: transform 0.3s ease;
+    }
+
+    .process-step:hover {
+      transform: translateY(-4px);
+    }
+
+    .process-step .step-num {
+      position: absolute;
+      top: -22px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.15rem;
+      box-shadow: 0 6px 16px rgba(44, 85, 48, 0.3);
+      border: 4px solid white;
+    }
+
+    .process-step .step-icon {
+      font-size: 1.7rem;
+      color: var(--gold);
+      margin: 1rem 0 0.75rem;
+    }
+
+    .process-step h5 {
+      color: var(--primary-green);
+      font-size: 1.02rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+
+    .process-step p {
+      font-size: 0.84rem;
+      color: var(--text-light);
+      margin: 0;
+      line-height: 1.55;
+    }
+
+    /* --- 表單區（深綠背景包裝） --- */
+    .booking-form-zone {
+      background: var(--primary-green);
+      color: white;
+      border-radius: 24px;
+      padding: 3rem;
+      margin-bottom: 4rem;
+      box-shadow: 0 12px 40px rgba(44, 85, 48, 0.18);
+    }
+
+    .booking-form-zone .booking-content {
+      grid-template-columns: 1fr 1.2fr;
+    }
+
+    @media (max-width: 992px) {
+      .booking-form-zone {
+        padding: 2rem 1.5rem;
+        border-radius: 16px;
+      }
+      .booking-form-zone .booking-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+    }
+
+    /* --- 預約資訊強化 --- */
+    .booking-info-img {
+      margin-bottom: 1.25rem;
+    }
+
+    .booking-info-img .img-slot {
+      aspect-ratio: 4 / 3;
+      background: linear-gradient(135deg, rgba(168, 213, 186, 0.45), rgba(255, 255, 255, 0.15));
+      border-color: rgba(212, 175, 55, 0.7);
+    }
+
+    .booking-info-img .img-slot::before,
+    .booking-info-img .img-slot::after {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .info-block {
+      background: rgba(255, 255, 255, 0.06);
+      border-left: 3px solid var(--gold);
+      padding: 1rem 1.25rem;
+      border-radius: 0 12px 12px 0;
+      margin-bottom: 0.85rem;
+    }
+
+    .info-block h4 {
+      color: var(--gold);
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+    }
+
+    .info-block p,
+    .info-block li {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 0.9rem;
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    .info-block ul {
+      padding-left: 1.2rem;
+      margin: 0;
+    }
+
+    .info-block ul li {
+      margin-bottom: 0.2rem;
+    }
+
+    /* --- 表單強化 --- */
+    .form-section-title {
+      color: var(--gold);
+      font-size: 0.82rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-top: 1.75rem;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .form-section-title:first-of-type {
+      margin-top: 0;
+    }
+
+    .form-section-title .num {
+      width: 22px;
+      height: 22px;
+      background: var(--gold);
+      color: var(--primary-green);
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.72rem;
+      font-weight: 700;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    @media (max-width: 540px) {
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .form-row .form-group {
+      margin-bottom: 0;
+    }
+
+    .form-label {
+      display: block;
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 0.82rem;
+      margin-bottom: 0.4rem;
+      font-weight: 500;
+    }
+
+    .form-label.required::after {
+      content: ' *';
+      color: var(--gold);
+      font-weight: 700;
+    }
+
+    select.form-control {
+      background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' fill='%23ffffff' viewBox='0 0 16 16'%3E%3Cpath d='M3.204 5L8 10.481 12.796 5z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 15px center;
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      padding-right: 40px;
+    }
+
+    select.form-control option {
+      background: var(--primary-green);
+      color: white;
+    }
+
+    .form-check-group {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 0.55rem;
+      margin-top: 0.5rem;
+    }
+
+    .form-check-custom {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 0.88rem;
+      cursor: pointer;
+      padding: 0.5rem 0.75rem;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: all 0.2s ease;
+      user-select: none;
+      margin: 0;
+    }
+
+    .form-check-custom:hover {
+      background: rgba(255, 255, 255, 0.07);
+      border-color: var(--gold);
+    }
+
+    .form-check-custom input {
+      accent-color: var(--gold);
+      cursor: pointer;
+    }
+
+    .form-check-custom input:checked + span {
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    .notice-card {
+      background: rgba(212, 175, 55, 0.12);
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      border-radius: 12px;
+      padding: 1rem 1.25rem;
+      font-size: 0.85rem;
+      line-height: 1.7;
+      margin-top: 1.5rem;
+      color: rgba(255, 255, 255, 0.92);
+    }
+
+    .notice-card strong {
+      color: var(--gold);
+      display: block;
+      margin-bottom: 0.3rem;
+      font-size: 0.92rem;
+    }
+
+    /* --- Trust 區 --- */
+    .trust-section {
+      background: white;
+      padding: 3.5rem 2rem;
+      border-radius: 24px;
+      margin-bottom: 3rem;
+      box-shadow: 0 4px 24px rgba(44, 85, 48, 0.06);
+    }
+
+    .trust-logos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1rem;
+      margin: 2rem 0 0;
+    }
+
+    .trust-logo-slot {
+      background: var(--bg-light);
+      border-radius: 12px;
+      border: 2px dashed rgba(168, 213, 186, 0.6);
+      aspect-ratio: 3 / 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .trust-logo-slot:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 16px rgba(44, 85, 48, 0.1);
+    }
+
+    .trust-logo-slot img {
+      max-width: 78%;
+      max-height: 78%;
+      object-fit: contain;
+    }
+
+    .trust-logo-slot img:not([src]),
+    .trust-logo-slot img[src=""] {
+      display: none;
+    }
+
+    .trust-logo-slot::after {
+      content: attr(data-hint);
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(44, 85, 48, 0.5);
+      font-size: 0.76rem;
+      font-weight: 500;
+      text-align: center;
+      padding: 0.5rem;
+      pointer-events: none;
+      white-space: pre-line;
+      line-height: 1.4;
+    }
+
+    .trust-logo-slot:has(img[src]:not([src=""])) {
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      background: white;
+    }
+
+    .trust-logo-slot:has(img[src]:not([src=""]))::after {
+      display: none;
+    }
+
+    /* --- FAQ --- */
+    .faq-list {
+      max-width: 800px;
+      margin: 2rem auto 0;
+    }
+
+    .faq-item {
+      background: var(--bg-light);
+      border-radius: 12px;
+      margin-bottom: 0.75rem;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .faq-item[open] {
+      box-shadow: 0 4px 16px rgba(44, 85, 48, 0.08);
+    }
+
+    .faq-item summary {
+      padding: 1.2rem 1.5rem;
+      cursor: pointer;
+      font-weight: 600;
+      color: var(--primary-green);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      list-style: none;
+      transition: background 0.2s ease;
+      font-size: 0.96rem;
+    }
+
+    .faq-item summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-item summary:hover {
+      background: rgba(168, 213, 186, 0.12);
+    }
+
+    .faq-item summary::after {
+      content: '+';
+      margin-left: auto;
+      font-size: 1.5rem;
+      color: var(--gold);
+      font-weight: 300;
+      transition: transform 0.3s ease;
+      line-height: 1;
+    }
+
+    .faq-item[open] summary::after {
+      transform: rotate(45deg);
+    }
+
+    .faq-body {
+      padding: 0 1.5rem 1.25rem 3.25rem;
+      color: var(--text-light);
+      font-size: 0.9rem;
+      line-height: 1.75;
+    }
+
+    .faq-body strong {
+      color: var(--primary-green);
+    }
+
+    /* ============================================================
+       v3 整合｜真實照片導入版（Why-Us / Plans / Cases / Venue）
+       ============================================================ */
+
+    /* --- Hero 升級為真實場域照片背景（v4：改用 20251129 系列充滿生命力的人物互動照） --- */
+    .hero-section {
+      background:
+        linear-gradient(135deg, rgba(26, 61, 34, 0.78) 0%, rgba(44, 85, 48, 0.85) 50%, rgba(20, 36, 24, 0.7) 100%),
+        url('../images/SamSamma/20251129/園區轉角竹材+發起人與人討論照片.webp') center/cover no-repeat;
+      background-attachment: scroll;
+    }
+
+    /* ============================================================
+       v4 紀錄片化 — Now Happening 區塊 + Polaroid 拍立得排版
+       ============================================================ */
+
+    .now-section {
+      padding: 90px 0 80px;
+      background: linear-gradient(180deg, #fdf8ec 0%, #ffffff 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .now-section::before {
+      content: '';
+      position: absolute;
+      top: -40px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 1px;
+      height: 80px;
+      background: linear-gradient(180deg, transparent 0%, var(--gold) 100%);
+      opacity: 0.5;
+    }
+
+    .now-head {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .now-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      background: rgba(212, 175, 55, 0.18);
+      color: var(--primary-green);
+      padding: 0.4rem 1rem;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      margin-bottom: 1rem;
+    }
+
+    .now-pulse {
+      width: 8px;
+      height: 8px;
+      background: #d4543a;
+      border-radius: 50%;
+      box-shadow: 0 0 0 0 rgba(212, 84, 58, 0.6);
+      animation: nowPulse 1.8s infinite;
+    }
+
+    @keyframes nowPulse {
+      0% { box-shadow: 0 0 0 0 rgba(212, 84, 58, 0.6); }
+      70% { box-shadow: 0 0 0 10px rgba(212, 84, 58, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(212, 84, 58, 0); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .now-pulse { animation: none; }
+    }
+
+    .now-title {
+      color: var(--primary-green);
+      font-size: 1.9rem;
+      font-weight: 700;
+      line-height: 1.4;
+      max-width: 760px;
+      margin: 0 auto 0.5rem;
+    }
+
+    .now-date {
+      color: var(--text-light);
+      font-family: 'Inter', monospace;
+      font-size: 0.85rem;
+      letter-spacing: 0.06em;
+    }
+
+    .now-content {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 3rem;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 900px) {
+      .now-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+    }
+
+    .now-text {
+      color: var(--text-dark);
+      font-size: 1rem;
+      line-height: 1.95;
+    }
+
+    .now-text p {
+      margin-bottom: 1rem;
+    }
+
+    .now-text p:first-child::first-letter {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--primary-green);
+      float: left;
+      line-height: 1;
+      margin: 0.2rem 0.5rem 0 0;
+      font-family: 'Noto Sans TC', serif;
+    }
+
+    .now-signature {
+      color: var(--text-light);
+      font-style: italic;
+      font-size: 0.9rem;
+      margin-top: 1.5rem !important;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    /* Polaroid 拍立得排版 */
+    .now-polaroids {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+      padding: 1rem 0;
+    }
+
+    .polaroid {
+      background: white;
+      padding: 0.7rem 0.7rem 1.3rem;
+      box-shadow:
+        0 10px 26px rgba(20, 36, 24, 0.12),
+        0 1px 3px rgba(0, 0, 0, 0.06);
+      transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+      margin: 0;
+      cursor: pointer;
+      transform-origin: center center;
+    }
+
+    .polaroid:nth-child(1) { transform: rotate(-2deg); }
+    .polaroid:nth-child(2) { transform: rotate(1.5deg); margin-top: 1rem; }
+    .polaroid:nth-child(3) { transform: rotate(2deg); margin-top: -0.5rem; }
+    .polaroid:nth-child(4) { transform: rotate(-1.5deg); margin-top: 0.5rem; }
+
+    .polaroid:hover {
+      transform: rotate(0deg) translateY(-8px) scale(1.04);
+      z-index: 5;
+      box-shadow:
+        0 20px 40px rgba(20, 36, 24, 0.2),
+        0 2px 4px rgba(0, 0, 0, 0.06);
+    }
+
+    .polaroid-img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      background: var(--bg-light);
+      display: block;
+    }
+
+    .polaroid-caption {
+      text-align: center;
+      font-family: 'Noto Sans TC', sans-serif;
+      color: var(--text-dark);
+      font-size: 0.85rem;
+      margin-top: 0.85rem;
+      font-style: italic;
+      letter-spacing: 0.02em;
+    }
+
+    /* 故事卡（Our Story 強化版，原 Why-Us 沿用） */
+    .story-prelude {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto 3rem;
+      font-size: 1.05rem;
+      line-height: 1.9;
+      color: var(--text-dark);
+      font-style: italic;
+      position: relative;
+      padding: 0 2rem;
+    }
+
+    .story-prelude::before,
+    .story-prelude::after {
+      font-family: serif;
+      font-size: 3rem;
+      color: var(--gold);
+      opacity: 0.4;
+      position: absolute;
+      line-height: 0.5;
+    }
+
+    .story-prelude::before {
+      content: '\201C';
+      top: 0.2em;
+      left: 0;
+    }
+
+    .story-prelude::after {
+      content: '\201D';
+      bottom: -0.5em;
+      right: 0;
+    }
+
+    /* Join Us（原 Plans）邀請感調整 */
+    .join-soft-tag {
+      display: inline-block;
+      background: rgba(168, 213, 186, 0.4);
+      color: var(--primary-green);
+      font-weight: 500;
+      padding: 0.18rem 0.6rem;
+      border-radius: 4px;
+      font-size: 0.72rem;
+      letter-spacing: 0.03em;
+    }
+
+    .hero-visual-card {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      border-radius: 24px;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+    }
+
+    .hero-visual-card .logo-circle {
+      width: 140px;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 4px solid var(--gold);
+      box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+      background: white;
+    }
+
+    .hero-fact-chips {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.4rem;
+      margin-top: 1.25rem;
+    }
+
+    .hero-fact-chip {
+      background: rgba(212, 175, 55, 0.18);
+      border: 1px solid rgba(212, 175, 55, 0.5);
+      color: var(--gold);
+      font-size: 0.78rem;
+      padding: 0.3rem 0.7rem;
+      border-radius: 999px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+
+    /* --- Why-Us Section --- */
+    .why-section {
+      padding: 80px 0;
+      background: var(--bg-light);
+    }
+
+    .why-eyebrow {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--primary-green);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.85rem;
+      border-radius: 4px;
+      font-weight: 700;
+      margin-bottom: 0.85rem;
+    }
+
+    .why-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 4rem;
+      margin: 3rem 0 4rem;
+    }
+
+    .why-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .why-card.reverse .why-img {
+      order: 2;
+    }
+
+    @media (max-width: 768px) {
+      .why-card,
+      .why-card.reverse {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      .why-card.reverse .why-img {
+        order: 0;
+      }
+    }
+
+    .why-img {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      box-shadow: 0 16px 40px rgba(44, 85, 48, 0.18);
+    }
+
+    .why-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+      display: block;
+    }
+
+    .why-card:hover .why-img img {
+      transform: scale(1.05);
+    }
+
+    .why-img-badge {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      background: rgba(26, 61, 34, 0.92);
+      color: var(--gold);
+      font-family: 'Inter', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      padding: 0.3rem 0.7rem;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+
+    .why-num {
+      display: inline-block;
+      background: var(--primary-green);
+      color: var(--gold);
+      font-family: 'Inter', monospace;
+      font-weight: 700;
+      font-size: 0.85rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: 4px;
+      letter-spacing: 0.08em;
+      margin-bottom: 1rem;
+    }
+
+    .why-content h3 {
+      color: var(--primary-green);
+      font-size: 1.7rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+      line-height: 1.3;
+    }
+
+    .why-eng {
+      color: var(--text-light);
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .why-content p {
+      color: var(--text-dark);
+      font-size: 1rem;
+      line-height: 1.85;
+      margin-bottom: 1rem;
+    }
+
+    .why-content p strong {
+      color: var(--primary-green);
+      background: linear-gradient(180deg, transparent 60%, rgba(212, 175, 55, 0.25) 60%);
+      padding: 0 2px;
+    }
+
+    .why-proof {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: white;
+      border-left: 3px solid var(--gold);
+      border-radius: 6px;
+      color: var(--primary-green);
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .why-proof i {
+      color: var(--gold);
+    }
+
+    .why-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    @media (max-width: 768px) {
+      .why-stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .why-stat {
+      text-align: center;
+      padding: 1.5rem 1rem;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      border-top: 3px solid var(--gold);
+      transition: transform 0.3s ease;
+    }
+
+    .why-stat:hover {
+      transform: translateY(-4px);
+    }
+
+    .why-stat-value {
+      font-family: 'Inter', monospace;
+      color: var(--primary-green);
+      font-size: 1.9rem;
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+
+    .why-stat-label {
+      color: var(--text-light);
+      font-size: 0.82rem;
+      margin-top: 0.4rem;
+      line-height: 1.4;
+    }
+
+    /* --- Plans Section (拆出獨立區塊) --- */
+    .plans-section {
+      padding: 80px 0;
+      background: white;
+    }
+
+    /* 真實圖片版方案卡（沿用原 .plan-card root style，新增子元素） */
+    .plan-card-img {
+      position: relative;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      background: var(--primary-green);
+    }
+
+    .plan-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+      display: block;
+    }
+
+    .plan-card:hover .plan-card-img img {
+      transform: scale(1.06);
+    }
+
+    .plan-card-tag {
+      position: absolute;
+      top: 0.85rem;
+      left: 0.85rem;
+      background: var(--gold);
+      color: var(--primary-green);
+      font-weight: 700;
+      font-size: 0.72rem;
+      padding: 0.28rem 0.7rem;
+      border-radius: 999px;
+      letter-spacing: 0.04em;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    .plan-card-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+      color: var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      margin-bottom: 0.85rem;
+      box-shadow: 0 6px 14px rgba(44, 85, 48, 0.2);
+    }
+
+    .plan-card-title {
+      color: var(--primary-green);
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin: 0 0 0.25rem;
+      line-height: 1.3;
+    }
+
+    .plan-card-subtitle {
+      color: var(--text-light);
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 0.85rem;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .plan-card-desc {
+      color: var(--text-dark);
+      font-size: 0.92rem;
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+
+    .plan-card-features {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 1.25rem;
+      flex: 1;
+    }
+
+    .plan-card-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.55rem;
+      font-size: 0.88rem;
+      color: var(--text-dark);
+      padding: 0.3rem 0;
+      line-height: 1.5;
+    }
+
+    .plan-card-features li i {
+      color: var(--secondary-green);
+      font-size: 0.85rem;
+      margin-top: 0.2rem;
+      flex-shrink: 0;
+    }
+
+    .plan-card-cta {
+      background: var(--primary-green);
+      color: white;
+      border: none;
+      padding: 0.85rem 1.25rem;
+      border-radius: 12px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      width: 100%;
+      font-family: inherit;
+    }
+
+    .plan-card-cta:hover {
+      background: var(--secondary-green);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(44, 85, 48, 0.25);
+    }
+
+    .plan-card-cta i {
+      transition: transform 0.3s ease;
+    }
+
+    .plan-card-cta:hover i {
+      transform: translateX(4px);
+    }
+
+    .plan-card.is-selected .plan-card-cta {
+      background: var(--gold);
+      color: var(--primary-green);
+    }
+
+    /* --- Cases Gallery --- */
+    .cases-section {
+      padding: 80px 0;
+      background: var(--bg-light);
+    }
+
+    .cases-filter {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem;
+      margin: 2rem 0 3rem;
+    }
+
+    .cases-filter-btn {
+      background: white;
+      border: 1px solid rgba(0,0,0,0.08);
+      color: var(--text-dark);
+      padding: 0.55rem 1.2rem;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      font-family: inherit;
+    }
+
+    .cases-filter-btn:hover {
+      border-color: var(--secondary-green);
+      color: var(--primary-green);
+      transform: translateY(-1px);
+    }
+
+    .cases-filter-btn.is-active {
+      background: var(--primary-green);
+      color: white;
+      border-color: var(--primary-green);
+      box-shadow: 0 4px 12px rgba(44, 85, 48, 0.25);
+    }
+
+    .cases-filter-btn .count {
+      display: inline-block;
+      margin-left: 0.4rem;
+      background: rgba(0,0,0,0.06);
+      padding: 0.05rem 0.45rem;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-family: 'Inter', monospace;
+    }
+
+    .cases-filter-btn.is-active .count {
+      background: rgba(255,255,255,0.2);
+      color: white;
+    }
+
+    .cases-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1rem;
+      position: relative;
+    }
+
+    /* 折疊狀態：只顯示前 12 張(3 行 × 4 列)，第 13 張之後隱藏
+       配合 JS 控制：filter !== 'all' 時自動展開 */
+    .cases-grid.is-collapsed > .case-item.is-over-limit {
+      display: none;
+    }
+
+    /* 折疊狀態：底部漸層遮罩，暗示「下面還有更多」 */
+    .cases-grid.is-collapsed::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 120px;
+      background: linear-gradient(to bottom, rgba(248, 249, 250, 0) 0%, var(--bg-light) 90%);
+      pointer-events: none;
+    }
+
+    /* 展開/收合按鈕 */
+    .cases-toggle-wrap {
+      display: flex;
+      justify-content: center;
+      margin-top: 2.5rem;
+    }
+
+    .cases-toggle-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.95rem 2.2rem;
+      background: var(--white);
+      color: var(--bamboo-deep);
+      border: 1.5px solid var(--bamboo-deep);
+      border-radius: 999px;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 14px rgba(26, 61, 34, 0.08);
+    }
+
+    .cases-toggle-btn:hover {
+      background: var(--bamboo-deep);
+      color: var(--white);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 22px rgba(26, 61, 34, 0.18);
+    }
+
+    .cases-toggle-btn .chev {
+      transition: transform 0.3s ease;
+    }
+
+    .cases-toggle-btn[aria-expanded="true"] .chev {
+      transform: rotate(180deg);
+    }
+
+    .cases-toggle-btn .count-hint {
+      font-weight: 400;
+      opacity: 0.7;
+      font-size: 0.92em;
+    }
+
+    /* 按鈕在「filter !== all」時隱藏（個別分類照片都 ≤ 7 張不需要折疊） */
+    .cases-toggle-wrap.is-disabled {
+      display: none;
+    }
+
+    .case-item {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      background: var(--primary-green);
+    }
+
+    .case-item.is-hidden {
+      display: none;
+    }
+
+    .case-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: all 0.5s ease;
+      display: block;
+    }
+
+    .case-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 32px rgba(44, 85, 48, 0.25);
+    }
+
+    .case-item:hover img {
+      transform: scale(1.08);
+    }
+
+    .case-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(26, 61, 34, 0.92) 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 1.2rem;
+      color: white;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .case-item:hover .case-overlay,
+    .case-item:focus .case-overlay {
+      opacity: 1;
+    }
+
+    .case-date {
+      display: inline-block;
+      font-family: 'Inter', monospace;
+      font-size: 0.72rem;
+      background: var(--gold);
+      color: var(--primary-green);
+      padding: 0.15rem 0.55rem;
+      border-radius: 999px;
+      font-weight: 700;
+      align-self: flex-start;
+      margin-bottom: 0.5rem;
+    }
+
+    .case-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin: 0;
+      line-height: 1.4;
+      color: white;
+    }
+
+    .case-cat {
+      position: absolute;
+      top: 0.8rem;
+      right: 0.8rem;
+      background: rgba(255, 255, 255, 0.92);
+      color: var(--primary-green);
+      padding: 0.22rem 0.7rem;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      backdrop-filter: blur(8px);
+    }
+
+    /* --- Venue Section --- */
+    .venue-section {
+      padding: 80px 0;
+      background: white;
+    }
+
+    .mini-timeline {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      margin: 2rem auto 3.5rem;
+      padding: 1.5rem 1.25rem;
+      background: linear-gradient(135deg, var(--bg-light), #ffffff);
+      border-radius: 16px;
+      max-width: 980px;
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+
+    .mini-tl-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      white-space: nowrap;
+    }
+
+    .mini-tl-date {
+      background: var(--primary-green);
+      color: white;
+      font-family: 'Inter', monospace;
+      font-weight: 700;
+      padding: 0.28rem 0.6rem;
+      border-radius: 6px;
+      font-size: 0.74rem;
+    }
+
+    .mini-tl-text {
+      color: var(--text-dark);
+      font-weight: 500;
+    }
+
+    .mini-tl-sep {
+      color: var(--gold);
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+
+    @media (max-width: 768px) {
+      .mini-tl-sep {
+        display: none;
+      }
+      .mini-tl-item {
+        width: 100%;
+        justify-content: flex-start;
+      }
+    }
+
+    .venue-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .venue-card {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.07);
+      transition: all 0.3s ease;
+      border: 1px solid rgba(0,0,0,0.04);
+    }
+
+    .venue-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 14px 32px rgba(44, 85, 48, 0.18);
+    }
+
+    .venue-img {
+      position: relative;
+      aspect-ratio: 4/3;
+      overflow: hidden;
+    }
+
+    .venue-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+      display: block;
+    }
+
+    .venue-card:hover .venue-img img {
+      transform: scale(1.08);
+    }
+
+    .venue-status {
+      position: absolute;
+      top: 0.75rem;
+      right: 0.75rem;
+      background: var(--secondary-green);
+      color: white;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 0.22rem 0.6rem;
+      border-radius: 999px;
+      letter-spacing: 0.04em;
+    }
+
+    .venue-status.is-progress {
+      background: var(--gold);
+      color: var(--primary-green);
+    }
+
+    .venue-card-body {
+      padding: 1.25rem;
+    }
+
+    .venue-card h4 {
+      color: var(--primary-green);
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin: 0 0 0.4rem;
+    }
+
+    .venue-card p {
+      color: var(--text-light);
+      font-size: 0.86rem;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* --- 區塊小標升級（共用） --- */
+    .section-eyebrow {
+      display: inline-block;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--secondary-green);
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+    }
+
+    .section-lede {
+      max-width: 720px;
+      margin: 0 auto 0.5rem;
+      color: var(--text-light);
+      font-size: 1rem;
+      line-height: 1.75;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 導航欄 -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#home">
+        <img src="../images/sa.webp" alt="山莎蔓岸合作社" class="navbar-logo">
+        <span>山莎蔓岸合作社</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#home"><span data-i18n-lang="zh">首頁</span><span data-i18n-lang="en">Home</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#now"><span data-i18n-lang="zh">近期動態</span><span data-i18n-lang="en">Latest</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#why-us"><span data-i18n-lang="zh">我們的足跡</span><span data-i18n-lang="en">Our Story</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#plans"><span data-i18n-lang="zh">來山裡走走</span><span data-i18n-lang="en">Visit Us</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#cases"><span data-i18n-lang="zh">真實案例</span><span data-i18n-lang="en">Stories</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#venue"><span data-i18n-lang="zh">場域導覽</span><span data-i18n-lang="en">The Site</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#booking"><span data-i18n-lang="zh">預約</span><span data-i18n-lang="en">Book</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#contact"><span data-i18n-lang="zh">聯絡</span><span data-i18n-lang="en">Contact</span></a>
+          </li>
+          <li class="nav-item ms-lg-2">
+            <span class="lang-switch" aria-label="Language switch">
+              <a href="?lang=en" data-lang-btn="en">EN</a>
+              <a href="?lang=zh" data-lang-btn="zh">繁中</a>
+            </span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 1. 首頁 Hero · The Spirit（v4：紀錄片化，去推銷感） -->
+  <section id="home" class="hero-section">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-7">
+          <div class="hero-content" data-aos="fade-right">
+            <h1 class="hero-title">
+              <span data-i18n-lang="zh">我們在這裡，<br>
+              親手把文化<br>
+              <span style="color: var(--gold);">種回土地裡。</span></span>
+              <span data-i18n-lang="en">Here, we plant<br>
+              our culture back<br>
+              <span style="color: var(--gold);">into the land — by hand.</span></span>
+            </h1>
+            <p class="hero-subtitle"><span data-i18n-lang="zh">賽夏族大隘部落 · 山莎蔓岸竹木產業生產合作社</span><span data-i18n-lang="en">Saisiyat Daai Tribe · SamSamma Bamboo Industry Production Co-op</span></p>
+            <p class="hero-description">
+              <span data-i18n-lang="zh">12 公頃竹林，是族人世世代代守護的家。
+              我們用雙手、用竹子、用時間，把文化種回土地，
+              也把土地的故事，慢慢說給願意停下來聽的人。</span>
+              <span data-i18n-lang="en">Twelve hectares of bamboo forest — the home our people have guarded for generations.
+              With our hands, our bamboo, and our time, we plant culture back into the land,
+              and slowly tell the land's story to those willing to stop and listen.</span>
+            </p>
+            <div class="hero-buttons">
+              <a href="#now" class="btn btn-primary-custom"><span data-i18n-lang="zh">看看我們最近在忙什麼</span><span data-i18n-lang="en">See what we're up to</span></a>
+              <a href="#why-us" class="btn btn-outline-custom"><span data-i18n-lang="zh">關於我們</span><span data-i18n-lang="en">About Us</span></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-5">
+          <div class="hero-visual" data-aos="fade-left">
+            <div class="hero-visual-card">
+              <img src="../images/sa.webp" alt="山莎蔓岸合作社識別" class="logo-circle">
+              <h3 class="mt-3" style="color: var(--gold); font-weight: 700;"><span data-i18n-lang="zh">山莎蔓岸</span><span data-i18n-lang="en">SamSamma</span></h3>
+              <p style="opacity: 0.9; margin: 0.5rem 0 0;"><span data-i18n-lang="zh">竹文化 · 永續低碳 · 部落自主</span><span data-i18n-lang="en">Bamboo culture · Low-carbon · Tribal autonomy</span></p>
+              <div class="hero-fact-chips">
+                <span class="hero-fact-chip"><span data-i18n-lang="zh">12 公頃竹林</span><span data-i18n-lang="en">12 ha bamboo</span></span>
+                <span class="hero-fact-chip"><span data-i18n-lang="zh">2024 部落成立</span><span data-i18n-lang="en">Founded 2024</span></span>
+                <span class="hero-fact-chip"><span data-i18n-lang="zh">明新科大 USR</span><span data-i18n-lang="en">MUST USR</span></span>
+                <span class="hero-fact-chip"><span data-i18n-lang="zh">2026 京都連結</span><span data-i18n-lang="en">2026 Kyoto link</span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Now Happening · 園區日誌（v4 新增｜現在進行式） -->
+  <section id="now" class="now-section">
+    <div class="container">
+      <div class="now-head" data-aos="fade-up">
+        <span class="now-eyebrow">
+          <span class="now-pulse"></span>
+          NOW HAPPENING · <span data-i18n-lang="zh">園區日誌</span><span data-i18n-lang="en">Field Journal</span>
+        </span>
+        <h2 class="now-title"><span data-i18n-lang="zh">五月，攜手籌備前往日本的竹工藝展</span><span data-i18n-lang="en">May: preparing together for a bamboo-craft exhibition in Japan</span></h2>
+        <div class="now-date"><span data-i18n-lang="zh">2026 年 5 月｜大隘部落紀錄</span><span data-i18n-lang="en">May 2026 | Daai Tribe journal</span></div>
+      </div>
+  
+      <div class="now-content">
+        <div class="now-text" data-aos="fade-right">
+          <p>
+            <span data-i18n-lang="zh">最近，園區正為了一項即將遠行的計畫而充滿期待。透過明新科大的計畫推動，我們即將把臺灣優美的竹藝品帶往日本交流。</span>
+            <span data-i18n-lang="en">Lately the site has been full of anticipation for a journey ahead. Through a program led by Minghsin University of Science and Technology (MUST), we are about to bring Taiwan's beautiful bamboo crafts to Japan for exchange.</span>
+          </p>
+          <p>
+            <span data-i18n-lang="zh">這次展演匯聚了跨界的力量，由技藝精湛的專業工藝師傾注心力操刀。看著他們熟練地將竹篾交織，
+            展現深厚的工藝底蘊，園區的夥伴們則化身幕後推手，從旁協助籌劃與連結資源。這是一場串聯技藝與心意的合作 —— 
+            我們將這份職人精神帶上飛機，帶去京都，帶給願意看見的世界。</span>
+            <span data-i18n-lang="en">This showcase brings together cross-disciplinary forces, crafted with devotion by master artisans. Watching them skillfully weave bamboo strips,
+            revealing deep craftsmanship, the site's members became the behind-the-scenes hands — helping plan and connect resources. It is a collaboration of skill and heart ——
+            we carry this artisan spirit onto the plane, to Kyoto, to a world willing to see.</span>
+          </p>
+          <p>
+            <span data-i18n-lang="zh">五月底，這四件作品將在京都府龜岡市的工藝展，被遠方的人輕輕拿起、慢慢端詳。</span>
+            <span data-i18n-lang="en">In late May, these four works will be gently picked up and admired by people far away, at a craft exhibition in Kameoka, Kyoto.</span>
+          </p>
+        </div>
+
+        <div class="now-polaroids" data-aos="fade-left">
+          <figure class="polaroid">
+            <img class="polaroid-img" src="../images/SamSamma/20260521日本展覽園區竹編/S__808656918_0.webp" alt="準備中的賽夏族竹編作品 1" loading="lazy">
+            <figcaption class="polaroid-caption"><span data-i18n-lang="zh">準備中的竹編作品</span><span data-i18n-lang="en">A bamboo work in preparation</span></figcaption>
+          </figure>
+          <figure class="polaroid">
+            <img class="polaroid-img" src="../images/SamSamma/20260521日本展覽園區竹編/S__808656919_0.webp" alt="準備中的賽夏族竹編作品 2" loading="lazy">
+            <figcaption class="polaroid-caption"><span data-i18n-lang="zh">族人手中的紋飾</span><span data-i18n-lang="en">Patterns in our hands</span></figcaption>
+          </figure>
+          <figure class="polaroid">
+            <img class="polaroid-img" src="../images/SamSamma/20260521日本展覽園區竹編/S__808656920_0.webp" alt="準備中的賽夏族竹編作品 3" loading="lazy">
+            <figcaption class="polaroid-caption"><span data-i18n-lang="zh">即將上路的故事</span><span data-i18n-lang="en">A story about to travel</span></figcaption>
+          </figure>
+          <figure class="polaroid">
+            <img class="polaroid-img" src="../images/SamSamma/20260521日本展覽園區竹編/S__808656921_0.webp" alt="準備中的賽夏族竹編作品 4" loading="lazy">
+            <figcaption class="polaroid-caption"><span data-i18n-lang="zh">編織藝術品</span><span data-i18n-lang="en">A woven artwork</span></figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. 我們的足跡 · Our Story（v4：原 Why-Us，敘事化改寫） -->
+  <section id="why-us" class="why-section">
+    <div class="container">
+      <div class="text-center" data-aos="fade-up">
+        <span class="section-eyebrow">Our Story · <span data-i18n-lang="zh">我們的足跡</span><span data-i18n-lang="en">Our Path</span></span>
+        <h2 class="section-title"><span data-i18n-lang="zh">從族人發起，到走向世界的這條路</span><span data-i18n-lang="en">From the people, to the world — the path we walked</span></h2>
+      </div>
+
+      <p class="story-prelude" data-aos="fade-up">
+        <span data-i18n-lang="zh">這不是一份「我們的優勢」清單。
+        是三段被時間留下的真實腳印，
+        從部落、走進大學、走到京都。</span>
+        <span data-i18n-lang="en">This isn't a list of "our strengths."
+        It's three real footprints left by time —
+        from the tribe, into the university, all the way to Kyoto.</span>
+      </p>
+
+      <div class="why-grid">
+        <!-- 故事 1：族人，是這個地方真正的主人 -->
+        <article class="why-card" data-aos="fade-up">
+          <div class="why-img">
+            <img src="../images/SamSamma/20251117其他社區老人來園區參訪/合作社發起人講解給客戶.webp"
+                 alt="合作社發起人親自講解給來訪客戶">
+            <span class="why-img-badge">FOUNDER · <span data-i18n-lang="zh">部落自主經營</span><span data-i18n-lang="en">Tribe-run</span></span>
+          </div>
+          <div class="why-content">
+            <span class="why-num"><span data-i18n-lang="zh">第一段 · 族人</span><span data-i18n-lang="en">Part One · The People</span></span>
+            <div class="why-eng">By the People, of the Land</div>
+            <h3><span data-i18n-lang="zh">族人，是這個地方真正的主人</span><span data-i18n-lang="en">Our people are the true owners of this place</span></h3>
+            <p>
+              <span data-i18n-lang="zh">山莎蔓岸是<strong>部落自己成立的合作社</strong>，
+              發起人是世代居住於大隘部落的賽夏族人。
+              所有獲利留在部落、所有故事都是親身經歷 —
+              我們不會聘演員、也沒有表演動作，
+              你看到的是這片土地上真正在生活的人。</span>
+              <span data-i18n-lang="en">SamSamma is a <strong>co-op founded by the tribe itself</strong>,
+              started by Saisiyat people who have lived in the Daai tribe for generations.
+              All profit stays in the tribe, and every story is lived firsthand —
+              we hire no actors and stage no performances;
+              what you see are real people who actually live on this land.</span>
+            </p>
+            <p>
+              <span data-i18n-lang="zh">四位族人取得專業證照，
+              文化傳承不是給遊客看的劇場，是日常的師徒制傳承。</span>
+              <span data-i18n-lang="en">Four community members hold professional licenses;
+              cultural heritage here isn't theater for tourists, but everyday master-to-apprentice transmission.</span>
+            </p>
+            <div class="why-proof">
+              <i class="fas fa-shield-alt"></i>
+              <span><span data-i18n-lang="zh">2024 年依《原住民族基本法》正式立案</span><span data-i18n-lang="en">Officially registered in 2024 under the Indigenous Peoples Basic Act</span></span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 故事 2：學生走進部落，部落走進大學 -->
+        <article class="why-card reverse" data-aos="fade-up">
+          <div class="why-img">
+            <img src="../images/SamSamma/20251201明新科技大學 USR成果展/LINE_ALBUM_明新科技大學 USR成果展_260521_1.webp"
+                 alt="明新科技大學 USR 成果展與合作社共同呈現">
+            <span class="why-img-badge">USR · <span data-i18n-lang="zh">大學走進部落</span><span data-i18n-lang="en">University meets tribe</span></span>
+          </div>
+          <div class="why-content">
+            <span class="why-num"><span data-i18n-lang="zh">第二段 · 學生</span><span data-i18n-lang="en">Part Two · The Students</span></span>
+            <div class="why-eng">Students In, Co-op Out</div>
+            <h3><span data-i18n-lang="zh">學生走進部落，部落走進大學</span><span data-i18n-lang="en">Students step into the tribe; the tribe steps into the university</span></h3>
+            <p>
+              <span data-i18n-lang="zh">從 2024 年開始，明新科大的學生陸續來到這裡 —
+              他們蹲在地上削竹篾、爬上樹屋鋪屋頂、
+              在會議室裡跟族人一起報告心得。</span>
+              <span data-i18n-lang="en">Since 2024, students from MUST have come here one after another —
+              crouching on the ground to shave bamboo strips, climbing tree houses to lay roofs,
+              and presenting reflections alongside the tribe in the meeting room.</span>
+            </p>
+            <p>
+              <span data-i18n-lang="zh">我們和明新科大整合了
+              <strong>永續設計、文創、商管、原民研究</strong>四個系所的老師，
+              把竹林變成大學社會責任實踐基地 (USR)。
+              這不是來打卡的場域，是被列入課程的真實學習現場。</span>
+              <span data-i18n-lang="en">Together with MUST we brought in faculty from four departments —
+              <strong>sustainable design, cultural-creative industries, business management, and indigenous studies</strong> —
+              turning the bamboo forest into a University Social Responsibility (USR) base.
+              It's not a check-in spot, but a real learning site written into the curriculum.</span>
+            </p>
+            <div class="why-proof">
+              <i class="fas fa-graduation-cap"></i>
+              <span><span data-i18n-lang="zh">2025/12 USR 成果展共同呈現</span><span data-i18n-lang="en">Co-presented at the Dec 2025 USR showcase</span></span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 故事 3：我們的竹編，正在出國 -->
+        <article class="why-card" data-aos="fade-up">
+          <div class="why-img">
+            <img src="../images/SamSamma/20260521日本展覽園區竹編/S__808656921_0.webp"
+                 alt="作品赴日本展覽現場">
+            <span class="why-img-badge">JAPAN · <span data-i18n-lang="zh">走向世界</span><span data-i18n-lang="en">Going global</span></span>
+          </div>
+          <div class="why-content">
+            <span class="why-num"><span data-i18n-lang="zh">第三段 · 走向世界</span><span data-i18n-lang="en">Part Three · Going Global</span></span>
+            <div class="why-eng">From Daai Village to Kyoto</div>
+            <h3><span data-i18n-lang="zh">我們的竹編，正在出國</span><span data-i18n-lang="en">Our bamboo weaving is going abroad</span></h3>
+            <p>
+              <span data-i18n-lang="zh">2026 年 5 月，族人親自帶著作品飛到日本京都，
+              在當地工藝展現場用賽夏族傳統技法展示給日本朋友看。
+              這些不是「複製品」、不是「禮物」，
+              是部落師傅在大隘的竹林裡用整個四月編出來的作品。</span>
+              <span data-i18n-lang="en">In May 2026, our people personally flew their works to Kyoto, Japan,
+              demonstrating Saisiyat traditional techniques to Japanese friends at a local craft exhibition.
+              These are not "replicas" or "gifts" —
+              they are works the tribe's masters wove over the whole of April, in the bamboo forests of Daai.</span>
+            </p>
+            <p>
+              <span data-i18n-lang="zh">同年，京都府龜岡市簽署了合作意向書 —
+              我們和京都的竹工藝師傅，
+              開始討論一場可能持續好多年的交流。</span>
+              <span data-i18n-lang="en">That same year, Kameoka, Kyoto signed a letter of intent —
+              and we and Kyoto's bamboo-craft masters
+              began discussing an exchange that may last for many years.</span>
+            </p>
+            <div class="why-proof">
+              <i class="fas fa-globe-asia"></i>
+              <span><span data-i18n-lang="zh">2026 京都府龜岡市合作意向書</span><span data-i18n-lang="en">2026 letter of intent with Kameoka, Kyoto</span></span>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- 四個關鍵數據徽章 -->
+      <div class="why-stats" data-aos="fade-up">
+        <div class="why-stat">
+          <div class="why-stat-value">100%</div>
+          <div class="why-stat-label"><span data-i18n-lang="zh">原住民<br>合作社</span><span data-i18n-lang="en">Indigenous<br>co-op</span></div>
+        </div>
+        <div class="why-stat">
+          <div class="why-stat-value">12 <span style="font-size:1.1rem;"><span data-i18n-lang="zh">公頃</span><span data-i18n-lang="en">ha</span></span></div>
+          <div class="why-stat-label"><span data-i18n-lang="zh">竹林經營<br>場域</span><span data-i18n-lang="en">bamboo<br>field</span></div>
+        </div>
+        <div class="why-stat">
+          <div class="why-stat-value">4 <span style="font-size:1.1rem;"><span data-i18n-lang="zh">位</span><span data-i18n-lang="en">people</span></span></div>
+          <div class="why-stat-label"><span data-i18n-lang="zh">族人取得<br>專業證照</span><span data-i18n-lang="en">licensed<br>members</span></div>
+        </div>
+        <div class="why-stat">
+          <div class="why-stat-value">2024</div>
+          <div class="why-stat-label"><span data-i18n-lang="zh">合作社<br>正式成立</span><span data-i18n-lang="en">co-op<br>founded</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+    
+  <!-- 4. 來山裡走走 · Join Us（v4：原 Plans，邀請化改寫） -->
+  <section id="plans" class="plans-section">
+    <div class="container">
+      <div class="text-center" data-aos="fade-up">
+        <span class="section-eyebrow">Join Us · <span data-i18n-lang="zh">來山裡走走</span><span data-i18n-lang="en">Come up the mountain</span></span>
+        <h2 class="section-title"><span data-i18n-lang="zh">山莎蔓岸的門，一直開著</span><span data-i18n-lang="en">SamSamma's door is always open</span></h2>
+        <p class="section-lede">
+          <span data-i18n-lang="zh">無論你是想帶學生來看竹子怎麼長大、
+          企業夥伴想學一段慢工慢活、
+          還是只想來吹吹山風 —
+          這裡都有適合你的位置。</span>
+          <span data-i18n-lang="en">Whether you want to bring students to see how bamboo grows,
+          come as a corporate partner to learn the art of slow craft,
+          or simply feel the mountain breeze —
+          there's a place here for you.</span>
+        </p>
+      </div>
+
+      <div class="plan-grid">
+        <!-- 邀請 A：帶學生來看竹子怎麼長大 -->
+        <article class="plan-card" data-plan="school" data-aos="fade-up" data-aos-delay="0">
+          <div class="plan-card-img">
+            <img src="../images/SamSamma/20251115活動纏繞畫/LINE_ALBUM_20251115_260521_1.webp"
+                 alt="學生在園區動手做竹編">
+            <div class="plan-card-tag"><span data-i18n-lang="zh">最常見的造訪</span><span data-i18n-lang="en">Most common visit</span></div>
+          </div>
+          <div class="plan-card-body">
+            <div class="plan-card-icon"><i class="fas fa-school"></i></div>
+            <h3 class="plan-card-title"><span data-i18n-lang="zh">帶學生來看竹子怎麼長大</span><span data-i18n-lang="en">Bring students to see how bamboo grows</span></h3>
+            <p class="plan-card-subtitle"><span data-i18n-lang="zh">給學校老師 · 半日 2–3 小時</span><span data-i18n-lang="en">For teachers · half-day, 2–3 hrs</span></p>
+            <p class="plan-card-desc">
+              <span data-i18n-lang="zh">工藝師會教孩子怎麼削第一根竹篾、
+              怎麼編出自己的小作品、
+              聽族人講賽夏族跟竹子之間的故事。
+              帶回家的不只是作品，是他們會記得很久的下午。</span>
+              <span data-i18n-lang="en">Artisans teach the kids how to shave their first bamboo strip,
+              how to weave their own little piece,
+              and let the tribe share stories of the Saisiyat people and bamboo.
+              They take home not just a craft, but an afternoon they'll remember for a long time.</span>
+            </p>
+            <ul class="plan-card-features">
+              <li><i class="fas fa-check-circle"></i> <span data-i18n-lang="zh">30–80 人團體都安排得來</span><span data-i18n-lang="en">Groups of 30–80 welcome</span></li>
+              <li><i class="fas fa-check-circle"></i> <span data-i18n-lang="zh">工藝師親自帶教</span><span data-i18n-lang="en">Taught by artisans in person</span></li>
+              <li><i class="fas fa-check-circle"></i> <span data-i18n-lang="zh">適合 USR / 服務學習</span><span data-i18n-lang="en">Great for USR / service learning</span></li>
+              <li><i class="fas fa-check-circle"></i> <span data-i18n-lang="zh">作品全部帶回家</span><span data-i18n-lang="en">Take every piece home</span></li>
+            </ul>
+            <button type="button" class="plan-card-cta" data-fill-plan="學校校外教學">
+              <span data-i18n-lang="zh">我想了解</span><span data-i18n-lang="en">Learn more</span> <i class="fas fa-arrow-right"></i>
+            </button>
+          </div>
+        </article>
+
+        <!-- 邀請 B：企業夥伴的低碳午後 -->
+        <article class="plan-card" data-plan="corporate" data-aos="fade-up" data-aos-delay="100">
+          <div class="plan-card-img">
+            <img src="../images/SamSamma/20251023竹炭爐企業教育社員課程/竹炭爐製造所內部社員講師教學照片.webp"
+                 alt="企業夥伴來園區上一堂竹炭課">
+            <div class="plan-card-tag"><span data-i18n-lang="zh">給企業夥伴</span><span data-i18n-lang="en">For companies</span></div>
+          </div>
+          <div class="plan-card-body">
+            <div class="plan-card-icon"><i class="fas fa-building"></i></div>
+            <h3 class="plan-card-title"><span data-i18n-lang="zh">企業夥伴的低碳午後</span><span data-i18n-lang="en">A low-carbon afternoon for corporate partners</span></h3>
+            <p class="plan-card-subtitle"><span data-i18n-lang="zh">給企業 ESG / CSR · 半日或一日</span><span data-i18n-lang="en">For corporate ESG / CSR · half- or full-day</span></p>
+            <p class="plan-card-desc">
+              <span data-i18n-lang="zh">帶你的團隊離開冷氣房，走進竹林裡的學習。
+              我們會一起聊聊竹炭、碳儲量、永續經營，
+              也讓員工親手做一件小作品 —
+              這些對話和體驗，會變成你 ESG 報告書裡最真實的故事。</span>
+              <span data-i18n-lang="en">Take your team out of the air-conditioned office and into learning among the bamboo.
+              Together we'll talk about bamboo charcoal, carbon storage, and sustainable management,
+              and let your staff make a small piece by hand —
+              these conversations and experiences become the most genuine story in your ESG report.</span>
+            </p>
+            <ul class="plan-card-features">
+              <li><i class="fas fa-check-circle"></i> <span data-i18n-lang="zh">有碳儲量數據可佐證</span><span data-i18n-lang="en">Backed by carbon-storage data</span></li>
+              <li><i class="fas fa-check-circle"></i> <span data-i18n-lang="zh">部落採購紀錄完整</span><span data-i18n-lang="en">Complete tribal procurement records</span></li>
+              <li><i class="fas fa-check-circle"></i> <span data-i18n-lang="zh">員工 ESG 共同學習</span><span data-i18n-lang="en">Shared ESG learning for staff</span></li>
+              <li><i class="fas fa-check-circle"></i> <span data-i18n-lang="zh">可開立企業發票</span><span data-i18n-lang="en">Business invoices available</span></li>
+            </ul>
+            <button type="button" class="plan-card-cta" data-fill-plan="企業 ESG 課程">
+              <span data-i18n-lang="zh">我想了解</span><span data-i18n-lang="en">Learn more</span> <i class="fas fa-arrow-right"></i>
+            </button>
+          </div>
+        </article>
+
+        <!-- 邀請 C：想慢慢來的文化旅人 -->
+        <article class="plan-card" data-plan="culture" data-aos="fade-up" data-aos-delay="200">
+          <div class="plan-card-img">
+            <img src="../images/SamSamma/20260521日本展覽園區竹編/S__808656918_0.webp"
+                 alt="想慢慢看竹編怎麼從一根長竹變成藝術品">
+            <div class="plan-card-tag"><span data-i18n-lang="zh">給有時間的旅人</span><span data-i18n-lang="en">For unhurried travelers</span></div>
+          </div>
+          <div class="plan-card-body">
+            <div class="plan-card-icon"><i class="fas fa-mountain"></i></div>
+            <h3 class="plan-card-title"><span data-i18n-lang="zh">想慢慢來的文化旅人</span><span data-i18n-lang="en">The cultural traveler who wants to slow down</span></h3>
+            <p class="plan-card-subtitle"><span data-i18n-lang="zh">給創作人 / 研究者 · 1–2 日</span><span data-i18n-lang="en">For creators / researchers · 1–2 days</span></p>
+            <p class="plan-card-desc">
+              <span data-i18n-lang="zh">留一個整天或兩天給自己，
+              跟著工藝師從清晨的竹林走到傍晚的火堆，
+              看一根長竹怎麼變成日本展覽級的藝術品。
+              這裡有「存三去四不留七」的智慧，
+              和族人世代守護土地的故事。</span>
+              <span data-i18n-lang="en">Give yourself a full day or two,
+              and follow the artisans from the morning bamboo grove to the evening fire,
+              watching a long bamboo stalk become exhibition-grade art bound for Japan.
+              Here lies the wisdom of "keep three, remove four, leave none past seven,"
+              and the story of a people guarding their land for generations.</span>
+            </p>
+            <ul class="plan-card-features">
+              <li><i class="fas fa-check-circle"></i> <span data-i18n-lang="zh">工藝師一對一陪伴</span><span data-i18n-lang="en">One-on-one artisan companionship</span></li>
+              <li><i class="fas fa-check-circle"></i> <span data-i18n-lang="zh">12 公頃竹林漫步</span><span data-i18n-lang="en">Stroll through 12 ha of bamboo</span></li>
+              <li><i class="fas fa-check-circle"></i> <span data-i18n-lang="zh">文化深度訪談</span><span data-i18n-lang="en">In-depth cultural interviews</span></li>
+              <li><i class="fas fa-check-circle"></i> <span data-i18n-lang="zh">可安排部落留宿</span><span data-i18n-lang="en">Tribal overnight stays available</span></li>
+            </ul>
+            <button type="button" class="plan-card-cta" data-fill-plan="深度文化參訪">
+              <span data-i18n-lang="zh">我想了解</span><span data-i18n-lang="en">Learn more</span> <i class="fas fa-arrow-right"></i>
+            </button>
+          </div>
+        </article>
+
+        <!-- 邀請 D：為你量身設計的造訪 -->
+        <article class="plan-card" data-plan="custom" data-aos="fade-up" data-aos-delay="300">
+          <div class="plan-card-img">
+            <img src="../images/SamSamma/20250727明志科大課程社員共同參與/合照.webp"
+                 alt="明志科大跨校課程合作造訪">
+            <div class="plan-card-tag"><span data-i18n-lang="zh">不一樣的造訪</span><span data-i18n-lang="en">A different kind of visit</span></div>
+          </div>
+          <div class="plan-card-body">
+            <div class="plan-card-icon"><i class="fas fa-puzzle-piece"></i></div>
+            <h3 class="plan-card-title"><span data-i18n-lang="zh">為你量身設計的造訪</span><span data-i18n-lang="en">A visit tailored just for you</span></h3>
+            <p class="plan-card-subtitle"><span data-i18n-lang="zh">給 NGO / 媒體 / 研究單位 · 依需求</span><span data-i18n-lang="en">For NGOs / media / research · on request</span></p>
+            <p class="plan-card-desc">
+              <span data-i18n-lang="zh">不在前面三種裡也沒關係。
+              我們很習慣為不一樣的人設計不一樣的造訪 —
+              採訪一個下午、拍一支紀錄片、做一份論文、
+              或只是想找一個地方安靜想事情。
+              直接告訴我們你在想什麼，我們再一起把它變出來。</span>
+              <span data-i18n-lang="en">Not in the first three categories? That's fine.
+              We're used to designing different visits for different people —
+              an afternoon interview, a documentary shoot, a thesis,
+              or simply a quiet place to think.
+              Just tell us what you have in mind, and we'll make it happen together.</span>
+            </p>
+            <ul class="plan-card-features">
+              <li><i class="fas fa-check-circle"></i> <span data-i18n-lang="zh">30 分鐘免費聊聊</span><span data-i18n-lang="en">Free 30-minute chat</span></li>
+              <li><i class="fas fa-check-circle"></i> <span data-i18n-lang="zh">行程一起設計</span><span data-i18n-lang="en">Co-design the itinerary</span></li>
+              <li><i class="fas fa-check-circle"></i> <span data-i18n-lang="zh">多日彈性安排</span><span data-i18n-lang="en">Flexible multi-day plans</span></li>
+              <li><i class="fas fa-check-circle"></i> <span data-i18n-lang="zh">適合 NGO / 媒體 / 論文</span><span data-i18n-lang="en">Great for NGOs / media / theses</span></li>
+            </ul>
+            <button type="button" class="plan-card-cta" data-fill-plan="客製化方案">
+              <span data-i18n-lang="zh">我想了解</span><span data-i18n-lang="en">Learn more</span> <i class="fas fa-arrow-right"></i>
+            </button>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. 真實案例紀錄（圖片牆 + 分類篩選） -->
+  <section id="cases" class="cases-section">
+    <div class="container">
+      <div class="text-center" data-aos="fade-up">
+        <span class="section-eyebrow">Cases · <span data-i18n-lang="zh">真實活動紀錄</span><span data-i18n-lang="en">Real activity records</span></span>
+        <h2 class="section-title"><span data-i18n-lang="zh">每一張，都是真實發生過的故事</span><span data-i18n-lang="en">Every photo is a story that really happened</span></h2>
+        <p class="section-lede">
+          <span data-i18n-lang="zh">從日本展覽、明新科大 USR、社區參訪、文化工藝到企業教育，
+          這裡沒有素材庫的擺拍，只有正在發生的紀錄。</span>
+          <span data-i18n-lang="en">From the Japan exhibition, MUST USR, community visits, and cultural crafts to corporate education —
+          there are no stock-photo poses here, only records of what's actually happening.</span>
+        </p>
+      </div>
+
+      <!-- 分類篩選 -->
+      <div class="cases-filter" role="tablist" aria-label="案例分類篩選">
+        <button type="button" class="cases-filter-btn is-active" data-filter="all" role="tab" aria-selected="true">
+          <span data-i18n-lang="zh">全部</span><span data-i18n-lang="en">All</span> <span class="count">36</span>
+        </button>
+        <button type="button" class="cases-filter-btn" data-filter="labor" role="tab" aria-selected="false">
+          <span data-i18n-lang="zh">動手做</span><span data-i18n-lang="en">Hands-on</span> <span class="count">6</span>
+        </button>
+        <button type="button" class="cases-filter-btn" data-filter="visit" role="tab" aria-selected="false">
+          <span data-i18n-lang="zh">重要訪視</span><span data-i18n-lang="en">Key Visits</span> <span class="count">5</span>
+        </button>
+        <button type="button" class="cases-filter-btn" data-filter="international" role="tab" aria-selected="false">
+          <span data-i18n-lang="zh">國際展覽</span><span data-i18n-lang="en">International</span> <span class="count">4</span>
+        </button>
+        <button type="button" class="cases-filter-btn" data-filter="academic" role="tab" aria-selected="false">
+          <span data-i18n-lang="zh">學術合作</span><span data-i18n-lang="en">Academic</span> <span class="count">6</span>
+        </button>
+        <button type="button" class="cases-filter-btn" data-filter="community" role="tab" aria-selected="false">
+          <span data-i18n-lang="zh">社區參訪</span><span data-i18n-lang="en">Community</span> <span class="count">3</span>
+        </button>
+        <button type="button" class="cases-filter-btn" data-filter="culture" role="tab" aria-selected="false">
+          <span data-i18n-lang="zh">文化工藝</span><span data-i18n-lang="en">Crafts</span> <span class="count">7</span>
+        </button>
+        <button type="button" class="cases-filter-btn" data-filter="corporate" role="tab" aria-selected="false">
+          <span data-i18n-lang="zh">企業教育</span><span data-i18n-lang="en">Corporate</span> <span class="count">5</span>
+        </button>
+      </div>
+
+      <div class="cases-grid is-collapsed" id="casesGrid">
+        <!-- ============================================================
+             動手做 · 場域日常勞動（v4.1 新增 ★ 生活紀錄片精神）
+             ============================================================ -->
+        <article class="case-item" data-cat="labor" data-aos="fade-up">
+          <img src="../images/SamSamma/20251129/理事長電鋸砍樹根照片.webp" alt="理事長電鋸砍樹根 — 場域日常勞動" loading="lazy">
+          <span class="case-cat"><span data-i18n-lang="zh">動手做</span><span data-i18n-lang="en">Hands-on</span></span>
+          <div class="case-overlay">
+            <span class="case-date">2025.11</span>
+            <h4 class="case-title"><span data-i18n-lang="zh">理事長親自下場 — 電鋸砍樹根</span><span data-i18n-lang="en">Chairman gets hands-on — chainsawing tree roots</span></h4>
+          </div>
+        </article>
+        <article class="case-item" data-cat="labor" data-aos="fade-up">
+          <img src="../images/SamSamma/20251129/發起人鏟土照.webp" alt="發起人親手鏟土 — 場域日常勞動" loading="lazy">
+          <span class="case-cat"><span data-i18n-lang="zh">動手做</span><span data-i18n-lang="en">Hands-on</span></span>
+          <div class="case-overlay">
+            <span class="case-date">2025.11</span>
+            <h4 class="case-title"><span data-i18n-lang="zh">發起人親手鏟土 — 一鏟一鏟把家蓋起來</span><span data-i18n-lang="en">Founder shovels by hand — building home one scoop at a time</span></h4>
+          </div>
+        </article>
+        <article class="case-item" data-cat="labor" data-aos="fade-up">
+          <img src="../images/SamSamma/20251129/大量竹材整備.webp" alt="大量竹材整備 — 場域日常勞動" loading="lazy">
+          <span class="case-cat"><span data-i18n-lang="zh">動手做</span><span data-i18n-lang="en">Hands-on</span></span>
+          <div class="case-overlay">
+            <span class="case-date">2025.11</span>
+            <h4 class="case-title"><span data-i18n-lang="zh">大量竹材整備 — 為下一場工藝做準備</span><span data-i18n-lang="en">Prepping bulk bamboo — readying for the next craft</span></h4>
+          </div>
+        </article>
+        <article class="case-item" data-cat="labor" data-aos="fade-up">
+          <img src="../images/SamSamma/20251129/發起人推車旁邊包含柵欄美麗完成.webp" alt="發起人推車與完成的竹柵欄" loading="lazy">
+          <span class="case-cat"><span data-i18n-lang="zh">動手做</span><span data-i18n-lang="en">Hands-on</span></span>
+          <div class="case-overlay">
+            <span class="case-date">2025.11</span>
+            <h4 class="case-title"><span data-i18n-lang="zh">竹柵欄完工 — 發起人推著推車經過</span><span data-i18n-lang="en">Bamboo fence finished — the founder passes with a cart</span></h4>
+          </div>
+        </article>
+        <article class="case-item" data-cat="labor" data-aos="fade-up">
+          <img src="../images/SamSamma/2025社員假日工作照片/發起人搬運木材.webp" alt="假日場域 發起人搬運木材" loading="lazy">
+          <span class="case-cat"><span data-i18n-lang="zh">動手做</span><span data-i18n-lang="en">Hands-on</span></span>
+          <div class="case-overlay">
+            <span class="case-date">2025</span>
+            <h4 class="case-title"><span data-i18n-lang="zh">假日也在現場 — 發起人搬運木材</span><span data-i18n-lang="en">On-site even on weekends — the founder hauls timber</span></h4>
+          </div>
+        </article>
+        <article class="case-item" data-cat="labor" data-aos="fade-up">
+          <img src="../images/SamSamma/2025社員假日工作照片/社員+廢棄木搬運.webp" alt="社員假日搬運廢棄木材" loading="lazy">
+          <span class="case-cat"><span data-i18n-lang="zh">動手做</span><span data-i18n-lang="en">Hands-on</span></span>
+          <div class="case-overlay">
+            <span class="case-date">2025</span>
+            <h4 class="case-title"><span data-i18n-lang="zh">社員假日齊出動 — 廢棄木循環再利用</span><span data-i18n-lang="en">Members turn out on the weekend — recycling waste wood</span></h4>
+          </div>
+        </article>
+
+        <!-- ============================================================
+             重要訪視 · 政府與媒體見證（v4.1 新增）
+             ============================================================ -->
+        <article class="case-item" data-cat="visit" data-aos="fade-up">
+          <img src="../images/SamSamma/20250821教育部訪視/樹屋與海報照片.webp" alt="教育部訪視 樹屋與成果海報" loading="lazy">
+          <span class="case-cat"><span data-i18n-lang="zh">重要訪視</span><span data-i18n-lang="en">Key Visits</span></span>
+          <div class="case-overlay">
+            <span class="case-date">2025.08</span>
+            <h4 class="case-title"><span data-i18n-lang="zh">教育部訪視 — 樹屋下的成果分享</span><span data-i18n-lang="en">MOE visit — sharing results under the tree house</span></h4>
+          </div>
+        </article>
+        <article class="case-item" data-cat="visit" data-aos="fade-up">
+          <img src="../images/SamSamma/20250821教育部訪視/海報照片放置於園區入口.webp" alt="教育部訪視 園區入口成果海報" loading="lazy">
+          <span class="case-cat"><span data-i18n-lang="zh">重要訪視</span><span data-i18n-lang="en">Key Visits</span></span>
+          <div class="case-overlay">
+            <span class="case-date">2025.08</span>
+            <h4 class="case-title"><span data-i18n-lang="zh">教育部訪視 — 園區入口迎接</span><span data-i18n-lang="en">MOE visit — welcomed at the site entrance</span></h4>
+          </div>
+        </article>
+        <article class="case-item" data-cat="visit" data-aos="fade-up">
+          <img src="../images/SamSamma/20250921開會+原民台訪問/社長被訪問包含攝影器材遠景.webp" alt="原民台訪問 社長受訪遠景" loading="lazy">
+          <span class="case-cat"><span data-i18n-lang="zh">重要訪視</span><span data-i18n-lang="en">Key Visits</span></span>
+          <div class="case-overlay">
+            <span class="case-date">2025.09</span>
+            <h4 class="case-title"><span data-i18n-lang="zh">原民台來訪 — 鏡頭前的山莎蔓岸</span><span data-i18n-lang="en">TITV visits — SamSamma on camera</span></h4>
+          </div>
+        </article>
+        <article class="case-item" data-cat="visit" data-aos="fade-up">
+          <img src="../images/SamSamma/20250921開會+原民台訪問/社員進行開會圖片.webp" alt="原民台訪問日的社員會議" loading="lazy">
+          <span class="case-cat"><span data-i18n-lang="zh">重要訪視</span><span data-i18n-lang="en">Key Visits</span></span>
+          <div class="case-overlay">
+            <span class="case-date">2025.09</span>
+            <h4 class="case-title"><span data-i18n-lang="zh">原民台到訪日 — 真實的社員會議</span><span data-i18n-lang="en">TITV visit day — a real members' meeting</span></h4>
+          </div>
+        </article>
+
+        <!-- 國際 / 日本展覽 -->
+        <article class="case-item" data-cat="international" data-aos="fade-up">
+          <img src="../images/SamSamma/20260521日本展覽園區竹編/S__808656919_0.webp" alt="日本展覽園區竹編作品（一）" loading="lazy">
+          <span class="case-cat"><span data-i18n-lang="zh">國際展覽</span><span data-i18n-lang="en">International</span></span>
+          <div class="case-overlay">
+            <span class="case-date">2026.05</span>
+            <h4 class="case-title"><span data-i18n-lang="zh">日本展覽 — 賽夏族竹編作品赴日</span><span data-i18n-lang="en">Japan exhibition — Saisiyat bamboo works head to Japan</span></h4>
+          </div>
+        </article>
+        <article class="case-item" data-cat="international" data-aos="fade-up">
+          <img src="../images/SamSamma/20260521日本展覽園區竹編/S__808656920_0.webp" alt="日本展覽園區竹編作品（二）" loading="lazy">
+          <span class="case-cat"><span data-i18n-lang="zh">國際展覽</span><span data-i18n-lang="en">International</span></span>
+          <div class="case-overlay">
+            <span class="case-date">2026.05</span>
+            <h4 class="case-title"><span data-i18n-lang="zh">日本展覽 — 工藝師現場呈現</span><span data-i18n-lang="en">Japan exhibition — artisans presenting live</span></h4>
+          </div>
+        </article>
+
+        <!-- 學術 / USR -->
+        <article class="case-item" data-cat="academic" data-aos="fade-up">
+          <img src="../images/SamSamma/20251201明新科技大學 USR成果展/LINE_ALBUM_明新科技大學 USR成果展_260521_2.webp" alt="明新科技大學 USR 成果展 2" loading="lazy">
+          <span class="case-cat"><span data-i18n-lang="zh">學術合作</span><span data-i18n-lang="en">Academic</span></span>
+          <div class="case-overlay">
+            <span class="case-date">2025.12</span>
+            <h4 class="case-title"><span data-i18n-lang="zh">明新科大 USR 成果展</span><span data-i18n-lang="en">MUST USR showcase</span></h4>
+          </div>
+        </article>
+        <article class="case-item" data-cat="academic" data-aos="fade-up">
+          <img src="../images/SamSamma/20251201明新科技大學 USR成果展/LINE_ALBUM_明新科技大學 USR成果展_260521_3.webp" alt="明新科技大學 USR 成果展 3" loading="lazy">
+          <span class="case-cat"><span data-i18n-lang="zh">學術合作</span><span data-i18n-lang="en">Academic</span></span>
+          <div class="case-overlay">
+            <span class="case-date">2025.12</span>
+            <h4 class="case-title"><span data-i18n-lang="zh">USR 成果展 — 4 領域跨域共展</span><span data-i18n-lang="en">USR showcase — four fields exhibiting together</span></h4>
+          </div>
+        </article>
+
+        <!-- 社區參訪 -->
+        <article class="case-item" data-cat="community" data-aos="fade-up">
+          <img src="../images/SamSamma/20251117其他社區老人來園區參訪/合作社發起人.webp" alt="合作社發起人接待社區長者" loading="lazy">
+          <span class="case-cat"><span data-i18n-lang="zh">社區參訪</span><span data-i18n-lang="en">Community</span></span>
+          <div class="case-overlay">
+            <span class="case-date">2025.11</span>
+            <h4 class="case-title"><span data-i18n-lang="zh">社區長者來訪 — 部落經驗互訪</span><span data-i18n-lang="en">Community elders visit — exchanging tribal experience</span></h4>
+          </div>
+        </article>
+        <article class="case-item" data-cat="community" data-aos="fade-up">
+          <img src="../images/SamSamma/20251117其他社區老人來園區參訪/合作社發起人工作與樹.webp" alt="合作社發起人工作場景" loading="lazy">
+          <span class="case-cat"><span data-i18n-lang="zh">社區參訪</span><span data-i18n-lang="en">Community</span></span>
+          <div class="case-overlay">
+            <span class="case-date">2025.11</span>
+            <h4 class="case-title"><span data-i18n-lang="zh">合作社發起人工作現場</span><span data-i18n-lang="en">The co-op founder at work</span></h4>
+          </div>
+        </article>
+
+        <!-- 文化工藝 / 纏繞畫 -->
+        <article class="case-item" data-cat="culture" data-aos="fade-up">
+          <img src="../images/SamSamma/20251115活動纏繞畫/LINE_ALBUM_20251115_260521_2.webp" alt="纏繞畫活動作品 2" loading="lazy">
+          <span class="case-cat"><span data-i18n-lang="zh">文化工藝</span><span data-i18n-lang="en">Crafts</span></span>
+          <div class="case-overlay">
+            <span class="case-date">2025.11</span>
+            <h4 class="case-title"><span data-i18n-lang="zh">活動纏繞畫 — 賽夏族花紋共作</span><span data-i18n-lang="en">Zentangle workshop — co-creating Saisiyat patterns</span></h4>
+          </div>
+        </article>
+        <article class="case-item" data-cat="culture" data-aos="fade-up">
+          <img src="../images/SamSamma/20251115活動纏繞畫/LINE_ALBUM_20251115_260521_3.webp" alt="纏繞畫活動作品 3" loading="lazy">
+          <span class="case-cat"><span data-i18n-lang="zh">文化工藝</span><span data-i18n-lang="en">Crafts</span></span>
+          <div class="case-overlay">
+            <span class="case-date">2025.11</span>
+            <h4 class="case-title"><span data-i18n-lang="zh">活動纏繞畫 — 學員實作</span><span data-i18n-lang="en">Zentangle workshop — participants at work</span></h4>
+          </div>
+        </article>
+        <article class="case-item" data-cat="culture" data-aos="fade-up">
+          <img src="../images/SamSamma/20251115活動纏繞畫/LINE_ALBUM_20251115_260521_4.webp" alt="纏繞畫活動作品 4" loading="lazy">
+          <span class="case-cat"><span data-i18n-lang="zh">文化工藝</span><span data-i18n-lang="en">Crafts</span></span>
+          <div class="case-overlay">
+            <span class="case-date">2025.11</span>
+            <h4 class="case-title"><span data-i18n-lang="zh">活動纏繞畫 — 色彩設計</span><span data-i18n-lang="en">Zentangle workshop — color design</span></h4>
+          </div>
+        </article>
+        <article class="case-item" data-cat="culture" data-aos="fade-up">
+          <img src="../images/SamSamma/20251115活動纏繞畫/LINE_ALBUM_20251115_260521_5.webp" alt="纏繞畫活動作品 5" loading="lazy">
+          <span class="case-cat"><span data-i18n-lang="zh">文化工藝</span><span data-i18n-lang="en">Crafts</span></span>
+          <div class="case-overlay">
+            <span class="case-date">2025.11</span>
+            <h4 class="case-title"><span data-i18n-lang="zh">活動纏繞畫 — 完成作品</span><span data-i18n-lang="en">Zentangle workshop — finished pieces</span></h4>
+          </div>
+        </article>
+        <article class="case-item" data-cat="culture" data-aos="fade-up">
+          <img src="../images/SamSamma/20251115活動纏繞畫/LINE_ALBUM_20251115_260521_6.webp" alt="纏繞畫活動作品 6" loading="lazy">
+          <span class="case-cat"><span data-i18n-lang="zh">文化工藝</span><span data-i18n-lang="en">Crafts</span></span>
+          <div class="case-overlay">
+            <span class="case-date">2025.11</span>
+            <h4 class="case-title"><span data-i18n-lang="zh">活動纏繞畫 — 學員專注</span><span data-i18n-lang="en">Zentangle workshop — focused participants</span></h4>
+          </div>
+        </article>
+        <article class="case-item" data-cat="culture" data-aos="fade-up">
+          <img src="../images/SamSamma/20251115活動纏繞畫/LINE_ALBUM_20251115_260521_7.webp" alt="纏繞畫活動作品 7" loading="lazy">
+          <span class="case-cat"><span data-i18n-lang="zh">文化工藝</span><span data-i18n-lang="en">Crafts</span></span>
+          <div class="case-overlay">
+            <span class="case-date">2025.11</span>
+            <h4 class="case-title"><span data-i18n-lang="zh">活動纏繞畫 — 大隘部落紋飾</span><span data-i18n-lang="en">Zentangle workshop — Daai tribe motifs</span></h4>
+          </div>
+        </article>
+
+        <!-- 企業教育 -->
+        <article class="case-item" data-cat="corporate" data-aos="fade-up">
+          <img src="../images/SamSamma/20251023竹炭爐企業教育社員課程/竹製開會所講師演講.webp" alt="竹炭爐企業教育課程 講師演講 1" loading="lazy">
+          <span class="case-cat"><span data-i18n-lang="zh">企業教育</span><span data-i18n-lang="en">Corporate</span></span>
+          <div class="case-overlay">
+            <span class="case-date">2025.10</span>
+            <h4 class="case-title"><span data-i18n-lang="zh">企業教育 — 竹炭爐永續課程</span><span data-i18n-lang="en">Corporate education — bamboo-kiln sustainability class</span></h4>
+          </div>
+        </article>
+        <article class="case-item" data-cat="corporate" data-aos="fade-up">
+          <img src="../images/SamSamma/20251023竹炭爐企業教育社員課程/竹製開會所講師演講2.webp" alt="竹炭爐企業教育課程 講師演講 2" loading="lazy">
+          <span class="case-cat"><span data-i18n-lang="zh">企業教育</span><span data-i18n-lang="en">Corporate</span></span>
+          <div class="case-overlay">
+            <span class="case-date">2025.10</span>
+            <h4 class="case-title"><span data-i18n-lang="zh">企業教育 — 碳儲量原理分享</span><span data-i18n-lang="en">Corporate education — sharing carbon-storage principles</span></h4>
+          </div>
+        </article>
+        <article class="case-item" data-cat="corporate" data-aos="fade-up">
+          <img src="../images/SamSamma/20251023竹炭爐企業教育社員課程/竹製開會所講師演講3.webp" alt="竹炭爐企業教育課程 講師演講 3" loading="lazy">
+          <span class="case-cat"><span data-i18n-lang="zh">企業教育</span><span data-i18n-lang="en">Corporate</span></span>
+          <div class="case-overlay">
+            <span class="case-date">2025.10</span>
+            <h4 class="case-title"><span data-i18n-lang="zh">企業教育 — 學員實作課程</span><span data-i18n-lang="en">Corporate education — hands-on session</span></h4>
+          </div>
+        </article>
+        <article class="case-item" data-cat="corporate" data-aos="fade-up">
+          <img src="../images/SamSamma/20251023竹炭爐企業教育社員課程/竹製開會所講師演講4.webp" alt="竹炭爐企業教育課程 講師演講 4" loading="lazy">
+          <span class="case-cat"><span data-i18n-lang="zh">企業教育</span><span data-i18n-lang="en">Corporate</span></span>
+          <div class="case-overlay">
+            <span class="case-date">2025.10</span>
+            <h4 class="case-title"><span data-i18n-lang="zh">企業教育 — 結合 ESG 報告書</span><span data-i18n-lang="en">Corporate education — tied to ESG reporting</span></h4>
+          </div>
+        </article>
+
+        <!-- 國際 / 第三張（補齊） -->
+        <article class="case-item" data-cat="international" data-aos="fade-up">
+          <img src="../images/SamSamma/20260521日本展覽園區竹編/S__808656918_0.webp" alt="日本展覽園區竹編作品（三）" loading="lazy">
+          <span class="case-cat"><span data-i18n-lang="zh">國際展覽</span><span data-i18n-lang="en">International</span></span>
+          <div class="case-overlay">
+            <span class="case-date">2026.05</span>
+            <h4 class="case-title"><span data-i18n-lang="zh">日本展覽 — 部落工藝國際亮相</span><span data-i18n-lang="en">Japan exhibition — tribal craft on the world stage</span></h4>
+          </div>
+        </article>
+
+        <!-- 學術 / 明志科大課程 -->
+        <article class="case-item" data-cat="academic" data-aos="fade-up">
+          <img src="../images/SamSamma/20250727明志科大課程社員共同參與/合照.webp" alt="明志科大課程 社員共同參與 合照" loading="lazy">
+          <span class="case-cat"><span data-i18n-lang="zh">學術合作</span><span data-i18n-lang="en">Academic</span></span>
+          <div class="case-overlay">
+            <span class="case-date">2025.07</span>
+            <h4 class="case-title"><span data-i18n-lang="zh">明志科大課程合作 — 跨校學習</span><span data-i18n-lang="en">MingChi Univ. course collaboration — cross-campus learning</span></h4>
+          </div>
+        </article>
+
+        <!-- ============================================================
+             v4.1 補齊照片（既有分類拓展）
+             ============================================================ -->
+
+        <!-- 國際 / 第四張(2026.05 補齊 921) -->
+        <article class="case-item" data-cat="international" data-aos="fade-up">
+          <img src="../images/SamSamma/20260521日本展覽園區竹編/S__808656921_0.webp" alt="日本展覽園區竹編作品(四)" loading="lazy">
+          <span class="case-cat"><span data-i18n-lang="zh">國際展覽</span><span data-i18n-lang="en">International</span></span>
+          <div class="case-overlay">
+            <span class="case-date">2026.05</span>
+            <h4 class="case-title"><span data-i18n-lang="zh">日本展覽 — 賽夏紋飾跨海亮相</span><span data-i18n-lang="en">Japan exhibition — Saisiyat motifs debut overseas</span></h4>
+          </div>
+        </article>
+
+        <!-- 學術 / USR 成果展第 1 張(補齊) -->
+        <article class="case-item" data-cat="academic" data-aos="fade-up">
+          <img src="../images/SamSamma/20251201明新科技大學 USR成果展/LINE_ALBUM_明新科技大學 USR成果展_260521_1.webp" alt="明新科技大學 USR 成果展 1" loading="lazy">
+          <span class="case-cat"><span data-i18n-lang="zh">學術合作</span><span data-i18n-lang="en">Academic</span></span>
+          <div class="case-overlay">
+            <span class="case-date">2025.12</span>
+            <h4 class="case-title"><span data-i18n-lang="zh">明新科大 USR 成果展 — 跨域成果發表</span><span data-i18n-lang="en">MUST USR showcase — cross-domain results</span></h4>
+          </div>
+        </article>
+
+        <!-- 學術 / 學生來訪製作入口竹製柵欄 -->
+        <article class="case-item" data-cat="academic" data-aos="fade-up">
+          <img src="../images/SamSamma/20250907學生來訪製作入口竹製柵欄/社員+明新科大老師+學生合影.webp" alt="明新科大老師與學生來訪合影" loading="lazy">
+          <span class="case-cat"><span data-i18n-lang="zh">學術合作</span><span data-i18n-lang="en">Academic</span></span>
+          <div class="case-overlay">
+            <span class="case-date">2025.09</span>
+            <h4 class="case-title"><span data-i18n-lang="zh">USR 學生來訪 — 親手做園區竹柵欄</span><span data-i18n-lang="en">USR students visit — building the bamboo fence by hand</span></h4>
+          </div>
+        </article>
+
+        <!-- 學術 / USR 訪視會前會 -->
+        <article class="case-item" data-cat="academic" data-aos="fade-up">
+          <img src="../images/SamSamma/20250812USR訪視會前會/與住炭爐合照.webp" alt="USR 訪視會前會 與竹炭爐合照" loading="lazy">
+          <span class="case-cat"><span data-i18n-lang="zh">學術合作</span><span data-i18n-lang="en">Academic</span></span>
+          <div class="case-overlay">
+            <span class="case-date">2025.08</span>
+            <h4 class="case-title"><span data-i18n-lang="zh">USR 訪視會前會 — 竹炭爐前的合影</span><span data-i18n-lang="en">USR pre-visit meeting — group photo by the kiln</span></h4>
+          </div>
+        </article>
+
+        <!-- 社區 / 發起人講解給客戶(補齊) -->
+        <article class="case-item" data-cat="community" data-aos="fade-up">
+          <img src="../images/SamSamma/20251117其他社區老人來園區參訪/合作社發起人講解給客戶.webp" alt="合作社發起人講解給來訪客戶" loading="lazy">
+          <span class="case-cat"><span data-i18n-lang="zh">社區參訪</span><span data-i18n-lang="en">Community</span></span>
+          <div class="case-overlay">
+            <span class="case-date">2025.11</span>
+            <h4 class="case-title"><span data-i18n-lang="zh">發起人親自導覽 — 把故事說給來訪者聽</span><span data-i18n-lang="en">The founder gives the tour — telling the story to visitors</span></h4>
+          </div>
+        </article>
+
+        <!-- 文化 / 纏繞畫第 1 張(補齊) -->
+        <article class="case-item" data-cat="culture" data-aos="fade-up">
+          <img src="../images/SamSamma/20251115活動纏繞畫/LINE_ALBUM_20251115_260521_1.webp" alt="纏繞畫活動作品 1" loading="lazy">
+          <span class="case-cat"><span data-i18n-lang="zh">文化工藝</span><span data-i18n-lang="en">Crafts</span></span>
+          <div class="case-overlay">
+            <span class="case-date">2025.11</span>
+            <h4 class="case-title"><span data-i18n-lang="zh">活動纏繞畫 — 共作開場</span><span data-i18n-lang="en">Zentangle workshop — the co-creation kickoff</span></h4>
+          </div>
+        </article>
+
+        <!-- 企業 / 製造所內部社員講師教學(補齊) -->
+        <article class="case-item" data-cat="corporate" data-aos="fade-up">
+          <img src="../images/SamSamma/20251023竹炭爐企業教育社員課程/竹炭爐製造所內部社員講師教學照片.webp" alt="竹炭爐製造所內部 社員講師教學" loading="lazy">
+          <span class="case-cat"><span data-i18n-lang="zh">企業教育</span><span data-i18n-lang="en">Corporate</span></span>
+          <div class="case-overlay">
+            <span class="case-date">2025.10</span>
+            <h4 class="case-title"><span data-i18n-lang="zh">企業教育 — 竹炭爐製造所內部實境教學</span><span data-i18n-lang="en">Corporate education — on-site teaching inside the kiln workshop</span></h4>
+          </div>
+        </article>
+      </div>
+
+      <!-- 展開/收合按鈕 -->
+      <div class="cases-toggle-wrap" id="casesToggleWrap">
+        <button type="button" class="cases-toggle-btn" id="casesToggleBtn"
+                aria-expanded="false" aria-controls="casesGrid">
+          <span class="btn-text"><span data-i18n-lang="zh">看更多紀錄</span><span data-i18n-lang="en">See more records</span></span>
+          <span class="count-hint" id="casesToggleHint"><span data-i18n-lang="zh">還有 24 張</span><span data-i18n-lang="en">24 more</span></span>
+          <i class="fas fa-chevron-down chev" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. 場域導覽（取代 #progress；mini timeline + 7 建物卡） -->
+  <section id="venue" class="venue-section">
+    <div class="container">
+      <div class="text-center" data-aos="fade-up">
+        <span class="section-eyebrow">Venue · <span data-i18n-lang="zh">場域導覽</span><span data-i18n-lang="en">The Site</span></span>
+        <h2 class="section-title"><span data-i18n-lang="zh">親自走過的 12 公頃竹林園區</span><span data-i18n-lang="en">The 12-hectare bamboo park we've walked ourselves</span></h2>
+        <p class="section-lede">
+          <span data-i18n-lang="zh">從合作社發起到 USR 來訪，這是 24 個月的建設歷程；
+          往下滑，看見我們現在每天在工作的真實場域。</span>
+          <span data-i18n-lang="en">From founding the co-op to the USR visits, this is a 24-month build journey;
+          scroll down to see the real site where we work every day.</span>
+        </p>
+      </div>
+
+      <!-- Mini 建設歷程 timeline（壓縮版，取代原 #progress） -->
+      <div class="mini-timeline" data-aos="fade-up" aria-label="場域建設歷程">
+        <div class="mini-tl-item">
+          <span class="mini-tl-date">2024/06</span>
+          <span class="mini-tl-text"><span data-i18n-lang="zh">合作社發起</span><span data-i18n-lang="en">Co-op initiated</span></span>
+        </div>
+        <span class="mini-tl-sep">→</span>
+        <div class="mini-tl-item">
+          <span class="mini-tl-date">2024/09</span>
+          <span class="mini-tl-text"><span data-i18n-lang="zh">正式立案</span><span data-i18n-lang="en">Officially registered</span></span>
+        </div>
+        <span class="mini-tl-sep">→</span>
+        <div class="mini-tl-item">
+          <span class="mini-tl-date">2025/02</span>
+          <span class="mini-tl-text"><span data-i18n-lang="zh">開工典禮</span><span data-i18n-lang="en">Groundbreaking</span></span>
+        </div>
+        <span class="mini-tl-sep">→</span>
+        <div class="mini-tl-item">
+          <span class="mini-tl-date">2025/08</span>
+          <span class="mini-tl-text"><span data-i18n-lang="zh">竹屋完工</span><span data-i18n-lang="en">Bamboo house done</span></span>
+        </div>
+        <span class="mini-tl-sep">→</span>
+        <div class="mini-tl-item">
+          <span class="mini-tl-date">2025/09</span>
+          <span class="mini-tl-text"><span data-i18n-lang="zh">USR 學生來訪</span><span data-i18n-lang="en">USR students visit</span></span>
+        </div>
+        <span class="mini-tl-sep">→</span>
+        <div class="mini-tl-item">
+          <span class="mini-tl-date">2026/05</span>
+          <span class="mini-tl-text"><span data-i18n-lang="zh">作品赴日</span><span data-i18n-lang="en">Works to Japan</span></span>
+        </div>
+      </div>
+
+      <!-- 7 個園區建物卡 -->
+      <div class="venue-grid">
+        <div class="venue-card" data-aos="fade-up">
+          <div class="venue-img">
+            <img src="../images/SamSamma/園區建物拍攝/竹炭爐製作所內部鍋爐.webp" alt="竹炭爐製作所內部鍋爐" loading="lazy">
+            <span class="venue-status is-progress"><span data-i18n-lang="zh">運轉中</span><span data-i18n-lang="en">Running</span></span>
+          </div>
+          <div class="venue-card-body">
+            <h4><span data-i18n-lang="zh">竹炭爐 (內部)</span><span data-i18n-lang="en">Bamboo-charcoal kiln (interior)</span></h4>
+            <p><span data-i18n-lang="zh">實際運轉的竹炭製作鍋爐，提供教學現場直觀的工藝展示。</span><span data-i18n-lang="en">A working bamboo-charcoal kiln that gives visitors an up-close, hands-on craft demonstration.</span></p>
+          </div>
+        </div>
+        <div class="venue-card" data-aos="fade-up">
+          <div class="venue-img">
+            <img src="../images/SamSamma/園區建物拍攝/樹屋.webp" alt="園區樹屋觀景平台" loading="lazy">
+            <span class="venue-status"><span data-i18n-lang="zh">已完工</span><span data-i18n-lang="en">Completed</span></span>
+          </div>
+          <div class="venue-card-body">
+            <h4><span data-i18n-lang="zh">樹屋觀景平台</span><span data-i18n-lang="en">Tree-house viewing deck</span></h4>
+            <p><span data-i18n-lang="zh">場域制高點，俯瞰 12 公頃竹林，文化展演與創作活動使用。</span><span data-i18n-lang="en">The site's highest point, overlooking 12 ha of bamboo — used for cultural performances and creative activities.</span></p>
+          </div>
+        </div>
+        <div class="venue-card" data-aos="fade-up">
+          <div class="venue-img">
+            <img src="../images/SamSamma/園區建物拍攝/竹製開會區.webp" alt="竹製開會所與接待區" loading="lazy">
+            <span class="venue-status"><span data-i18n-lang="zh">已完工</span><span data-i18n-lang="en">Completed</span></span>
+          </div>
+          <div class="venue-card-body">
+            <h4><span data-i18n-lang="zh">竹製開會所</span><span data-i18n-lang="en">Bamboo meeting hall</span></h4>
+            <p><span data-i18n-lang="zh">純竹結構建築，是企業課程與工藝師教學的主要室內空間。</span><span data-i18n-lang="en">An all-bamboo structure — the main indoor space for corporate classes and artisan teaching.</span></p>
+          </div>
+        </div>
+        <div class="venue-card" data-aos="fade-up">
+          <div class="venue-img">
+            <img src="../images/SamSamma/園區建物拍攝/竹炭製作所圖片.webp" alt="竹炭製作所外觀" loading="lazy">
+            <span class="venue-status"><span data-i18n-lang="zh">已完工</span><span data-i18n-lang="en">Completed</span></span>
+          </div>
+          <div class="venue-card-body">
+            <h4><span data-i18n-lang="zh">竹炭製作所</span><span data-i18n-lang="en">Bamboo-charcoal workshop</span></h4>
+            <p><span data-i18n-lang="zh">低碳竹炭燒製主場，承載「碳儲量、碳補捉、ESG」三大教育主題。</span><span data-i18n-lang="en">The main low-carbon charcoal-firing space, anchoring three education themes: carbon storage, carbon capture, and ESG.</span></p>
+          </div>
+        </div>
+        <div class="venue-card" data-aos="fade-up">
+          <div class="venue-img">
+            <img src="../images/SamSamma/園區建物拍攝/竹材放置高腳架.webp" alt="竹材放置高腳架" loading="lazy">
+            <span class="venue-status"><span data-i18n-lang="zh">運作中</span><span data-i18n-lang="en">In use</span></span>
+          </div>
+          <div class="venue-card-body">
+            <h4><span data-i18n-lang="zh">竹材高腳架</span><span data-i18n-lang="en">Elevated bamboo racks</span></h4>
+            <p><span data-i18n-lang="zh">原料管理區，遵循「存三去四不留七」永續竹林管理工序。</span><span data-i18n-lang="en">The raw-material management area, following the "keep three, remove four, leave none past seven" sustainable bamboo practice.</span></p>
+          </div>
+        </div>
+        <div class="venue-card" data-aos="fade-up">
+          <div class="venue-img">
+            <img src="../images/SamSamma/園區建物拍攝/前殺青池和後竹材存放高腳架.webp" alt="前殺青池與竹材處理區" loading="lazy">
+            <span class="venue-status"><span data-i18n-lang="zh">運作中</span><span data-i18n-lang="en">In use</span></span>
+          </div>
+          <div class="venue-card-body">
+            <h4><span data-i18n-lang="zh">殺青池 + 處理區</span><span data-i18n-lang="en">Curing pool + processing area</span></h4>
+            <p><span data-i18n-lang="zh">傳統殺青工序場域，是竹材防蛀、定色的關鍵基礎建設。</span><span data-i18n-lang="en">The traditional curing site — key infrastructure for protecting bamboo from pests and fixing its color.</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 預約資訊區塊 (v2 升級版) -->
+  <section id="booking" class="booking-section">
+    <div class="container">
+
+      <!-- ====== 1. 預約區主視覺 Banner（v4：邀請語氣） ====== -->
+      <div class="booking-banner" data-aos="fade-up">
+        <div class="booking-banner-img">
+          <img src="../images/SamSamma/20250907學生來訪製作入口竹製柵欄/完成樹屋+柵欄製作一半圖片.webp" alt="山莎蔓岸合作社園區主視覺">
+        </div>
+        <div class="booking-banner-text">
+          <h2><span data-i18n-lang="zh">來這裡，慢慢看竹子</span><span data-i18n-lang="en">Come, and take your time with the bamboo</span></h2>
+          <p><span data-i18n-lang="zh">如果你想來走走、想帶人來、或想多了解一點 —<br>把下面這個表單填一填，剩下我們會跟你慢慢聊。</span><span data-i18n-lang="en">If you'd like to visit, bring a group, or just learn more —<br>fill out the form below, and we'll take it from there together.</span></p>
+        </div>
+      </div>
+
+      <!-- ====== 2. 預約流程 4 步驟 ====== -->
+      <div class="process-section" data-aos="fade-up">
+        <h3><span data-i18n-lang="zh">預約流程</span><span data-i18n-lang="en">Booking process</span></h3>
+        <p class="section-subsub" style="margin-bottom: 0;"><span data-i18n-lang="zh">透明、可追蹤、零干擾的 4 步驟</span><span data-i18n-lang="en">Four transparent, trackable, hassle-free steps</span></p>
+        <div class="process-steps">
+          <div class="process-step">
+            <div class="step-num">1</div>
+            <i class="fas fa-edit step-icon"></i>
+            <h5><span data-i18n-lang="zh">線上填表</span><span data-i18n-lang="en">Fill the form</span></h5>
+            <p><span data-i18n-lang="zh">選方案、填人數與希望日期，1 分鐘完成</span><span data-i18n-lang="en">Pick a plan, enter group size and preferred date — done in a minute</span></p>
+          </div>
+          <div class="process-step">
+            <div class="step-num">2</div>
+            <i class="fas fa-comments step-icon"></i>
+            <h5><span data-i18n-lang="zh">合作社聯繫</span><span data-i18n-lang="en">We get in touch</span></h5>
+            <p><span data-i18n-lang="zh">2 個工作日內以電話 / Email 確認需求</span><span data-i18n-lang="en">We confirm your needs by phone / email within 2 business days</span></p>
+          </div>
+          <div class="process-step">
+            <div class="step-num">3</div>
+            <i class="fas fa-handshake step-icon"></i>
+            <h5><span data-i18n-lang="zh">簽署同意書</span><span data-i18n-lang="en">Sign the agreement</span></h5>
+            <p><span data-i18n-lang="zh">提供保險資料（學校）與行前須知</span><span data-i18n-lang="en">Provide insurance info (schools) and pre-visit notes</span></p>
+          </div>
+          <div class="process-step">
+            <div class="step-num">4</div>
+            <i class="fas fa-mountain step-icon"></i>
+            <h5><span data-i18n-lang="zh">場域接待</span><span data-i18n-lang="en">On-site welcome</span></h5>
+            <p><span data-i18n-lang="zh">依議定時段抵達，由部落族人專業接待</span><span data-i18n-lang="en">Arrive at the agreed time and be hosted by tribal members</span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ====== 4. 預約資訊 + 強化表單 ====== -->
+      <div class="booking-form-zone" data-aos="fade-up">
+        <div class="booking-content">
+
+          <!-- 左：預約資訊 + 場域圖 -->
+          <div class="booking-info">
+            <div class="booking-info-img">
+              <img src="../images/SamSamma/園區建物拍攝/竹炭製作所圖片.webp" alt="山莎蔓岸竹炭製作所實景" style="width:100%;height:100%;object-fit:cover;border-radius:16px;display:block;">
+            </div>
+
+            <div class="info-block">
+              <h4><i class="fas fa-map-marker-alt"></i> <span data-i18n-lang="zh">場域地址</span><span data-i18n-lang="en">Address</span></h4>
+              <p><span data-i18n-lang="zh">新竹縣五峰鄉大隘村 14 鄰大隘 266-1 號臨</span><span data-i18n-lang="en">No. 266-1, Daai, Neighborhood 14, Daai Village, Wufeng Township, Hsinchu County</span></p>
+              <p style="font-size:0.83rem;opacity:0.7;margin-top:0.3rem;"><span data-i18n-lang="zh">山區產業道路，導航前請電話確認</span><span data-i18n-lang="en">Mountain industrial road — please call to confirm before navigating</span></p>
+            </div>
+
+            <div class="info-block">
+              <h4><i class="fas fa-users"></i> <span data-i18n-lang="zh">適合對象</span><span data-i18n-lang="en">Who it's for</span></h4>
+              <ul>
+                <li><span data-i18n-lang="zh">國小 / 國中 / 高中 / 大專學生團體</span><span data-i18n-lang="en">Elementary / junior-high / high-school / college student groups</span></li>
+                <li><span data-i18n-lang="zh">企業 ESG / CSR / 員工旅遊</span><span data-i18n-lang="en">Corporate ESG / CSR / staff trips</span></li>
+                <li><span data-i18n-lang="zh">教育、文化機構參訪</span><span data-i18n-lang="en">Educational and cultural-institution visits</span></li>
+                <li><span data-i18n-lang="zh">研究單位、媒體採訪</span><span data-i18n-lang="en">Research bodies and media interviews</span></li>
+              </ul>
+            </div>
+
+            <div class="info-block">
+              <h4><i class="far fa-clock"></i> <span data-i18n-lang="zh">開放時段</span><span data-i18n-lang="en">Opening hours</span></h4>
+              <p><span data-i18n-lang="zh">平日：週一至週五 09:00-17:00</span><span data-i18n-lang="en">Weekdays: Mon–Fri 09:00–17:00</span></p>
+              <p><span data-i18n-lang="zh">週末：可依需求安排，請提前洽詢</span><span data-i18n-lang="en">Weekends: by arrangement — please inquire in advance</span></p>
+            </div>
+
+            <div class="info-block">
+              <h4><i class="fas fa-exclamation-triangle"></i> <span data-i18n-lang="zh">注意事項</span><span data-i18n-lang="en">Please note</span></h4>
+              <ul>
+                <li><span data-i18n-lang="zh">請提前 <strong style="color: var(--gold);">7-14 天</strong>預約</span><span data-i18n-lang="en">Book <strong style="color: var(--gold);">7–14 days</strong> in advance</span></li>
+                <li><span data-i18n-lang="zh">學校團體需提供保險投保資料</span><span data-i18n-lang="en">School groups must provide insurance documentation</span></li>
+                <li><span data-i18n-lang="zh">基地仍持續建設中，部分區域需配合動線</span><span data-i18n-lang="en">The site is still under construction; some areas follow set routes</span></li>
+                <li><span data-i18n-lang="zh">山區天氣多變，雨天備案請事先確認</span><span data-i18n-lang="en">Mountain weather varies; please confirm rain contingency plans ahead</span></li>
+              </ul>
+            </div>
+
+            <div class="info-block">
+              <h4><i class="fas fa-phone"></i> <span data-i18n-lang="zh">直接聯絡</span><span data-i18n-lang="en">Direct contact</span></h4>
+              <p><i class="fas fa-phone me-2"></i>0972-797-XXX</p>
+              <p><i class="fas fa-envelope me-2"></i>jeff11051212@gmail.com</p>
+              <p><i class="fab fa-line me-2"></i><span data-i18n-lang="zh">LINE 官方 ID：（待補）</span><span data-i18n-lang="en">LINE official ID: (TBD)</span></p>
+            </div>
+          </div>
+
+          <!-- 右：強化版預約表單 -->
+          <div class="booking-form">
+            <h3 style="color: var(--gold); margin-bottom: 0.5rem;"><span data-i18n-lang="zh">線上預約表單</span><span data-i18n-lang="en">Online booking form</span></h3>
+            <p style="color: rgba(255,255,255,0.7); font-size: 0.86rem; margin-bottom: 1.5rem;">
+              <i class="fas fa-shield-alt me-1"></i><span data-i18n-lang="zh">表單送出後將開啟 Google 表單填寫詳細資料</span><span data-i18n-lang="en">After submitting, a Google Form will open for the full details</span>
+            </p>
+
+            <form id="bookingForm" novalidate>
+
+              <!-- 1. 方案選擇 -->
+              <div class="form-section-title"><span class="num">1</span><span data-i18n-lang="zh">選擇方案</span><span data-i18n-lang="en">Choose a plan</span></div>
+              <div class="form-group">
+                <label class="form-label required" for="plan"><span data-i18n-lang="zh">體驗方案</span><span data-i18n-lang="en">Experience plan</span></label>
+                <select class="form-control" id="plan" name="plan" required>
+                  <option value="" data-zh="請選擇方案（或點擊上方「選擇此方案」按鈕）" data-en="Select a plan (or click &quot;Choose this plan&quot; above)">請選擇方案（或點擊上方「選擇此方案」按鈕）</option>
+                  <option value="school" data-zh="學校校外教學" data-en="School field trip">學校校外教學</option>
+                  <option value="corporate" data-zh="企業 ESG / 教育課程" data-en="Corporate ESG / education">企業 ESG / 教育課程</option>
+                  <option value="culture" data-zh="深度文化參訪" data-en="In-depth cultural visit">深度文化參訪</option>
+                  <option value="custom" data-zh="客製化方案" data-en="Custom plan">客製化方案</option>
+                </select>
+              </div>
+
+              <!-- 2. 聯絡資訊 -->
+              <div class="form-section-title"><span class="num">2</span><span data-i18n-lang="zh">聯絡資訊</span><span data-i18n-lang="en">Contact info</span></div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label required" for="orgName"><span data-i18n-lang="zh">機構 / 學校名稱</span><span data-i18n-lang="en">Organization / school</span></label>
+                  <input type="text" class="form-control" id="orgName" name="orgName" placeholder="例：明新科技大學" data-ph-en="e.g. Minghsin University" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label required" for="contactName"><span data-i18n-lang="zh">聯絡人姓名</span><span data-i18n-lang="en">Contact name</span></label>
+                  <input type="text" class="form-control" id="contactName" name="contactName" placeholder="例：王小明" data-ph-en="e.g. Ming Wang" required>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label required" for="email"><span data-i18n-lang="zh">電子郵件</span><span data-i18n-lang="en">Email</span></label>
+                  <input type="email" class="form-control" id="email" name="email" placeholder="example@mail.com" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label required" for="phone"><span data-i18n-lang="zh">聯絡電話</span><span data-i18n-lang="en">Phone</span></label>
+                  <input type="tel" class="form-control" id="phone" name="phone" placeholder="0912-345-678" required>
+                </div>
+              </div>
+
+              <!-- 3. 活動需求 -->
+              <div class="form-section-title"><span class="num">3</span><span data-i18n-lang="zh">活動需求</span><span data-i18n-lang="en">Visit details</span></div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label required" for="participants"><span data-i18n-lang="zh">參與人數</span><span data-i18n-lang="en">Number of people</span></label>
+                  <input type="number" class="form-control" id="participants" name="participants" min="1" placeholder="例：25" data-ph-en="e.g. 25" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label required" for="date"><span data-i18n-lang="zh">希望日期</span><span data-i18n-lang="en">Preferred date</span></label>
+                  <input type="date" class="form-control" id="date" name="date" required>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="duration"><span data-i18n-lang="zh">活動時段</span><span data-i18n-lang="en">Time slot</span></label>
+                  <select class="form-control" id="duration" name="duration">
+                    <option value="" data-zh="請選擇" data-en="Select">請選擇</option>
+                    <option value="am" data-zh="上午 09:00-12:00" data-en="Morning 09:00–12:00">上午 09:00-12:00</option>
+                    <option value="pm" data-zh="下午 13:00-17:00" data-en="Afternoon 13:00–17:00">下午 13:00-17:00</option>
+                    <option value="full" data-zh="全日 09:00-17:00" data-en="Full day 09:00–17:00">全日 09:00-17:00</option>
+                    <option value="overnight" data-zh="過夜（深度遊程）" data-en="Overnight (in-depth tour)">過夜（深度遊程）</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="budget"><span data-i18n-lang="zh">預算範圍（選填）</span><span data-i18n-lang="en">Budget range (optional)</span></label>
+                  <select class="form-control" id="budget" name="budget">
+                    <option value="" data-zh="請選擇" data-en="Select">請選擇</option>
+                    <option value="under5" data-zh="5 萬以下" data-en="Under NT$50k">5 萬以下</option>
+                    <option value="5-10" data-zh="5-10 萬" data-en="NT$50k–100k">5-10 萬</option>
+                    <option value="10-30" data-zh="10-30 萬" data-en="NT$100k–300k">10-30 萬</option>
+                    <option value="over30" data-zh="30 萬以上" data-en="Over NT$300k">30 萬以上</option>
+                    <option value="discuss" data-zh="洽談中" data-en="To be discussed">洽談中</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- 附加需求 -->
+              <div class="form-group">
+                <label class="form-label"><span data-i18n-lang="zh">附加需求（可複選）</span><span data-i18n-lang="en">Add-ons (multiple)</span></label>
+                <div class="form-check-group">
+                  <label class="form-check-custom"><input type="checkbox" name="addon" value="meal"><span><span data-i18n-lang="zh">部落餐食</span><span data-i18n-lang="en">Tribal meals</span></span></label>
+                  <label class="form-check-custom"><input type="checkbox" name="addon" value="insurance"><span><span data-i18n-lang="zh">保險協助</span><span data-i18n-lang="en">Insurance help</span></span></label>
+                  <label class="form-check-custom"><input type="checkbox" name="addon" value="transport"><span><span data-i18n-lang="zh">交通接駁</span><span data-i18n-lang="en">Shuttle</span></span></label>
+                  <label class="form-check-custom"><input type="checkbox" name="addon" value="lodging"><span><span data-i18n-lang="zh">住宿安排</span><span data-i18n-lang="en">Lodging</span></span></label>
+                  <label class="form-check-custom"><input type="checkbox" name="addon" value="photo"><span><span data-i18n-lang="zh">攝影紀錄</span><span data-i18n-lang="en">Photo record</span></span></label>
+                  <label class="form-check-custom"><input type="checkbox" name="addon" value="souvenir"><span><span data-i18n-lang="zh">伴手禮採購</span><span data-i18n-lang="en">Souvenirs</span></span></label>
+                </div>
+              </div>
+
+              <!-- 4. 備註 -->
+              <div class="form-section-title"><span class="num">4</span><span data-i18n-lang="zh">備註</span><span data-i18n-lang="en">Notes</span></div>
+              <div class="form-group">
+                <textarea class="form-control" rows="3" name="notes" id="notes" placeholder="特殊需求、特殊飲食、行動不便者數量、其他想了解的內容..." data-ph-en="Special needs, dietary requests, number of guests with limited mobility, anything else..."></textarea>
+              </div>
+
+              <div class="notice-card">
+                <strong><i class="fas fa-info-circle me-1"></i><span data-i18n-lang="zh">送出後流程</span><span data-i18n-lang="en">What happens next</span></strong>
+                <span data-i18n-lang="zh">填寫送出 → 開啟 Google 詳細表單 → 合作社於 2 個工作日內聯繫確認 → 完成預約。
+                資料僅用於本次預約聯繫，不會作他用。</span>
+                <span data-i18n-lang="en">Submit → a detailed Google Form opens → we confirm within 2 business days → booking complete.
+                Your data is used only for this booking and nothing else.</span>
+              </div>
+
+              <button type="submit" class="btn btn-primary-custom w-100" style="margin-top: 1.5rem;">
+                <i class="fas fa-paper-plane me-2"></i><span data-i18n-lang="zh">送出預約申請</span><span data-i18n-lang="en">Submit booking request</span>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- 信任背書 + FAQ 已移至 #contact 區（避免上下捲動疲勞） -->
+
+    </div>
+  </section>
+
+
+      <!-- 常見問題 FAQ -->
+      <div class="trust-section" data-aos="fade-up">
+        <h3 class="section-subtitle"><span data-i18n-lang="zh">常見問題 FAQ</span><span data-i18n-lang="en">FAQ</span></h3>
+        <p class="section-subsub" style="margin-bottom: 0;"><span data-i18n-lang="zh">預約前最常被問到的 6 個問題</span><span data-i18n-lang="en">The 6 questions we hear most before a visit</span></p>
+        <div class="faq-list">
+          <details class="faq-item">
+            <summary><i class="far fa-question-circle" style="color: var(--gold);"></i><span data-i18n-lang="zh">現在可以購買竹炭產品嗎？</span><span data-i18n-lang="en">Can I buy bamboo-charcoal products now?</span></summary>
+            <div class="faq-body">
+              <span data-i18n-lang="zh">目前竹炭產線仍在升級建置中（115-116 年度高溫窯體升級至 <strong>900-1000°C</strong>），
+              預計 <strong>116 年度（2027 年）</strong>正式量產並開放預購。
+              建設期間可預訂「企業 ESG 採購提案」，由合作社報價並安排首批產品。</span>
+              <span data-i18n-lang="en">The charcoal line is still being upgraded (high-temperature kiln raised to <strong>900–1000°C</strong> in 2026–2027),
+              with full production and pre-orders expected to open in <strong>2027</strong>.
+              During construction you can reserve a "corporate ESG procurement proposal," and the co-op will quote and arrange the first batch.</span>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary><i class="far fa-question-circle" style="color: var(--gold);"></i><span data-i18n-lang="zh">可以隨時參觀基地嗎？</span><span data-i18n-lang="en">Can I visit the site anytime?</span></summary>
+            <div class="faq-body">
+              <span data-i18n-lang="zh">目前基地建設仍在進行，為了你的安全與導覽品質，<strong>所有參訪都需事先預約</strong>。
+              這也讓我們能依你的需求安排專業族人導覽，而非自助瀏覽。</span>
+              <span data-i18n-lang="en">The site is still under construction, so for your safety and tour quality, <strong>all visits require advance booking</strong>.
+              This also lets us arrange a professional tribal guide tailored to your needs, rather than self-guided browsing.</span>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary><i class="far fa-question-circle" style="color: var(--gold);"></i><span data-i18n-lang="zh">體驗費用如何計算？</span><span data-i18n-lang="en">How are fees calculated?</span></summary>
+            <div class="faq-body">
+              <span data-i18n-lang="zh">費用依據方案、人數、時長與附加需求（餐食 / 住宿 / 接駁 / 保險）綜合報價。
+              預算範圍可於表單中標示，合作社將提供透明報價單；
+              <strong>學校教育價、企業價、客製價</strong>分流計算。</span>
+              <span data-i18n-lang="en">Fees are quoted based on the plan, group size, duration, and add-ons (meals / lodging / shuttle / insurance).
+              You can note your budget range in the form, and the co-op provides a transparent quote;
+              <strong>school, corporate, and custom rates</strong> are calculated separately.</span>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary><i class="far fa-question-circle" style="color: var(--gold);"></i><span data-i18n-lang="zh">如何取消或變更預約？</span><span data-i18n-lang="en">How do I cancel or change a booking?</span></summary>
+            <div class="faq-body">
+              <span data-i18n-lang="zh">活動 <strong>7 天前</strong>可免費變更或取消；
+              <strong>3-7 天內</strong>取消酌收 30% 行政費；
+              <strong>72 小時內</strong>取消可能酌收場域準備費。
+              遇颱風、地震、政府公告天災等不可抗力，將協助延期或全額退款。</span>
+              <span data-i18n-lang="en">Free changes or cancellation <strong>7+ days</strong> before the visit;
+              cancellation <strong>3–7 days</strong> ahead incurs a 30% admin fee;
+              within <strong>72 hours</strong>, a site-preparation fee may apply.
+              For force majeure such as typhoons, earthquakes, or officially declared disasters, we'll help reschedule or fully refund.</span>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary><i class="far fa-question-circle" style="color: var(--gold);"></i><span data-i18n-lang="zh">行動不便者可以參與嗎？</span><span data-i18n-lang="en">Can guests with limited mobility join?</span></summary>
+            <div class="faq-body">
+              <span data-i18n-lang="zh">基地位於山區，部分步道與設施仍在無障礙改善中。
+              請於表單註明行動不便者人數與需求（輪椅、手杖、視聽障等），
+              我們將為你<strong>客製可參與的動線與導覽方式</strong>。
+              竹徑文化講堂主體（一期）已優先納入無障礙設計。</span>
+              <span data-i18n-lang="en">The site is in the mountains, and some trails and facilities are still being made accessible.
+              Please note in the form the number and needs of guests with limited mobility (wheelchair, cane, hearing/vision, etc.),
+              and we'll <strong>customize an accessible route and guiding method</strong> for you.
+              The main Bamboo Path Cultural Hall (Phase 1) already prioritizes accessible design.</span>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary><i class="far fa-question-circle" style="color: var(--gold);"></i><span data-i18n-lang="zh">是否提供企業 ESG 可揭露資料？</span><span data-i18n-lang="en">Do you provide disclosable corporate ESG data?</span></summary>
+            <div class="faq-body">
+              <span data-i18n-lang="zh">是的。企業 ESG 參訪方案包含：
+              <strong>減碳量估算</strong>（基於太陽能 + 高溫窯節能）、
+              竹林撫育公頃數、培訓人次、
+              Saisiyat Raromaeh 品牌授權選項，
+              與 SDGs <strong>8 / 12 / 13 / 15</strong> 對齊清單，
+              可直接納入企業永續報告書揭露。詳細資料包請與合作社洽談。</span>
+              <span data-i18n-lang="en">Yes. The corporate ESG visit plan includes:
+              <strong>carbon-reduction estimates</strong> (based on solar + high-temperature kiln efficiency),
+              hectares of bamboo tended, number of people trained,
+              Saisiyat Raromaeh brand-licensing options,
+              and an alignment checklist with SDGs <strong>8 / 12 / 13 / 15</strong> —
+              ready for inclusion in your sustainability report. Contact the co-op for the full data pack.</span>
+            </div>
+          </details>
+        </div>
+      </div>
+
+      <!-- Footer 內容 -->
+      <div class="footer-content">
+        <div class="footer-section">
+          <h5><span data-i18n-lang="zh">合作社資訊</span><span data-i18n-lang="en">About the co-op</span></h5>
+          <p><span data-i18n-lang="zh">山莎蔓岸竹木產業生產合作社</span><span data-i18n-lang="en">SamSamma Bamboo Industry Production Co-op</span></p>
+          <p><span data-i18n-lang="zh">傳承賽夏族竹文化</span><span data-i18n-lang="en">Carrying on Saisiyat bamboo culture</span></p>
+          <p><span data-i18n-lang="zh">永續發展竹炭產業</span><span data-i18n-lang="en">Building a sustainable bamboo-charcoal industry</span></p>
+        </div>
+        <div class="footer-section">
+          <h5><span data-i18n-lang="zh">聯絡資訊</span><span data-i18n-lang="en">Contact</span></h5>
+          <p><i class="fas fa-map-marker-alt me-2"></i><span data-i18n-lang="zh">新竹縣五峰鄉大隘村 14 鄰大隘 266-1 號臨</span><span data-i18n-lang="en">No. 266-1, Daai, Neighborhood 14, Daai Village, Wufeng Township, Hsinchu County</span></p>
+          <p><i class="fas fa-phone me-2"></i>0972-797-XXX</p>
+          <p><i class="fas fa-envelope me-2"></i>jeff11051212@gmail.com</p>
+          <p><i class="fas fa-clock me-2"></i><span data-i18n-lang="zh">週一至週五 09:00-17:00</span><span data-i18n-lang="en">Mon–Fri 09:00–17:00</span></p>
+        </div>
+        <div class="footer-section">
+          <h5><span data-i18n-lang="zh">慢慢逛</span><span data-i18n-lang="en">Explore</span></h5>
+          <ul>
+            <li><a href="#now" style="color: #ccc; text-decoration: none;"><span data-i18n-lang="zh">近期動態</span><span data-i18n-lang="en">Latest</span></a></li>
+            <li><a href="#why-us" style="color: #ccc; text-decoration: none;"><span data-i18n-lang="zh">我們的足跡</span><span data-i18n-lang="en">Our Story</span></a></li>
+            <li><a href="#plans" style="color: #ccc; text-decoration: none;"><span data-i18n-lang="zh">來山裡走走</span><span data-i18n-lang="en">Visit Us</span></a></li>
+            <li><a href="#cases" style="color: #ccc; text-decoration: none;"><span data-i18n-lang="zh">真實案例</span><span data-i18n-lang="en">Stories</span></a></li>
+            <li><a href="#venue" style="color: #ccc; text-decoration: none;"><span data-i18n-lang="zh">場域導覽</span><span data-i18n-lang="en">The Site</span></a></li>
+            <li><a href="#booking" style="color: #ccc; text-decoration: none;"><span data-i18n-lang="zh">預約造訪</span><span data-i18n-lang="en">Book a Visit</span></a></li>
+            <li><a href="SamSamma.html" style="color: var(--gold); text-decoration: none;"><span data-i18n-lang="zh">→ PM 視角作品集</span><span data-i18n-lang="en">→ PM case study</span></a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2025 <span data-i18n-lang="zh">山莎蔓岸竹木產業生產合作社 · 版權所有 · 100% 原住民合作社</span><span data-i18n-lang="en">SamSamma Bamboo Industry Production Co-op · All rights reserved · 100% Indigenous co-op</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 回到頂部按鈕 -->
+  <div class="back-to-top" id="backToTop">
+    <i class="fas fa-chevron-up"></i>
+                </div>
+
+  <!-- 雙語：處理原生下拉選單 / placeholder / 跨頁連結語系（CSS 無法套用於 <option>） -->
+  <script>
+    (function () {
+      var lang = document.documentElement.classList.contains('i18n-zh') ? 'zh' : 'en';
+      if (lang === 'en') document.title = 'SamSamma Bamboo Co-op | Saisiyat Daai Tribe';
+      document.querySelectorAll('option[data-zh][data-en]').forEach(function (o) {
+        var t = o.getAttribute('data-' + lang);
+        if (t != null) o.textContent = t;
+      });
+      if (lang === 'en') {
+        document.querySelectorAll('[data-ph-en]').forEach(function (el) {
+          el.setAttribute('placeholder', el.getAttribute('data-ph-en'));
+        });
+      }
+      // 跨頁連結帶上目前語系（同站 .html，排除錨點與語言切換鈕）
+      document.querySelectorAll('a[href$=".html"]').forEach(function (a) {
+        if (a.closest('.lang-switch')) return;
+        var href = a.getAttribute('href');
+        if (!href || /^https?:|^mailto:|^tel:|^#/.test(href)) return;
+        a.setAttribute('href', href + '?lang=' + lang);
+      });
+    })();
+  </script>
+
+  <!-- JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    // 初始化 AOS 動畫
+    AOS.init({
+      duration: 1000,
+      once: true,
+      offset: 100
+    });
+
+    // 平滑滾動導航
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          const offsetTop = target.offsetTop - 80;
+          window.scrollTo({
+            top: offsetTop,
+          behavior: 'smooth'
+        });
+        }
+      });
+    });
+
+    // 回到頂部按鈕
+    const backToTop = document.getElementById('backToTop');
+
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        backToTop.classList.add('visible');
+      } else {
+        backToTop.classList.remove('visible');
+      }
+    });
+
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // 方案卡片「選擇此方案」CTA 按鈕 → 自動帶入表單 + 滾動至表單
+    (function () {
+      const planCards = document.querySelectorAll('#plans .plan-card');
+      const ctaButtons = document.querySelectorAll('.plan-card-cta');
+      const planSelect = document.getElementById('plan');
+      const form = document.getElementById('bookingForm');
+
+      function selectPlan(planKey) {
+        planCards.forEach(c => {
+          c.classList.toggle('is-selected', c.dataset.plan === planKey);
+        });
+        if (planSelect && planKey) planSelect.value = planKey;
+      }
+
+      ctaButtons.forEach(btn => {
+        btn.addEventListener('click', e => {
+          e.stopPropagation();
+          const card = btn.closest('.plan-card');
+          if (!card) return;
+          selectPlan(card.dataset.plan);
+          if (form) {
+            const offsetTop = form.getBoundingClientRect().top + window.pageYOffset - 100;
+            window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+          }
+        });
+      });
+
+      // 整張卡片也可以點擊（提升可用性）
+      planCards.forEach(card => {
+        card.addEventListener('click', e => {
+          if (e.target.closest('.plan-card-cta')) return;
+          selectPlan(card.dataset.plan);
+        });
+      });
+
+      // 反向同步：表單方案下拉變更時，同步高亮方案卡
+      if (planSelect) {
+        planSelect.addEventListener('change', () => selectPlan(planSelect.value));
+      }
+    })();
+
+    // 真實案例分類篩選 + 折疊/展開
+    (function () {
+      const filterBtns = document.querySelectorAll('.cases-filter-btn');
+      const caseItems = document.querySelectorAll('.case-item');
+      const casesGrid = document.getElementById('casesGrid');
+      const toggleWrap = document.getElementById('casesToggleWrap');
+      const toggleBtn = document.getElementById('casesToggleBtn');
+      const toggleHint = document.getElementById('casesToggleHint');
+      const toggleText = toggleBtn ? toggleBtn.querySelector('.btn-text') : null;
+
+      const COLLAPSE_LIMIT = 12; // 預設顯示前 12 張(3 行 × 4 列)
+      let currentFilter = 'all';
+
+      // 標記第 13 張以後的卡片(用於 CSS 折疊隱藏)
+      caseItems.forEach((item, idx) => {
+        if (idx >= COLLAPSE_LIMIT) item.classList.add('is-over-limit');
+      });
+
+      // 套用篩選 + 折疊狀態
+      function applyState() {
+        caseItems.forEach(item => {
+          const cat = item.dataset.cat;
+          const matchesFilter = (currentFilter === 'all') || (cat === currentFilter);
+          item.classList.toggle('is-hidden', !matchesFilter);
+        });
+
+        // 個別分類(非 all)時:不需要折疊,因為每類都 ≤ 7 張
+        // 'all' 模式:依 .is-collapsed 控制是否展開
+        if (currentFilter === 'all') {
+          toggleWrap.classList.remove('is-disabled');
+        } else {
+          toggleWrap.classList.add('is-disabled');
+          casesGrid.classList.remove('is-collapsed');
+        }
+      }
+
+      // 篩選按鈕
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          currentFilter = btn.dataset.filter;
+
+          filterBtns.forEach(b => {
+            b.classList.toggle('is-active', b === btn);
+            b.setAttribute('aria-selected', b === btn ? 'true' : 'false');
+          });
+
+          // 切回 all 時恢復折疊狀態(讓使用者再看一次「先 12 張」)
+          if (currentFilter === 'all') {
+            casesGrid.classList.add('is-collapsed');
+            updateToggleUI();
+          }
+
+          applyState();
+        });
+      });
+
+      // 展開/收合按鈕
+      function updateToggleUI() {
+        const collapsed = casesGrid.classList.contains('is-collapsed');
+        toggleBtn.setAttribute('aria-expanded', String(!collapsed));
+        if (collapsed) {
+          toggleText.textContent = '看更多紀錄';
+          toggleHint.textContent = '還有 ' + (caseItems.length - COLLAPSE_LIMIT) + ' 張';
+        } else {
+          toggleText.textContent = '收合';
+          toggleHint.textContent = '共 ' + caseItems.length + ' 張';
+        }
+      }
+
+      if (toggleBtn) {
+        toggleBtn.addEventListener('click', () => {
+          casesGrid.classList.toggle('is-collapsed');
+          updateToggleUI();
+          // 收合時把使用者拉回 #cases 區頂端,避免「卡片消失但畫面停在中間」
+          if (casesGrid.classList.contains('is-collapsed')) {
+            const cases = document.getElementById('cases');
+            if (cases) cases.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        });
+        updateToggleUI();
+      }
+    })();
+
+    // Google Forms 直接導向處理
+    const bookingForm = document.getElementById('bookingForm');
+    if (bookingForm) {
+      bookingForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const googleFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSfhSYzYnh8V59c-zchjE0SjthxKK4H8t_9teOzj4EJuhsJXDQ/viewform';
+        window.open(googleFormUrl, '_blank');
+      });
+    }
+
+    // 導航欄滾動效果
+    window.addEventListener('scroll', () => {
+      const navbar = document.querySelector('.navbar');
+      if (!navbar) return;
+      if (window.scrollY > 50) {
+        navbar.style.background = 'rgba(44, 85, 48, 0.98)';
+      } else {
+        navbar.style.background = 'rgba(44, 85, 48, 0.95)';
+      }
+    });
+  </script>
+</body>
+
+</html>

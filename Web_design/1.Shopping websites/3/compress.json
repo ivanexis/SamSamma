@@ -1,0 +1,56 @@
+﻿{
+    "case":  "1.Shopping websites/3",
+    "scanned_at":  "2026-05-20",
+    "hero_source":  "首頁.jpg",
+    "files":  [
+                  {
+                      "outputs":  [
+                                      "hero",
+                                      "slide-1"
+                                  ],
+                      "label":  "首頁",
+                      "height":  7667,
+                      "src":  "首頁.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-2"
+                                  ],
+                      "label":  "news - 內頁",
+                      "height":  2832,
+                      "src":  "news - 內頁.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-3"
+                                  ],
+                      "label":  "news",
+                      "height":  2848,
+                      "src":  "news.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-4"
+                                  ],
+                      "label":  "Q\u0026A",
+                      "height":  2338,
+                      "src":  "Q\u0026A.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-5"
+                                  ],
+                      "label":  "商品頁-內頁",
+                      "height":  2714,
+                      "src":  "商品頁-內頁.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-6"
+                                  ],
+                      "label":  "商品頁",
+                      "height":  4392,
+                      "src":  "商品頁.jpg"
+                  }
+              ]
+}

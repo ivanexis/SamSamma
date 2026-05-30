@@ -1,0 +1,72 @@
+﻿{
+    "case":  "2.Interior Design Website/1",
+    "scanned_at":  "2026-05-20",
+    "hero_source":  "首頁.jpg",
+    "files":  [
+                  {
+                      "outputs":  [
+                                      "hero",
+                                      "slide-1"
+                                  ],
+                      "label":  "首頁",
+                      "height":  5260,
+                      "src":  "首頁.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-2"
+                                  ],
+                      "label":  "商品列表-內頁",
+                      "height":  3912,
+                      "src":  "商品列表-內頁.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-3"
+                                  ],
+                      "label":  "商品列表",
+                      "height":  4058,
+                      "src":  "商品列表.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-4"
+                                  ],
+                      "label":  "最新消息-內頁",
+                      "height":  2968,
+                      "src":  "最新消息-內頁.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-5"
+                                  ],
+                      "label":  "最新消息",
+                      "height":  3099,
+                      "src":  "最新消息.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-6"
+                                  ],
+                      "label":  "服務項目",
+                      "height":  4313,
+                      "src":  "服務項目.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-7"
+                                  ],
+                      "label":  "聯絡我們-1",
+                      "height":  1855,
+                      "src":  "聯絡我們-1.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-8"
+                                  ],
+                      "label":  "關於我們",
+                      "height":  5540,
+                      "src":  "關於我們.jpg"
+                  }
+              ]
+}

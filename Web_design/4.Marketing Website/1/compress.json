@@ -1,0 +1,48 @@
+﻿{
+    "case":  "4.Marketing Website/1",
+    "scanned_at":  "2026-05-20",
+    "hero_source":  "首頁.jpg",
+    "files":  [
+                  {
+                      "outputs":  [
+                                      "hero",
+                                      "slide-1"
+                                  ],
+                      "label":  "首頁",
+                      "height":  5775,
+                      "src":  "首頁.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-2"
+                                  ],
+                      "label":  "成功案例",
+                      "height":  3647,
+                      "src":  "成功案例.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-3"
+                                  ],
+                      "label":  "最新消息",
+                      "height":  3456,
+                      "src":  "最新消息.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-4"
+                                  ],
+                      "label":  "消息內頁",
+                      "height":  3775,
+                      "src":  "消息內頁.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-5"
+                                  ],
+                      "label":  "關於我們",
+                      "height":  9901,
+                      "src":  "關於我們.jpg"
+                  }
+              ]
+}

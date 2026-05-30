@@ -1,0 +1,72 @@
+﻿{
+    "case":  "2.Interior Design Website/3",
+    "scanned_at":  "2026-05-20",
+    "hero_source":  "首頁.jpg",
+    "files":  [
+                  {
+                      "outputs":  [
+                                      "hero",
+                                      "slide-1"
+                                  ],
+                      "label":  "首頁",
+                      "height":  9061,
+                      "src":  "首頁.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-2"
+                                  ],
+                      "label":  "作品內頁",
+                      "height":  3958,
+                      "src":  "作品內頁.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-3"
+                                  ],
+                      "label":  "口碑分享",
+                      "height":  2944,
+                      "src":  "口碑分享.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-4"
+                                  ],
+                      "label":  "文章內頁",
+                      "height":  3212,
+                      "src":  "文章內頁.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-5"
+                                  ],
+                      "label":  "文章列表",
+                      "height":  2876,
+                      "src":  "文章列表.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-6"
+                                  ],
+                      "label":  "案例作品",
+                      "height":  3443,
+                      "src":  "案例作品.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-7"
+                                  ],
+                      "label":  "聯絡我們",
+                      "height":  5431,
+                      "src":  "聯絡我們.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-8"
+                                  ],
+                      "label":  "設計流程",
+                      "height":  3682,
+                      "src":  "設計流程.jpg"
+                  }
+              ]
+}

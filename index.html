@@ -1,0 +1,1649 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ivan Zhao 個人作品集：Technical PM × Design Engineer。跨界整合 × 工程底氣 × 設計同理心 ── 21 件商業實績、零伺服器自動化、Cathay 醫院 Legacy 遷移。">
+  <link rel="icon" type="image/webp" href="images/logo_2.webp">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Ivan Zhao — Technical PM × Design Engineer">
+  <meta property="og:description" content="跨界整合 × 工程底氣 × 設計同理心。21 件商業實績、零伺服器自動化、Cathay Legacy 遷移。">
+  <meta property="og:image" content="images/about-hero-banner.webp">
+  <meta property="og:url" content="https://ivangoldaura.dpdns.org/">
+  <meta name="twitter:card" content="summary_large_image">
+  <title>Ivan Zhao — Technical PM × Design Engineer</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <!-- 添加 GSAP -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+  <style>
+    /* ==================== 程式碼保護樣式 ==================== */
+    /* v2.0 (2026-05-26)：開放文字選取，方便校對與分享。
+     * 原本 body { user-select: none } 已移除，文字可正常框選複製。 */
+    /* 禁用圖片拖曳 */
+    img {
+      -webkit-user-drag: none;
+      -khtml-user-drag: none;
+      -moz-user-drag: none;
+      -o-user-drag: none;
+      pointer-events: none;
+    }
+    /* 允許特定圖片可點擊（例如：連結中的圖片） */
+    a img {
+      pointer-events: auto;
+    }
+    /* v2.0 (2026-05-26)：原本 ::selection { background: transparent } 隱藏反白色已移除，
+     * 現在框選文字會正常顯示反白，方便校對與複製。 */
+    ::-moz-selection {
+      background-color: transparent;
+    }
+    /* ==================== 原有樣式 ==================== */
+    body {
+      margin: 0;
+      font-family: 'Noto Sans TC', sans-serif;
+      background-color: #6B4E71;  /* 添加紫色系背景 */
+      color: #111111;
+      overflow-x: hidden;
+    }
+    .hero-section {
+      min-height: 100vh;
+      background: linear-gradient(45deg, rgba(26, 26, 26, 0.3), rgba(42, 42, 42, 0.3)), url('images/view.webp');
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      color: #fff;
+      z-index: 1;
+    }
+
+    /* 新增 Particles 层：位于背景与球体之间 */
+    #particlesCanvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    #iconCloudCanvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      pointer-events: auto;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding-top: 40vh;
+    }
+
+    .hero-morph-text {
+      position: relative;
+      z-index: 2;
+      display: inline-block;
+      font-family: 'Noto Sans TC', sans-serif;
+      color: #fff;
+      font-size: 55px;
+      font-weight: 600;
+      filter: blur(30px);
+      opacity: 0;
+      transition: none;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    .navbar-custom {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      padding: 0.5rem 0;
+      transition: all 0.3s ease;
+    }
+
+    .navbar-scrolled {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar-scrolled .nav-link,
+    .navbar-scrolled .navbar-brand {
+      color: rgb(46, 16, 16) !important;
+    }
+
+    .navbar-scrolled .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgb(46,16,16)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+    }
+
+    .feature-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      transition: transform 0.3s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+    }
+
+    /* 新增样式 */
+    .gradient-text {
+      background: linear-gradient(45deg, #3498db, #2ecc71);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .stats-section {
+      background: #1a1a1a;
+      color: white;
+      padding: 80px 0;
+      position: relative;
+      z-index: 2;
+    }
+
+    .stats-card {
+      text-align: center;
+      padding: 30px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .footer {
+      background: #1a1a1a;
+      color: white;
+      padding: 60px 0 30px;
+    }
+
+    .social-links a,
+    .social-links span {
+      color: white;
+      margin: 0 10px;
+      font-size: 1.5rem;
+      transition: color 0.3s;
+    }
+
+    .social-links a:hover {
+      color: #3498db;
+    }
+
+    /* 新增视差滚动相关样式 */
+    .content-wrapper {
+      position: relative;
+      z-index: 2;
+      background-color: #fff;
+      margin-top: 100vh;
+      border-radius: 32px 32px 0 0;
+      box-shadow: 0 -10px 50px rgba(0, 0, 0, 0.1);
+      transition: transform 0.5s ease-out;
+    }
+
+    /* 优化其他区域样式 */
+    #features {
+      background-color: #fff;
+    }
+
+    /* 新增動畫相關樣式 */
+    .parallax-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('images/view.webp');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      opacity: 1;
+      z-index: -1;
+    }
+
+    .scroll-indicator {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%,
+      20%,
+      50%,
+      80%,
+      100% {
+        transform: translateY(0);
+      }
+
+      40% {
+        transform: translateY(-30px);
+      }
+
+      60% {
+        transform: translateY(-15px);
+      }
+    }
+
+    .progress-bar {
+      transition: width 1.5s ease-in-out;
+    }
+
+    .hover-card {
+      transition: all 0.3s ease;
+      border-radius: 15px;
+      overflow: hidden;
+    }
+
+    .hover-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1) !important;
+    }
+
+    .card-img-top {
+      height: 200px;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .hover-card:hover .card-img-top {
+      transform: scale(1.05);
+    }
+
+    .btn-group .btn {
+      margin-right: 0.5rem;
+    }
+
+    /* 確保卡片內容的間距舒適 */
+    .card-body {
+      padding: 1.5rem;
+    }
+
+    .card-title {
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    .card-text {
+      margin-bottom: 1.5rem;
+      color: #6c757d;
+    }
+
+    /* 滾動指示器樣式 */
+    .scroll-down {
+      position: absolute;
+      bottom: 50px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: white;
+      text-align: center;
+      z-index: 2;
+      width: 100%;
+      pointer-events: none;
+    }
+
+    .scroll-down i {
+      font-size: 2rem;
+      animation: floating 2s ease-in-out infinite;
+    }
+
+    @keyframes floating {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+      100% { transform: translateY(0); }
+    }
+
+    /* 視差滾動區域 */
+    .parallax-section {
+      position: relative;
+      min-height: 400px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(45deg, rgba(26, 26, 26, 0.8), rgba(42, 42, 42, 0.8)), url('images/view.webp');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      padding: 100px 0;
+      margin: 50px 0;
+    }
+
+    .parallax-section .text-white {
+      position: relative;
+      z-index: 2;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    @media (max-width: 768px) {
+      .parallax-section {
+        padding: 60px 0;
+        margin: 30px 0;
+        background-attachment: scroll;
+      }
+    }
+
+    /* 移除舊的 parallax-bg 相關樣式，因為我們直接在 section 上設置背景 */
+    .parallax-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2));
+      z-index: 1;
+    }
+
+    .parallax-section .container {
+      position: relative;
+      z-index: 2;
+    }
+
+    /* 修改導航欄的品牌部分 */
+    .navbar-logo {
+      width: 40px;
+      height: 40px;
+      object-fit: cover;
+      border: 2px solid white;
+      background-color: white;
+      padding: 2px;
+      transition: transform 0.3s ease;
+    }
+
+    /* Logo hover 效果 */
+    .navbar-logo:hover {
+      transform: scale(1.1);
+    }
+
+    .navbar-brand {
+      display: flex;
+      align-items: center;
+      font-weight: 500;
+    }
+
+    /* About 區中間正臉照：4:5 直式 + 軟陰影，建立信任感 */
+    .profile-hero-image {
+      width: 100%;
+      max-width: 360px;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      object-position: center top;
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+    .profile-hero-image:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.18);
+    }
+    @media (max-width: 991.98px) {
+      .profile-hero-image {
+        max-width: 280px;
+        margin: 1.5rem auto;
+      }
+    }
+
+    /* About 區三段文字：英文模式下自動斷詞 + 兩端對齊，避免英文比中文撐長 */
+    #about .col-lg-4 .p-4 p {
+      text-align: justify;
+      hyphens: auto;
+      -webkit-hyphens: auto;
+      -ms-hyphens: auto;
+      word-break: normal;
+      overflow-wrap: anywhere;
+    }
+    /* 英文模式下進一步收緊行高，視覺對齊中文版高度 */
+    html[lang="en"] #about .col-lg-4 .p-4 p {
+      line-height: 1.65;
+      font-size: 0.98rem;
+    }
+
+    /* About 區左欄職稱清單 ── 英文模式下微縮字體 + 防破版 */
+    html[lang="en"] #about .col-lg-4 .list-unstyled li {
+      font-size: 0.92rem;
+      line-height: 1.55;
+      letter-spacing: -0.005em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    html[lang="en"] #about .col-lg-4 .list-unstyled h2 {
+      font-size: 1.5rem;
+    }
+    /* 手機版（col-lg-4 變 col-12 全寬）→ 解除 nowrap，讓自然 wrap */
+    @media (max-width: 991.98px) {
+      html[lang="en"] #about .col-lg-4 .list-unstyled li {
+        white-space: normal;
+        overflow: visible;
+        text-overflow: clip;
+      }
+    }
+
+    .navbar-brand span {
+      margin-left: 8px;
+    }
+
+    /* 作品卡片樣式 */
+    .work-card {
+      margin-bottom: 2rem;
+      transition: transform 0.3s ease;
+    }
+
+    .work-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .work-card img {
+      width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .work-info {
+      padding: 0.5rem 0;
+    }
+
+    .work-title {
+      font-size: 1rem;
+      font-weight: 500;
+      margin-bottom: 0.25rem;
+      color: #333;
+    }
+
+    .work-category {
+      font-size: 0.875rem;
+      color: #666;
+      margin-bottom: 0;
+    }
+
+    .work-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 0.65rem;
+    }
+
+    .work-badge {
+      display: inline-block;
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      line-height: 1.35;
+      color: #334155;
+      background: #edf4fa;
+      border: 1px solid #d6e6f2;
+    }
+
+    .work-badge--client {
+      color: #1e3a5f;
+      background: #f8fafc;
+      border-color: #cbd5e1;
+    }
+
+    /* 響應式調整 */
+    @media (max-width: 768px) {
+      .work-card {
+        margin-bottom: 1.5rem;
+      }
+
+      .work-info {
+        padding: 0.5rem;
+      }
+    }
+
+    /* 主圖片容器調整 */
+    .work-image-container {
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+      aspect-ratio: 3/2;
+    }
+
+    .main-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    /* 等比例完整顯示：適合 1920 寬或接近正方比例圖 */
+    .main-image--contain {
+      object-fit: contain;
+      object-position: center;
+      background: #f5f7fa;
+    }
+
+    /* 整頁長截圖：避免 cover 置中裁切到頁面中段，改以頁首為準 */
+    .work-image-container--long-page .main-image {
+      object-position: top center;
+    }
+
+    /* 網站設計區：長截圖黑底 + contain */
+    #works-web-design-group .work-image-container {
+      background: #000;
+    }
+
+    #works-web-design-group .main-image--contain {
+      background: #000;
+    }
+
+    /* 地方創生 · 園區構想圖（填滿卡片，等比例縮放，不放大失真，無黑邊） */
+    .work-image-container--concept {
+      background: var(--bg-light, #f5f7fa);
+    }
+
+    .work-image-container--concept .main-image,
+    .work-image-container--concept .main-image--contain {
+      object-fit: cover;
+      object-position: center top;
+      width: 100%;
+      height: 100%;
+      padding: 0;
+      background: transparent;
+    }
+
+    /* 平面／海報：保留圖片自帶底色，等比例撐滿框內 */
+    .work-image-container--natural {
+      background: transparent;
+    }
+
+    .work-image-container--natural .main-image,
+    .work-image-container--natural .main-image--contain {
+      object-fit: contain;
+      object-position: center;
+      width: 100%;
+      height: 100%;
+      padding: 0;
+      background: transparent;
+    }
+
+    /* 縮圖容器調整 */
+    .thumbnail-container {
+      position: absolute;
+      bottom: 0;
+      /* 直接顯示在底部 */
+      left: 0;
+      width: 100%;
+      padding: 10px;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(5px);
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      transform: translateY(100%);
+      /* 初始隱藏 */
+      transition: transform 0.3s ease;
+    }
+
+    /* 懸停時顯示縮圖 */
+    .work-image-container:hover .thumbnail-container {
+      transform: translateY(0);
+      /* 顯示縮圖 */
+    }
+
+    /* 縮圖樣式調整 */
+    .thumbnail {
+      width: calc(33.333% - 10px);
+      /* 平均分配寬度 */
+      height: 70px;
+      object-fit: contain; /* 確保圖片保持原比例並適應框架 */
+      border-radius: 4px;
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .thumbnail:hover {
+      transform: scale(1.05);
+    }
+
+    /* 響應式調整 */
+    @media (max-width: 768px) {
+      .thumbnail {
+        height: 50px;
+      }
+
+      .thumbnail-container {
+        padding: 8px;
+        gap: 6px;
+      }
+    }
+
+    /* 關於我區域樣式 */
+    #about {
+      padding: 80px 0;
+    }
+
+    #about h2 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    #about ul li {
+      font-size: 1rem;
+      color: #333;
+      line-height: 1.8;
+    }
+
+    #about p {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: #333;
+    }
+
+    #about .btn-outline-dark {
+      padding: 0.5rem 1.5rem;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+    }
+
+    #about .btn-outline-dark:hover {
+      background-color: #333;
+      color: white;
+    }
+
+    /* 響應式調整 */
+    @media (max-width: 992px) {
+      #about .col-lg-4 {
+        margin-bottom: 2rem;
+      }
+
+      #about .col-lg-4:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    /* 作品區標題和分隔線樣式 */
+    .works-header {
+      position: relative;
+      padding-bottom: 1rem;
+    }
+
+    .works-title {
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: #333;
+      margin-bottom: 0;
+    }
+
+    .divider {
+      width: 100%;
+      height: 1px;
+      background-color: #e0e0e0;
+      margin-top: 1rem;
+    }
+
+    /* 調整作品區背景 */
+    .works-section {
+      background-color: #fff;
+      /* 改為白色背景 */
+    }
+
+    /* 確保作品卡片間距恰當 */
+    .works-section .row {
+      margin-top: 2rem;
+    }
+
+    .works-group {
+      margin-bottom: 3rem;
+    }
+
+    .works-group:last-child {
+      margin-bottom: 0;
+    }
+
+    .works-subtitle {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #4f85a6;
+      letter-spacing: 0.08em;
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+    }
+
+    /* 網站設計：左側分類、右側小標題 */
+    .works-subtitle-bar {
+      margin-bottom: 1rem;
+    }
+
+    .works-category-filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      align-items: center;
+    }
+
+    .works-filter-chip {
+      border: 1px solid #4f85a6;
+      background: transparent;
+      color: #4f85a6;
+      font-size: 0.78rem;
+      padding: 0.35rem 0.8rem;
+      border-radius: 999px;
+      line-height: 1.2;
+      transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .works-filter-chip:hover {
+      background: rgba(79, 133, 166, 0.12);
+    }
+
+    .works-filter-chip:focus-visible {
+      outline: 2px solid #4f85a6;
+      outline-offset: 2px;
+    }
+
+    .works-filter-chip.active {
+      background: #4f85a6;
+      color: #fff;
+      box-shadow: 0 2px 8px rgba(79, 133, 166, 0.35);
+    }
+
+    /* View All Cases 導流按鈕（網站設計區末尾） */
+    .view-all-cases-btn {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.7rem 1.8rem;
+      background: transparent;
+      color: #4f85a6;
+      border: 1.5px solid #4f85a6;
+      border-radius: 999px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .view-all-cases-btn:hover {
+      background: #4f85a6;
+      color: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(79, 133, 166, 0.3);
+    }
+
+    .view-all-cases-btn .fa-arrow-right {
+      transition: transform 0.3s ease;
+    }
+
+    .view-all-cases-btn:hover .fa-arrow-right {
+      transform: translateX(4px);
+    }
+
+    .works-subtitle-bar .works-subtitle {
+      margin-bottom: 0;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 767.98px) {
+      .works-subtitle-bar .works-subtitle {
+        white-space: normal;
+      }
+    }
+
+    /* 作品卡片連結樣式 */
+    .work-card {
+      color: inherit;
+      /* 保持原有文字顏色 */
+      transition: transform 0.3s ease;
+    }
+
+    a:hover .work-card {
+      transform: translateY(-5px);
+    }
+
+    /* 確保連結不會影響卡片樣式 */
+    a.text-decoration-none:hover {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* 專案技能區 */
+    .skill-category {
+      margin-bottom: 1rem;
+    }
+
+    .skill-category h3 {
+      color: #333;
+      font-weight: 600;
+      position: relative;
+      padding-bottom: 1rem;
+    }
+
+    .skill-category h3::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 60px;
+      height: 3px;
+      background-color: #4f85a6;
+    }
+
+    .skill-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .skill-icon {
+      font-size: 2.5rem;
+      color: #4f85a6;
+      margin-bottom: 1rem;
+    }
+
+    .progress {
+      height: 6px;
+      background-color: #e9ecef;
+      border-radius: 3px;
+      margin-top: 0.5rem;
+    }
+
+    .progress-bar {
+      background-color: #4f85a6;
+      border-radius: 3px;
+      transition: width 1s ease;
+    }
+
+    .skill-level {
+      margin-top: 1rem;
+    }
+
+    /* 技能區塊樣式 */
+    .skill-category {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    .category-title {
+      font-size: 1.25rem;
+      color: #333;
+      font-weight: 600;
+      border-bottom: 2px solid #4f85a6;
+      padding-bottom: 0.5rem;
+    }
+
+    .skill-item {
+      padding: 0.75rem;
+      border-radius: 8px;
+      transition: background-color 0.3s ease;
+    }
+
+    .skill-item:hover {
+      background-color: #f8f9fa;
+    }
+
+    .skill-item i {
+      font-size: 1rem;
+      color: #4f85a6;
+      width: 20px;
+      text-align: center;
+    }
+
+    .skill-name {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: #333;
+    }
+
+    /* 響應式調整 */
+    @media (max-width: 768px) {
+      .skill-category {
+        margin-bottom: 1.5rem;
+      }
+    }
+
+    /* 添加 Adobe 相關圖標的特殊樣式 */
+    .fab.fa-adobe {
+      color: #4f85a6;
+      /* Adobe 紅色 */
+    }
+
+    /* 可以為不同的 Adobe 產品使用不同的偽元素來區分 */
+    .skill-item:nth-child(2) .fab.fa-adobe::after {
+      content: " Ps";
+      /* Photoshop */
+      font-family: Arial, sans-serif;
+      font-size: 0.8em;
+      font-weight: bold;
+    }
+
+    .skill-item:nth-child(3) .fab.fa-adobe::after {
+      content: " Ai";
+      /* Illustrator */
+      font-family: Arial, sans-serif;
+      font-size: 0.8em;
+      font-weight: bold;
+    }
+
+    .loading-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 300px;
+      background-color: #f8f9fa;
+      border-radius: 12px;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    @media (max-width: 576px) {
+      .loading-container {
+        height: 250px;
+      }
+      .spinner-border {
+        width: 2.5rem;
+        height: 2.5rem;
+      }
+      .loading-text {
+        font-size: 0.9rem;
+      }
+    }
+
+    @media (max-width: 320px) {
+      .loading-container {
+        height: 200px;
+      }
+      .spinner-border {
+        width: 2rem;
+        height: 2rem;
+      }
+      .loading-text {
+        font-size: 0.85rem;
+      }
+    }
+
+    .loading-animation {
+      text-align: center;
+    }
+
+    .loading-text {
+      color: #6c757d;
+      font-size: 1rem;
+      margin-top: 1rem;
+    }
+
+    .spinner-border {
+      width: 3rem;
+      height: 3rem;
+    }
+
+    .loading-placeholder {
+      padding: 1rem 0;
+    }
+
+    /* 修改模態框樣式 */
+    .modal {
+      background: none !important;
+      padding-right: 0 !important;
+    }
+
+    .modal-backdrop {
+      display: none !important;
+    }
+
+    .modal-content {
+      border: none;
+      border-radius: 12px;
+      overflow: hidden;
+      background: white !important;
+      width: 100%;
+    }
+
+    .modal-dialog {
+      margin: 1rem auto !important;
+    }
+
+    @media (max-width: 1024px) {
+      .modal-dialog {
+        width: 95%;
+        max-width: 95% !important;
+        margin: 0.5rem auto !important;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .modal-dialog {
+        width: 92%;
+        max-width: 92% !important;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .modal-dialog {
+        width: 90%;
+        max-width: 90% !important;
+        margin: 0.25rem auto !important;
+      }
+    }
+
+    body.modal-open {
+      padding-right: 0 !important;
+      overflow: auto !important;
+    }
+
+    .resume-container {
+      position: relative;
+      width: 100%;
+      max-height: 90vh;
+      overflow: auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .resume-image {
+      max-width: 100%;
+      height: auto;
+      margin: 0 auto;
+      display: block;
+    }
+
+    /* 美化滾動條 */
+    .resume-container::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .resume-container::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+
+    .resume-container::-webkit-scrollbar-thumb {
+      background: #888;
+      border-radius: 4px;
+    }
+
+    .resume-container::-webkit-scrollbar-thumb:hover {
+      background: #555;
+    }
+
+    .resume-modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      padding: 0.75rem 1rem 0;
+      border: 0;
+    }
+
+    #resume-lang-toggle {
+      min-width: 5.5rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    /* 3D 文字相关样式 */
+    .hero-text-3d {
+      perspective: 1000px;
+      display: inline-block;
+      user-select: none;  /* 禁止文字选择 */
+      pointer-events: none;  /* 禁止点击事件 */
+    }
+
+    .hero-text-3d span {
+      display: inline-block;
+      transform-style: preserve-3d;
+      transform: rotateY(90deg);
+      opacity: 0;
+      margin: 0 0.25rem;
+      user-select: none;  /* 禁止文字选择 */
+      pointer-events: none;  /* 禁止点击事件 */
+    }
+
+    #particleCanvas {
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* 移动端提示横幅样式 */
+    .mobile-notice {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 0.5rem 0;
+      text-align: center;
+      position: fixed;
+      top: 80px;
+      left: 0;
+      right: 0;
+      z-index: 1030;
+      transform: translateY(-100%);
+      animation: slideDown 0.5s ease forwards 0.5s, slideUp 0.5s ease forwards 3.5s;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      pointer-events: none;
+    }
+
+    .mobile-notice p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: rgb(46, 16, 16);
+    }
+
+    @keyframes slideDown {
+      from { transform: translateY(-100%); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(0); opacity: 1; }
+      to { transform: translateY(-100%); opacity: 0; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 移动端提示横幅 -->
+  <div class="mobile-notice d-md-none">
+    <div class="container">
+      <p></p>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <img src="images/logo_2.webp" alt="Ivan_Zhao Logo" class="rounded-circle me-2 navbar-logo">
+        <span>Ivan_Zhao</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html" data-i18n="nav.home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="pages/aboutme.html" data-i18n="nav.about">About Me</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#contact" data-i18n="nav.contact">Contact Me</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 主視覺 -->
+  <section class="hero-section d-flex align-items-center" style="position: relative;">
+    <!-- 背景图片由 hero-section 背景设定 -->
+    <!-- 新增 Particles 层 -->
+    <canvas id="particlesCanvas"></canvas>
+    <!-- 原有球体旋转层 -->
+    <canvas id="iconCloudCanvas"></canvas>
+    <div class="container text-center" style="position: relative; z-index: 2; pointer-events: none;">
+      <div class="hero-morph-text notranslate" translate="no"></div>
+    </div>
+    <div class="scroll-down" style="pointer-events: none;">
+      <p class="mb-2" data-i18n="home.hero.scrollDown">向下滾動</p>
+      <i class="fas fa-chevron-down"></i>
+    </div>
+  </section>
+
+  <!-- 關於我（About Me） -->
+  <div class="content-wrapper" style="margin-top: -2rem;">
+    <!-- 簡介區 ── v1.5：精簡節奏感版（去自然繁版、Legacy 遷移上標籤、3 段 ≤ 130 字） -->
+    <section id="about" class="py-5" data-aos="fade-up" data-aos-duration="1000">
+      <div class="container">
+        <div class="row align-items-center">
+          <h1 class="mb-4 fw-bold " data-i18n="home.about.h1">創作無界之美，讓靈魂在美之中覺醒。</h1>
+          <!-- 左側內容 -->
+          <div class="col-lg-4">
+            <div class="p-4">
+              <ul class="list-unstyled">
+                <h2 class="mb-2" data-i18n="home.about.name">趙冠柏 Guan-Bo</h2>
+                <li class="mb-2" data-i18n="home.about.role1">— Technical PM / 數位轉型 PM</li>
+                <li class="mb-2" data-i18n="home.about.role2">— 國泰醫院資訊維運工程師</li>
+                <li class="mb-2" data-i18n="home.about.role3">— 山莎蔓岸竹木產業合作社 共同創辦人</li>
+                <li class="mb-2" data-i18n="home.about.role4">— 景觀全局思維 × 工程邏輯 × 需求轉譯者</li>
+              </ul>
+              <a href="pages/aboutme.html" class="btn btn-outline-dark mt-3" data-i18n="home.about.learnMore">了解更多</a>
+            </div>
+          </div>
+
+          <!-- 中間圖片 ── v2.2：正臉聚焦版（信任感優先） -->
+          <div class="col-lg-4 text-center">
+            <img src="images/ivan-profile2.webp" alt="Ivan Zhao 正臉專業形象照" class="profile-hero-image rounded-4">
+          </div>
+
+          <!-- 右側內容 ── v1.5：精簡 3 段（每段 ≤ 60 字，避免排版溢出） -->
+          <div class="col-lg-4">
+            <div class="p-4">
+              <p class="mb-4" data-i18n="home.about.p1">1998 年生，現居新北永和。兼具全端開發、視覺設計與景觀規劃背景，工作模式聚焦於「需求收斂與技術轉譯」。</p>
+              <p class="mb-4" data-i18n="home.about.p2">與族人共同創辦山莎蔓岸合作社，獨立打造零伺服器成本的自動化預約工作流；同時於國泰醫院負責正式後端維護與功能迭代，培養出嚴謹的工程邏輯。</p>
+              <p data-i18n="home.about.p3">融合景觀思維、創生執行力與醫療嚴謹性，兼具技術硬實力與設計同理心，成為精準對接技術與市場的 Technical PM。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 作品展示區 -->
+    <section id="works" class="works-section py-5">
+      <div class="container">
+        <!-- 添加標題和分隔線 -->
+        <div class="works-header mb-5">
+          <h3 class="works-title mb-3" data-i18n="home.works.title">作品列表</h3>
+          <div class="divider"></div>
+        </div>
+
+        <div class="works-group works-portfolio-group" id="works-web-design-group">
+          <h4 class="works-subtitle" data-i18n="home.works.webDesign">網站設計</h4>
+          <div class="works-subtitle-bar d-flex flex-column flex-md-row align-items-start align-items-md-center justify-content-between gap-3">
+            <div class="works-category-filters" id="works-web-design-filters" role="tablist" aria-label="網站設計分類篩選"></div>
+          </div>
+          <div class="row g-4 mt-0" id="works-web-design-row"></div>
+          <div class="text-center mt-4">
+            <a href="cases.html" class="view-all-cases-btn">
+              <span data-i18n="home.works.viewAll">View All 21 Cases</span>
+              <i class="fas fa-arrow-right ms-2"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="works-group works-portfolio-group" id="works-local-revitalization-group">
+          <h4 class="works-subtitle" data-i18n="home.works.localRevit">地方創生</h4>
+          <div class="row g-4 mt-0" id="works-local-revitalization-row"></div>
+        </div>
+
+        <div class="works-group works-portfolio-group" id="works-poster-group">
+          <h4 class="works-subtitle" data-i18n="home.works.poster">海報設計</h4>
+          <div class="row g-4 mt-0" id="works-poster-row"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 專案技能區 -->
+    <section id="skills" class="py-5">
+      <div class="container" data-aos="fade-up">
+        <h2 class="text-center mb-5 fw-bold" data-i18n="home.skills.title">技術能力</h2>
+
+        <!-- 專案技能區 - 第一行 -->
+        <div class="row g-4 mb-4">
+          <!-- UI/UX Design Tools -->
+          <div class="col-lg-4 col-md-6">
+            <div class="skill-category">
+              <h3 class="category-title mb-4">
+                <i class="fas fa-palette me-2"></i>UI/UX
+              </h3>
+              <div class="skill-list">
+                <div class="skill-item mb-3">
+                  <div class="d-flex align-items-center mb-2">
+                    <i class="fab fa-figma me-2"></i>
+                    <span class="skill-name">Figma</span>
+                  </div>
+                  <div class="progress" style="height: 4px;">
+                    <div class="progress-bar" role="progressbar" style="width: 90%"></div>
+                  </div>
+                </div>
+
+                <div class="skill-item mb-3">
+                  <div class="d-flex align-items-center mb-2">
+                    <i class="fab fa-adobe me-2"></i>
+                    <span class="skill-name">Adobe Photoshop</span>
+                  </div>
+                  <div class="progress" style="height: 4px;">
+                    <div class="progress-bar" role="progressbar" style="width: 85%"></div>
+                  </div>
+                </div>
+
+                <div class="skill-item mb-3">
+                  <div class="d-flex align-items-center mb-2">
+                    <i class="fab fa-adobe me-2"></i>
+                    <span class="skill-name">Adobe Illustrator</span>
+                  </div>
+                  <div class="progress" style="height: 4px;">
+                    <div class="progress-bar" role="progressbar" style="width: 85%"></div>
+                  </div>
+                </div>
+
+                <div class="skill-item">
+                  <div class="d-flex align-items-center mb-2">
+                    <i class="fas fa-palette me-2"></i>
+                    <span class="skill-name">Canva</span>
+                  </div>
+                  <div class="progress" style="height: 4px;">
+                    <div class="progress-bar" role="progressbar" style="width: 88%"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Frontend Development -->
+          <div class="col-lg-4 col-md-6">
+            <div class="skill-category">
+              <h3 class="category-title mb-4">
+                <i class="fas fa-code me-2"></i>Frontend
+              </h3>
+              <div class="skill-list">
+                <div class="skill-item mb-3">
+                  <div class="d-flex align-items-center mb-2">
+                    <i class="fab fa-vuejs me-2"></i>
+                    <span class="skill-name">Vue</span>
+                  </div>
+                  <div class="progress" style="height: 4px;">
+                    <div class="progress-bar" role="progressbar" style="width: 88%"></div>
+                  </div>
+                </div>
+
+                <div class="skill-item mb-3">
+                  <div class="d-flex align-items-center mb-2">
+                    <i class="fab fa-bootstrap me-2"></i>
+                    <span class="skill-name">Bootstrap</span>
+                  </div>
+                  <div class="progress" style="height: 4px;">
+                    <div class="progress-bar" role="progressbar" style="width: 90%"></div>
+                  </div>
+                </div>
+
+                <div class="skill-item mb-3">
+                  <div class="d-flex align-items-center mb-2">
+                    <i class="fab fa-js me-2"></i>
+                    <span class="skill-name">JavaScript & jQuery</span>
+                  </div>
+                  <div class="progress" style="height: 4px;">
+                    <div class="progress-bar" role="progressbar" style="width: 85%"></div>
+                  </div>
+                </div>
+
+                <div class="skill-item">
+                  <div class="d-flex align-items-center mb-2">
+                    <i class="fab fa-html5 me-2"></i>
+                    <span class="skill-name">HTML/CSS</span>
+                  </div>
+                  <div class="progress" style="height: 4px;">
+                    <div class="progress-bar" role="progressbar" style="width: 92%"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Backend Development -->
+          <div class="col-lg-4 col-md-6">
+            <div class="skill-category">
+              <h3 class="category-title mb-4">
+                <i class="fas fa-server me-2"></i>Backend
+              </h3>
+              <div class="skill-list">
+                <div class="skill-item mb-3">
+                  <div class="d-flex align-items-center mb-2">
+                    <i class="fab fa-java me-2"></i>
+                    <span class="skill-name">Java</span>
+                  </div>
+                  <div class="progress" style="height: 4px;">
+                    <div class="progress-bar" role="progressbar" style="width: 85%"></div>
+                  </div>
+                </div>
+
+                <div class="skill-item mb-3">
+                  <div class="d-flex align-items-center mb-2">
+                    <i class="fab fa-python me-2"></i>
+                    <span class="skill-name">Python</span>
+                  </div>
+                  <div class="progress" style="height: 4px;">
+                    <div class="progress-bar" role="progressbar" style="width: 80%"></div>
+                  </div>
+                </div>
+
+                <div class="skill-item mb-3">
+                  <div class="d-flex align-items-center mb-2">
+                    <i class="fas fa-database me-2"></i>
+                    <span class="skill-name">MySQL, T-SQL</span>
+                  </div>
+                  <div class="progress" style="height: 4px;">
+                    <div class="progress-bar" role="progressbar" style="width: 82%"></div>
+                  </div>
+                </div>
+
+                <div class="skill-item">
+                  <div class="d-flex align-items-center mb-2">
+                    <i class="fas fa-database me-2"></i>
+                    <span class="skill-name">JDBC</span>
+                  </div>
+                  <div class="progress" style="height: 4px;">
+                    <div class="progress-bar" role="progressbar" style="width: 85%"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 專案技能區 - 第二行 -->
+        <div class="row g-4">
+          <!-- Frameworks -->
+          <div class="col-lg-4 col-md-6">
+            <div class="skill-category">
+              <h3 class="category-title mb-4">
+                <i class="fas fa-layer-group me-2"></i>Frameworks
+              </h3>
+              <div class="skill-list">
+                <div class="skill-item mb-3">
+                  <div class="d-flex align-items-center mb-2">
+                    <i class="fas fa-leaf me-2"></i>
+                    <span class="skill-name">Spring, Spring MVC</span>
+                  </div>
+                  <div class="progress" style="height: 4px;">
+                    <div class="progress-bar" role="progressbar" style="width: 88%"></div>
+                  </div>
+                </div>
+
+                <div class="skill-item mb-3">
+                  <div class="d-flex align-items-center mb-2">
+                    <i class="fas fa-leaf me-2"></i>
+                    <span class="skill-name">Spring Boot</span>
+                  </div>
+                  <div class="progress" style="height: 4px;">
+                    <div class="progress-bar" role="progressbar" style="width: 85%"></div>
+                  </div>
+                </div>
+
+                <div class="skill-item">
+                  <div class="d-flex align-items-center mb-2">
+                    <i class="fas fa-database me-2"></i>
+                    <span class="skill-name">Hibernate</span>
+                  </div>
+                  <div class="progress" style="height: 4px;">
+                    <div class="progress-bar" role="progressbar" style="width: 82%"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+          <!-- DevOps -->
+          <div class="col-lg-4 col-md-6">
+            <div class="skill-category">
+              <h3 class="category-title mb-4">
+                <i class="fas fa-cloud me-2"></i>DevOps
+              </h3>
+              <div class="skill-list">
+                <div class="skill-item mb-3">
+                  <div class="d-flex align-items-center mb-2">
+                    <i class="fas fa-cloud me-2"></i>
+                    <span class="skill-name">Cloudflare</span>
+                  </div>
+                  <div class="progress" style="height: 4px;">
+                    <div class="progress-bar" role="progressbar" style="width: 85%"></div>
+                  </div>
+                </div>
+
+                <div class="skill-item">
+                  <div class="d-flex align-items-center mb-2">
+                    <i class="fab fa-github me-2"></i>
+                    <span class="skill-name">GitHub Pages</span>
+                  </div>
+                  <div class="progress" style="height: 4px;">
+                    <div class="progress-bar" role="progressbar" style="width: 88%"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Collaboration -->
+          <div class="col-lg-4 col-md-6">
+            <div class="skill-category">
+              <h3 class="category-title mb-4">
+                <i class="fas fa-users me-2"></i>Collaboration
+              </h3>
+              <div class="skill-list">
+                <div class="skill-item">
+                  <div class="d-flex align-items-center mb-2">
+                    <i class="fab fa-git-alt me-2"></i>
+                    <span class="skill-name">Git</span>
+        </div>
+                  <div class="progress" style="height: 4px;">
+                    <div class="progress-bar" role="progressbar" style="width: 90%"></div>
+      </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          
+        </div>
+      </div>
+    </section>
+
+
+    <!-- 創新思維，卓越技術 -->
+    <section class="parallax-section py-5">
+      <div class="container" data-aos="fade-up">
+        <div class="text-center text-white">
+          <h2 class="display-4 fw-bold mb-4" data-i18n="home.cta.h2">創新思維，卓越技術</h2>
+          <p class="lead mb-4" data-i18n="home.cta.lead">讓我們一起創造下一個精彩的數位體驗</p>
+          <a href="#contact" class="btn btn-outline-light btn-lg" data-i18n="home.cta.btn">開始合作</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 聯絡表單區 -->
+    <section id="contact" class="py-5">
+      <div class="container">
+        <h2 class="text-center mb-5 fw-bold" data-i18n="contact.h2">聯絡我</h2>
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <div class="text-center mb-4">
+              <div class="d-flex justify-content-center gap-3 mb-4">
+                <a href="https://github.com/ivanexis" target="_blank" rel="noopener noreferrer" class="text-decoration-none" aria-label="GitHub" data-i18n-attr="aria-label:contact.aria.github">
+                  <i class="fab fa-github fa-2x text-dark"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/ivan-zhao-b89b9140b/" target="_blank" rel="noopener" class="text-decoration-none" aria-label="LinkedIn" data-i18n-attr="aria-label:contact.aria.linkedin"><i class="fab fa-linkedin fa-2x text-primary"></i></a>
+                <a href="mailto:jeff11051212@gmail.com" class="text-decoration-none" aria-label="Email" data-i18n-attr="aria-label:contact.aria.email">
+                  <i class="far fa-envelope fa-2x text-danger"></i>
+                </a>
+              </div>
+              <button class="btn btn-outline-primary mb-4" data-bs-toggle="modal" data-bs-target="#resumeModal">
+                <i class="fas fa-eye me-2"></i><span data-i18n="home.contact.viewResume">查看履歷</span>
+              </button>
+            </div>
+            <div id="contact-form-alert" class="alert d-none mb-4" role="alert"></div>
+            <form id="contact-form" class="p-4 border rounded-4 shadow-sm" action="https://api.web3forms.com/submit" method="POST">
+              <input type="hidden" name="access_key" value="150738ae-d1db-4bb5-8079-7aa4aeee3058">
+              <input type="hidden" name="subject" value="作品集網站 — 新的聯絡訊息">
+              <input type="hidden" name="from_name" value="作品集聯絡表單">
+              <input type="hidden" name="redirect" id="web3forms-redirect" value="">
+              <input type="checkbox" name="botcheck" class="d-none" tabindex="-1" autocomplete="off" aria-hidden="true">
+              <div class="mb-3">
+                <label for="contact-name" class="form-label" data-i18n="contact.form.name">姓名</label>
+                <input type="text" class="form-control" id="contact-name" name="name" required autocomplete="name">
+              </div>
+              <div class="mb-3">
+                <label for="contact-email" class="form-label" data-i18n="contact.form.email">電子郵件</label>
+                <input type="email" class="form-control" id="contact-email" name="email" required autocomplete="email">
+              </div>
+              <div class="mb-3">
+                <label for="contact-message" class="form-label" data-i18n="contact.form.message">留言內容</label>
+                <textarea class="form-control" id="contact-message" name="message" rows="5" required></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary w-100" id="contact-submit-btn" data-i18n="contact.form.submit">發送訊息</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 履歷模態框 -->
+    <div class="modal" id="resumeModal" tabindex="-1" aria-labelledby="resumeModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" style="max-width: min(595px, 95vw); margin: 1rem auto;">
+        <div class="modal-content bg-white" style="box-shadow: none;">
+          <div class="resume-modal-header">
+            <button type="button" class="btn btn-sm btn-outline-primary" id="resume-lang-toggle" aria-label="切換為英文履歷">English</button>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="關閉"></button>
+          </div>
+          <div class="modal-body p-0 pt-2">
+            <div class="resume-wrapper" style="position: relative; width: 100%; padding-top: 141.4%;">
+              <div class="resume-container" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; cursor: pointer;" data-bs-dismiss="modal" title="點擊關閉">
+                <img id="resume-modal-img" src="images/Resume_CH.webp" alt="履歷（中文）" class="resume-image" style="width: 100%; height: 100%; object-fit: contain;">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 頁尾 -->
+    <footer class="footer">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-md-4">
+            <h5 class="mb-3" data-i18n="footer.about.title">關於我</h5>
+            <p data-i18n="footer.about.text">致力於提供創新的技術解決方案，專注於網頁開發與使用者體驗設計。</p>
+          </div>
+          <div class="col-md-4">
+            <h5 class="mb-3" data-i18n="footer.links.title">快速連結</h5>
+            <ul class="list-unstyled">
+              <li><a href="#about" class="text-white text-decoration-none" data-i18n="footer.links.about">關於我</a></li>
+              <li><a href="#works" class="text-white text-decoration-none" data-i18n="footer.links.works">作品集</a></li>
+              <li><a href="#contact" class="text-white text-decoration-none" data-i18n="footer.links.contact">聯絡方式</a></li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <h5 class="mb-3" data-i18n="footer.follow.title">追蹤我</h5>
+            <div class="social-links">
+              <a href="https://github.com/ivanexis" target="_blank" rel="noopener noreferrer" aria-label="GitHub" data-i18n-attr="aria-label:contact.aria.github"><i class="fab fa-github"></i></a>
+              <a href="https://www.linkedin.com/in/ivan-zhao-b89b9140b/" target="_blank" rel="noopener" aria-label="LinkedIn" data-i18n-attr="aria-label:contact.aria.linkedin"><i class="fab fa-linkedin"></i></a>
+              <a href="mailto:jeff11051212@gmail.com" aria-label="Email" data-i18n-attr="aria-label:contact.aria.email"><i class="far fa-envelope"></i></a>
+            </div>
+          </div>
+        </div>
+        <hr class="my-4">
+        <div class="text-center">
+          <p class="mb-0" data-i18n="footer.copyright">本網站由 Ivan Zhao 親自設計撰寫並保留所有權利。</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <!-- 面試展示版：不載入 protection.js，避免阻擋 DevTools 與文字選取 -->
+  <script src="js/i18n.js"></script>
+  <script src="js/work-detail-data.js"></script>
+  <script src="js/works-portfolio-card.js"></script>
+  <script src="js/works-web-design.js"></script>
+  <script src="js/works-static-sections.js"></script>
+  <script src="js/hero-canvas.js" defer></script>
+</body>
+
+</html>

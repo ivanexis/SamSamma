@@ -1,0 +1,72 @@
+﻿{
+    "case":  "1.Shopping websites/2",
+    "scanned_at":  "2026-05-20",
+    "hero_source":  "首頁 1.jpg",
+    "files":  [
+                  {
+                      "outputs":  [
+                                      "hero",
+                                      "slide-1"
+                                  ],
+                      "label":  "首頁 1",
+                      "height":  7985,
+                      "src":  "首頁 1.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-2"
+                                  ],
+                      "label":  "商品內頁",
+                      "height":  2277,
+                      "src":  "商品內頁.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-3"
+                                  ],
+                      "label":  "商品列表",
+                      "height":  3453,
+                      "src":  "商品列表.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-4"
+                                  ],
+                      "label":  "最新消息",
+                      "height":  3670,
+                      "src":  "最新消息.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-5"
+                                  ],
+                      "label":  "消息內頁",
+                      "height":  2865,
+                      "src":  "消息內頁.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-6"
+                                  ],
+                      "label":  "關於我們",
+                      "height":  3794,
+                      "src":  "關於我們.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-7"
+                                  ],
+                      "label":  "首頁 v2",
+                      "height":  5048,
+                      "src":  "首頁 v2.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-8"
+                                  ],
+                      "label":  "首頁",
+                      "height":  5248,
+                      "src":  "首頁.jpg"
+                  }
+              ]
+}

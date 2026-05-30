@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>作品詳情 - Ivan's Portfolio</title>
+    <title>大北坑客家文化保存與觀光發展規劃 - Ivan's Portfolio</title>
+    <link rel="icon" type="image/webp" href="../images/logo_2.webp">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -157,6 +158,22 @@
         .footer p,
         .footer h5 {
             color: white !important;
+        }
+
+        .deep-dive-note {
+            margin: 0 auto 1.5rem;
+            max-width: 920px;
+            padding: 1rem 1.25rem;
+            background: linear-gradient(135deg, rgba(79, 133, 166, 0.08) 0%, rgba(79, 133, 166, 0.03) 100%);
+            border-left: 3px solid #4f85a6;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            line-height: 1.7;
+            color: #475569;
+        }
+        .deep-dive-note i {
+            color: #4f85a6;
+            margin-right: 0.4rem;
         }
 
         .design-feature {
@@ -324,8 +341,8 @@
     <!-- 導航欄 -->
     <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
         <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="../index_ivan.html">
-                <img src="../images/logo_2.jpg" alt="Ivan_Zhao Logo" class="rounded-circle me-2 navbar-logo">
+            <a class="navbar-brand d-flex align-items-center" href="../index.html">
+                <img src="../images/logo_2.webp" alt="Ivan_Zhao Logo" class="rounded-circle me-2 navbar-logo">
                 <span>Ivan_Zhao</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -334,13 +351,13 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                      <a class="nav-link" href="../index_ivan.html">Home</a>
+                      <a class="nav-link" href="../index.html" data-i18n="nav.home">Home</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="../aboutme.html">About Me</a>
+                      <a class="nav-link" href="../aboutme.html" data-i18n="nav.about">About Me</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="../index_ivan.html#contact">Contact Me</a>
+                      <a class="nav-link" href="../index.html#contact" data-i18n="nav.contact">Contact Me</a>
                     </li>
                   </ul>
             </div>
@@ -352,11 +369,14 @@
         <div class="container">
             <h2 class="portfolio-category-tag">地方創生</h2>
             <h1 class="portfolio-title">大北坑客家文化保存與觀光發展規劃</h1>
+            <div class="deep-dive-note">
+                <i class="fas fa-info-circle"></i><span data-i18n="deepDive.note">※ 本技術專案拆解主要以繁體中文撰寫以進行深度工程論述，核心系統架構與技術術語保持英文標準。可透過導覽列右上的 [EN ⇄ 繁中] 切換語系。</span>
+            </div>
         </div>
     </div>
 
     <div class="main-image-container">
-        <img src="../images/book1-0.png" alt="作品主圖" class="main-image">
+        <img src="../images/book1-0.webp" alt="作品主圖" class="main-image">
         
         <!-- YouTube 影片嵌入 -->
         <div class="video-container mt-4">
@@ -468,16 +488,16 @@
                 <div class="col-md-4">
                     <h5 class="mb-3">快速連結</h5>
                     <ul class="list-unstyled">
-                        <li><a href="../index_ivan.html#about" class="text-white text-decoration-none">關於我</a></li>
-                        <li><a href="../index_ivan.html#works" class="text-white text-decoration-none">作品集</a></li>
-                        <li><a href="../index_ivan.html#contact" class="text-white text-decoration-none">聯絡方式</a></li>
+                        <li><a href="../index.html#about" class="text-white text-decoration-none">關於我</a></li>
+                        <li><a href="../index.html#works" class="text-white text-decoration-none">作品集</a></li>
+                        <li><a href="../index.html#contact" class="text-white text-decoration-none">聯絡方式</a></li>
                     </ul>
                 </div>
                 <div class="col-md-4">
                     <h5 class="mb-3">追蹤我</h5>
                     <div class="social-links">
                         <a href="https://github.com/ivanexis" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                        <span aria-label="LinkedIn 連結待補"><i class="fab fa-linkedin"></i></span>
+                        <a href="https://www.linkedin.com/in/ivan-zhao-b89b9140b/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
                         <a href="mailto:jeff11051212@gmail.com" aria-label="Email"><i class="far fa-envelope"></i></a>
                     </div>
                 </div>
@@ -492,6 +512,7 @@
     <!-- JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="../js/i18n.js"></script>
 </body>
 
 </html>

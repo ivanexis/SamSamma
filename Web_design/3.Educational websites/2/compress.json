@@ -1,0 +1,72 @@
+﻿{
+    "case":  "3.Educational websites/2",
+    "scanned_at":  "2026-05-20",
+    "hero_source":  "首頁V2.jpg",
+    "files":  [
+                  {
+                      "outputs":  [
+                                      "hero",
+                                      "slide-1"
+                                  ],
+                      "label":  "首頁V2",
+                      "height":  7813,
+                      "src":  "首頁V2.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-2"
+                                  ],
+                      "label":  "LINE 視窗",
+                      "height":  1200,
+                      "src":  "LINE 視窗.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-3"
+                                  ],
+                      "label":  "分校資訊 V2",
+                      "height":  7843,
+                      "src":  "分校資訊 V2.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-4"
+                                  ],
+                      "label":  "最新消息 內頁 V2",
+                      "height":  4160,
+                      "src":  "最新消息 內頁 V2.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-5"
+                                  ],
+                      "label":  "最新消息V2",
+                      "height":  2940,
+                      "src":  "最新消息V2.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-6"
+                                  ],
+                      "label":  "課程介紹V2",
+                      "height":  6753,
+                      "src":  "課程介紹V2.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-7"
+                                  ],
+                      "label":  "進場動畫",
+                      "height":  1080,
+                      "src":  "進場動畫.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-8"
+                                  ],
+                      "label":  "關於我們V2",
+                      "height":  6963,
+                      "src":  "關於我們V2.jpg"
+                  }
+              ]
+}

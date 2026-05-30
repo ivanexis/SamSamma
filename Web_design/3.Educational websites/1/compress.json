@@ -1,0 +1,64 @@
+﻿{
+    "case":  "3.Educational websites/1",
+    "scanned_at":  "2026-05-20",
+    "hero_source":  "首頁.jpg",
+    "files":  [
+                  {
+                      "outputs":  [
+                                      "hero",
+                                      "slide-1"
+                                  ],
+                      "label":  "首頁",
+                      "height":  9098,
+                      "src":  "首頁.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-2"
+                                  ],
+                      "label":  "成人旅學 主題旅行",
+                      "height":  7675,
+                      "src":  "成人旅學 主題旅行.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-3"
+                                  ],
+                      "label":  "教育課程",
+                      "height":  7467,
+                      "src":  "教育課程.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-4"
+                                  ],
+                      "label":  "最新消息",
+                      "height":  3301,
+                      "src":  "最新消息.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-5"
+                                  ],
+                      "label":  "最新消息內頁",
+                      "height":  3301,
+                      "src":  "最新消息內頁.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-6"
+                                  ],
+                      "label":  "海外遊學",
+                      "height":  7646,
+                      "src":  "海外遊學.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-7"
+                                  ],
+                      "label":  "關於我們",
+                      "height":  8026,
+                      "src":  "關於我們.jpg"
+                  }
+              ]
+}

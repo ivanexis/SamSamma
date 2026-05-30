@@ -1,0 +1,56 @@
+﻿{
+    "case":  "5.House website/1",
+    "scanned_at":  "2026-05-20",
+    "hero_source":  "首頁.jpg",
+    "files":  [
+                  {
+                      "outputs":  [
+                                      "hero",
+                                      "slide-1"
+                                  ],
+                      "label":  "首頁",
+                      "height":  9446,
+                      "src":  "首頁.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-2"
+                                  ],
+                      "label":  "個人簡介",
+                      "height":  5537,
+                      "src":  "個人簡介.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-3"
+                                  ],
+                      "label":  "所有物件-內頁",
+                      "height":  4002,
+                      "src":  "所有物件-內頁.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-4"
+                                  ],
+                      "label":  "所有物件",
+                      "height":  6401,
+                      "src":  "所有物件.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-5"
+                                  ],
+                      "label":  "最新消息",
+                      "height":  3545,
+                      "src":  "最新消息.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-6"
+                                  ],
+                      "label":  "最新消息內頁",
+                      "height":  3831,
+                      "src":  "最新消息內頁.jpg"
+                  }
+              ]
+}

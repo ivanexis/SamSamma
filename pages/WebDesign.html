@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>作品詳情 - Ivan's Portfolio</title>
+    <link rel="icon" type="image/webp" href="../images/logo_2.webp">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -41,51 +42,72 @@
             padding: 60px 0 30px;
         }
 
-        /* 作品詳情頁面特定樣式 */
-        .portfolio-header {
-            text-align: center;
-            padding: 6rem 0 4rem;
-            /* 增加上方間距 */
-            background-color: #fff;
+        /* === 作品主視覺 Hero Cover（1920×1070，靠 header 下） === */
+        .hero-cover {
             position: relative;
+            width: 100%;
+            aspect-ratio: 1920 / 1070;
+            overflow: hidden;
+            background: #0a0a0a;
+            margin-bottom: 3.5rem;
         }
 
-        .portfolio-category-tag {
+        .hero-cover-image {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
             display: block;
+        }
+
+        .hero-cover-mask {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            pointer-events: none;
+        }
+
+        .hero-cover-text {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             text-align: center;
-            color: rgb(46, 16, 16);
-            font-size: 1.4rem;
-            margin-bottom: 1.5rem;
-            letter-spacing: 0.1em;
-            font-weight: 500;
+            color: #fff;
+            padding: 1.5rem;
+            z-index: 2;
         }
 
-        .portfolio-title {
-            font-size: 3.2rem;
+        .hero-category {
+            font-size: clamp(1rem, 1.4vw, 1.4rem);
+            letter-spacing: 0.22em;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.92);
+            margin-bottom: 1.3rem;
+        }
+
+        .hero-title {
+            font-size: clamp(2.2rem, 5vw, 4.2rem);
             font-weight: 600;
-            margin: 0 auto;
-            position: relative;
-            display: inline-block;
-            letter-spacing: 0.05em;
-            color: rgb(46, 16, 16);
+            letter-spacing: 0.06em;
+            color: #fff;
+            margin: 0;
+            text-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
         }
 
-        .portfolio-title::after {
-            display: none;
-        }
+        @media (max-width: 768px) {
+            .hero-cover {
+                aspect-ratio: 4 / 5;
+                margin-bottom: 2.2rem;
+            }
 
-        .main-image-container {
-            margin: -2rem auto 1rem;
-            max-width: 1440px;
-            padding: 2rem;
-            width: 100%;
-        }
-
-        .main-image {
-            width: 100%;
-            height: auto;
-            border-radius: 16px;
-            /* 只保留圓角 */
+            .hero-category {
+                letter-spacing: 0.16em;
+            }
         }
 
         .portfolio-content {
@@ -157,6 +179,22 @@
         .footer p,
         .footer h5 {
             color: white !important;
+        }
+
+        .deep-dive-note {
+            margin: 0 auto 2rem;
+            max-width: 920px;
+            padding: 1rem 1.25rem;
+            background: linear-gradient(135deg, rgba(79, 133, 166, 0.08) 0%, rgba(79, 133, 166, 0.03) 100%);
+            border-left: 3px solid #4f85a6;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            line-height: 1.7;
+            color: #475569;
+        }
+        .deep-dive-note i {
+            color: #4f85a6;
+            margin-right: 0.4rem;
         }
 
         .design-feature {
@@ -424,20 +462,111 @@
             overflow-x: auto;
         }
 
+        /* === 色彩計畫 1920:807 比例（隨寬度等比縮放） === */
+        .color-plan-section {
+            aspect-ratio: 1920 / 807;
+            display: flex;
+            align-items: center;
+            padding: 2.5rem 2.5rem;
+        }
+
+        .color-plan-section > .row {
+            width: 100%;
+        }
+
+        @media (max-width: 992px) {
+            .color-plan-section {
+                aspect-ratio: auto;
+                padding: 2.1rem 1.7rem;
+            }
+        }
+
+        /* === 內頁亮點展示（左右雙欄） === */
+        .inside-pages-section {
+            padding: 2.8rem 2.5rem;
+        }
+
+        .inside-pages-text .feature-title {
+            font-size: clamp(1.6rem, 2.4vw, 2.2rem);
+            line-height: 1.3;
+            margin-bottom: 1.1rem;
+            color: #1b1f2a;
+        }
+
+        .inside-pages-desc p {
+            font-size: 1.02rem;
+            line-height: 1.7;
+            color: #475569;
+            margin-bottom: 0.85rem;
+        }
+
+        .inside-pages-text .inquiry-btn {
+            display: inline-flex;
+            align-items: center;
+            background: #1b1f2a;
+            color: #fff;
+            padding: 0.78rem 1.7rem;
+            border-radius: 999px;
+            font-weight: 500;
+            text-decoration: none;
+            border: 0;
+            transition: background 0.25s ease, transform 0.25s ease;
+        }
+
+        .inside-pages-text .inquiry-btn:hover {
+            background: #4f85a6;
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        /* 瀏覽器外框（包覆 showcase） */
+        .browser-frame {
+            border-radius: 14px;
+            overflow: hidden;
+            background: #fff;
+            box-shadow: 0 16px 36px rgba(27, 31, 42, 0.18);
+        }
+
+        .browser-bar {
+            background: #eef1f5;
+            padding: 0.6rem 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.42rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+        }
+
+        .browser-dot {
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+            background: #cbd5e1;
+        }
+
+        .browser-dot.red    { background: #ff5f57; }
+        .browser-dot.yellow { background: #febc2e; }
+        .browser-dot.green  { background: #28c840; }
+
+        @media (max-width: 992px) {
+            .inside-pages-section {
+                padding: 2rem 1.5rem;
+            }
+        }
+
         .showcase-viewer {
             width: 100%;
         }
 
         .showcase-main {
             width: 100%;
-            max-width: 960px;
-            height: min(78vh, 760px);
-            min-height: 420px;
-            border-radius: 12px;
+            max-width: 100%;
+            height: min(72vh, 680px);
+            min-height: 380px;
+            border-radius: 0;
             overflow: hidden;
-            box-shadow: 0 10px 22px rgba(27, 31, 42, 0.12);
+            box-shadow: none;
             background: #05070d;
-            margin-bottom: 1rem;
+            margin-bottom: 0;
             margin-inline: auto;
             position: relative;
         }
@@ -520,6 +649,16 @@
             display: flex;
             gap: 0.7rem;
             flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 1.75rem;
+            padding-top: 0.25rem;
+        }
+
+        @media (max-width: 768px) {
+            .showcase-controls {
+                margin-top: 1.25rem;
+                gap: 0.5rem;
+            }
         }
 
         .showcase-btn {
@@ -824,8 +963,8 @@
     <!-- 導航欄 -->
     <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
         <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="../index_ivan.html">
-                <img src="../images/logo_2.jpg" alt="Ivan_Zhao Logo" class="rounded-circle me-2 navbar-logo">
+            <a class="navbar-brand d-flex align-items-center" href="../index.html">
+                <img src="../images/logo_2.webp" alt="Ivan_Zhao Logo" class="rounded-circle me-2 navbar-logo">
                 <span>Ivan_Zhao</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -834,43 +973,39 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                      <a class="nav-link" href="../index_ivan.html">Home</a>
+                      <a class="nav-link" href="../index.html" data-i18n="nav.home">Home</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="../aboutme.html">About Me</a>
+                      <a class="nav-link" href="../aboutme.html" data-i18n="nav.about">About Me</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="../index_ivan.html#contact">Contact Me</a>
+                      <a class="nav-link" href="../index.html#contact" data-i18n="nav.contact">Contact Me</a>
                     </li>
                   </ul>
             </div>
         </div>
     </nav>
 
-    <!-- 作品詳情內容 -->
-    <div class="portfolio-header">
-        <div class="container">
-            <h2 class="portfolio-category-tag" id="workCategory"></h2>
-            <h1 class="portfolio-title" id="workTitle"></h1>
+    <!-- 作品主視覺 Hero Cover（緊貼 header 下，1920:1070 比例） -->
+    <section class="hero-cover">
+        <img id="workHero" src="" alt="" class="hero-cover-image" loading="eager" decoding="async" fetchpriority="high">
+        <div class="hero-cover-mask"></div>
+        <div class="hero-cover-text">
+            <h2 class="hero-category" id="workCategory"></h2>
+            <h1 class="hero-title" id="workTitle"></h1>
+        </div>
+    </section>
+
+    <div class="container mt-4">
+        <div class="deep-dive-note">
+            <i class="fas fa-info-circle"></i><span data-i18n="deepDive.note">※ 本技術專案拆解主要以繁體中文撰寫以進行深度工程論述，核心系統架構與技術術語保持英文標準。可透過導覽列右上的 [EN ⇄ 繁中] 切換語系。</span>
         </div>
     </div>
-
-    <!-- 以下布局優化開始改動 -->
 
     <div class="portfolio-content container">
         <div class="portfolio-description">
             <div class="description-section">
-                <section class="story-section feature-surface section-tone-1">
-                    <div class="hero-layer-wrap">
-                        <div class="hero-layer-title mb-3">
-                            <h4 class="feature-title mb-2">作品主視覺</h4>
-                        </div>
-                        <img id="workHero" src="" alt="" class="hero-layer-media" loading="eager" decoding="async" fetchpriority="high">
-                        <span class="floating-tag">Full-Page Vision</span>
-                    </div>
-                </section>
-
-                <section class="story-section feature-surface section-tone-2">
+                <section class="story-section feature-surface section-tone-2 color-plan-section">
                     <div class="row align-items-center g-4">
                         <div class="col-lg-6">
                             <h4 class="feature-title mb-3"><i class="fas fa-swatchbook me-2"></i>色彩計畫</h4>
@@ -900,15 +1035,35 @@
                     </div>
                 </section>
 
-                <section class="story-section feature-surface section-tone-3">
-                    <h4 class="feature-title mb-3"><i class="fas fa-desktop me-2"></i>內頁展示</h4>
-                    <div class="showcase-viewer" id="uiShowcase">
-                        <div class="showcase-main">
-                            <button type="button" class="showcase-nav prev" id="showcasePrev" aria-label="上一張">&#10094;</button>
-                            <div class="showcase-track" id="showcaseTrack"></div>
-                            <button type="button" class="showcase-nav next" id="showcaseNext" aria-label="下一張">&#10095;</button>
+                <section class="story-section feature-surface section-tone-3 inside-pages-section">
+                    <div class="row align-items-center g-4 g-lg-5">
+                        <div class="col-lg-5 inside-pages-text">
+                            <h4 class="feature-title mb-3">內頁展示</h4>
+                            <div class="feature-content inside-pages-desc">
+                                <p>挑選作品中具代表性的內頁，呈現資訊架構、版面節奏與互動細節。</p>
+                                <p>右側模擬瀏覽器視窗，可滾動瀏覽完整長截圖；下方按鈕可切換不同頁面。</p>
+                            </div>
+                            <a href="../index.html#contact" class="btn inquiry-btn mt-3">
+                                <i class="fas fa-paper-plane me-2"></i>立即前往諮詢
+                            </a>
                         </div>
-                        <div class="showcase-controls" id="showcaseControls"></div>
+                        <div class="col-lg-7">
+                            <div class="showcase-viewer" id="uiShowcase">
+                                <div class="browser-frame">
+                                    <div class="browser-bar">
+                                        <span class="browser-dot red"></span>
+                                        <span class="browser-dot yellow"></span>
+                                        <span class="browser-dot green"></span>
+                                    </div>
+                                    <div class="showcase-main">
+                                        <button type="button" class="showcase-nav prev" id="showcasePrev" aria-label="上一張">&#10094;</button>
+                                        <div class="showcase-track" id="showcaseTrack"></div>
+                                        <button type="button" class="showcase-nav next" id="showcaseNext" aria-label="下一張">&#10095;</button>
+                                    </div>
+                                </div>
+                                <div class="showcase-controls" id="showcaseControls"></div>
+                            </div>
+                        </div>
                     </div>
                 </section>
 
@@ -935,16 +1090,16 @@
                 <div class="col-md-4">
                     <h5 class="mb-3">快速連結</h5>
                     <ul class="list-unstyled">
-                        <li><a href="../index_ivan.html#about" class="text-white text-decoration-none">關於我</a></li>
-                        <li><a href="../index_ivan.html#works" class="text-white text-decoration-none">作品集</a></li>
-                        <li><a href="../index_ivan.html#contact" class="text-white text-decoration-none">聯絡方式</a></li>
+                        <li><a href="../index.html#about" class="text-white text-decoration-none">關於我</a></li>
+                        <li><a href="../index.html#works" class="text-white text-decoration-none">作品集</a></li>
+                        <li><a href="../index.html#contact" class="text-white text-decoration-none">聯絡方式</a></li>
                     </ul>
                 </div>
                 <div class="col-md-4">
                     <h5 class="mb-3">追蹤我</h5>
                     <div class="social-links">
                         <a href="https://github.com/ivanexis" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                        <span aria-label="LinkedIn 連結待補"><i class="fab fa-linkedin"></i></span>
+                        <a href="https://www.linkedin.com/in/ivan-zhao-b89b9140b/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
                         <a href="mailto:jeff11051212@gmail.com" aria-label="Email"><i class="far fa-envelope"></i></a>
                     </div>
                 </div>
@@ -963,6 +1118,7 @@
     <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
     <script src="../js/work-detail-data.js"></script>
     <script src="../js/work-detail-render.js"></script>
+    <script src="../js/i18n.js"></script>
 </body>
 
 </html>

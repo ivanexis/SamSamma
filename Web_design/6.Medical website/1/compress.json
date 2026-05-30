@@ -1,0 +1,48 @@
+﻿{
+    "case":  "6.Medical website/1",
+    "scanned_at":  "2026-05-20",
+    "hero_source":  "首頁.jpg",
+    "files":  [
+                  {
+                      "outputs":  [
+                                      "hero",
+                                      "slide-1"
+                                  ],
+                      "label":  "首頁",
+                      "height":  7370,
+                      "src":  "首頁.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-2"
+                                  ],
+                      "label":  "團隊服務",
+                      "height":  5427,
+                      "src":  "團隊服務.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-3"
+                                  ],
+                      "label":  "文章內頁",
+                      "height":  3011,
+                      "src":  "文章內頁.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-4"
+                                  ],
+                      "label":  "服務項目",
+                      "height":  5428,
+                      "src":  "服務項目.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-5"
+                                  ],
+                      "label":  "衛教文章",
+                      "height":  3379,
+                      "src":  "衛教文章.jpg"
+                  }
+              ]
+}

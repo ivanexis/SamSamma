@@ -1,0 +1,56 @@
+﻿{
+    "case":  "6.Medical website/3",
+    "scanned_at":  "2026-05-20",
+    "hero_source":  "首頁.jpg",
+    "files":  [
+                  {
+                      "outputs":  [
+                                      "hero",
+                                      "slide-1"
+                                  ],
+                      "label":  "首頁",
+                      "height":  5832,
+                      "src":  "首頁.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-2"
+                                  ],
+                      "label":  "最新消息-內頁",
+                      "height":  3002,
+                      "src":  "最新消息-內頁.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-3"
+                                  ],
+                      "label":  "最新消息",
+                      "height":  2869,
+                      "src":  "最新消息.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-4"
+                                  ],
+                      "label":  "產品資訊- 內頁",
+                      "height":  2702,
+                      "src":  "產品資訊- 內頁.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-5"
+                                  ],
+                      "label":  "產品資訊",
+                      "height":  3506,
+                      "src":  "產品資訊.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-6"
+                                  ],
+                      "label":  "關於我們",
+                      "height":  6165,
+                      "src":  "關於我們.jpg"
+                  }
+              ]
+}

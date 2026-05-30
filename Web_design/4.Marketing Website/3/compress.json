@@ -1,0 +1,56 @@
+﻿{
+    "case":  "4.Marketing Website/3",
+    "scanned_at":  "2026-05-20",
+    "hero_source":  "首頁.jpg",
+    "files":  [
+                  {
+                      "outputs":  [
+                                      "hero",
+                                      "slide-1"
+                                  ],
+                      "label":  "首頁",
+                      "height":  9628,
+                      "src":  "首頁.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-2"
+                                  ],
+                      "label":  "最新消息-1",
+                      "height":  1925,
+                      "src":  "最新消息-1.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-3"
+                                  ],
+                      "label":  "最新消息",
+                      "height":  2911,
+                      "src":  "最新消息.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-4"
+                                  ],
+                      "label":  "服務流程",
+                      "height":  2558,
+                      "src":  "服務流程.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-5"
+                                  ],
+                      "label":  "關於我們",
+                      "height":  9456,
+                      "src":  "關於我們.jpg"
+                  },
+                  {
+                      "outputs":  [
+                                      "slide-6"
+                                  ],
+                      "label":  "首頁V2",
+                      "height":  8233,
+                      "src":  "首頁V2.jpg"
+                  }
+              ]
+}
