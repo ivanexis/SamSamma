@@ -202,12 +202,10 @@ window.portfolioWorkDetails = {
     },
     pages: [
       { label: '首頁V2', image: 'slide-1.jpg' },
-      { label: 'LINE 視窗', image: 'slide-2.jpg' },
       { label: '分校資訊 V2', image: 'slide-3.jpg' },
       { label: '最新消息 內頁 V2', image: 'slide-4.jpg' },
       { label: '最新消息V2', image: 'slide-5.jpg' },
       { label: '課程介紹V2', image: 'slide-6.jpg' },
-      { label: '進場動畫', image: 'slide-7.jpg' },
       { label: '關於我們V2', image: 'slide-8.jpg' }
     ]
   },

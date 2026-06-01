@@ -42,7 +42,7 @@
 
   async function setPhonePreviewToTallestPage(work, phone) {
     const candidates = (work.pages || [])
-      .filter((page) => page.image && page.image !== work.hero && page.label !== '主視覺')
+      .filter((page) => page.image && page.image !== work.hero && page.label !== '主視覺' && !page.hidden)
       .map((page) => imagePath(work, page.image));
 
     if (!phone || candidates.length === 0) return;
@@ -83,7 +83,7 @@
         return;
       }
 
-      const fallbackPage = (work.pages || []).find((page) => page.image && page.label !== '主視覺');
+      const fallbackPage = (work.pages || []).find((page) => page.image && page.label !== '主視覺' && !page.hidden);
       phone.src = imagePath(work, fallbackPage?.image || work.hero);
       phone.alt = `${work.title} 手機頁面展示`;
       setPhonePreviewToTallestPage(work, phone);
@@ -147,7 +147,7 @@
   }
 
   function getShowcasePages(work) {
-    return (work.pages || []).filter((page) => page.label !== '主視覺');
+    return (work.pages || []).filter((page) => page.label !== '主視覺' && !page.hidden);
   }
 
   function renderShowcase(work) {

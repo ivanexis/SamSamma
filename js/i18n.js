@@ -41,10 +41,10 @@
       zh: '精選網頁實績集'
     },
     'cases.hero.lead': {
-      en: 'High-fidelity (Hi-Fi) web interface design — 21 production-deployed corporate sites and commercial landing layouts across diverse verticals.',
-      zh: '直擊高保真（Hi-Fi）的網頁介面設計，累積 21 件實際交付上線的企業官網與商業排版實績。'
+      en: '21 commercial web Hi-Fi delivery drafts. Visuals are anonymized; full files and shareable live references available by email.',
+      zh: '21 件商業網頁 Hi-Fi 交付樣稿；視覺已去識別化，完整稿與可公開之參考站請來信索取。'
     },
-    'cases.metric.cases.label': { en: 'Live Projects', zh: '實際上線專案' },
+    'cases.metric.cases.label': { en: 'Hi-Fi Cases', zh: 'Hi-Fi 交付樣稿' },
     'cases.metric.industries.label': { en: 'Industries', zh: '產業類別' },
     'cases.metric.delivery.label': {
       en: 'Direct Hi-Fi Delivery',
@@ -54,8 +54,8 @@
     /* ===== cases.html · Section ===== */
     'cases.backLink': { en: '← Back to Portfolio', zh: '← 回到主作品集' },
     'cases.subtitle': {
-      en: 'All Web Cases · 21 Live Deployments',
-      zh: 'All Web Cases · 21 件'
+      en: 'All Web Cases · 21 Hi-Fi Deliveries',
+      zh: '全部網頁案例 · 21 件 Hi-Fi 交付樣稿'
     },
     'cases.filterAria': { en: 'Case category filter', zh: '作品分類篩選' },
 
@@ -254,6 +254,28 @@
       en: 'Spatial thinking from landscape design, execution discipline from place-branding, and healthcare-grade rigor — converging into what I am now: <strong>a Technical PM precision-mapping technology to market</strong>. In an era where AI has democratized the act of <em>writing code</em>, the truly scarce skill has shifted from <em>coding</em> to <strong>converging messy requirements into the right specs</strong>. I don\'t pitch undeliverable visions; I build the bridge between technology and business. <strong>If you\'re looking for someone who can align seamlessly with your engineering team — let\'s talk.</strong>',
       zh: '融合景觀全局思維、創生執行力與醫療嚴謹性，兼具技術硬實力與設計同理心 ── 這就是我現在的職涯定位：<strong>一位精準對接技術與市場的 Technical PM</strong>。在 AI 把「把東西做出來」的門檻民主化之後，市場真正稀缺的能力，已經從「寫代碼」轉為「<strong>把複雜需求收斂成正確的規格</strong>」。我不擅長畫無法落地的商業大餅，但擅長成為技術與業務之間的橋樑 ── 如果你正在找一位能與工程師無縫對齊的夥伴，期待與你聊聊。'
     },
+
+    /* ===== WebDesign.html · 商案詳情（全 21 件共用） ===== */
+    'workDetail.disclosure': {
+      en: 'This page presents anonymized Hi-Fi deliverables from <strong>commercial web projects I actually contributed to</strong>. Live client URLs and original brand assets are <strong>not published here</strong> due to intellectual property and confidentiality. Full design files, process artifacts, and shareable references are available on request — <a href="../index.html#contact">contact me</a> or email <a href="mailto:jeff11051212@gmail.com">jeff11051212@gmail.com</a>.',
+      zh: '本頁展示我<strong>實際參與</strong>之商業網頁 Hi-Fi 交付成果，畫面已去識別化。因<strong>智慧財產權與客戶保密</strong>，正式上線網址與原始品牌素材不在此公開。完整設計稿、製作流程與可對外提供之參考站，請<a href="../index.html#contact">聯絡我</a>或來信 <a href="mailto:jeff11051212@gmail.com">jeff11051212@gmail.com</a> 索取。'
+    },
+    'workDetail.disclosureShort': {
+      en: 'Screens below are anonymized Hi-Fi drafts — not the client\'s current live website.',
+      zh: '以下截圖為去識別化 Hi-Fi 樣稿，不代表客戶現行上線網站。'
+    },
+    'workDetail.insidePages.title': { en: 'Inside Pages', zh: '內頁展示' },
+    'workDetail.insidePages.desc1': {
+      en: 'Representative screens showing information architecture, layout rhythm, and interaction details.',
+      zh: '挑選作品中具代表性的內頁，呈現資訊架構、版面節奏與互動細節。'
+    },
+    'workDetail.insidePages.desc2': {
+      en: 'Use the browser mockup on the right to scroll full-length captures; switch pages with the chips below.',
+      zh: '右側模擬瀏覽器視窗，可滾動瀏覽完整長截圖；下方按鈕可切換不同頁面。'
+    },
+    'workDetail.inquiryBtn': { en: 'Request Full Files', zh: '索取完整稿件' },
+    'workDetail.relatedTitle': { en: 'More Works', zh: '瀏覽更多作品' },
+    'workDetail.colorPlanTitle': { en: 'Color System', zh: '色彩計畫' },
 
     /* ===== webdetail.html · Deep Dive Note (英文模式下的禮貌性提示) ===== */
     'deepDive.note': {

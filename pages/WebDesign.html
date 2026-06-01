@@ -196,6 +196,21 @@
             color: #4f85a6;
             margin-right: 0.4rem;
         }
+        .deep-dive-note a {
+            color: #3d6d8c;
+            font-weight: 600;
+        }
+        .deep-dive-note a:hover {
+            color: #2a5570;
+        }
+        .inside-pages-desc .disclosure-short {
+            margin-top: 0.75rem;
+            padding: 0.65rem 0.85rem;
+            background: rgba(79, 133, 166, 0.06);
+            border-radius: 6px;
+            font-size: 0.92rem;
+            color: #64748b;
+        }
 
         .design-feature {
             padding: 2.5rem;
@@ -997,8 +1012,8 @@
     </section>
 
     <div class="container mt-4">
-        <div class="deep-dive-note">
-            <i class="fas fa-info-circle"></i><span data-i18n="deepDive.note">※ 本技術專案拆解主要以繁體中文撰寫以進行深度工程論述，核心系統架構與技術術語保持英文標準。可透過導覽列右上的 [EN ⇄ 繁中] 切換語系。</span>
+        <div class="deep-dive-note" role="note">
+            <i class="fas fa-info-circle" aria-hidden="true"></i><span data-i18n="workDetail.disclosure" data-i18n-html="true">本頁展示我實際參與之商業網頁 Hi-Fi 交付成果，畫面已去識別化。因智慧財產權與客戶保密，正式上線網址與原始品牌素材不在此公開。完整設計稿、製作流程與可對外提供之參考站，請聯絡我或來信索取。</span>
         </div>
     </div>
 
@@ -1008,7 +1023,7 @@
                 <section class="story-section feature-surface section-tone-2 color-plan-section">
                     <div class="row align-items-center g-4">
                         <div class="col-lg-6">
-                            <h4 class="feature-title mb-3"><i class="fas fa-swatchbook me-2"></i>色彩計畫</h4>
+                            <h4 class="feature-title mb-3"><i class="fas fa-swatchbook me-2"></i><span data-i18n="workDetail.colorPlanTitle">色彩計畫</span></h4>
                             <div class="feature-content" id="workColorPlanDescription">
                             </div>
                             <div class="palette-inline" id="workColorPalette">
@@ -1038,13 +1053,14 @@
                 <section class="story-section feature-surface section-tone-3 inside-pages-section">
                     <div class="row align-items-center g-4 g-lg-5">
                         <div class="col-lg-5 inside-pages-text">
-                            <h4 class="feature-title mb-3">內頁展示</h4>
+                            <h4 class="feature-title mb-3" data-i18n="workDetail.insidePages.title">內頁展示</h4>
                             <div class="feature-content inside-pages-desc">
-                                <p>挑選作品中具代表性的內頁，呈現資訊架構、版面節奏與互動細節。</p>
-                                <p>右側模擬瀏覽器視窗，可滾動瀏覽完整長截圖；下方按鈕可切換不同頁面。</p>
+                                <p data-i18n="workDetail.insidePages.desc1">挑選作品中具代表性的內頁，呈現資訊架構、版面節奏與互動細節。</p>
+                                <p data-i18n="workDetail.insidePages.desc2">右側模擬瀏覽器視窗，可滾動瀏覽完整長截圖；下方按鈕可切換不同頁面。</p>
+                                <p class="disclosure-short" data-i18n="workDetail.disclosureShort">以下截圖為去識別化 Hi-Fi 樣稿，不代表客戶現行上線網站。</p>
                             </div>
                             <a href="../index.html#contact" class="btn inquiry-btn mt-3">
-                                <i class="fas fa-paper-plane me-2"></i>立即前往諮詢
+                                <i class="fas fa-paper-plane me-2"></i><span data-i18n="workDetail.inquiryBtn">索取完整稿件</span>
                             </a>
                         </div>
                         <div class="col-lg-7">
@@ -1068,7 +1084,7 @@
                 </section>
 
                 <section class="story-section feature-surface section-tone-4">
-                    <h4 class="feature-title mb-3"><i class="fas fa-images me-2"></i>瀏覽更多作品</h4>
+                    <h4 class="feature-title mb-3"><i class="fas fa-images me-2"></i><span data-i18n="workDetail.relatedTitle">瀏覽更多作品</span></h4>
                     <div class="more-works">
                         <div class="more-works-grid" id="relatedWorksGrid">
                         </div>
@@ -1116,9 +1132,9 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+    <script src="../js/i18n.js"></script>
     <script src="../js/work-detail-data.js"></script>
     <script src="../js/work-detail-render.js"></script>
-    <script src="../js/i18n.js"></script>
 </body>
 
 </html>
