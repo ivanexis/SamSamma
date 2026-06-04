@@ -22,7 +22,7 @@
     })();
   </script>
   <title>山莎蔓岸 數位轉型｜PM × 前端案例研究 - Ivan's Portfolio</title>
-  <meta name="description" content="賽夏族 12 公頃竹林聚落數位轉型案例 ── 我作為參與核心討論的 PM 與前端開發者，把雜亂的田野紀錄結構化、親手打造合作社官方網站與零伺服器預約工作流。">
+  <meta name="description" content="賽夏族 12 公頃竹林聚落數位轉型案例 ── 從 2021 大學畢業設計到 2026 NT$12M 兩年期計畫提案（評審中），親手交付合作社官網與零伺服器預約工作流。">
   <link rel="icon" type="image/webp" href="../images/logo_2.webp">
   <meta property="og:type" content="article">
   <meta property="og:title" content="山莎蔓岸 數位轉型｜PM × 前端案例研究">
@@ -735,12 +735,13 @@
 
     .pain-label {
       flex-shrink: 0;
-      width: 64px;
+      width: 78px;
       font-size: 0.78rem;
       font-weight: 600;
       color: var(--slate-500);
       letter-spacing: 0.04em;
       padding-top: 0.15rem;
+      white-space: nowrap;
     }
 
     .pain-text {
@@ -764,6 +765,22 @@
 
     .pain-row.solution .pain-text {
       color: var(--bamboo-deep);
+      font-weight: 500;
+    }
+
+    .pain-row.retention {
+      background: linear-gradient(135deg, rgba(201, 162, 39, 0.18), rgba(201, 162, 39, 0.05));
+      padding: 0.85rem 1rem;
+      border-radius: var(--radius-sm);
+      margin-top: 0.5rem;
+    }
+
+    .pain-row.retention .pain-label {
+      color: var(--gold);
+    }
+
+    .pain-row.retention .pain-text {
+      color: var(--slate-800);
       font-weight: 500;
     }
 
@@ -2009,25 +2026,29 @@
           <div class="eng-subtitle">Case Study · Sansamaan Bamboo Cluster · 2024–2026</div>
 
           <h1>
-            <span data-i18n-lang="zh">在賽夏族 <span class="accent">12 公頃竹林聚落</span><br>做數位轉型 PM 與前端的<br>兩個角色</span>
-            <span data-i18n-lang="en">Two roles in a Saisiyat <span class="accent">12-hectare bamboo cluster</span><br>— Digital Transformation PM<br>and Frontend Developer</span>
+            <span data-i18n-lang="zh">在同一片山裡，5 年了<br>──<span class="accent">12 公頃賽夏族竹林聚落</span><br>的數位轉型</span>
+            <span data-i18n-lang="en">Five Years in the Same Mountain<br>—<span class="accent">12-hectare Saisiyat bamboo cluster</span><br>digital transformation</span>
           </h1>
 
           <p class="lede">
-            <span data-i18n-lang="zh">我是這個專案<strong>參與核心討論的數位轉型 PM 兼前端開發者</strong>。
-            計畫策略由團隊共同擬定，我負責兩件「我說了算」的事：
+            <span data-i18n-lang="zh">2026 年完成教育部 USR NT$1.45M 計畫（執行率 100%），
+            同年 <strong>6/10 進入原民會 NT$12M 兩年期計畫評審</strong> ──
+            同一個賽夏族大隘部落、同一條脈絡。
+            本份案例研究聚焦兩條親手完成的軸線：
             <strong>(1)</strong> 把現場龐雜的田野紀錄、學術訪視成果、聚落活動照片，
             <strong>結構化梳理成清晰的數位內容</strong>；
             <strong>(2)</strong> 獨立完成合作社官方網站 UI/UX 與前端（Vanilla JS），
             並建置一套<strong>零伺服器成本的自動化預約工作流</strong>，
             解決偏鄉沒有預算養工程師的真實痛點。</span>
-            <span data-i18n-lang="en">I served as the <strong>Digital Transformation PM and frontend developer at the core of this project's discussions</strong>.
-            The overall strategy was set collectively by the team; I owned two things end-to-end:
+            <span data-i18n-lang="en">Delivered an FY2026 MOE USR NT$1.45M plan with 100% execution, and in the same year a
+            <strong>NT$12M two-year proposal entered the CIP review on 2026-06-10</strong> —
+            same Saisiyat Daai tribal village, same continuous thread.
+            This case study focuses on two hands-on tracks:
             <strong>(1)</strong> turning chaotic field notes, academic site-visit findings, and cluster event photos
             into <strong>clean, structured digital content</strong>; and
             <strong>(2)</strong> single-handedly building the co-op's official website UI/UX and frontend (Vanilla JS),
             plus a <strong>zero-server-cost automated reservation workflow</strong>
-            that solved a real rural pain point — no budget to hire engineers.</span>
+            that solves a real rural pain point — no budget to hire engineers.</span>
           </p>
 
           <div class="pm-hero-actions">
@@ -2057,7 +2078,7 @@
   <!-- ============================================================
        Quick Stats Strip
        ============================================================ -->
-  <section class="stats-strip" aria-label="專案核心場域數據與我親手完成的交付">
+  <section class="stats-strip" aria-label="專案核心場域數據與親手完成的交付">
     <div class="container">
       <div class="row g-4">
         <div class="col-6 col-md stat-item" data-aos="fade-up" data-aos-delay="0">
@@ -2100,10 +2121,82 @@
               <strong style="color: var(--gold);">a PM's core value is "translating information," and a frontend developer's is "building it with your own hands."</strong></span>
             </p>
             <div class="north-star-formula mt-4">
-              <strong><span data-i18n-lang="zh">我的兩條主軸</span><span data-i18n-lang="en">My two pillars</span></strong>
+              <strong><span data-i18n-lang="zh">兩條主軸</span><span data-i18n-lang="en">Two pillars</span></strong>
               <span class="equiv">≡</span>
               <span data-i18n-lang="zh">把雜亂田野資料結構化 ＋ 親自打造合作社官網與零伺服器預約系統</span>
               <span data-i18n-lang="en">Structuring messy field data ＋ hand-building the co-op site and a zero-server reservation system</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       Section 00 — The Origin (緣起：為什麼是這個地方)
+       新增於 v4.1 / 2026-06-04
+       把「為什麼是你、為什麼是這裡」攤開，補上溫度感與 5 年縱深
+       ============================================================ -->
+  <section class="pm-section bg-cloud" id="origin">
+    <div class="container">
+      <div class="section-head" data-aos="fade-up">
+        <div class="section-eyebrow">00 · The Origin</div>
+        <h2 class="section-title">
+          <span data-i18n-lang="zh">為什麼是這個地方？</span>
+          <span data-i18n-lang="en">Why this place?</span>
+        </h2>
+        <p class="section-desc">
+          <span data-i18n-lang="zh">這不是一個突然開始的專案 ── 5 年前的計劃書裡，已經寫下今天還在解的問題。</span>
+          <span data-i18n-lang="en">This isn't a project that just started — five years ago, an undergraduate thesis already named the question being answered today.</span>
+        </p>
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="col-lg-10" data-aos="fade-up">
+          <div class="origin-card" style="background: #fff; border: 1px solid var(--slate-200); border-radius: 16px; padding: clamp(1.5rem, 4vw, 2.5rem); box-shadow: 0 4px 24px rgba(0,0,0,0.04);">
+            <p style="font-size: 1.02rem; line-height: 1.95; margin-bottom: 1.5rem; color: var(--slate-800);">
+              <span data-i18n-lang="zh">老家在新竹縣五峰鄉南口，賽夏族大隘部落。<br>
+              父執輩 60 年代北漂台北，與家鄉的連結近乎中斷。<br>
+              2021 大學畢業設計第一次認真把這個部落當研究對象 ──<br>
+              計劃書裡的一句話之後 5 年一直沒放下：</span>
+              <span data-i18n-lang="en">Hometown: Nankou, Wufeng Township, Hsinchu — the Saisiyat Daai tribal village.<br>
+              The previous generation moved to Taipei in the 1960s; the connection with the homeland was nearly cut.<br>
+              In 2021, an undergraduate thesis was the first serious attempt to take this village as a research subject —<br>
+              and one sentence from that thesis has stayed for five years:</span>
+            </p>
+
+            <blockquote style="font-size: 1.18rem; font-style: italic; color: var(--gold); padding: 1rem 0 1rem 1.5rem; border-left: 3px solid var(--gold); margin: 1.5rem 0; font-weight: 500;">
+              <span data-i18n-lang="zh">「珍貴的文化資源正隨著部落耆老凋零。」</span>
+              <span data-i18n-lang="en">"The precious cultural resources are vanishing with the elders."</span>
+            </blockquote>
+
+            <p style="font-size: 1.02rem; line-height: 1.95; margin-bottom: 0; color: var(--slate-800);">
+              <span data-i18n-lang="zh">畢業設計後人未離開，伴隨合作社籌組成立逐步加入 ──<br>
+              天時、地利、人和湊齊之後，才接續到 <strong>2026 年教育部 USR NT$1.45M 計畫</strong>（執行率 100%），<br>
+              以及 <strong>2026/06/10 進入原民會評審的 NT$12M 兩年期計畫提案</strong>：<br>
+              「賽夏族山莎蔓岸低碳竹產業聚落建構計畫 ── 竹林治理、空間整合、品牌共創與高值循環產業推升」。</span>
+              <span data-i18n-lang="en">Staying after graduation, gradually joining the co-op as it took shape —<br>
+              the timing, the place, and the people aligned, leading to the <strong>FY2026 MOE USR NT$1.45M plan</strong> (100% execution),<br>
+              and a <strong>NT$12M two-year proposal that entered the CIP review on 2026-06-10</strong>:<br>
+              "Saisiyat SamSamma Low-Carbon Bamboo Industry Cluster — bamboo governance, spatial integration, co-created branding & high-value circular industry."</span>
+            </p>
+
+            <div class="origin-timeline" style="display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px dashed var(--slate-300);">
+              <span class="pm-badge">
+                <i class="fas fa-graduation-cap"></i>
+                <span data-i18n-lang="zh">2021 大學畢業設計</span>
+                <span data-i18n-lang="en">2021 Undergraduate Thesis</span>
+              </span>
+              <span class="pm-badge">
+                <i class="fas fa-check-circle"></i>
+                <span data-i18n-lang="zh">2026 USR NT$1.45M・100% 執行</span>
+                <span data-i18n-lang="en">FY26 USR NT$1.45M · 100% executed</span>
+              </span>
+              <span class="pm-badge pm-badge-gold">
+                <i class="fas fa-gavel"></i>
+                <span data-i18n-lang="zh">2026/06/10 原民會 NT$12M 評審</span>
+                <span data-i18n-lang="en">2026-06-10 CIP NT$12M review</span>
+              </span>
             </div>
           </div>
         </div>
@@ -2118,7 +2211,7 @@
     <div class="container">
       <div class="section-head" data-aos="fade-up">
         <div class="section-eyebrow">01 · The Problem</div>
-        <h2 class="section-title"><span data-i18n-lang="zh">當時，我們面對的是這樣的現場</span><span data-i18n-lang="en">This was the reality we were facing</span></h2>
+        <h2 class="section-title"><span data-i18n-lang="zh">當時面對的現場</span><span data-i18n-lang="en">The reality on the ground</span></h2>
         <p class="section-desc">
           <span data-i18n-lang="zh">這個專案最難的不是「做」一件事，而是「同時」處理四個看起來毫不相關的爛攤子。
           下面這四張卡片，是我接手時親眼看見、親手觸碰的真實困境 ──
@@ -2148,16 +2241,23 @@
             <span class="pain-text"><span data-i18n-lang="zh">沒有基線，就沒辦法跟企業講「我的竹林值多少」</span><span data-i18n-lang="en">Without a baseline, there's no way to tell enterprises "what my bamboo forest is worth"</span></span>
           </div>
           <div class="pain-row">
-            <span class="pain-label"><span data-i18n-lang="zh">我看到的缺口</span><span data-i18n-lang="en">The gap I saw</span></span>
+            <span class="pain-label"><span data-i18n-lang="zh">場域的缺口</span><span data-i18n-lang="en">The gap on the ground</span></span>
             <span class="pain-text"><span data-i18n-lang="zh">需要一份「可量化、可驗證」的數據，否則談 ESG 都是空話</span><span data-i18n-lang="en">We needed quantifiable, verifiable data — otherwise any ESG talk was empty</span></span>
           </div>
           <div class="pain-row solution">
-            <span class="pain-label"><i class="fas fa-key me-1"></i><span data-i18n-lang="zh">我怎麼做</span><span data-i18n-lang="en">What I did</span></span>
+            <span class="pain-label"><i class="fas fa-key me-1"></i><span data-i18n-lang="zh">處理方式</span><span data-i18n-lang="en">Approach</span></span>
             <span class="pain-text">
               <span data-i18n-lang="zh">引進空拍 + RTK 多光譜技術，建立 <strong>7,526 m²</strong> 樣區
               (胸徑 5.7 cm、密度 19,200 株/ha、單位碳儲量 <strong>77.3 tC/ha</strong>) ── 從這裡開始，竹林才「有數字」可以講話</span>
               <span data-i18n-lang="en">Introduced aerial + RTK multispectral surveying to build a <strong>7,526 m²</strong> sample plot
               (DBH 5.7 cm, density 19,200 stems/ha, carbon storage <strong>77.3 tC/ha</strong>) — only then did the forest finally have numbers to speak with</span>
+            </span>
+          </div>
+          <div class="pain-row retention">
+            <span class="pain-label"><i class="fas fa-seedling me-1"></i><span data-i18n-lang="zh">能力留存</span><span data-i18n-lang="en">Retention</span></span>
+            <span class="pain-text">
+              <span data-i18n-lang="zh">同步培力 <strong>4 位族人取得無人機操作證照</strong> ── 部落本身具備持續更新 baseline 的能力，知識留在現場</span>
+              <span data-i18n-lang="en">Trained <strong>4 community members to obtain drone operator certifications</strong> — the village now has the in-house capability to update the baseline themselves; knowledge stays on the ground</span>
             </span>
           </div>
         </article>
@@ -2180,14 +2280,21 @@
             <span class="pain-text"><span data-i18n-lang="zh">竹農、加工者、工藝者、民宿主，平常靠交情臨時動員，沒有制度</span><span data-i18n-lang="en">Bamboo farmers, processors, craftspeople, and B&B owners mobilized ad hoc through personal ties — no system in place</span></span>
           </div>
           <div class="pain-row">
-            <span class="pain-label"><span data-i18n-lang="zh">我看到的缺口</span><span data-i18n-lang="en">The gap I saw</span></span>
+            <span class="pain-label"><span data-i18n-lang="zh">場域的缺口</span><span data-i18n-lang="en">The gap on the ground</span></span>
             <span class="pain-text"><span data-i18n-lang="zh">沒有任何「決策怎麼做、誰分多少、利潤怎麼回到部落」的共識</span><span data-i18n-lang="en">No consensus on how decisions get made, how shares are split, or how profit flows back to the tribe</span></span>
           </div>
           <div class="pain-row solution">
-            <span class="pain-label"><i class="fas fa-key me-1"></i><span data-i18n-lang="zh">我怎麼做</span><span data-i18n-lang="en">What I did</span></span>
+            <span class="pain-label"><i class="fas fa-key me-1"></i><span data-i18n-lang="zh">處理方式</span><span data-i18n-lang="en">Approach</span></span>
             <span class="pain-text">
               <span data-i18n-lang="zh">發起合作社治理平台、建立跨村協作名冊 (<strong>≥ 25 人/戶</strong>) ── 把「靠人情」升級為「靠制度」，並設立收益回流公共基金</span>
               <span data-i18n-lang="en">Launched a co-op governance platform and a cross-village collaboration roster (<strong>≥ 25 people/households</strong>) — upgrading "relying on goodwill" to "relying on systems," plus a public revenue-return fund</span>
+            </span>
+          </div>
+          <div class="pain-row retention">
+            <span class="pain-label"><i class="fas fa-seedling me-1"></i><span data-i18n-lang="zh">能力留存</span><span data-i18n-lang="en">Retention</span></span>
+            <span class="pain-text">
+              <span data-i18n-lang="zh">同步建立 <strong>跨村合作備忘錄、收益回流公共基金制度</strong> ── 把「某一次合作」升級為「常態化治理單位」，制度留在合作社</span>
+              <span data-i18n-lang="en">Established <strong>cross-village MoUs and a public-fund revenue-flow-back system</strong> — moving "a single collaboration" into a "standing governance unit"; the rules stay with the co-op</span>
             </span>
           </div>
         </article>
@@ -2210,14 +2317,21 @@
             <span class="pain-text"><span data-i18n-lang="zh">每次砍竹剩下的枝梢、邊角料就直接燒掉，可惜也賺不到</span><span data-i18n-lang="en">Leftover branches and offcuts from each harvest were simply burned — wasteful and unprofitable</span></span>
           </div>
           <div class="pain-row">
-            <span class="pain-label"><span data-i18n-lang="zh">我看到的缺口</span><span data-i18n-lang="en">The gap I saw</span></span>
+            <span class="pain-label"><span data-i18n-lang="zh">場域的缺口</span><span data-i18n-lang="en">The gap on the ground</span></span>
             <span class="pain-text"><span data-i18n-lang="zh">沒有高溫窯、沒有前處理設備，產線就只能停在這層樓</span><span data-i18n-lang="en">Without a high-temperature kiln or pre-processing equipment, the production line was stuck on this floor</span></span>
           </div>
           <div class="pain-row solution">
-            <span class="pain-label"><i class="fas fa-key me-1"></i><span data-i18n-lang="zh">我怎麼做</span><span data-i18n-lang="en">What I did</span></span>
+            <span class="pain-label"><i class="fas fa-key me-1"></i><span data-i18n-lang="zh">處理方式</span><span data-i18n-lang="en">Approach</span></span>
             <span class="pain-text">
               <span data-i18n-lang="zh">提案兩座機械爐升級至 <strong>900-1000°C</strong>、導入零廢棄 SOP，搭配 10 kW 太陽能與 1 噸淨水循環 ── 從「燒炭」升級為「碳負循環產線」</span>
               <span data-i18n-lang="en">Proposed upgrading two mechanical kilns to <strong>900–1000°C</strong>, introduced a zero-waste SOP, paired with 10 kW solar and a 1-tonne water-recycling loop — upgrading "burning charcoal" into a "carbon-negative circular production line"</span>
+            </span>
+          </div>
+          <div class="pain-row retention">
+            <span class="pain-label"><i class="fas fa-seedling me-1"></i><span data-i18n-lang="zh">能力留存</span><span data-i18n-lang="en">Retention</span></span>
+            <span class="pain-text">
+              <span data-i18n-lang="zh">同步出版 <strong>零廢棄產線 SOP + 設備維保手冊 + 操作訓練教材</strong> ── 即使主要操作者離開，產線仍可運轉，SOP 留在窯邊</span>
+              <span data-i18n-lang="en">Documented <strong>a zero-waste production-line SOP, equipment maintenance manual, and operator training materials</strong> — even if the lead operator leaves, the line keeps running; the SOP stays at the kiln</span>
             </span>
           </div>
         </article>
@@ -2240,14 +2354,21 @@
             <span class="pain-text"><span data-i18n-lang="zh">工藝戶、民宿戶各賣各的，沒有聚落級對外的統一語言</span><span data-i18n-lang="en">Craft households and B&Bs each sold on their own — no unified, cluster-level external messaging</span></span>
           </div>
           <div class="pain-row">
-            <span class="pain-label"><span data-i18n-lang="zh">我看到的缺口</span><span data-i18n-lang="en">The gap I saw</span></span>
+            <span class="pain-label"><span data-i18n-lang="zh">場域的缺口</span><span data-i18n-lang="en">The gap on the ground</span></span>
             <span class="pain-text"><span data-i18n-lang="zh">企業 ESG 採購需要「一份合約、一個對口」，現在連這個都沒有</span><span data-i18n-lang="en">Enterprise ESG procurement needs "one contract, one contact" — and even that didn't exist yet</span></span>
           </div>
           <div class="pain-row solution">
-            <span class="pain-label"><i class="fas fa-key me-1"></i><span data-i18n-lang="zh">我怎麼做</span><span data-i18n-lang="en">What I did</span></span>
+            <span class="pain-label"><i class="fas fa-key me-1"></i><span data-i18n-lang="zh">處理方式</span><span data-i18n-lang="en">Approach</span></span>
             <span class="pain-text">
               <span data-i18n-lang="zh">建立「<strong>Saisiyat Raromaeh</strong>」共用品牌、做 ESG 採購提案包 (企業低碳禮盒 / ESG 參訪 / 永續採購) ── 讓部落第一次有「一份對外提案」可以遞出去</span>
               <span data-i18n-lang="en">Built the "<strong>Saisiyat Raromaeh</strong>" shared brand and an ESG procurement package (corporate low-carbon gift sets / ESG visits / sustainable sourcing) — giving the tribe its first ever external proposal to hand out</span>
+            </span>
+          </div>
+          <div class="pain-row retention">
+            <span class="pain-label"><i class="fas fa-seedling me-1"></i><span data-i18n-lang="zh">能力留存</span><span data-i18n-lang="en">Retention</span></span>
+            <span class="pain-text">
+              <span data-i18n-lang="zh">同步制定 <strong>Saisiyat Raromaeh 母品牌治理架構（授權辦法 + 品質規範 + 聯名規則）</strong> ── 個別工藝戶申請即可上架，制度留在合作社</span>
+              <span data-i18n-lang="en">Built a <strong>Saisiyat Raromaeh master-brand governance framework (licensing rules + quality standards + co-branding system)</strong> — individual artisans can plug in on application; the framework stays with the co-op</span>
             </span>
           </div>
         </article>
@@ -2262,9 +2383,9 @@
     <div class="container">
       <div class="section-head" data-aos="fade-up">
         <div class="section-eyebrow">02 · The Execution · <span data-i18n-lang="zh">對齊目標</span><span data-i18n-lang="en">Aligning Goals</span></div>
-        <h2 class="section-title"><span data-i18n-lang="zh">我在 Roadmap 討論桌上做的事：把抽象目標拆成可追的進度</span><span data-i18n-lang="en">What I did at the roadmap table: breaking abstract goals into trackable progress</span></h2>
+        <h2 class="section-title"><span data-i18n-lang="zh">Roadmap 桌上做的事：把抽象目標拆成可追的進度</span><span data-i18n-lang="en">At the roadmap table: breaking abstract goals into trackable progress</span></h2>
         <p class="section-desc">
-          <span data-i18n-lang="zh">「地方創生」太大、太模糊，沒人扛得動。團隊討論時我協助把它拆成
+          <span data-i18n-lang="zh">「地方創生」太大、太模糊，沒人扛得動。團隊討論時把它拆成
           <strong>治理 → 空間 → 資源 → 產線 → 品牌</strong> 五件具體事，
           再切成分階段、每季有交付物的節奏 ──
           第一階段先把基礎制度立起來，第二階段才談量產與上市。
@@ -2291,7 +2412,7 @@
           <!-- Phase 1 -->
           <div class="roadmap-phase-col">
             <div class="roadmap-phase-head phase-1">
-              <div class="phase-year">PHASE 1 · 2026 / <span data-i18n-lang="zh">115 年度</span><span data-i18n-lang="en">FY2026</span></div>
+              <div class="phase-year">PHASE 1 · <span data-i18n-lang="zh">2026 年</span><span data-i18n-lang="en">FY2026</span></div>
               <div class="phase-title">Foundation &amp; Systems — <span data-i18n-lang="zh">建置期</span><span data-i18n-lang="en">Build Phase</span></div>
             </div>
             <div class="roadmap-phase-body">
@@ -2306,7 +2427,7 @@
           <!-- Phase 2 -->
           <div class="roadmap-phase-col">
             <div class="roadmap-phase-head phase-2">
-              <div class="phase-year">PHASE 2 · 2027 / <span data-i18n-lang="zh">116 年度</span><span data-i18n-lang="en">FY2027</span></div>
+              <div class="phase-year">PHASE 2 · <span data-i18n-lang="zh">2027 年</span><span data-i18n-lang="en">FY2027</span></div>
               <div class="phase-title">Scale &amp; Output — <span data-i18n-lang="zh">量產期</span><span data-i18n-lang="en">Scale Phase</span></div>
             </div>
             <div class="roadmap-phase-body">
@@ -2353,7 +2474,7 @@
     <div class="container">
       <div class="section-head" data-aos="fade-up">
         <div class="section-eyebrow">02 · The Execution · <span data-i18n-lang="zh">溝通機制</span><span data-i18n-lang="en">Communication</span></div>
-        <h2 class="section-title"><span data-i18n-lang="zh">我如何讓三個世界的人，坐在同一張桌子</span><span data-i18n-lang="en">How I got three different worlds to sit at the same table</span></h2>
+        <h2 class="section-title"><span data-i18n-lang="zh">讓三個世界的人，坐在同一張桌子</span><span data-i18n-lang="en">Getting three different worlds to sit at the same table</span></h2>
         <p class="section-desc">
           <span data-i18n-lang="zh">這個專案最難的不是技術，是「翻譯」。
           地方長輩聽不懂教授的學術術語、教授看不懂部落的人情脈絡、
@@ -2438,7 +2559,7 @@
           <ul class="stake-list">
             <li><i class="fas fa-check"></i><span data-i18n-lang="zh">原住民族委員會（產業推升計畫主辦單位）</span><span data-i18n-lang="en">Council of Indigenous Peoples (industry-upgrade program host)</span></li>
             <li><i class="fas fa-check"></i><span data-i18n-lang="zh">農業部林業署新竹分署（合法竹材 + 竹東林業展示館聯動）</span><span data-i18n-lang="en">Forestry Agency Hsinchu Branch (legal bamboo + Zhudong Forestry Hall linkage)</span></li>
-            <li><i class="fas fa-check"></i><span data-i18n-lang="zh">教育部 USR（114 年成果延續，明新科大協力）</span><span data-i18n-lang="en">MOE USR program (FY25 continuation, with MUST)</span></li>
+            <li><i class="fas fa-check"></i><span data-i18n-lang="zh">教育部 USR（2025 年成果延續，明新科大協力）</span><span data-i18n-lang="en">MOE USR program (FY25 continuation, with MUST)</span></li>
             <li><i class="fas fa-check"></i><span data-i18n-lang="zh">新竹縣政府原民處、五峰鄉公所</span><span data-i18n-lang="en">Hsinchu County Indigenous Affairs Dept., Wufeng Township Office</span></li>
             <li><i class="fas fa-check"></i><span data-i18n-lang="zh">國際：日本京都府龜岡市（2026 京都綠色博覽會）</span><span data-i18n-lang="en">International: Kameoka, Kyoto, Japan (2026 Kyoto Green Expo)</span></li>
             <li><i class="fas fa-check"></i><span data-i18n-lang="zh">市場端：ESG 採購企業夥伴</span><span data-i18n-lang="en">Market side: ESG-procurement enterprise partners</span></li>
@@ -2510,7 +2631,7 @@
           </div>
           <div class="dash-label">CO₂e Target / <span data-i18n-lang="zh">累計減碳目標</span><span data-i18n-lang="en">Cumulative Reduction Target</span></div>
           <div class="dash-value">25<span class="unit"><span data-i18n-lang="zh">噸 CO₂e</span><span data-i18n-lang="en">t CO₂e</span></span></div>
-          <div class="dash-desc"><span data-i18n-lang="zh">115-116 年度累計減碳目標，含太陽能 10 kW + 高溫窯體升級節能。</span><span data-i18n-lang="en">FY2026–2027 cumulative carbon-reduction target, including 10 kW solar + high-temp kiln efficiency gains.</span></div>
+          <div class="dash-desc"><span data-i18n-lang="zh">2026-2027 年累計減碳目標，含太陽能 10 kW + 高溫窯體升級節能。</span><span data-i18n-lang="en">FY2026–2027 cumulative carbon-reduction target, including 10 kW solar + high-temp kiln efficiency gains.</span></div>
           <div class="dash-tooltip" role="tooltip">
             <strong><span data-i18n-lang="zh">資料源：</span><span data-i18n-lang="en">Source: </span></strong><span data-i18n-lang="zh">原住民族委員會 115-116 年度產業推升計畫
             「聚落建構類」KPI；含 1 噸淨水循環 + 太陽能 10 kW 系統。</span><span data-i18n-lang="en">Council of Indigenous Peoples FY2026–2027 industry-upgrade program,
@@ -2628,7 +2749,7 @@
         <p class="section-desc">
           <span data-i18n-lang="zh">策略漂亮，現場才知道哪裡會卡。
           下面這三段是真實踩過的坑 ── 跟長輩講不通、補助錢不夠用、教授和部落不同頻。
-          每一段我都誠實寫下「當時做了什麼、結果如何、現在回頭看哪裡可以更好」。
+          每一段都誠實記下「當時做了什麼、結果如何、現在回頭看哪裡可以更好」。
           這些經驗本質上和大廠軟體 PM 處理的問題是一樣的:
           <strong>跨部門協作、利害關係人對齊、在資源受限下達標</strong>。
           點擊任一張卡片展開細節。</span>
@@ -2711,7 +2832,7 @@
             </div>
             <div class="lesson-block">
               <h5><span class="badge-letter">A</span>Action</h5>
-              <p><strong>(1) 規格降維（Scope De-scoping）：</strong>把 115 年度交付物降為「核心功能 MVP 驗證」，先確保最基礎炭化功能，把研發風險分攤到 116 年度。<br><strong>(2) 跨界資源槓桿：</strong>邀請明新科大教授團隊以「第三方技術顧問」身份進入產線進行技術審計（Audit），用溫度曲線、多孔隙率等客觀科學數據建立每日 Debug 日誌。</p>
+              <p><strong>(1) 規格降維（Scope De-scoping）：</strong>把 2026 年交付物降為「核心功能 MVP 驗證」，先確保最基礎炭化功能，把研發風險分攤到 2027 年。<br><strong>(2) 跨界資源槓桿：</strong>邀請明新科大教授團隊以「第三方技術顧問」身份進入產線進行技術審計（Audit），用溫度曲線、多孔隙率等客觀科學數據建立每日 Debug 日誌。</p>
             </div>
             <div class="lesson-block">
               <h5><span class="badge-letter">R</span>Result</h5>
@@ -2763,7 +2884,7 @@
           </div>
           <div class="lesson-result">
             <strong><span data-i18n-lang="zh">現在回頭看：</span><span data-i18n-lang="en">Looking back: </span></strong>
-            <span data-i18n-lang="zh">這是我最深刻的一課 ── 「不能用用戶的語言講話，再好的方案也賣不出去」。
+            <span data-i18n-lang="zh">這是最深刻的一課 ── 「不能用用戶的語言講話，再好的方案也賣不出去」。
             這不只適用部落長輩，也適用對非技術背景的高層或客戶。
             把 ESG 翻譯成「割草機 + 留青農」，
             和把 API 翻譯成「使用者打開 App 後 0.3 秒看到結果」，是同一件事。</span>
@@ -2802,7 +2923,7 @@
             </div>
             <div class="lesson-block">
               <h5><span class="badge-letter">A</span>Action</h5>
-              <p><span data-i18n-lang="zh">我盤點各部會的補助方向，找到林業署（前林務局）有「在地林業班維護與疏伐」這條專屬標案。後續團隊一起把原民會「聚落建構」與林業署「森林資源永續」做<strong>戰略綁定</strong>，組合跨部會的資源去支應疏伐成本。</span><span data-i18n-lang="en">I surveyed grant directions across ministries and found the Forestry Agency had a dedicated tender for "local forestry-crew maintenance and thinning." The team then <strong>strategically bound</strong> the Indigenous Council's "cluster building" with the Forestry Agency's "sustainable forest resources," combining cross-ministry resources to cover thinning costs.</span></p>
+              <p><span data-i18n-lang="zh">盤點各部會的補助方向，找到林業署（前林務局）有「在地林業班維護與疏伐」這條專屬標案。後續團隊一起把原民會「聚落建構」與林業署「森林資源永續」做<strong>戰略綁定</strong>，組合跨部會的資源去支應疏伐成本。</span><span data-i18n-lang="en">I surveyed grant directions across ministries and found the Forestry Agency had a dedicated tender for "local forestry-crew maintenance and thinning." The team then <strong>strategically bound</strong> the Indigenous Council's "cluster building" with the Forestry Agency's "sustainable forest resources," combining cross-ministry resources to cover thinning costs.</span></p>
             </div>
             <div class="lesson-block">
               <h5><span class="badge-letter">R</span>Result</h5>
@@ -2859,7 +2980,7 @@
           </div>
           <div class="lesson-result">
             <strong><span data-i18n-lang="zh">現在回頭看：</span><span data-i18n-lang="en">Looking back: </span></strong>
-            <span data-i18n-lang="zh">這段最讓我有感的，是「知識怎麼留下來」這件事。
+            <span data-i18n-lang="zh">這段最有感的，是「知識怎麼留下來」這件事。
             教授會走、合約會結束、但 SOP / 教材 / 證照人才留下來才是真的。
             這就跟科技大廠講的「知識管理 (Knowledge Transfer)」是同一件事 ──
             你的工作不是讓自己變成不可取代，而是讓專案就算沒了你，也跑得起來。</span>
@@ -2880,9 +3001,9 @@
     <div class="container">
       <div class="section-head text-center" data-aos="fade-up">
         <div class="section-eyebrow" style="display: inline-flex;">02 · The Execution · <span data-i18n-lang="zh">工作流程</span><span data-i18n-lang="en">Workflow</span></div>
-        <h2 class="section-title"><span data-i18n-lang="zh">我如何把「資源」變成「可以交付的成果」</span><span data-i18n-lang="en">How I turned "resources" into "deliverable outcomes"</span></h2>
+        <h2 class="section-title"><span data-i18n-lang="zh">把「資源」變成「可以交付的成果」</span><span data-i18n-lang="en">Turning "resources" into "deliverable outcomes"</span></h2>
         <p class="section-desc">
-          <span data-i18n-lang="zh">一張圖看完我每天在做的事：
+          <span data-i18n-lang="zh">一張圖看完每天的工作：
           把「政府補助、學術技術、在地勞動力」這三股原本互不講話的力量，
           整合成「實體場域、數據資產、品牌商業」三類市場聽得懂的輸出。
           中間那一欄，是我的核心工作。</span>
@@ -2908,7 +3029,7 @@
 
           <!-- PM ROLE -->
           <div class="vsm-col role">
-            <div class="vsm-col-head">MY ROLE · <span data-i18n-lang="zh">我做的事</span><span data-i18n-lang="en">What I Did</span></div>
+            <div class="vsm-col-head">MY ROLE · <span data-i18n-lang="zh">負責範圍</span><span data-i18n-lang="en">Owned Scope</span></div>
             <div class="vsm-item"><i class="fas fa-sitemap"></i><span data-i18n-lang="zh">把雜亂資料結構化成數位內容</span><span data-i18n-lang="en">Structure messy data into digital content</span></div>
             <div class="vsm-item"><i class="fas fa-code"></i><span data-i18n-lang="zh">獨立完成官網 UI/UX + 前端</span><span data-i18n-lang="en">Build the site UI/UX + frontend solo</span></div>
             <div class="vsm-item"><i class="fas fa-language"></i><span data-i18n-lang="zh">語言轉譯（技術 ↔ 在地 ↔ 政府）</span><span data-i18n-lang="en">Language translation (tech ↔ local ↔ government)</span></div>
@@ -2937,9 +3058,9 @@
     <div class="container">
       <div class="section-head text-center" data-aos="fade-up">
         <div class="section-eyebrow" style="justify-content: center; display: inline-flex;">02 · The Execution · <span data-i18n-lang="zh">流程導入</span><span data-i18n-lang="en">Implementation</span></div>
-        <h2 class="section-title"><span data-i18n-lang="zh">我親手做的兩件事：把雜亂資訊變成內容、把預約流程變成系統</span><span data-i18n-lang="en">The two things I built myself: turning messy information into content, and turning the booking process into a system</span></h2>
+        <h2 class="section-title"><span data-i18n-lang="zh">親手完成的兩件事：把雜亂資訊變成內容、把預約流程變成系統</span><span data-i18n-lang="en">Two things built end-to-end: turning messy information into content, and the booking process into a system</span></h2>
         <p class="section-desc">
-          <span data-i18n-lang="zh">這一區是我這個角色「說了算」的範圍 ──
+          <span data-i18n-lang="zh">這一區是「說了算」的範圍 ──
           別人聊策略時我也參與討論，但<strong>內容轉化</strong>與<strong>網站實作</strong>是我獨立完成的部分。
           下面這些工具的選擇不是技術秀肌肉，而是回答一個問題：
           「在偏鄉沒有預算養工程師的條件下，怎麼讓族人 3 天內就能用上一個能跑的預約系統？」</span>
@@ -2993,7 +3114,7 @@
       <div class="pm-pov" data-aos="fade-up">
         <i class="fas fa-quote-left"></i>
         <p>
-          <span data-i18n-lang="zh">「我在這個專案做的兩件硬實力：
+          <span data-i18n-lang="zh">「這個專案完成的兩件硬實力：
           <strong style="color: var(--gold);">把現場龐雜的活動紀錄、訪視成果、田野照片，
           結構化梳理成官網上看得懂的內容</strong>；
           並親自用 Vanilla JS 把官網與
@@ -3058,16 +3179,22 @@
 
         <div class="disclaimer">
           <strong><span data-i18n-lang="zh">關於這份案例研究｜</span><span data-i18n-lang="en">About this case study | </span></strong>
-          <span data-i18n-lang="zh">這個專案的策略與架構是團隊共同討論出來的成果，我並不是計畫的主導者或補助負責人。
-          我在現場的真實角色是<strong>參與核心討論的數位轉型 PM 兼前端開發者</strong>：
+          <span data-i18n-lang="zh">這個專案的策略與架構由團隊共同討論產出，並非個人主導。
+          自 2021 大學畢業設計開始參與本場域，伴隨合作社籌組成立逐步加入；
+          2026 年上半年完成教育部 USR NT$1.45M 計畫（執行率 100%）；
+          2026/06/10 進入原民會 NT$12M 兩年期計畫評審。
+          現場角色為<strong>參與核心討論的數位轉型 PM 兼前端開發者</strong>：
           負責把雜亂的田野資料結構化、並獨立完成合作社官網與零伺服器預約工作流。
           本頁所有數據皆為計畫公開資訊或目標值，
           詳細討論過程與原始素材可於面談時當面說明。</span>
-          <span data-i18n-lang="en">This project's strategy and architecture were the result of collective team discussion; I was not the program lead or grant owner.
-          My real on-the-ground role was a <strong>Digital Transformation PM and frontend developer at the core of the discussions</strong>:
+          <span data-i18n-lang="en">The project's strategy and architecture were produced through collective team discussion, not by an individual lead.
+          Engagement with this site began with a 2021 undergraduate thesis and grew alongside the co-op's formation.
+          A NT$1.45M MOE USR plan was completed (100% execution) in H1 of FY2026;
+          a NT$12M two-year proposal entered the CIP review on 2026-06-10.
+          On-the-ground role: <strong>Digital Transformation PM and frontend developer at the core of the discussions</strong> —
           responsible for structuring messy field data and single-handedly delivering the co-op site and zero-server reservation workflow.
           All figures on this page are public program information or target values;
-          the detailed discussion process and source materials can be explained in person during an interview.</span>
+          detailed discussion process and source materials can be explained in person during an interview.</span>
         </div>
       </div>
     </div>
@@ -3082,14 +3209,14 @@
         <div class="col-md-5">
           <h5><span data-i18n-lang="zh">關於這個案例</span><span data-i18n-lang="en">About this case</span></h5>
           <p style="font-size: 0.92rem; line-height: 1.75;">
-            <span data-i18n-lang="zh">山莎蔓岸是 Ivan Zhao 參與核心討論、並以數位轉型 PM 與前端開發者身份
-            親手交付官網與零伺服器預約系統的真實案例。
-            這份頁面用「挑戰 → 解法 → 成果 → 沉澱」的結構，
-            還原我在現場做過的「資訊轉化」與「親手把網站做出來」這兩件事。</span>
-            <span data-i18n-lang="en">SamSamma is a real case where Ivan Zhao joined the core discussions and, as Digital Transformation PM and frontend developer,
-            hand-delivered the official site and a zero-server reservation system.
+            <span data-i18n-lang="zh">山莎蔓岸是 Ivan Zhao 自 2021 大學畢業設計起持續參與、
+            並以數位轉型 PM 與前端開發者身份親手交付官網與零伺服器預約系統的真實案例。
+            本頁以「挑戰 → 解法 → 成果 → 沉澱」結構，
+            還原現場做過的「資訊轉化」與「親手把網站做出來」這兩件事。</span>
+            <span data-i18n-lang="en">SamSamma is a real case where Ivan Zhao has been involved since his 2021 undergraduate thesis,
+            and as Digital Transformation PM & front-end developer, hand-delivered the official site and zero-server reservation system.
             This page uses a "Challenge → Approach → Impact → Reflection" structure
-            to reconstruct the two things I actually did on the ground: "information translation" and "building the site myself."</span>
+            to reconstruct two things actually done on the ground: information translation and building the site end-to-end.</span>
           </p>
         </div>
         <div class="col-md-3">

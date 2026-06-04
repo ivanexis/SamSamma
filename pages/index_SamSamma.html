@@ -3421,118 +3421,38 @@
             </div>
           </div>
 
-          <!-- 右：強化版預約表單 -->
-          <div class="booking-form">
-            <h3 style="color: var(--gold); margin-bottom: 0.5rem;"><span data-i18n-lang="zh">線上預約表單</span><span data-i18n-lang="en">Online booking form</span></h3>
-            <p style="color: rgba(255,255,255,0.7); font-size: 0.86rem; margin-bottom: 1.5rem;">
-              <i class="fas fa-shield-alt me-1"></i><span data-i18n-lang="zh">表單送出後將開啟 Google 表單填寫詳細資料</span><span data-i18n-lang="en">After submitting, a Google Form will open for the full details</span>
+          <!-- 右：CTA 卡片（跳轉到 React 預約應用 /booking/） -->
+          <div class="booking-form" style="display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:3rem 2rem;">
+            <div style="background:rgba(218,165,32,0.15);width:96px;height:96px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem;">
+              <i class="fas fa-calendar-check" style="font-size:2.6rem;color:var(--gold);"></i>
+            </div>
+
+            <h3 style="color: var(--gold); margin-bottom: 0.75rem; font-size: 1.5rem;">
+              <span data-i18n-lang="zh">線上預約系統</span>
+              <span data-i18n-lang="en">Online booking system</span>
+            </h3>
+
+            <p style="color: rgba(255,255,255,0.9); font-size: 1rem; margin-bottom: 0.5rem; line-height: 1.6;">
+              <span data-i18n-lang="zh">四步驟引導式填寫，1-2 分鐘完成預約</span>
+              <span data-i18n-lang="en">Four-step guided form — done in 1–2 minutes</span>
+            </p>
+            <p style="color: rgba(255,255,255,0.65); font-size: 0.88rem; margin-bottom: 2rem; line-height: 1.6;">
+              <span data-i18n-lang="zh">支援中／英雙語、即時欄位驗證</span>
+              <span data-i18n-lang="en">Bilingual (ZH/EN), real-time validation</span>
             </p>
 
-            <form id="bookingForm" novalidate>
+            <a id="bookingCta" href="/booking/" class="btn btn-primary-custom" style="font-size:1.1rem;padding:1rem 2.5rem;text-decoration:none;display:inline-flex;align-items:center;gap:0.5rem;">
+              <i class="fas fa-paper-plane"></i>
+              <span data-i18n-lang="zh">立即預約</span>
+              <span data-i18n-lang="en">Book now</span>
+              <i class="fas fa-arrow-right"></i>
+            </a>
 
-              <!-- 1. 方案選擇 -->
-              <div class="form-section-title"><span class="num">1</span><span data-i18n-lang="zh">選擇方案</span><span data-i18n-lang="en">Choose a plan</span></div>
-              <div class="form-group">
-                <label class="form-label required" for="plan"><span data-i18n-lang="zh">體驗方案</span><span data-i18n-lang="en">Experience plan</span></label>
-                <select class="form-control" id="plan" name="plan" required>
-                  <option value="" data-zh="請選擇方案（或點擊上方「選擇此方案」按鈕）" data-en="Select a plan (or click &quot;Choose this plan&quot; above)">請選擇方案（或點擊上方「選擇此方案」按鈕）</option>
-                  <option value="school" data-zh="學校校外教學" data-en="School field trip">學校校外教學</option>
-                  <option value="corporate" data-zh="企業 ESG / 教育課程" data-en="Corporate ESG / education">企業 ESG / 教育課程</option>
-                  <option value="culture" data-zh="深度文化參訪" data-en="In-depth cultural visit">深度文化參訪</option>
-                  <option value="custom" data-zh="客製化方案" data-en="Custom plan">客製化方案</option>
-                </select>
-              </div>
-
-              <!-- 2. 聯絡資訊 -->
-              <div class="form-section-title"><span class="num">2</span><span data-i18n-lang="zh">聯絡資訊</span><span data-i18n-lang="en">Contact info</span></div>
-              <div class="form-row">
-                <div class="form-group">
-                  <label class="form-label required" for="orgName"><span data-i18n-lang="zh">機構 / 學校名稱</span><span data-i18n-lang="en">Organization / school</span></label>
-                  <input type="text" class="form-control" id="orgName" name="orgName" placeholder="例：明新科技大學" data-ph-en="e.g. Minghsin University" required>
-                </div>
-                <div class="form-group">
-                  <label class="form-label required" for="contactName"><span data-i18n-lang="zh">聯絡人姓名</span><span data-i18n-lang="en">Contact name</span></label>
-                  <input type="text" class="form-control" id="contactName" name="contactName" placeholder="例：王小明" data-ph-en="e.g. Ming Wang" required>
-                </div>
-              </div>
-              <div class="form-row">
-                <div class="form-group">
-                  <label class="form-label required" for="email"><span data-i18n-lang="zh">電子郵件</span><span data-i18n-lang="en">Email</span></label>
-                  <input type="email" class="form-control" id="email" name="email" placeholder="example@mail.com" required>
-                </div>
-                <div class="form-group">
-                  <label class="form-label required" for="phone"><span data-i18n-lang="zh">聯絡電話</span><span data-i18n-lang="en">Phone</span></label>
-                  <input type="tel" class="form-control" id="phone" name="phone" placeholder="0912-345-678" required>
-                </div>
-              </div>
-
-              <!-- 3. 活動需求 -->
-              <div class="form-section-title"><span class="num">3</span><span data-i18n-lang="zh">活動需求</span><span data-i18n-lang="en">Visit details</span></div>
-              <div class="form-row">
-                <div class="form-group">
-                  <label class="form-label required" for="participants"><span data-i18n-lang="zh">參與人數</span><span data-i18n-lang="en">Number of people</span></label>
-                  <input type="number" class="form-control" id="participants" name="participants" min="1" placeholder="例：25" data-ph-en="e.g. 25" required>
-                </div>
-                <div class="form-group">
-                  <label class="form-label required" for="date"><span data-i18n-lang="zh">希望日期</span><span data-i18n-lang="en">Preferred date</span></label>
-                  <input type="date" class="form-control" id="date" name="date" required>
-                </div>
-              </div>
-              <div class="form-row">
-                <div class="form-group">
-                  <label class="form-label" for="duration"><span data-i18n-lang="zh">活動時段</span><span data-i18n-lang="en">Time slot</span></label>
-                  <select class="form-control" id="duration" name="duration">
-                    <option value="" data-zh="請選擇" data-en="Select">請選擇</option>
-                    <option value="am" data-zh="上午 09:00-12:00" data-en="Morning 09:00–12:00">上午 09:00-12:00</option>
-                    <option value="pm" data-zh="下午 13:00-17:00" data-en="Afternoon 13:00–17:00">下午 13:00-17:00</option>
-                    <option value="full" data-zh="全日 09:00-17:00" data-en="Full day 09:00–17:00">全日 09:00-17:00</option>
-                    <option value="overnight" data-zh="過夜（深度遊程）" data-en="Overnight (in-depth tour)">過夜（深度遊程）</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label class="form-label" for="budget"><span data-i18n-lang="zh">預算範圍（選填）</span><span data-i18n-lang="en">Budget range (optional)</span></label>
-                  <select class="form-control" id="budget" name="budget">
-                    <option value="" data-zh="請選擇" data-en="Select">請選擇</option>
-                    <option value="under5" data-zh="5 萬以下" data-en="Under NT$50k">5 萬以下</option>
-                    <option value="5-10" data-zh="5-10 萬" data-en="NT$50k–100k">5-10 萬</option>
-                    <option value="10-30" data-zh="10-30 萬" data-en="NT$100k–300k">10-30 萬</option>
-                    <option value="over30" data-zh="30 萬以上" data-en="Over NT$300k">30 萬以上</option>
-                    <option value="discuss" data-zh="洽談中" data-en="To be discussed">洽談中</option>
-                  </select>
-                </div>
-              </div>
-
-              <!-- 附加需求 -->
-              <div class="form-group">
-                <label class="form-label"><span data-i18n-lang="zh">附加需求（可複選）</span><span data-i18n-lang="en">Add-ons (multiple)</span></label>
-                <div class="form-check-group">
-                  <label class="form-check-custom"><input type="checkbox" name="addon" value="meal"><span><span data-i18n-lang="zh">部落餐食</span><span data-i18n-lang="en">Tribal meals</span></span></label>
-                  <label class="form-check-custom"><input type="checkbox" name="addon" value="insurance"><span><span data-i18n-lang="zh">保險協助</span><span data-i18n-lang="en">Insurance help</span></span></label>
-                  <label class="form-check-custom"><input type="checkbox" name="addon" value="transport"><span><span data-i18n-lang="zh">交通接駁</span><span data-i18n-lang="en">Shuttle</span></span></label>
-                  <label class="form-check-custom"><input type="checkbox" name="addon" value="lodging"><span><span data-i18n-lang="zh">住宿安排</span><span data-i18n-lang="en">Lodging</span></span></label>
-                  <label class="form-check-custom"><input type="checkbox" name="addon" value="photo"><span><span data-i18n-lang="zh">攝影紀錄</span><span data-i18n-lang="en">Photo record</span></span></label>
-                  <label class="form-check-custom"><input type="checkbox" name="addon" value="souvenir"><span><span data-i18n-lang="zh">伴手禮採購</span><span data-i18n-lang="en">Souvenirs</span></span></label>
-                </div>
-              </div>
-
-              <!-- 4. 備註 -->
-              <div class="form-section-title"><span class="num">4</span><span data-i18n-lang="zh">備註</span><span data-i18n-lang="en">Notes</span></div>
-              <div class="form-group">
-                <textarea class="form-control" rows="3" name="notes" id="notes" placeholder="特殊需求、特殊飲食、行動不便者數量、其他想了解的內容..." data-ph-en="Special needs, dietary requests, number of guests with limited mobility, anything else..."></textarea>
-              </div>
-
-              <div class="notice-card">
-                <strong><i class="fas fa-info-circle me-1"></i><span data-i18n-lang="zh">送出後流程</span><span data-i18n-lang="en">What happens next</span></strong>
-                <span data-i18n-lang="zh">填寫送出 → 開啟 Google 詳細表單 → 合作社於 2 個工作日內聯繫確認 → 完成預約。
-                資料僅用於本次預約聯繫，不會作他用。</span>
-                <span data-i18n-lang="en">Submit → a detailed Google Form opens → we confirm within 2 business days → booking complete.
-                Your data is used only for this booking and nothing else.</span>
-              </div>
-
-              <button type="submit" class="btn btn-primary-custom w-100" style="margin-top: 1.5rem;">
-                <i class="fas fa-paper-plane me-2"></i><span data-i18n-lang="zh">送出預約申請</span><span data-i18n-lang="en">Submit booking request</span>
-              </button>
-            </form>
+            <div class="notice-card" style="margin-top:2rem;text-align:left;width:100%;">
+              <strong><i class="fas fa-info-circle me-1"></i><span data-i18n-lang="zh">預約流程</span><span data-i18n-lang="en">Booking flow</span></strong>
+              <span data-i18n-lang="zh">點上方按鈕 → 填寫 4 個步驟 → 送出後合作社於 2 個工作日內聯繫確認 → 完成預約。資料僅用於本次預約聯繫，不會作他用。</span>
+              <span data-i18n-lang="en">Click above → fill out 4 steps → we contact you within 2 business days → booking complete. Data is used only for this booking and nothing else.</span>
+            </div>
           </div>
         </div>
       </div>
@@ -3733,45 +3653,40 @@
       });
     });
 
-    // 方案卡片「選擇此方案」CTA 按鈕 → 自動帶入表單 + 滾動至表單
+    // 方案卡片「選擇此方案」CTA → 跳到 React 預約應用，並帶 plan 預填
+    // /booking/?plan=school|corporate|culture|custom → BookingForm 自動選好方案
     (function () {
       const planCards = document.querySelectorAll('#plans .plan-card');
       const ctaButtons = document.querySelectorAll('.plan-card-cta');
-      const planSelect = document.getElementById('plan');
-      const form = document.getElementById('bookingForm');
 
       function selectPlan(planKey) {
         planCards.forEach(c => {
           c.classList.toggle('is-selected', c.dataset.plan === planKey);
         });
-        if (planSelect && planKey) planSelect.value = planKey;
+      }
+
+      function goBooking(planKey) {
+        const url = planKey ? `/booking/?plan=${encodeURIComponent(planKey)}` : '/booking/';
+        window.location.href = url;
       }
 
       ctaButtons.forEach(btn => {
         btn.addEventListener('click', e => {
           e.stopPropagation();
           const card = btn.closest('.plan-card');
-          if (!card) return;
-          selectPlan(card.dataset.plan);
-          if (form) {
-            const offsetTop = form.getBoundingClientRect().top + window.pageYOffset - 100;
-            window.scrollTo({ top: offsetTop, behavior: 'smooth' });
-          }
+          const planKey = card ? card.dataset.plan : '';
+          selectPlan(planKey);
+          goBooking(planKey);
         });
       });
 
-      // 整張卡片也可以點擊（提升可用性）
+      // 整張卡片點擊 → 視覺高亮（不直接跳，避免誤觸）
       planCards.forEach(card => {
         card.addEventListener('click', e => {
           if (e.target.closest('.plan-card-cta')) return;
           selectPlan(card.dataset.plan);
         });
       });
-
-      // 反向同步：表單方案下拉變更時，同步高亮方案卡
-      if (planSelect) {
-        planSelect.addEventListener('change', () => selectPlan(planSelect.value));
-      }
     })();
 
     // 真實案例分類篩選 + 折疊/展開
@@ -3856,16 +3771,6 @@
         updateToggleUI();
       }
     })();
-
-    // Google Forms 直接導向處理
-    const bookingForm = document.getElementById('bookingForm');
-    if (bookingForm) {
-      bookingForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        const googleFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSfhSYzYnh8V59c-zchjE0SjthxKK4H8t_9teOzj4EJuhsJXDQ/viewform';
-        window.open(googleFormUrl, '_blank');
-      });
-    }
 
     // 導航欄滾動效果
     window.addEventListener('scroll', () => {
