@@ -41,8 +41,8 @@
       zh: '精選網頁實績集'
     },
     'cases.hero.lead': {
-      en: '21 commercial web Hi-Fi delivery drafts. Visuals are anonymized; full files and shareable live references available by email.',
-      zh: '21 件商業網頁 Hi-Fi 交付樣稿；視覺已去識別化，完整稿與可公開之參考站請來信索取。'
+      en: '8 selected commercial web Hi-Fi delivery drafts — one representative case per industry. Visuals are anonymized; full files and shareable live references available by email.',
+      zh: '8 件精選商業網頁 Hi-Fi 交付樣稿，每業種挑選一件代表作；視覺已去識別化，完整稿與可公開之參考站請來信索取。'
     },
     'cases.metric.cases.label': { en: 'Hi-Fi Cases', zh: 'Hi-Fi 交付樣稿' },
     'cases.metric.industries.label': { en: 'Industries', zh: '產業類別' },
@@ -54,8 +54,8 @@
     /* ===== cases.html · Section ===== */
     'cases.backLink': { en: '← Back to Portfolio', zh: '← 回到主作品集' },
     'cases.subtitle': {
-      en: 'All Web Cases · 21 Hi-Fi Deliveries',
-      zh: '全部網頁案例 · 21 件 Hi-Fi 交付樣稿'
+      en: 'Selected Web Cases · 8 Hi-Fi Deliveries',
+      zh: '精選網頁案例 · 8 件 Hi-Fi 交付樣稿'
     },
     'cases.filterAria': { en: 'Case category filter', zh: '作品分類篩選' },
 
@@ -208,7 +208,6 @@
     'home.works.webDesign': { en: 'Web Design & Development', zh: '網站設計' },
     'home.works.localRevit': { en: 'Regional Transformation & Branding', zh: '地方創生' },
     'home.works.poster': { en: 'Visual & Brand Design', zh: '海報設計' },
-    'home.works.viewAll': { en: 'Explore All 21 Commercial Cases', zh: '檢視全部 21 件商案' },
 
     /* ===== index.html · Skills ===== */
     'home.skills.title': { en: 'Technical Skills', zh: '技術能力' },

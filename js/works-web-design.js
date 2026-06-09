@@ -38,6 +38,27 @@ const webDesignCategoryByFolder = {
   8: '廣告'
 };
 
+/** v3 首頁精選 8 件指定組合（user-curated · 2026-06-09）
+ *  每業種挑一件代表作 → 對外作品集從 21 件收斂為「8 件 × 8 業種」
+ *  顯示順序：購物 → 行銷 → 廣告 → 醫療 → 科技 → 室內 → 教育 → 房屋
+ *  覆蓋原本「資料夾第 1 個」的預設規則，提供 PM 等級的策展能力。
+ */
+const HOME_FEATURED_IDS = [
+  'web-design-1-2',  // 購物（第 2 件）
+  'web-design-4-1',  // 行銷（第 1 件）
+  'web-design-8-2',  // 廣告（第 2 件）
+  'web-design-6-3',  // 醫療（第 3 件）
+  'web-design-7-3',  // 科技（第 3 件）
+  'web-design-2-2',  // 室內（第 2 件）
+  'web-design-3-2',  // 教育（第 2 件）
+  'web-design-5-1'   // 房屋（第 1 件）
+];
+
+const HOME_FEATURED_INDEX = HOME_FEATURED_IDS.reduce((acc, id, idx) => {
+  acc[id] = idx;
+  return acc;
+}, {});
+
 /** 業種中文 → i18n key 對應（給卡片 title / displayCategory 用） */
 const tradeCategoryToTitleKey = {
   購物: 'work.title.shopping',
@@ -142,10 +163,8 @@ const staticWebDesignWorks = [
     badges: ['Web UI/UX', '前端開發'],
     clientProject: false,
     showCategory: false,
-    showInAll: true,
-    allOrder: 1,
-    hideInCategory: true,
-    sortOrder: 2
+    showInAll: false,
+    sortOrder: 902
   },
   {
     title: 'JF SWING Dance',
@@ -185,6 +204,9 @@ function createWorkFromDetail(id, work) {
   const displayCategory = work.displayCategory || tradeCategory;
   const filterGroup = resolveFilterGroup(work, tradeCategory, displayCategory);
 
+  const featuredIdx = HOME_FEATURED_INDEX[id];
+  const isFeatured = featuredIdx !== undefined;
+
   return {
     title: window.PortfolioCard.formatCardTitle(work),
     titleI18nKey: tradeCategoryToTitleKey[tradeCategory] || null,
@@ -199,9 +221,9 @@ function createWorkFromDetail(id, work) {
     badges: window.PortfolioCard.resolveCardBadges(work),
     showCategory: work.showCategory === true,
     clientProject: work.clientProject !== false,
-    showInAll: work.showInAll ?? itemOrder === 1,
-    allOrder: work.allOrder ?? folderOrder + 1,
-    sortOrder: folderOrder * 10 + itemOrder
+    showInAll: work.showInAll ?? isFeatured,
+    allOrder: work.allOrder ?? (isFeatured ? featuredIdx + 1 : 99),
+    sortOrder: isFeatured ? featuredIdx + 1 : folderOrder * 10 + itemOrder
   };
 }
 
@@ -266,6 +288,10 @@ function renderWorks(row, filter) {
   });
 
   if (typeof AOS !== 'undefined') AOS.refresh();
+  // v3 修正：動態建立的卡片 href 補上 ?lang=（避免從 ?lang=zh 進入後子頁變英文）
+  if (window.I18N && typeof window.I18N.rewriteInternalHrefs === 'function') {
+    window.I18N.rewriteInternalHrefs();
+  }
 }
 
 function initWebDesignWorks() {
@@ -299,14 +325,13 @@ function initWebDesignWorks() {
   renderWorks(row, 'all');
 }
 
-/** cases.html 專用：拿全部 21 件 web-design-X-X 接案（不含山莎蔓岸/本網站/JF）
- *  與首頁 9 件邏輯獨立，避免互相影響。
- *  重點：重新計算 filterGroup 為 casesCategoryToFilterGroup 的 3 大產業群，
- *       覆蓋 createWorkFromDetail 內預設的 webDesign 3 分類。
+/** cases.html v3：與首頁同步收斂為 user-curated 8 件
+ *  之前顯示全部 21 件接案，現改為精選 8 件業種代表作。
+ *  filterGroup 重新計算為 cases 專用 3 大產業群（覆蓋首頁 webDesign 3 分類）。
  */
 function getAllCasesWorks(filter) {
   const detailWorks = Object.entries(window.portfolioWorkDetails || {})
-    .filter(([id]) => id.startsWith('web-design-'))
+    .filter(([id]) => id.startsWith('web-design-') && HOME_FEATURED_INDEX[id] !== undefined)
     .map(([id, work]) => {
       const baseWork = createWorkFromDetail(id, work);
       return {
@@ -314,7 +339,8 @@ function getAllCasesWorks(filter) {
         filterGroup: resolveCasesFilterGroup(baseWork)
       };
     })
-    .sort((a, b) => a.sortOrder - b.sortOrder);
+    .sort((a, b) => HOME_FEATURED_INDEX[a.href.replace(/^pages\/WebDesign\.html\?id=/, '')]
+                  - HOME_FEATURED_INDEX[b.href.replace(/^pages\/WebDesign\.html\?id=/, '')]);
 
   if (filter === 'all') return detailWorks;
   return detailWorks.filter((work) => work.filterGroup === filter);
@@ -327,6 +353,10 @@ function renderAllCases(row, filter) {
   });
 
   if (typeof AOS !== 'undefined') AOS.refresh();
+  // v3 修正：動態建立的卡片 href 補上 ?lang=（避免從 ?lang=zh 進入後子頁變英文）
+  if (window.I18N && typeof window.I18N.rewriteInternalHrefs === 'function') {
+    window.I18N.rewriteInternalHrefs();
+  }
 }
 
 function initAllCasesView() {

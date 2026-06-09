@@ -69,6 +69,10 @@ const posterDesignWorks = [
 function initStaticPortfolioSections() {
   window.PortfolioCard.renderPortfolioWorkRow('works-local-revitalization-row', localRevitalizationWorks);
   window.PortfolioCard.renderPortfolioWorkRow('works-poster-row', posterDesignWorks);
+  // v3 修正：動態建立的卡片 href 補上 ?lang=（避免從 ?lang=zh 進入後子頁變英文）
+  if (window.I18N && typeof window.I18N.rewriteInternalHrefs === 'function') {
+    window.I18N.rewriteInternalHrefs();
+  }
 }
 
 document.addEventListener('DOMContentLoaded', initStaticPortfolioSections);
