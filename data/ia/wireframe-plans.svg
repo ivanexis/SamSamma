@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 560" role="img" aria-labelledby="wf-plans-title wf-plans-desc">
+  <title id="wf-plans-title">Low-Fi Wireframe｜index_SamSamma.html #plans (v5.8.3)</title>
+  <desc id="wf-plans-desc">v5.8.3 Plans 區塊 4 欄等寬 plan-card grid（desktop-first ≥768px）；每張卡 = 圖片(4:3) + persona tag + icon + title + subtitle + desc + 4 features + CTA。共 4 條 Persona 路徑：文化體驗 / ESG 企業 / 竹炭商品 / 國際藝術。</desc>
+  <defs>
+    <pattern id="grid-pl" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#eaeaea" stroke-width="0.5"/>
+    </pattern>
+    <pattern id="img-fill" width="6" height="6" patternUnits="userSpaceOnUse">
+      <path d="M 0 6 L 6 0" stroke="#d0d0d0" stroke-width="0.5"/>
+    </pattern>
+    <style>
+      text { font-family: "Noto Sans TC", "Inter", "Microsoft JhengHei", sans-serif; }
+      .frame    { fill:#fff; stroke:#222; stroke-width:1.5; }
+      .card     { fill:#fff; stroke:#444; stroke-width:1.2; }
+      .img      { fill:url(#img-fill); stroke:#888; stroke-width:1; }
+      .tag-box  { fill:#fff; stroke:#d4af37; stroke-width:1.2; }
+      .icon     { fill:#fff; stroke:#2c5530; stroke-width:1.4; }
+      .cta      { fill:#2c5530; stroke:#1a3d22; stroke-width:1.4; }
+      .meta     { font-size:10px; fill:#888; font-family:"Fira Code", monospace; }
+      .label-sm { font-size:9px; fill:#666; }
+      .head     { font-size:12px; fill:#1a1a1a; font-weight:700; }
+      .cta-tx   { font-size:9px; fill:#fff; font-weight:700; font-family:"Inter", sans-serif; }
+      .annot    { font-size:10px; fill:#c2185b; font-style:italic; }
+      .title-c  { font-size:18px; fill:#2c5530; font-weight:700; }
+      .tag-tx   { font-size:9px; fill:#7a5500; font-family:"Inter", sans-serif; }
+    </style>
+  </defs>
+
+  <rect width="800" height="560" fill="url(#grid-pl)"/>
+  <rect x="20" y="20" width="760" height="520" class="frame" rx="6"/>
+  <text x="32" y="40" class="meta">WF-02｜index_SamSamma.html · #plans · 4-col grid (≥768px) / 2-col (576-767) / 1-col (≤575)</text>
+
+  <text x="400" y="78" class="meta" text-anchor="middle">CORE · 服務方案 / Services</text>
+  <line x1="370" y1="86" x2="430" y2="86" stroke="#d4af37" stroke-width="1.5"/>
+  <text x="400" y="112" class="title-c" text-anchor="middle">來山裡，把這份生活帶回家</text>
+  <text x="400" y="132" class="label-sm" text-anchor="middle">Step into the mountain — bring this way of life back home</text>
+
+  <g>
+    <rect x="40" y="158" width="170" height="360" class="card" rx="8"/>
+    <rect x="40" y="158" width="170" height="100" class="img"/>
+    <rect x="50" y="168" width="64" height="18" class="tag-box" rx="9"/>
+    <text x="82" y="181" class="tag-tx" text-anchor="middle">文化體驗</text>
+    <circle cx="58" cy="278" r="9" class="icon"/>
+    <text x="50" y="306" class="head">竹文化體驗</text>
+    <text x="50" y="322" class="label-sm">走進賽夏族的生活智慧 · 半日 / 一日</text>
+    <line x1="50" y1="332" x2="200" y2="332" stroke="#eee"/>
+    <text x="50" y="350" class="label-sm">透過竹林導覽、竹編工藝、</text>
+    <text x="50" y="362" class="label-sm">祭儀文化解說與部落生活，</text>
+    <text x="50" y="374" class="label-sm">深入認識與土地共生智慧。</text>
+    <text x="50" y="402" class="label-sm">✓ 竹林生態導覽 · 竹編 DIY</text>
+    <text x="50" y="416" class="label-sm">✓ 賽夏族文化解說</text>
+    <text x="50" y="430" class="label-sm">✓ 部落風味餐</text>
+    <text x="50" y="444" class="label-sm">✓ 大專 / K-12 / 國際交流</text>
+    <rect x="50" y="468" width="150" height="32" class="cta" rx="6"/>
+    <text x="125" y="488" class="cta-tx" text-anchor="middle">立即預約 →</text>
+  </g>
+
+  <g>
+    <rect x="220" y="158" width="170" height="360" class="card" rx="8"/>
+    <rect x="220" y="158" width="170" height="100" class="img"/>
+    <rect x="230" y="168" width="64" height="18" class="tag-box" rx="9"/>
+    <text x="262" y="181" class="tag-tx" text-anchor="middle">企業 ESG</text>
+    <circle cx="238" cy="278" r="9" class="icon"/>
+    <text x="230" y="306" class="head">ESG 企業參訪</text>
+    <text x="230" y="322" class="label-sm">企業永續實踐最佳場域 · 半 / 一日</text>
+    <line x1="230" y1="332" x2="380" y2="332" stroke="#eee"/>
+    <text x="230" y="350" class="label-sm">結合原住民族文化、竹林碳匯、</text>
+    <text x="230" y="362" class="label-sm">循環經濟與地方創生實踐，</text>
+    <text x="230" y="374" class="label-sm">為 ESG 報告補上「真實發生」。</text>
+    <text x="230" y="402" class="label-sm">✓ ESG × 地方創生案例</text>
+    <text x="230" y="416" class="label-sm">✓ 竹林碳匯 × 淨零轉型</text>
+    <text x="230" y="430" class="label-sm">✓ 社會影響力 × SDGs</text>
+    <text x="230" y="444" class="label-sm">✓ 科技 / 金融 / 上市櫃</text>
+    <rect x="230" y="468" width="150" height="32" class="cta" rx="6"/>
+    <text x="305" y="488" class="cta-tx" text-anchor="middle">預約參訪 →</text>
+  </g>
+
+  <g>
+    <rect x="400" y="158" width="170" height="360" class="card" rx="8"/>
+    <rect x="400" y="158" width="170" height="100" class="img"/>
+    <rect x="410" y="168" width="64" height="18" class="tag-box" rx="9"/>
+    <text x="442" y="181" class="tag-tx" text-anchor="middle">永續商品</text>
+    <circle cx="418" cy="278" r="9" class="icon"/>
+    <text x="410" y="306" class="head">竹炭商品</text>
+    <text x="410" y="322" class="label-sm">永續循環產品 · ESG 採購首選</text>
+    <line x1="410" y1="332" x2="560" y2="332" stroke="#eee"/>
+    <text x="410" y="350" class="label-sm">運用在地竹材循環利用，</text>
+    <text x="410" y="362" class="label-sm">兼具環保、生活與美學價值，</text>
+    <text x="410" y="374" class="label-sm">每份採購回到部落現金流。</text>
+    <text x="410" y="402" class="label-sm">✓ 除臭包 · 除濕包 · 冰箱磚</text>
+    <text x="410" y="416" class="label-sm">✓ 車用系列 · 竹醋液</text>
+    <text x="410" y="430" class="label-sm">✓ ESG 禮盒 · 可開發票</text>
+    <text x="410" y="444" class="label-sm">✓ 天然環保 · 支持部落</text>
+    <rect x="410" y="468" width="150" height="32" class="cta" rx="6"/>
+    <text x="485" y="488" class="cta-tx" text-anchor="middle">聯絡採購 ✉</text>
+  </g>
+
+  <g>
+    <rect x="580" y="158" width="170" height="360" class="card" rx="8"/>
+    <rect x="580" y="158" width="170" height="100" class="img"/>
+    <rect x="590" y="168" width="64" height="18" class="tag-box" rx="9"/>
+    <text x="622" y="181" class="tag-tx" text-anchor="middle">國際合作</text>
+    <circle cx="598" cy="278" r="9" class="icon"/>
+    <text x="590" y="306" class="head">國際竹構藝術</text>
+    <text x="590" y="322" class="label-sm">文化設計與大型公共藝術</text>
+    <line x1="590" y1="332" x2="740" y2="332" stroke="#eee"/>
+    <text x="590" y="350" class="label-sm">結合賽夏族工藝、結構工程、</text>
+    <text x="590" y="362" class="label-sm">國際藝術策展經驗，從一根</text>
+    <text x="590" y="374" class="label-sm">竹做到京都綠化博覽會。</text>
+    <text x="590" y="402" class="label-sm">✓ 地景藝術 · 公共裝置</text>
+    <text x="590" y="416" class="label-sm">✓ 展覽策展 · 景觀規劃</text>
+    <text x="590" y="430" class="label-sm">✓ 策展 1 / 結構 1 / 工藝 6</text>
+    <text x="590" y="444" class="label-sm">✓ 2026 京都府龜岡市</text>
+    <rect x="590" y="468" width="150" height="32" class="cta" rx="6"/>
+    <text x="665" y="488" class="cta-tx" text-anchor="middle">洽談合作 ✉</text>
+  </g>
+
+  <text x="40" y="535" class="annot">▲ v5.8.3｜desktop-first 4 欄固定（1024 寬度也保持 4 卡一列）；gap: 1.5rem → 1rem (1199px↓) 給卡片更多空間</text>
+</svg>

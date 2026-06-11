@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 560" role="img" aria-labelledby="wf-hero-title wf-hero-desc">
+  <title id="wf-hero-title">Low-Fi Wireframe｜index_SamSamma.html #home (Hero v5.8 Full-Width Centered)</title>
+  <desc id="wf-hero-desc">v5.8 將 Hero 從「左文右卡」雙欄重構為 80vh 全寬置中：背景影像 + 半透明 overlay + 中央 H1/Sub/CTA；下方獨立 Pillars-Bar 6 欄（圓形 icon + 標題 + 描述）取代舊版散落於 Hero 的 Culture×Data 矩陣，集中傳達 6 大核心價值。</desc>
+  <defs>
+    <pattern id="grid-h" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#eaeaea" stroke-width="0.5"/>
+    </pattern>
+    <pattern id="diag" width="8" height="8" patternUnits="userSpaceOnUse">
+      <path d="M 0 8 L 8 0" stroke="#cfcfcf" stroke-width="0.6"/>
+    </pattern>
+    <style>
+      text { font-family: "Noto Sans TC", "Inter", "Microsoft JhengHei", sans-serif; }
+      .frame    { fill:#fff; stroke:#222; stroke-width:1.5; }
+      .nav      { fill:#fff; stroke:#666; stroke-width:1; }
+      .hero     { fill:url(#diag); stroke:#444; stroke-width:1; }
+      .overlay  { fill:#000; fill-opacity:0.35; }
+      .cta-pri  { fill:#2c5530; stroke:#1d3a20; stroke-width:1; }
+      .cta-sec  { fill:#fff; stroke:#2c5530; stroke-width:1.2; }
+      .pillar-c { fill:#f4ecd6; stroke:#d4af37; stroke-width:1; }
+      .pillar-icon { fill:#2c5530; }
+      .pillar-bar { fill:#fafafa; stroke:#bbb; stroke-width:0.8; }
+      .meta     { font-size:10px; fill:#666; }
+      .meta-w   { font-size:10px; fill:#f4ecd6; }
+      .label-sm { font-size:9px; fill:#555; }
+      .label-w  { font-size:10px; fill:#fff; }
+      .head     { font-size:11px; fill:#222; font-weight:600; }
+      .head-w   { font-size:18px; fill:#fff; font-weight:700; }
+      .sub-w    { font-size:11px; fill:#f0f0f0; }
+      .cta-tx   { font-size:11px; fill:#fff; font-weight:600; }
+      .cta-tx-s { font-size:11px; fill:#2c5530; font-weight:600; }
+      .pillar-tx { font-size:9px; fill:#222; font-weight:600; }
+      .pillar-sub { font-size:8px; fill:#666; }
+    </style>
+  </defs>
+
+  <rect width="800" height="560" fill="url(#grid-h)"/>
+  <rect x="20" y="20" width="760" height="520" class="frame" rx="6"/>
+  <text x="32" y="40" class="meta">WF-01｜index_SamSamma.html · #home (Hero v5.8 Full-Width Centered) + #pillars-bar</text>
+
+  <!-- Header / Navbar -->
+  <rect x="32" y="52" width="736" height="38" class="nav" rx="4"/>
+  <circle cx="48" cy="71" r="9" fill="#2c5530"/>
+  <text x="64" y="68" class="head">山莎蔓岸</text>
+  <text x="64" y="80" class="label-sm">有限責任新竹縣山莎蔓岸竹木產業生產合作社</text>
+  <text x="510" y="74" class="label-sm" text-anchor="middle">關於我們 / 為什麼選擇我們 / 服務方案 / 預約諮詢</text>
+  <rect x="700" y="60" width="56" height="22" rx="4" fill="#fafafa" stroke="#bbb"/>
+  <text x="728" y="74" class="label-sm" text-anchor="middle">中文 | EN</text>
+
+  <!-- Hero Full-Width 80vh -->
+  <rect x="32" y="100" width="736" height="280" class="hero" rx="4"/>
+  <rect x="32" y="100" width="736" height="280" class="overlay" rx="4"/>
+  <text x="44" y="120" class="meta-w">HERO · Full-Width Centered · 80vh · 背景影像 + 半透明 overlay</text>
+
+  <!-- Centered H1 / Sub / CTA -->
+  <text x="400" y="200" class="head-w" text-anchor="middle">承載土地脈絡的竹．賽夏．生活</text>
+  <text x="400" y="222" class="head-w" text-anchor="middle">Bamboo · Saisiyat · A Way of Life</text>
+  <text x="400" y="252" class="sub-w" text-anchor="middle">竹編工藝、文化體驗、自然永續 — 由賽夏族青年共同打造的合作社品牌</text>
+  <text x="400" y="268" class="sub-w" text-anchor="middle">Bamboo crafts, cultural experiences and sustainable living — co-led by Saisiyat youth.</text>
+
+  <rect x="296" y="298" width="100" height="34" rx="17" class="cta-pri"/>
+  <text x="346" y="320" class="cta-tx" text-anchor="middle">預約體驗</text>
+  <rect x="406" y="298" width="100" height="34" rx="17" class="cta-sec"/>
+  <text x="456" y="320" class="cta-tx-s" text-anchor="middle">了解方案</text>
+
+  <text x="400" y="354" class="label-w" text-anchor="middle">↓ 向下捲動 · Scroll for more</text>
+
+  <!-- Pillars Bar 6-col -->
+  <text x="44" y="406" class="meta">PILLARS-BAR · 6 大核心價值（取代舊版 Hero 內 Culture×Data 矩陣）</text>
+  <line x1="44" y1="412" x2="240" y2="412" stroke="#d4af37" stroke-width="1.5"/>
+
+  <g>
+    <rect x="32" y="422" width="736" height="108" class="pillar-bar" rx="4"/>
+
+    <g>
+      <circle cx="92" cy="458" r="18" class="pillar-c"/>
+      <circle cx="92" cy="458" r="6" class="pillar-icon"/>
+      <text x="92" y="494" class="pillar-tx" text-anchor="middle">在地共生</text>
+      <text x="92" y="508" class="pillar-sub" text-anchor="middle">Local Roots</text>
+      <text x="92" y="520" class="pillar-sub" text-anchor="middle">深耕部落</text>
+    </g>
+
+    <g>
+      <circle cx="214" cy="458" r="18" class="pillar-c"/>
+      <circle cx="214" cy="458" r="6" class="pillar-icon"/>
+      <text x="214" y="494" class="pillar-tx" text-anchor="middle">文化傳承</text>
+      <text x="214" y="508" class="pillar-sub" text-anchor="middle">Cultural Heritage</text>
+      <text x="214" y="520" class="pillar-sub" text-anchor="middle">賽夏智慧</text>
+    </g>
+
+    <g>
+      <circle cx="336" cy="458" r="18" class="pillar-c"/>
+      <circle cx="336" cy="458" r="6" class="pillar-icon"/>
+      <text x="336" y="494" class="pillar-tx" text-anchor="middle">竹木工藝</text>
+      <text x="336" y="508" class="pillar-sub" text-anchor="middle">Bamboo Craft</text>
+      <text x="336" y="520" class="pillar-sub" text-anchor="middle">永續材料</text>
+    </g>
+
+    <g>
+      <circle cx="458" cy="458" r="18" class="pillar-c"/>
+      <circle cx="458" cy="458" r="6" class="pillar-icon"/>
+      <text x="458" y="494" class="pillar-tx" text-anchor="middle">合作經濟</text>
+      <text x="458" y="508" class="pillar-sub" text-anchor="middle">Co-op Economy</text>
+      <text x="458" y="520" class="pillar-sub" text-anchor="middle">青年共決</text>
+    </g>
+
+    <g>
+      <circle cx="580" cy="458" r="18" class="pillar-c"/>
+      <circle cx="580" cy="458" r="6" class="pillar-icon"/>
+      <text x="580" y="494" class="pillar-tx" text-anchor="middle">教育扎根</text>
+      <text x="580" y="508" class="pillar-sub" text-anchor="middle">Education</text>
+      <text x="580" y="520" class="pillar-sub" text-anchor="middle">USR / K-12</text>
+    </g>
+
+    <g>
+      <circle cx="702" cy="458" r="18" class="pillar-c"/>
+      <circle cx="702" cy="458" r="6" class="pillar-icon"/>
+      <text x="702" y="494" class="pillar-tx" text-anchor="middle">國際連結</text>
+      <text x="702" y="508" class="pillar-sub" text-anchor="middle">Global Bridge</text>
+      <text x="702" y="520" class="pillar-sub" text-anchor="middle">作品赴日</text>
+    </g>
+  </g>
+</svg>

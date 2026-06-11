@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 560" role="img" aria-labelledby="wf-bk-title wf-bk-desc">
+  <title id="wf-bk-title">Low-Fi Wireframe｜index_SamSamma.html #booking (v5.5 vanilla form)</title>
+  <desc id="wf-bk-desc">v5.5 雙欄佈局：左 booking-info（電話 / Email / SLA / 統編 / 雨備），右 booking-form 11 欄分 4 section + 6 addons checkbox。送出走 vanilla fetch POST + no-cors 直送 Google formResponse，原地顯示成功面板，失敗 fallback mailto。</desc>
+  <defs>
+    <pattern id="grid-bk" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#eaeaea" stroke-width="0.5"/>
+    </pattern>
+    <style>
+      text { font-family: "Noto Sans TC", "Inter", "Microsoft JhengHei", sans-serif; }
+      .frame    { fill:#fff; stroke:#222; stroke-width:1.5; }
+      .col-left { fill:#f8f5ef; stroke:#8b7355; stroke-width:1.2; }
+      .col-right { fill:#fff; stroke:#444; stroke-width:1.2; }
+      .input    { fill:#fff; stroke:#999; stroke-width:1; }
+      .input-l  { fill:#fff; stroke:#999; stroke-width:1; stroke-dasharray:3 2; }
+      .chk      { fill:#fff; stroke:#2c5530; stroke-width:1.2; }
+      .cta      { fill:#2c5530; stroke:#1a3d22; stroke-width:1.4; }
+      .section-h { fill:#fafafa; stroke:#bbb; stroke-width:1; }
+      .meta     { font-size:10px; fill:#888; font-family:"Fira Code", monospace; }
+      .label    { font-size:10px; fill:#222; }
+      .label-sm { font-size:9px; fill:#666; }
+      .head     { font-size:11px; fill:#1a1a1a; font-weight:700; }
+      .section-tx { font-size:11px; fill:#2c5530; font-weight:700; }
+      .cta-tx   { font-size:11px; fill:#fff; font-weight:700; font-family:"Inter", sans-serif; }
+      .annot    { font-size:10px; fill:#c2185b; font-style:italic; }
+      .title-c  { font-size:18px; fill:#2c5530; font-weight:700; }
+      .gold     { fill:#d4af37; }
+    </style>
+  </defs>
+
+  <rect width="800" height="560" fill="url(#grid-bk)"/>
+  <rect x="20" y="20" width="760" height="520" class="frame" rx="6"/>
+  <text x="32" y="40" class="meta">WF-03｜index_SamSamma.html · #booking · 2-col (left info / right form) · v5.5 fetch POST</text>
+
+  <!-- Section title -->
+  <text x="400" y="78" class="meta" text-anchor="middle">CORE · 預約諮詢 / Booking</text>
+  <line x1="370" y1="86" x2="430" y2="86" stroke="#d4af37" stroke-width="1.5"/>
+  <text x="400" y="112" class="title-c" text-anchor="middle">預約山莎蔓岸 · 一次說清楚</text>
+
+  <!-- 雙欄：左 info 280 / 右 form 460 -->
+  <!-- 左欄 booking-info -->
+  <rect x="40" y="140" width="220" height="370" class="col-left" rx="6"/>
+  <text x="50" y="160" class="head">📞 聯絡資訊</text>
+  <line x1="50" y1="168" x2="240" y2="168" stroke="#d4af37"/>
+
+  <text x="50" y="188" class="label">電話｜02-1234-5678</text>
+  <text x="50" y="206" class="label">Email｜contact@samsamma.tw</text>
+
+  <text x="50" y="238" class="head">⏱ 回覆 SLA</text>
+  <line x1="50" y1="246" x2="240" y2="246" stroke="#d4af37"/>
+  <text x="50" y="264" class="label-sm">2 個工作天內回覆</text>
+  <text x="50" y="280" class="label-sm">含確認信 + 聯絡窗口</text>
+
+  <text x="50" y="312" class="head">📋 開立發票</text>
+  <line x1="50" y1="320" x2="240" y2="320" stroke="#d4af37"/>
+  <text x="50" y="338" class="label-sm">可開立統編電子發票</text>
+  <text x="50" y="354" class="label-sm">適合 ESG 採購結報</text>
+
+  <text x="50" y="386" class="head">🌧 雨備方案</text>
+  <line x1="50" y1="394" x2="240" y2="394" stroke="#d4af37"/>
+  <text x="50" y="412" class="label-sm">竹屋 + 文化教室同步</text>
+  <text x="50" y="428" class="label-sm">不取消、全方案執行</text>
+
+  <text x="50" y="460" class="head">🍱 飲食支援</text>
+  <line x1="50" y1="468" x2="240" y2="468" stroke="#d4af37"/>
+  <text x="50" y="486" class="label-sm">部落風味餐 / 素食可選</text>
+
+  <!-- 右欄 booking-form -->
+  <rect x="280" y="140" width="480" height="370" class="col-right" rx="6"/>
+
+  <!-- Section 1：方案選擇 -->
+  <rect x="290" y="148" width="460" height="22" class="section-h" rx="3"/>
+  <text x="300" y="164" class="section-tx">① 方案選擇</text>
+  <rect x="300" y="178" width="220" height="26" class="input"/>
+  <text x="310" y="195" class="label-sm">方案 [select]｜文化體驗 / ESG / 商品 / 國際</text>
+  <rect x="528" y="178" width="220" height="26" class="input"/>
+  <text x="538" y="195" class="label-sm">參與人數 [number]</text>
+
+  <!-- Section 2：聯絡資訊 -->
+  <rect x="290" y="214" width="460" height="22" class="section-h" rx="3"/>
+  <text x="300" y="230" class="section-tx">② 聯絡資訊</text>
+  <rect x="300" y="244" width="146" height="26" class="input"/>
+  <text x="310" y="261" class="label-sm">姓名 *</text>
+  <rect x="454" y="244" width="146" height="26" class="input"/>
+  <text x="464" y="261" class="label-sm">電話 *</text>
+  <rect x="608" y="244" width="140" height="26" class="input"/>
+  <text x="618" y="261" class="label-sm">Email *</text>
+  <rect x="300" y="278" width="220" height="26" class="input"/>
+  <text x="310" y="295" class="label-sm">機構名稱</text>
+  <rect x="528" y="278" width="220" height="26" class="input"/>
+  <text x="538" y="295" class="label-sm">統一編號（可選）</text>
+
+  <!-- Section 3：行程時間 -->
+  <rect x="290" y="314" width="460" height="22" class="section-h" rx="3"/>
+  <text x="300" y="330" class="section-tx">③ 行程時間</text>
+  <rect x="300" y="344" width="220" height="26" class="input"/>
+  <text x="310" y="361" class="label-sm">期望日期 [date]</text>
+  <rect x="528" y="344" width="220" height="26" class="input"/>
+  <text x="538" y="361" class="label-sm">時段 [select] / 半日 / 一日</text>
+
+  <!-- Section 4：補充需求 -->
+  <rect x="290" y="380" width="460" height="22" class="section-h" rx="3"/>
+  <text x="300" y="396" class="section-tx">④ 補充需求（6 addons checkbox 多選）</text>
+  <g class="label-sm" fill="#444">
+    <rect x="300" y="408" width="9" height="9" class="chk"/><text x="314" y="416">竹編 DIY</text>
+    <rect x="380" y="408" width="9" height="9" class="chk"/><text x="394" y="416">部落餐</text>
+    <rect x="450" y="408" width="9" height="9" class="chk"/><text x="464" y="416">解說導覽</text>
+    <rect x="540" y="408" width="9" height="9" class="chk"/><text x="554" y="416">校外教學</text>
+    <rect x="640" y="408" width="9" height="9" class="chk"/><text x="654" y="416">夜宿</text>
+    <rect x="690" y="408" width="9" height="9" class="chk"/><text x="704" y="416">企業課程</text>
+  </g>
+  <rect x="300" y="424" width="448" height="46" class="input-l"/>
+  <text x="310" y="442" class="label-sm">[textarea] 自由備註 — 學員年齡 / 飲食限制 / 雨備 / 場域期待…</text>
+
+  <!-- Submit -->
+  <rect x="540" y="480" width="208" height="26" class="cta" rx="13"/>
+  <text x="644" y="497" class="cta-tx" text-anchor="middle">送出預約 → fetch POST</text>
+
+  <text x="40" y="530" class="annot">▲ v5.5｜vanilla fetch POST + mode:"no-cors" 直送 Google formResponse；成功原地顯示面板，失敗 fallback mailto（已填內容自動帶入）→ 零資料遺失</text>
+</svg>
