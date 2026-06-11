@@ -19,6 +19,9 @@
         + '.lang-switch a:hover{background:rgba(212,175,55,.25);color:#d4af37}'
         + '.i18n-en .lang-switch a[data-lang-btn=en],.i18n-zh .lang-switch a[data-lang-btn=zh]{background:#d4af37;color:#1a3d22;pointer-events:none}';
       d.appendChild(s);
+      /* 禁止瀏覽器還原上次捲動位置；無 hash 時強制從頂部開始 */
+      if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+      if (!location.hash) window.scrollTo(0, 0);
     })();
   </script>
   <title>山莎蔓岸 數位轉型｜PM × 前端案例研究 - Ivan's Portfolio</title>
@@ -718,6 +721,9 @@
       margin: 0 auto 1.5rem;
       max-width: 1140px;
       overflow: hidden;
+    }
+    details.deep-collapse[id] {
+      scroll-margin-top: 110px;
     }
     details.deep-collapse > summary {
       cursor: pointer; list-style: none;
@@ -6496,7 +6502,7 @@
         if (typeof window.mermaid === 'undefined') return;
         try {
           window.mermaid.initialize({
-            startOnLoad: true,
+            startOnLoad: false,
             theme: 'base',
             themeVariables: {
               fontFamily: "'Noto Sans TC','Inter',sans-serif",
@@ -6511,6 +6517,28 @@
           });
         } catch (err) {
           console.warn('[ia-artefacts] mermaid init failed:', err);
+        }
+
+        var iaDetails = document.getElementById('ia-artefacts');
+        if (!iaDetails) return;
+
+        function renderIaMermaid() {
+          if (iaDetails.dataset.mermaidReady === '1') return;
+          iaDetails.dataset.mermaidReady = '1';
+          var nodes = iaDetails.querySelectorAll('.mermaid');
+          if (nodes.length) {
+            window.mermaid.run({ nodes: nodes }).catch(function (err) {
+              console.warn('[ia-artefacts] mermaid render failed:', err);
+            });
+          }
+        }
+
+        iaDetails.addEventListener('toggle', function () {
+          if (iaDetails.open) renderIaMermaid();
+        });
+
+        if (iaDetails.open || location.hash === '#ia-artefacts') {
+          renderIaMermaid();
         }
       })();
     </script>
@@ -7024,26 +7052,55 @@
       });
     });
 
-    // v5.11｜當 anchor 跳到 <details id="..."> 時自動展開並滾動置中
+    // v5.11｜anchor 跳到 <details> 時自動展開；僅在 URL 有 hash 時才捲動
     (function () {
-      function openDetailsFromHash() {
-        const id = (location.hash || '').slice(1);
-        if (!id) return;
-        const el = document.getElementById(id);
-        if (el && el.tagName === 'DETAILS') {
+      var NAV_OFFSET = 110;
+
+      function scrollToAnchor(target, behavior) {
+        var top = target.getBoundingClientRect().top + window.pageYOffset - NAV_OFFSET;
+        window.scrollTo({ top: Math.max(0, top), behavior: behavior || 'auto' });
+      }
+
+      function openDetailsFromHash(fromUserAction) {
+        var id = (location.hash || '').slice(1);
+        if (!id) {
+          window.scrollTo(0, 0);
+          return;
+        }
+        var el = document.getElementById(id);
+        if (!el) return;
+
+        if (el.tagName === 'DETAILS') {
           el.open = true;
-          setTimeout(() => el.scrollIntoView({ behavior: 'smooth', block: 'start' }), 80);
+          var target = el.querySelector('summary') || el;
+          var behavior = fromUserAction ? 'smooth' : 'auto';
+          requestAnimationFrame(function () {
+            requestAnimationFrame(function () {
+              scrollToAnchor(target, behavior);
+            });
+          });
+        } else {
+          scrollToAnchor(el, fromUserAction ? 'smooth' : 'auto');
         }
       }
-      window.addEventListener('hashchange', openDetailsFromHash);
-      window.addEventListener('load', openDetailsFromHash);
-      document.querySelectorAll('a[href^="#"]').forEach(a => {
-        a.addEventListener('click', () => {
-          const id = a.getAttribute('href').slice(1);
-          const el = document.getElementById(id);
-          if (el && el.tagName === 'DETAILS') {
-            el.open = true;
-          }
+
+      window.addEventListener('hashchange', function () {
+        openDetailsFromHash(true);
+      });
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', function () {
+          openDetailsFromHash(false);
+        });
+      } else {
+        openDetailsFromHash(false);
+      }
+
+      document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+        a.addEventListener('click', function () {
+          var id = a.getAttribute('href').slice(1);
+          var el = document.getElementById(id);
+          if (el && el.tagName === 'DETAILS') el.open = true;
         });
       });
     })();
