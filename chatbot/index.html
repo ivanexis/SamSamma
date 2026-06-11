@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Niwah · 山莎蔓岸 AI Concierge｜Ivan Zhao</title>
+  <meta name="description" content="Niwah：山莎蔓岸合作社線上助理（Phase 1 PoC）。由 Ivan Zhao 建置，作為 AI Chatbot PM 求職展示 — 含完整 PRD、persona 設計與決策紀錄。">
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="/favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a href="/" class="brand">
+        <span class="brand-mark">N</span>
+        <span class="brand-text">
+          <span class="brand-title">Niwah · 山莎蔓岸 Concierge</span>
+          <span class="brand-sub">Phase 1 PoC · 紋路 / 互助</span>
+        </span>
+      </a>
+      <nav class="topnav">
+        <a href="./spec.html">📐 看 PRD</a>
+        <a href="/pages/index_SamSamma.html">← 介紹頁</a>
+        <a href="/booking/">預約系統</a>
+        <a href="/">作品集首頁</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="layout">
+
+    <aside class="sidebar" aria-label="settings">
+      <div class="poc-banner">
+        <div class="poc-label">線上接待原型</div>
+        <div class="poc-text">
+          <strong>Niwah</strong> 是賽夏語「紋路」── 把訪客想知道的事
+          織得有條理的接待者。<br>
+          這裡可以慢慢聊，了解山莎蔓岸的活動、ESG 參訪、竹炭商品與場域資訊；
+          確認後可一鍵跳轉到 <a href="/booking/" class="poc-link">預約系統</a>。<br>
+          <a href="./spec.html" class="poc-link">→ 看這套服務的設計規格（PRD）</a>
+        </div>
+      </div>
+
+      <!--
+        開發者 / 面試 demo 切換器：預設隱藏，URL 加 ?demo=1 才顯示
+        理由：一般訪客切到 OpenAI / Anthropic 會需要自己貼 API key，
+              99% 訪客沒有 → 切過去等於壞掉 → 信任度受損（Decision Log D-009）
+              對訪客而言：只看到 Mock 模式對話即可
+              對面試官而言：URL 加 ?demo=1 可解鎖切換器，現場展示 LLM 串接
+      -->
+      <section class="panel" id="dev-panel" hidden>
+        <h3>開發者面板 <span class="dev-tag">demo 模式</span></h3>
+        <div class="field">
+          <label for="provider">模型供應商</label>
+          <select id="provider">
+            <option value="mock">Mock 示範模式（無需 API key）</option>
+            <option value="openai">OpenAI（gpt-4o-mini）</option>
+            <option value="anthropic">Anthropic（claude-3-5-haiku）</option>
+          </select>
+        </div>
+
+        <div class="field" id="apiKeyField">
+          <label for="apiKey">API Key（僅存於本機 localStorage）</label>
+          <input type="password" id="apiKey" placeholder="sk-... or sk-ant-..." autocomplete="off">
+          <p class="hint">⚠️ Phase 1 為純前端 demo，API key 暫存瀏覽器；Phase 2 規劃改由 Cloudflare Workers Proxy 注入 secret，避免暴露。</p>
+        </div>
+
+        <div class="field-row">
+          <button id="clearBtn" class="btn btn-ghost" type="button">清除對話</button>
+          <button id="saveKeyBtn" class="btn btn-ghost" type="button">儲存 Key</button>
+        </div>
+      </section>
+
+      <!-- 一般訪客只看到「清除對話」單一按鈕 -->
+      <section class="panel" id="visitor-panel">
+        <div class="field-row">
+          <button id="clearBtnSimple" class="btn btn-ghost" type="button" style="width:100%;">清除對話重來</button>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h3>慢慢聊，試試這些</h3>
+        <ul class="suggest-list">
+          <li><button class="suggest" data-q="你們有什麼樣的活動可以參加？">你們有什麼活動？</button></li>
+          <li><button class="suggest" data-q="我想帶 30 人公司團隊做半日 ESG 體驗，可以怎麼安排？">30 人 ESG 半日怎麼排？</button></li>
+          <li><button class="suggest" data-q="你們的竹炭商品要怎麼採購？">竹炭商品怎麼買？</button></li>
+          <li><button class="suggest" data-q="想帶大學生來做田野，適合哪一種？">大學生田野適合哪種？</button></li>
+          <li><button class="suggest" data-q="場域在哪裡？怎麼過去？">場域在哪裡？</button></li>
+          <li><button class="suggest" data-q="Niwah 是誰？為什麼有這個聊天機器人？">Niwah 是誰？</button></li>
+        </ul>
+      </section>
+
+      <section class="panel poc-meta">
+        <h3>服務發展路徑</h3>
+        <ol class="phases">
+          <li class="phase-done">
+            <strong>Phase 1（目前）</strong><br>
+            線上接待原型，整合常見問題與場域資訊
+          </li>
+          <li class="phase-done">
+            <strong>Phase 1.5</strong><br>
+            介紹頁右下角浮動策展式入口（純靜態 · 零成本）
+          </li>
+          <li>
+            <strong>Phase 2</strong><br>
+            待經費到位後升級為動態對話，加入伺服端安全機制
+          </li>
+          <li>
+            <strong>Phase 3 / 4</strong><br>
+            知識庫向量檢索 · 自動建立預約草稿
+          </li>
+        </ol>
+        <p class="phase-note">→ <a href="./spec.html">每個 Phase 的範圍與決策見規格書</a></p>
+      </section>
+    </aside>
+
+    <section class="chat" aria-label="chat">
+      <div id="messages" class="messages" role="log" aria-live="polite">
+        <div class="msg msg-assistant">
+          <div class="avatar">N</div>
+          <div class="bubble">
+            我叫 <strong>Niwah</strong>，賽夏語「紋路」的意思。<br>
+            這裡是山莎蔓岸合作社 ── 12 公頃竹林、由族人共同經營的地方。<br>
+            想了解什麼？文化體驗、ESG 企業參訪、竹炭商品、國際竹構藝術，或者
+            場域怎麼去 ── 我都可以幫你看看。慢慢聊。<br>
+            <span class="meta">確認方向後，可一鍵跳轉到 <a href="/booking/">預約系統</a> 完成手續。</span>
+          </div>
+        </div>
+      </div>
+
+      <form id="composer" class="composer" autocomplete="off">
+        <textarea
+          id="input"
+          name="input"
+          placeholder="輸入你的問題（Enter 送出，Shift+Enter 換行）"
+          rows="1"
+          required
+        ></textarea>
+        <button type="submit" class="btn btn-primary" id="sendBtn">送出</button>
+      </form>
+
+      <footer class="composer-foot">
+        <span>本對話為 PoC，回答內容僅供參考，最終以合作社 email 確認為準。</span>
+        <span class="status" id="status"></span>
+      </footer>
+    </section>
+
+  </main>
+
+  <script src="./faq.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>

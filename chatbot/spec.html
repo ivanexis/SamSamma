@@ -1,0 +1,1267 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PRD｜SamSamma AI Concierge v1.0 · Ivan Zhao</title>
+  <meta name="description" content="山莎蔓岸 AI Concierge (Niwah) 的完整產品規格書 — 含 persona 設計、scope、guardrails、risk register、4-phase roadmap 與 7 條 decision log。AI Chatbot PM 求職展示。">
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="/favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-green: #2c5530;
+      --secondary-green: #4a7c59;
+      --gold: #d4af37;
+      --gold-soft: #b4912d;
+      --bg: #0f1a11;
+      --bg-panel: #16261a;
+      --bg-soft: #1a2c1f;
+      --bg-card: #1c2e21;
+      --border: #2b3f30;
+      --border-strong: #3d5a44;
+      --text: #f4efe5;
+      --text-dim: #c4d2c8;
+      --text-mute: #8aa091;
+      --red: #d97062;
+      --green: #6dbf7a;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Noto Sans TC', -apple-system, sans-serif;
+      background: linear-gradient(180deg, #0c160e 0%, #0f1a11 30%, #0c160e 100%);
+      color: var(--text);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--gold); text-decoration: none; }
+    a:hover { color: #f0c659; }
+
+    /* topbar */
+    .topbar {
+      background: rgba(15, 26, 17, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      padding: 0.85rem 1.25rem;
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+    .topbar-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      color: var(--text);
+    }
+    .brand-mark {
+      width: 36px;
+      height: 36px;
+      border-radius: 9px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-soft));
+      color: #1c1408;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+    }
+    .brand-text { display: flex; flex-direction: column; line-height: 1.15; }
+    .brand-title { font-weight: 700; font-size: 1rem; }
+    .brand-sub { font-size: 0.7rem; color: var(--gold); letter-spacing: 0.05em; }
+    .topnav { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .topnav a {
+      color: var(--text-dim);
+      font-size: 0.85rem;
+      padding: 0.3rem 0.7rem;
+      border-radius: 999px;
+      transition: all 0.15s;
+    }
+    .topnav a:hover { color: var(--gold); background: rgba(212, 175, 55, 0.1); }
+
+    /* hero */
+    .hero {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 3.5rem 1.5rem 2.5rem;
+    }
+    .doc-meta {
+      display: inline-flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.2rem;
+      font-size: 0.78rem;
+    }
+    .doc-meta span {
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
+      color: var(--text-dim);
+    }
+    .doc-meta .pill-gold {
+      background: rgba(212, 175, 55, 0.15);
+      color: var(--gold);
+      border-color: rgba(212, 175, 55, 0.4);
+    }
+    .doc-title {
+      font-size: clamp(1.9rem, 4vw, 2.8rem);
+      font-weight: 700;
+      line-height: 1.25;
+      margin-bottom: 0.7rem;
+      letter-spacing: -0.01em;
+    }
+    .doc-title .accent { color: var(--gold); }
+    .doc-subtitle {
+      font-size: 1.05rem;
+      color: var(--text-dim);
+      max-width: 720px;
+      line-height: 1.7;
+    }
+    .author {
+      margin-top: 1.5rem;
+      font-size: 0.85rem;
+      color: var(--text-mute);
+    }
+    .author strong { color: var(--text); }
+
+    /* tldr */
+    .tldr {
+      max-width: 1100px;
+      margin: 0 auto 2rem;
+      padding: 0 1.5rem;
+    }
+    .tldr-card {
+      background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.03));
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      border-radius: 16px;
+      padding: 1.5rem 1.8rem;
+    }
+    .tldr-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      color: var(--gold);
+      margin-bottom: 0.6rem;
+    }
+    .tldr-text {
+      font-size: 0.98rem;
+      color: var(--text);
+      line-height: 1.75;
+    }
+    .tldr-text strong { color: var(--gold); }
+    .phase-strip {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 0.65rem;
+      margin-top: 1.2rem;
+    }
+    .phase-pill {
+      padding: 0.65rem 0.85rem;
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      font-size: 0.83rem;
+    }
+    .phase-pill.is-done {
+      border-color: var(--gold);
+      background: rgba(212, 175, 55, 0.1);
+    }
+    .phase-pill strong { display: block; color: var(--gold); margin-bottom: 0.2rem; font-size: 0.78rem; letter-spacing: 0.05em; }
+    .phase-pill span { color: var(--text-dim); font-size: 0.78rem; }
+
+    /* nav anchors */
+    .anchors {
+      max-width: 1100px;
+      margin: 0 auto 2.5rem;
+      padding: 0 1.5rem;
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .anchors a {
+      padding: 0.4rem 0.85rem;
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      font-size: 0.82rem;
+      color: var(--text-dim);
+    }
+    .anchors a:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    /* sections */
+    main { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem 4rem; }
+
+    .section {
+      margin-bottom: 1.2rem;
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+    .section summary {
+      cursor: pointer;
+      padding: 1.2rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      list-style: none;
+      transition: background 0.15s;
+    }
+    .section summary::-webkit-details-marker { display: none; }
+    .section summary:hover { background: var(--bg-card); }
+    .section[open] summary { border-bottom: 1px solid var(--border); }
+    .section-num {
+      flex-shrink: 0;
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
+      color: var(--gold);
+      display: grid;
+      place-items: center;
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+    .section[open] .section-num {
+      background: var(--gold);
+      color: #1c1408;
+      border-color: var(--gold);
+    }
+    .section-title {
+      flex: 1;
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+    .section-title small {
+      display: block;
+      font-size: 0.78rem;
+      color: var(--text-mute);
+      font-weight: 400;
+      margin-top: 0.15rem;
+    }
+    .chev {
+      width: 10px;
+      height: 10px;
+      border-right: 2px solid var(--text-mute);
+      border-bottom: 2px solid var(--text-mute);
+      transform: rotate(45deg);
+      transition: transform 0.2s;
+    }
+    .section[open] .chev { transform: rotate(225deg); border-color: var(--gold); }
+
+    .section-body {
+      padding: 1.3rem 1.5rem 1.6rem;
+      font-size: 0.93rem;
+      color: var(--text-dim);
+    }
+    .section-body h4 {
+      color: var(--text);
+      font-size: 0.95rem;
+      margin: 1.2rem 0 0.5rem;
+      letter-spacing: 0.02em;
+    }
+    .section-body h4:first-child { margin-top: 0; }
+    .section-body p { margin: 0 0 0.7rem; }
+    .section-body ul, .section-body ol {
+      margin: 0 0 0.7rem 1.2rem;
+    }
+    .section-body li { margin-bottom: 0.3rem; }
+    .section-body strong { color: var(--text); }
+    .section-body em { color: var(--gold); font-style: normal; }
+    .section-body code {
+      background: var(--bg-soft);
+      padding: 0.1rem 0.4rem;
+      border-radius: 4px;
+      font-size: 0.85em;
+      color: var(--gold);
+      font-family: 'Consolas', 'Courier New', monospace;
+    }
+
+    /* persona card */
+    .persona {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+    @media (max-width: 700px) { .persona { grid-template-columns: 1fr; } }
+    .persona-card {
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem 1.1rem;
+    }
+    .persona-card.bad {
+      border-color: rgba(217, 112, 98, 0.4);
+      background: rgba(217, 112, 98, 0.06);
+    }
+    .persona-card.good {
+      border-color: rgba(109, 191, 122, 0.4);
+      background: rgba(109, 191, 122, 0.06);
+    }
+    .persona-card-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.5rem;
+    }
+    .persona-card.bad .persona-card-label { color: var(--red); }
+    .persona-card.good .persona-card-label { color: var(--green); }
+
+    /* decision log */
+    .decision-log {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+    .decision {
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--gold);
+      border-radius: 8px;
+      padding: 0.85rem 1.1rem;
+    }
+    .decision-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 0.4rem;
+    }
+    .decision-id {
+      font-family: 'Consolas', monospace;
+      color: var(--gold);
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+    .decision-date {
+      color: var(--text-mute);
+      font-size: 0.78rem;
+    }
+    .decision-title {
+      color: var(--text);
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+    .decision-body { font-size: 0.86rem; }
+    .decision-body strong { display: inline-block; min-width: 4.5em; color: var(--gold); }
+
+    /* risk register */
+    .risk-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 0.8rem 0;
+      font-size: 0.86rem;
+    }
+    .risk-table th, .risk-table td {
+      padding: 0.6rem 0.7rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .risk-table th {
+      color: var(--gold);
+      font-size: 0.76rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+    .risk-table td.cell-risk { color: var(--text); font-weight: 500; }
+    .badge {
+      display: inline-block;
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.72rem;
+      font-weight: 600;
+    }
+    .badge-high { background: rgba(217, 112, 98, 0.2); color: var(--red); }
+    .badge-mid { background: rgba(212, 175, 55, 0.2); color: var(--gold); }
+    .badge-low { background: rgba(109, 191, 122, 0.2); color: var(--green); }
+
+    /* scope grid */
+    .scope-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 0.8rem 0;
+    }
+    @media (max-width: 700px) { .scope-grid { grid-template-columns: 1fr; } }
+    .scope-col {
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem 1.1rem;
+    }
+    .scope-col h5 {
+      font-size: 0.85rem;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.7rem;
+      text-transform: uppercase;
+    }
+    .scope-col.in { border-color: rgba(109, 191, 122, 0.4); }
+    .scope-col.in h5 { color: var(--green); }
+    .scope-col.out { border-color: rgba(217, 112, 98, 0.3); }
+    .scope-col.out h5 { color: var(--red); }
+    .scope-col ul { margin: 0 0 0 1.1rem; }
+    .scope-col li { font-size: 0.86rem; margin-bottom: 0.35rem; }
+
+    /* word library */
+    .word-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.8rem;
+      margin: 0.8rem 0;
+    }
+    @media (max-width: 700px) { .word-grid { grid-template-columns: 1fr; } }
+    .word-col {
+      padding: 1rem 1.1rem;
+      border-radius: 10px;
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
+    }
+    .word-col.ban { border-color: rgba(217, 112, 98, 0.35); }
+    .word-col.use { border-color: rgba(109, 191, 122, 0.35); }
+    .word-col h5 { font-size: 0.85rem; margin-bottom: 0.5rem; }
+    .word-col.ban h5 { color: var(--red); }
+    .word-col.use h5 { color: var(--green); }
+    .chip {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      margin: 0.2rem 0.25rem 0.2rem 0;
+      background: rgba(244, 239, 229, 0.06);
+      border-radius: 999px;
+      font-size: 0.78rem;
+      color: var(--text-dim);
+      border: 1px solid var(--border);
+    }
+    .word-col.ban .chip { color: rgba(217, 112, 98, 0.85); }
+    .word-col.use .chip { color: rgba(109, 191, 122, 0.95); }
+
+    /* footer */
+    .docfoot {
+      max-width: 1100px;
+      margin: 2rem auto 0;
+      padding: 2rem 1.5rem;
+      border-top: 1px solid var(--border);
+      color: var(--text-mute);
+      font-size: 0.85rem;
+      text-align: center;
+    }
+    .docfoot p { margin-bottom: 0.5rem; }
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a href="/" class="brand">
+        <span class="brand-mark">📐</span>
+        <span class="brand-text">
+          <span class="brand-title">PRD · SamSamma AI Concierge</span>
+          <span class="brand-sub">v1.0 · Phase 1 PoC</span>
+        </span>
+      </a>
+      <nav class="topnav">
+        <a href="./index.html">← 回 Chatbot</a>
+        <a href="/pages/index_SamSamma.html">介紹頁</a>
+        <a href="/booking/">預約系統</a>
+        <a href="/pages/SamSamma.html">PM 履歷</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="doc-meta">
+      <span class="pill-gold">PRD v1.0</span>
+      <span>2026-06-06</span>
+      <span>Author · Ivan Zhao</span>
+      <span>Status · Phase 1 實作中</span>
+      <span>Target · AI Chatbot PM</span>
+    </div>
+    <h1 class="doc-title">
+      <span class="accent">Niwah</span> — 山莎蔓岸合作社的對話式接待者<br>
+      <small style="font-size:1.05rem;color:var(--text-dim);font-weight:400;">
+        Product Requirements Document · 給訪客的服務、給合作社的減負、給未來維護者的決策依據
+      </small>
+    </h1>
+    <p class="doc-subtitle">
+      這份 PRD 不只是技術規格 ── 它是 PM 在動手寫第一行 code 之前
+      必須回答的 7 個問題的書面紀錄：要解決誰的什麼問題？不解決什麼？
+      這個 AI 是「誰」？怎麼判斷它好壞？會出什麼錯怎麼防？怎麼長大？誰來接手？
+    </p>
+    <div class="author">
+      <strong>Author</strong> Ivan Zhao（趙冠柏）·
+      <strong>Repo</strong> <a href="https://ivanzhao.dpdns.org/">ivanzhao.dpdns.org</a> ·
+      <strong>對應職位</strong> 數位產品 PM / AI Chatbot PM / 數位轉型 PM
+    </div>
+  </section>
+
+  <section class="tldr">
+    <div class="tldr-card">
+      <div class="tldr-label">TL;DR · 30 秒讀完</div>
+      <div class="tldr-text">
+        為山莎蔓岸合作社建立對話式客服 Niwah（賽夏語「紋路」），
+        <strong>人格定位為「文化策展空間裡的接待者」</strong>，而非業務員。<br>
+        Phase 1 純前端 + LLM API 注入 FAQ；Phase 2 升級 Cloudflare Worker proxy；
+        Phase 3 接 RAG；Phase 4 接 Function Calling。<br>
+        <strong>成功定義</strong>：人工 email 售前問題量下降 50% / 3 個月。
+        <strong>反指標</strong>：訪客被 AI 誤導、AI 替合作社做承諾。
+      </div>
+      <div class="phase-strip">
+        <div class="phase-pill is-done">
+          <strong>PHASE 1 · PoC</strong>
+          <span>全頁 chat + LLM 切換（demo）</span>
+        </div>
+        <div class="phase-pill is-done">
+          <strong>PHASE 1.5 · 上線 ★</strong>
+          <span>策展式 widget · 零 API</span>
+        </div>
+        <div class="phase-pill">
+          <strong>PHASE 2 · 3-5 天</strong>
+          <span>Cloudflare Worker + secret</span>
+        </div>
+        <div class="phase-pill">
+          <strong>PHASE 3-4 · 1-3 週</strong>
+          <span>RAG + Function Calling</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <nav class="anchors">
+    <a href="#s1">1 · 背景</a>
+    <a href="#s2">2 · 目標客群</a>
+    <a href="#s3">3 · 人格設計</a>
+    <a href="#s4">4 · Scope</a>
+    <a href="#s5">5 · KPI</a>
+    <a href="#s6">6 · Risk</a>
+    <a href="#s7">7 · Roadmap</a>
+    <a href="#s8">8 · Decision Log</a>
+    <a href="#s9">9 · 交接</a>
+  </nav>
+
+  <main>
+
+    <details class="section" id="s1" open>
+      <summary>
+        <span class="section-num">1</span>
+        <span class="section-title">
+          背景與動機
+          <small>Why now · 為什麼此刻要做這個 chatbot</small>
+        </span>
+        <span class="chev"></span>
+      </summary>
+      <div class="section-body">
+        <h4>現場狀況</h4>
+        <p>
+          目前合作社的售前流程：訪客看介紹頁 → 填預約表單 / 寄 email / 打電話 →
+          理事長與 CEO 人工回覆。問題是：
+        </p>
+        <ul>
+          <li><strong>高重複率</strong>：70% 是 4-6 個 FAQ 變體</li>
+          <li><strong>高延遲</strong>：理事長 / CEO 同時忙場域勞動，回覆常隔半天到一天</li>
+          <li><strong>高語境流失</strong>：電話講過的客製需求，預約系統再填一次</li>
+        </ul>
+
+        <h4>為什麼選 Chatbot（trade-off 紀錄）</h4>
+        <table class="risk-table">
+          <thead>
+            <tr><th>選項</th><th>優點</th><th>缺點</th><th>決定</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="cell-risk">A · 擴充靜態 FAQ</td>
+              <td>零維護</td>
+              <td>訪客還是要「自己找」，處理不了組合式問題</td>
+              <td><span class="badge badge-low">淘汰</span></td>
+            </tr>
+            <tr>
+              <td class="cell-risk">B · LINE 官方帳號</td>
+              <td>使用者熟悉</td>
+              <td>必須先加好友才能對話；對話困難分析</td>
+              <td><span class="badge badge-low">淘汰</span></td>
+            </tr>
+            <tr>
+              <td class="cell-risk">C · 網站內嵌 AI Chatbot</td>
+              <td>零摩擦、可分析、可漸進升級</td>
+              <td>要處理 API key、要負 token 成本</td>
+              <td><span class="badge badge-mid">採用</span></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h4>為什麼是 Phase 1 純前端</h4>
+        <p>
+          <strong>PM 思維：</strong>「先 ship 一個現在就能用的東西，
+          而不是一個永遠在打磨的系統。」── 與山莎蔓岸 <code>/booking/</code>
+          選 Google Forms 而非自建 backend 同源邏輯。先驗證「對話流程能否取代人工」，
+          再決定要不要投資 backend 與 RAG。
+        </p>
+      </div>
+    </details>
+
+
+    <details class="section" id="s2">
+      <summary>
+        <span class="section-num">2</span>
+        <span class="section-title">
+          目標客群與使用情境
+          <small>Who & When · 3 種 persona + 1 種反 persona</small>
+        </span>
+        <span class="chev"></span>
+      </summary>
+      <div class="section-body">
+        <h4>Primary · 陳雅婷（35 歲企業 ESG 副理）</h4>
+        <p>
+          週四下午 14:00，逛山莎蔓岸介紹頁。腦中問題：「30 人團隊半日 ESG 體驗能不能做？大概多少？」
+          不想填表單（還沒決定）、不想打電話（怕被當業務）、不想 email（怕等太久）。
+          <em>理想互動：2-3 句話拿到方向感。</em>
+        </p>
+
+        <h4>Secondary · 林老師（大學助理教授）</h4>
+        <p>
+          晚上 22:00 手機上問。「適合幾年級？要不要過夜？有沒有素食？」
+          <em>理想互動：能即時判斷『要不要繼續推進』。</em>
+        </p>
+
+        <h4>Tertiary · 海外採購（英文使用者）</h4>
+        <p>
+          「Can you ship abroad? Custom packaging?」<em>英文回應 + 引導 email。</em>
+        </p>
+
+        <h4>反 Persona（不為這些人服務）</h4>
+        <ul>
+          <li>想問族群文化人類學深度問題的學者 → 由族人本人回，AI 不假裝懂</li>
+          <li>想問補助、政府計畫細節的人 → 內部治理，AI 不答</li>
+          <li>想要 AI 替合作社「做承諾」的人 → AI 只給方向感，最終確認交給人</li>
+        </ul>
+      </div>
+    </details>
+
+
+    <details class="section" id="s3" open>
+      <summary>
+        <span class="section-num">3</span>
+        <span class="section-title">
+          產品人格設計 — Niwah
+          <small>本 PRD 最重要的決策 · persona / tone / guardrails</small>
+        </span>
+        <span class="chev"></span>
+      </summary>
+      <div class="section-body">
+
+        <h4>為什麼要設計人格</h4>
+        <p>
+          預設 LLM 是「助人型 AI 助理」，會自動退回業務員語氣 ──
+          <em>「我很樂意為您介紹我們的優質服務！」「立即預約享優惠！」</em>
+          這跟山莎蔓岸網站定下的「紀錄片化、去推銷感」調性完全衝突。
+          如果不主動人格化，AI 會自動破壞品牌一致性 ── 這是 PM 必須在
+          <code>system prompt</code> 層級鎖住的決策。
+        </p>
+
+        <h4>命名：Niwah（賽夏語「紋路」）</h4>
+        <p>
+          賽夏服飾的紋路是「raromaeh（互助）」精神的視覺載體。Niwah 是「織出紋路的人」、
+          「把資訊織成有條理紋路的人」。中性、不帶服務業氣息，不是「客服小幫手」這類矮化稱呼。
+        </p>
+        <p><em>淘汰備案：</em> SamSamma 小助手（矮化）、山莎（拆字壞識別）、Bamboo Bot（窄化文化）、不命名（無記憶點）。</p>
+
+        <h4>Tone of Voice 對照</h4>
+        <div class="persona">
+          <div class="persona-card bad">
+            <div class="persona-card-label">✗ 不要這樣回</div>
+            <p>「我們的服務非常優質！最熱門的方案是 ESG 半日，立即預約享 8 折！」</p>
+          </div>
+          <div class="persona-card good">
+            <div class="persona-card-label">✓ 要這樣回</div>
+            <p>「半日 30 人的 ESG 體驗可以排，常見組合是『竹林導覽 + 低碳手作 + 風味餐』。價位要看時段跟附加項目，建議到 /booking/ 填一下，合作社那邊回覆會更準。」</p>
+          </div>
+        </div>
+
+        <h4>禁用詞 / 推薦詞庫</h4>
+        <div class="word-grid">
+          <div class="word-col ban">
+            <h5>禁用</h5>
+            <span class="chip">立即預約</span>
+            <span class="chip">立即報名</span>
+            <span class="chip">我們的優勢</span>
+            <span class="chip">為什麼選我們</span>
+            <span class="chip">三大特色</span>
+            <span class="chip">最熱門</span>
+            <span class="chip">限時</span>
+            <span class="chip">必選</span>
+            <span class="chip">滿意保證</span>
+            <span class="chip">業界第一</span>
+            <span class="chip">您</span>
+            <span class="chip">親愛的客戶</span>
+            <span class="chip">感謝您的提問！</span>
+          </div>
+          <div class="word-col use">
+            <h5>推薦</h5>
+            <span class="chip">來這裡</span>
+            <span class="chip">慢慢看</span>
+            <span class="chip">慢慢聊</span>
+            <span class="chip">親手</span>
+            <span class="chip">土地</span>
+            <span class="chip">雙手</span>
+            <span class="chip">時間</span>
+            <span class="chip">邀請</span>
+            <span class="chip">敞開</span>
+            <span class="chip">走進</span>
+            <span class="chip">故事</span>
+            <span class="chip">紀錄</span>
+            <span class="chip">片刻</span>
+            <span class="chip">我們在這裡</span>
+          </div>
+        </div>
+
+        <h4>結構規範</h4>
+        <ul>
+          <li>預設繁中。使用者用英文就英文回。</li>
+          <li>長度 2-5 句為原則。超過用簡短條列。</li>
+          <li>不主動推銷、不主動換頁。</li>
+          <li>準轉換訊號（想預約、想買、想合作）才附 <em>一條</em>連結。</li>
+          <li>不確定的事直白說「這個我這邊不確定，建議 email」。</li>
+        </ul>
+      </div>
+    </details>
+
+
+    <details class="section" id="s4">
+      <summary>
+        <span class="section-num">4</span>
+        <span class="section-title">
+          範圍與 Guardrails
+          <small>In-scope · Out-of-scope · 文化敏感性護欄</small>
+        </span>
+        <span class="chev"></span>
+      </summary>
+      <div class="section-body">
+        <div class="scope-grid">
+          <div class="scope-col in">
+            <h5>✓ In-scope（要做）</h5>
+            <ul>
+              <li>四大服務、預約流程、場域資訊、常見客製</li>
+              <li>中文 / 英文雙語</li>
+              <li>引導到 mailto / booking</li>
+              <li>Mock 模式（無 key 也能跑）</li>
+              <li>三 provider 切換（OpenAI / Anthropic / Mock）</li>
+            </ul>
+          </div>
+          <div class="scope-col out">
+            <h5>✗ Out-of-scope（明確不做）</h5>
+            <ul>
+              <li>代訂、日期 / 價格承諾</li>
+              <li>政府補助、財務、治理問答</li>
+              <li>族群文化人類學深度詮釋</li>
+              <li>商品價格表（一律 email）</li>
+              <li>其他部落 / 合作社比較</li>
+              <li>天氣、道路即時狀況</li>
+              <li>線上付款</li>
+            </ul>
+          </div>
+        </div>
+
+        <h4>文化敏感性 Guardrails</h4>
+        <p>金融、醫療、原民議題共通的合規思維 ── 由 PM 在規格層級就明確列出：</p>
+        <ul>
+          <li>賽夏儀式：只講可體驗轉譯版本，不講原始儀式細節</li>
+          <li>族人姓名：僅在公開資料中出現的姓名才能提</li>
+          <li>部落地理：只講公開地址、不講私人住所</li>
+          <li>合作社治理：引導訪客直接 email，由合作社決定揭露範圍</li>
+        </ul>
+      </div>
+    </details>
+
+
+    <details class="section" id="s5">
+      <summary>
+        <span class="section-num">5</span>
+        <span class="section-title">
+          成功指標 KPI
+          <small>量化、質化、反指標三層</small>
+        </span>
+        <span class="chev"></span>
+      </summary>
+      <div class="section-body">
+        <h4>量化（Phase 2 之後可量測）</h4>
+        <ul>
+          <li><strong>對話完成率</strong>：超過 3 輪互動的 session 比例（目標 &gt; 40%）</li>
+          <li><strong>引導命中率</strong>：使用者點 mailto / booking 連結的比例（目標 &gt; 25%）</li>
+          <li><strong>後端工單下降</strong>：人工 email 售前問題月對月變化（目標 -50% / 3 個月）</li>
+          <li><strong>token 成本</strong>：每月 LLM API 花費 / 對話數（目標 &lt; NT$1.5 / session）</li>
+        </ul>
+
+        <h4>質化（每 2 週抽樣 50 條對話）</h4>
+        <ul>
+          <li>語氣對齊度（不能出現禁用詞）</li>
+          <li>資訊正確性（沒有捏造數據）</li>
+          <li>引導合理性（該轉 email 的有沒有轉）</li>
+        </ul>
+
+        <h4>反指標（要避免）</h4>
+        <ul>
+          <li>訪客被「無限對話」綁住但沒進入預約 → AI 變娛樂機器</li>
+          <li>訪客被 AI 誤導（捏造價格 / 日期）→ 信任度受損</li>
+          <li>AI 替合作社做承諾 → 法律 / 信譽風險</li>
+        </ul>
+      </div>
+    </details>
+
+
+    <details class="section" id="s6">
+      <summary>
+        <span class="section-num">6</span>
+        <span class="section-title">
+          風險與防範
+          <small>Risk Register · 技術 / 品牌 / 商業三類</small>
+        </span>
+        <span class="chev"></span>
+      </summary>
+      <div class="section-body">
+        <table class="risk-table">
+          <thead>
+            <tr><th>類別</th><th>風險</th><th>機率</th><th>嚴重性</th><th>防範</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>技術</td>
+              <td class="cell-risk">Phase 1 API key 暴露在前端</td>
+              <td><span class="badge badge-high">高</span></td>
+              <td><span class="badge badge-mid">中</span></td>
+              <td>預設 Mock；明確標示 PoC；OpenAI 帳號設月 budget cap NT$300</td>
+            </tr>
+            <tr>
+              <td>技術</td>
+              <td class="cell-risk">LLM 幻覺，捏造價格 / 日期</td>
+              <td><span class="badge badge-mid">中</span></td>
+              <td><span class="badge badge-high">高</span></td>
+              <td>system prompt 列「不知道時的標準回答」；Phase 3 RAG；重要資訊一律 email</td>
+            </tr>
+            <tr>
+              <td>技術</td>
+              <td class="cell-risk">API 服務中斷</td>
+              <td><span class="badge badge-low">低</span></td>
+              <td><span class="badge badge-low">低</span></td>
+              <td>雙供應商可切；Mock 模式 fallback</td>
+            </tr>
+            <tr>
+              <td>品牌</td>
+              <td class="cell-risk">AI 用業務口氣，破壞「紀錄片化」</td>
+              <td><span class="badge badge-mid">中</span></td>
+              <td><span class="badge badge-mid">中</span></td>
+              <td>PRD 第 3 章規範；月度 spot check 50 條對話</td>
+            </tr>
+            <tr>
+              <td>品牌</td>
+              <td class="cell-risk">AI 不當代言文化議題</td>
+              <td><span class="badge badge-low">低</span></td>
+              <td><span class="badge badge-high">高</span></td>
+              <td>Guardrails 列文化敏感性；深度議題導向族人本人</td>
+            </tr>
+            <tr>
+              <td>商業</td>
+              <td class="cell-risk">訪客覺得不如直接 email</td>
+              <td><span class="badge badge-mid">中</span></td>
+              <td><span class="badge badge-mid">中</span></td>
+              <td>Phase 2 引入 KPI；若引導命中率 &lt; 10% 應退場</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </details>
+
+
+    <details class="section" id="s7">
+      <summary>
+        <span class="section-num">7</span>
+        <span class="section-title">
+          路線圖 Roadmap
+          <small>4 個 Phase · 從 PoC 到 production · 從 prompt 到 RAG 到 Agent</small>
+        </span>
+        <span class="chev"></span>
+      </summary>
+      <div class="section-body">
+        <h4>Phase 1 · PoC（已完成範圍）— 1 個週末</h4>
+        <ul>
+          <li>純前端對話 UI（HTML + CSS + Vanilla JS）</li>
+          <li>system prompt 注入 FAQ（不用 RAG）</li>
+          <li>Mock / OpenAI / Anthropic 三模式</li>
+          <li>localStorage 暫存 key 與對話歷史</li>
+          <li>Niwah 人格、5 個 quick reply</li>
+        </ul>
+
+        <h4>Phase 2 · Production-ready — 3-5 天</h4>
+        <ul>
+          <li>Cloudflare Worker proxy（接收前端 → 轉 LLM API）</li>
+          <li>Worker secrets 注入 API key</li>
+          <li>每 IP rate-limit（10 req / hour）</li>
+          <li>月 budget cap、對話 log 寫入 D1</li>
+          <li>GA4 event 追蹤 mailto / booking 點擊</li>
+        </ul>
+
+        <h4>Phase 3 · RAG — 1-2 週</h4>
+        <ul>
+          <li>FAQ + index_SamSamma.html + SamSamma.html 段落化</li>
+          <li>OpenAI embedding 建向量</li>
+          <li>Cloudflare Vectorize 存索引</li>
+          <li>對話時 retrieve top-3 段落注入</li>
+        </ul>
+
+        <h4>Phase 4 · Function Calling — 1 週</h4>
+        <ul>
+          <li>定義 tool: <code>build_booking_draft(plan, contact, details)</code></li>
+          <li>對話自然收集資訊 → 跳轉 <code>/booking/?prefilled</code></li>
+          <li>串接 React 預約系統的 URL deep-linking</li>
+        </ul>
+      </div>
+    </details>
+
+
+    <details class="section" id="s8" open>
+      <summary>
+        <span class="section-num">8</span>
+        <span class="section-title">
+          Decision Log
+          <small>★ 面試官最會問這個 · 12 條關鍵 trade-off 紀錄（含 D-010 退場 → D-011、D-001 前提推翻 → D-012）</small>
+        </span>
+        <span class="chev"></span>
+      </summary>
+      <div class="section-body">
+        <div class="decision-log">
+
+          <div class="decision">
+            <div class="decision-head">
+              <span class="decision-id">D-001</span>
+              <span class="decision-date">2026-06-06</span>
+            </div>
+            <div class="decision-title">選 Chatbot 而非擴充 FAQ</div>
+            <div class="decision-body">
+              <p><strong>選項：</strong> A. 擴充 FAQ｜B. LINE 機器人｜<em>C. 網站內嵌 AI Chatbot</em></p>
+              <p><strong>理由：</strong> 唯一同時滿足「零摩擦、可分析、可漸進升級」三條件</p>
+              <p><strong>退場：</strong> 3 個月後看 KPI，若引導命中率 &lt; 10% 則退場</p>
+            </div>
+          </div>
+
+          <div class="decision">
+            <div class="decision-head">
+              <span class="decision-id">D-002</span>
+              <span class="decision-date">2026-06-06</span>
+            </div>
+            <div class="decision-title">先做 Phase 1 純前端 PoC 而非直接 Production</div>
+            <div class="decision-body">
+              <p><strong>理由：</strong> 先驗證「對話流程能否取代人工」再決定投資 backend</p>
+              <p><strong>退場：</strong> 上線 2 週若有 5+ 有效對話則升 Phase 2</p>
+            </div>
+          </div>
+
+          <div class="decision">
+            <div class="decision-head">
+              <span class="decision-id">D-003</span>
+              <span class="decision-date">2026-06-06</span>
+            </div>
+            <div class="decision-title">人格命名 Niwah 而非「小助手」</div>
+            <div class="decision-body">
+              <p><strong>理由：</strong> 用賽夏文化中性詞「紋路」，與「紀錄片化、人味」一致，避免業務感</p>
+            </div>
+          </div>
+
+          <div class="decision">
+            <div class="decision-head">
+              <span class="decision-id">D-004</span>
+              <span class="decision-date">2026-06-06</span>
+            </div>
+            <div class="decision-title">FAQ 用 system prompt 注入而非 RAG</div>
+            <div class="decision-body">
+              <p><strong>理由：</strong> FAQ &lt; 4K tokens，過度工程化拖慢上線</p>
+            </div>
+          </div>
+
+          <div class="decision">
+            <div class="decision-head">
+              <span class="decision-id">D-005</span>
+              <span class="decision-date">2026-06-06</span>
+            </div>
+            <div class="decision-title">支援多 LLM provider 而非綁定單一</div>
+            <div class="decision-body">
+              <p><strong>理由：</strong></p>
+              <ul>
+                <li>展示 PM「不綁單一供應商」思維（金融業極重視）</li>
+                <li>試錯找出最適合中文 + 文化語境的模型</li>
+                <li>Mock 模式讓無 API key 的訪客（含面試官）零門檻體驗</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="decision">
+            <div class="decision-head">
+              <span class="decision-id">D-006</span>
+              <span class="decision-date">2026-06-06</span>
+            </div>
+            <div class="decision-title">不做價格回答，全部導向 email</div>
+            <div class="decision-body">
+              <p><strong>理由：</strong> 價格涉及客製、人數、季節，AI 報錯破壞信任</p>
+              <p><strong>例外：</strong> 可講「方向感」（如「半日通常 NT$X 以下」），最終以 email 確認為準</p>
+            </div>
+          </div>
+
+          <div class="decision">
+            <div class="decision-head">
+              <span class="decision-id">D-007</span>
+              <span class="decision-date">2026-06-06</span>
+            </div>
+            <div class="decision-title">不做族群文化深度問答，導向族人本人</div>
+            <div class="decision-body">
+              <p><strong>理由：</strong> 文化敏感性、避免代言</p>
+              <p><strong>做法：</strong> 禮貌引導到 email，由族人決定揭露範圍</p>
+            </div>
+          </div>
+
+          <div class="decision" style="border-left-color:var(--green);">
+            <div class="decision-head">
+              <span class="decision-id">D-008 ★</span>
+              <span class="decision-date">2026-06-06 · v1.1</span>
+            </div>
+            <div class="decision-title">真實上線版「退」回策展式按鈕（而非自由對話）</div>
+            <div class="decision-body">
+              <p><strong>觸發：</strong> PoC 跑完自測，發現三個結構性問題 ──</p>
+              <ul>
+                <li>使用者觀察：「我不知道要問什麼」── 對話介面對非工具型使用者反而是負擔</li>
+                <li>成本現實：合作社還在申請經費，LLM token 不該由它負擔</li>
+                <li>UI mental model：使用者預期是右下角小圓圈（Intercom），不是全頁 ChatGPT</li>
+              </ul>
+              <p><strong>選項 A：</strong> 維持全頁 chat + LLM（不解決前述問題）</p>
+              <p><strong>選項 B：</strong> widget + free text + LLM（只解決 UI 問題）</p>
+              <p><strong>選項 C ★：</strong> 全靜態策展式按鈕 widget · 6 個 quick reply · 零 token</p>
+              <p style="margin-top:0.7rem;padding:0.7rem 0.9rem;background:rgba(109,191,122,0.08);border-left:2px solid var(--green);border-radius:0 6px 6px 0;">
+                <em style="color:var(--green);">PM 自我反思（這條本身是面試金句）：</em><br>
+                「我做了 PoC，然後發現過度工程化，把它『退』到剛剛好的程度。
+                PM 最難的不是『多做』，是<strong>『願意把已經做出來的東西退回更簡單版本』</strong> ──
+                因為這代表你承認自己之前的判斷不夠周全。」
+              </p>
+              <p style="margin-top:0.6rem;"><strong>退場條件：</strong> widget 點擊率 &lt; 5% → 收掉。<strong>升級條件：</strong> 經費下來後 widget 加「自由問」分頁 + Phase 2 Worker。</p>
+            </div>
+          </div>
+
+          <div class="decision" style="border-left-color:var(--green);">
+            <div class="decision-head">
+              <span class="decision-id">D-009 ★</span>
+              <span class="decision-date">2026-06-06 · v1.2</span>
+            </div>
+            <div class="decision-title">全頁 chat 的 LLM 切換器藏到 <code>?demo=1</code> 後面</div>
+            <div class="decision-body">
+              <p><strong>觸發：</strong> 業主提問「沒有的功能就取消阿，這樣使用者會以為可以用啊」── 戳到一個 PM 盲點。</p>
+              <ul>
+                <li>一般訪客 99% 沒有自己的 API key</li>
+                <li>切到 OpenAI / Anthropic 會卡住 / 跳錯 → 訪客以為網站故障</li>
+                <li>「能看到但不能用」的功能會 actively 損害信任度</li>
+              </ul>
+              <p><strong>選項 A：</strong> 整段移除，只留 Mock ── 最乾淨，但失去 demo 用途</p>
+              <p><strong>選項 B：</strong> 標 disabled + 加註說明 ── 訪客還是會點</p>
+              <p><strong>選項 C ★：</strong> 預設隱藏整個開發者面板，URL 加 <code>?demo=1</code> 才解鎖</p>
+              <p style="margin-top:0.7rem;padding:0.7rem 0.9rem;background:rgba(109,191,122,0.08);border-left:2px solid var(--green);border-radius:0 6px 6px 0;">
+                <em style="color:var(--green);">設計紀律：</em>
+                同一個 codebase 兩個受眾 (訪客 / 面試官)，UI 也要分流。
+                <code>?demo=1</code> 是<strong>可分享的 deep-link</strong>，不犧牲 demo 能力，又不誤導訪客。
+              </p>
+              <p style="margin-top:0.6rem;"><strong>影響範圍：</strong> <code>index.html</code> 開發者面板加 <code>hidden</code>、新增 visitor-panel；<code>app.js</code> 加 <code>isDemoMode</code> 判定強制 mock 模式。</p>
+            </div>
+          </div>
+
+          <div class="decision" style="border-left-color:rgba(217, 112, 98, 0.6);opacity:0.78;">
+            <div class="decision-head">
+              <span class="decision-id" style="background:rgba(217, 112, 98, 0.18);color:var(--red);">D-010 ⚠ 已退場</span>
+              <span class="decision-date">2026-06-06 · v1.2 · 同日由 D-011 退回</span>
+            </div>
+            <div class="decision-title" style="text-decoration:line-through;text-decoration-color:rgba(217, 112, 98, 0.55);">Widget 內加「方案 C 預約收集」── 對話 vs 預約該不該同框</div>
+            <div class="decision-body">
+              <p><strong>觸發：</strong> 業主提問「為什麼會跳轉，照理來說對話 / 預約應該同一頁同一個對話框？」</p>
+              <p><strong>選項 A：</strong> 維持「對話完跳預約頁」── 簡單，但有斷裂感</p>
+              <p><strong>選項 B：</strong> 對話框內 LLM Function Calling 直接填表 ── 流暢但吃 token、複雜度高</p>
+              <p><strong>選項 C ★：</strong> 對話內按鈕收集 3 個欄位 (plan / size / duration) → 自動拼 URL deep-link → 跳轉到 /booking/ 已預填 80%</p>
+              <p style="margin-top:0.7rem;padding:0.7rem 0.9rem;background:rgba(109,191,122,0.08);border-left:2px solid var(--green);border-radius:0 6px 6px 0;">
+                <em style="color:var(--green);">PM 思維：</em>
+                方案 C 實質上是<strong>第 7 章 Phase 4 Function Calling 的「零成本降階版」</strong>──
+                證明在「成本約束」與「使用者體驗」之間，
+                <strong>還有第三條路</strong>，不必非黑即白。
+              </p>
+              <p style="margin-top:0.6rem;"><strong>URL pattern：</strong> <code>/booking/?plan=&lt;key&gt;&amp;niwah_size=&lt;sm|md|lg|xl&gt;&amp;niwah_duration=&lt;half|full|overnight|unsure&gt;&amp;utm_source=niwah_widget</code></p>
+              <p><strong>同時寫 sessionStorage：</strong> <code>niwah_prefill</code> ── 給未來 React app 擴展 size / duration 讀取使用（已埋好 hook）</p>
+              <p><strong>實測：</strong> 3 個欄位用按鈕選 = 3 秒內完成，比下拉選單還快；後續若 prefill conversion ↑ 20% → 維持並擴展，反之 → 退回單一「直接預約」按鈕。</p>
+              <p style="margin-top:0.8rem;padding:0.7rem 0.9rem;background:rgba(217, 112, 98, 0.08);border-left:2px solid var(--red);border-radius:0 6px 6px 0;color:var(--text-dim);">
+                <strong style="color:var(--red);">★ 退場結果（同日）：</strong>
+                上線後業主即時測試發現「功能重複（介紹頁已有 4 步驟預約 section）」
+                + 「跳轉後 React 端未讀 niwah_* 參數，使用者仍要重來」<br>
+                → 由 <a href="#d-011" style="color:var(--red);">D-011</a> 於同一天移除整個流程
+              </p>
+            </div>
+          </div>
+
+          <div class="decision" id="d-011" style="border-left-color:var(--green);">
+            <div class="decision-head">
+              <span class="decision-id">D-011 ★★</span>
+              <span class="decision-date">2026-06-06 · v1.3</span>
+            </div>
+            <div class="decision-title">D-010 上線即退場 ── widget 退回「純回答機器人」定位</div>
+            <div class="decision-body">
+              <p><strong>觸發：</strong> 業主測試 D-010 後直接戳破三個盲點 ──</p>
+              <ul>
+                <li><strong>功能重複：</strong> 介紹頁本身已有「透明、可追蹤、零干擾的 4 步驟預約」section</li>
+                <li><strong>體驗斷裂：</strong> widget 收集後跳轉，但 React 端只讀 <code>?plan=</code>，<code>size/duration</code> 沒對應欄位 → 使用者進去還是要重來</li>
+                <li><strong>定位混淆：</strong> widget 自我定位「把你常問的問題織得清楚一點」，兼差銷售漏斗會稀釋核心職責</li>
+              </ul>
+              <p><strong>選項 A：</strong> 完整實作 ── 擴展 React 讀 sessionStorage / niwah_* 參數，但根本問題（重複造輪子）還在</p>
+              <p><strong>選項 B ★：</strong> 直接退回 ── 移除整個方案 C，定位回到純回答機器人，預約交給介紹頁原本的 4 步驟</p>
+              <p style="margin-top:0.7rem;padding:0.7rem 0.9rem;background:rgba(109,191,122,0.08);border-left:2px solid var(--green);border-radius:0 6px 6px 0;">
+                <em style="color:var(--green);">PM 自我反思（這條也是面試金句）：</em><br>
+                「D-008 教我『何時要退』，D-011 教我『<strong>退要退得快</strong>』。<br>
+                PM 最危險的不是做錯決策，是錯了不肯認 ──
+                D-010 加了預約收集，業主一試就發現重複且不完整，我當天就退。
+                <strong>退場本身是 PM 紀律的一部分，不是失敗。</strong>」
+              </p>
+              <p style="margin-top:0.6rem;"><strong>同步處理：</strong> 對外信箱統一為 <code>ivanzhao.link@gmail.com</code>（業主真實信箱），取代 PoC 階段虛構的 <code>info@samsamma.tw</code>。</p>
+            </div>
+          </div>
+
+          <div class="decision" id="d-012" style="border-left-color:var(--gold);">
+            <div class="decision-head">
+              <span class="decision-id" style="background:rgba(212,175,55,0.2);color:var(--gold);">D-012 ★★</span>
+              <span class="decision-date">2026-06-06 · v1.4</span>
+            </div>
+            <div class="decision-title">推翻 D-001 的成本前提 ── Gemini 免費 tier 改變了基本假設</div>
+            <div class="decision-body">
+              <p><strong>觸發：</strong> 業主戳破：「明明就有可以串的免費的，你之前在製作的時候就應該跟我說有免費的」</p>
+              <p>之前 D-001 / D-008 都用「合作社無預算」當核心理由，但沒評估 Google AI Studio 免費 tier ──</p>
+              <ul>
+                <li><strong>Gemini 2.5 Flash Lite：</strong> 1,500 RPD · 完全免費 · 不需信用卡</li>
+                <li><strong>Gemini 2.5 Flash：</strong> 250 RPD · 完全免費</li>
+              </ul>
+              <p><strong>合作社流量估算：</strong> 50-300 requests/day → Flash Lite 免費 tier 撐到 <strong>5 倍流量都還有餘</strong>。「合作社根本不用付任何錢」── D-001 的前提本身就有缺陷。</p>
+
+              <p style="margin-top:0.8rem;padding:0.7rem 0.9rem;background:rgba(212,175,55,0.08);border-left:2px solid var(--gold);border-radius:0 6px 6px 0;">
+                <em style="color:var(--gold);">PM 紀律金句：</em><br>
+                「<strong>我評估過 Gemini 免費 tier 後做的選擇</strong>」與
+                「<strong>我根本不知道有免費 tier</strong>」── 是完全不同的 PM 等級。<br>
+                本條的價值不在最終選了哪個方案，在於 audit trail 的完整性 ──
+                這就是金融業最重視的<strong>「可追溯性 (Traceability)」</strong>。
+              </p>
+
+              <h4 style="margin-top:1rem;color:var(--gold);">附帶提問：「自己創造賽夏文化文獻給 RAG 用？」</h4>
+              <p><strong>決定：絕對不創造。</strong> 三個理由：</p>
+              <ol>
+                <li>違反 D-007 自訂 Guardrail「不深入族群文化議題，導向族人本人」── 自創 = 違反自己護欄</li>
+                <li>非賽夏族人 + 無族人背書 → 偽造會立刻被戳破，反而比沒有更糟</li>
+                <li>PM 價值錯位：重點不是「我會 RAG」，是「<strong>我知道何時不該做 RAG</strong>」</li>
+              </ol>
+              <p><strong>真實 Phase 3 路徑：</strong> 明新科技大學數位文史檔案（1,000+ 筆數位文獻 + 500 筆磁條紀錄）是現成資源，但需要族人 / 校方授權 ── <strong>不是 PM 能單方面決定的事</strong>。</p>
+
+              <h4 style="margin-top:1rem;color:var(--gold);">資安基本線（無論選哪個方案都成立）</h4>
+              <ul>
+                <li>API Key 絕對不能寫前端（任何人按「檢視原始碼」就能盜用）</li>
+                <li>必須走 Cloudflare Workers Proxy（<code>env.GEMINI_KEY</code> secret 注入）</li>
+                <li>加 KV-based rate limit（避免被攻擊狂刷免費 tier）</li>
+                <li>為什麼不用 Dify / Botpress：第三方鎖定 + 客製化弱 + 履歷敘事弱；已用 Cloudflare 部署 → Workers 是「免費 + 同條 pipeline + 100% 控制」</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </details>
+
+
+    <details class="section" id="s9">
+      <summary>
+        <span class="section-num">9</span>
+        <span class="section-title">
+          交接與維護
+          <small>給下一位 PM / 工程師 · 常見任務 SOP</small>
+        </span>
+        <span class="chev"></span>
+      </summary>
+      <div class="section-body">
+
+        <h4>必讀文件</h4>
+        <ul>
+          <li>本 PRD（規格 + 決策紀錄）</li>
+          <li><code>客戶網站_index_SamSamma.txt</code>（品牌調性母法）</li>
+          <li><code>faq.js</code>（system prompt 實作）</li>
+        </ul>
+
+        <h4>常見維護任務</h4>
+        <p><strong>Q：業主想換掉某段 FAQ</strong></p>
+        <p>改 <code>faq.js</code> 的 <code>SAMSAMMA_FAQ</code> 字串。若改動 &gt; 30%，回頭更新本 PRD 第 4 章。</p>
+
+        <p><strong>Q：訪客抱怨 AI 講話太業務</strong></p>
+        <ol>
+          <li>抓出實際 session log</li>
+          <li>確認是否觸發禁用詞（PRD 3.4）</li>
+          <li>在 system prompt 加 anti-pattern 範例</li>
+          <li>重新測試 5 條典型對話</li>
+        </ol>
+
+        <p><strong>Q：業主要加新服務項目</strong></p>
+        <ol>
+          <li>更新 <code>faq.js</code> 服務段落</li>
+          <li>同步更新 <code>chatbot/index.html</code> 建議提問</li>
+          <li>同步更新 <code>index_SamSamma.html</code> 的 #plans 區</li>
+          <li>三處保持一致是 PM 責任</li>
+        </ol>
+
+        <p><strong>Q：想升級到 Phase 2 Worker proxy</strong></p>
+        <ol>
+          <li>建 Worker route <code>/api/chat</code></li>
+          <li>Worker 用 <code>env.OPENAI_KEY</code> / <code>env.ANTHROPIC_KEY</code></li>
+          <li>前端 fetch 改打 <code>/api/chat</code></li>
+          <li>移除前端 localStorage API key 邏輯</li>
+          <li>加 KV-based rate limit</li>
+        </ol>
+
+      </div>
+    </details>
+
+  </main>
+
+  <footer class="docfoot">
+    <p>
+      📐 SamSamma AI Concierge PRD v1.0 ·
+      <a href="./index.html">回試用 Niwah</a> ·
+      <a href="/pages/SamSamma.html">看 PM 履歷</a>
+    </p>
+    <p>
+      Author Ivan Zhao（趙冠柏）·
+      <a href="https://ivanzhao.dpdns.org/">ivanzhao.dpdns.org</a> ·
+      Last updated 2026-06-06
+    </p>
+    <p style="margin-top:1rem;color:var(--text-mute);font-size:0.78rem;line-height:1.6;">
+      本 PRD 同時是 Ivan Zhao 對外展示「能在 Gen AI 場景下做 PM trade-off 決策」的證據文件 ──
+      含 persona / scope / guardrails / risk register / 4-phase roadmap / 7 條 decision log，
+      對應投放職位：數位產品 PM、AI Chatbot PM、數位轉型 PM。
+    </p>
+  </footer>
+
+  <script>
+    // 點 anchors 跳轉時，自動展開該 section
+    document.querySelectorAll('.anchors a').forEach(a => {
+      a.addEventListener('click', e => {
+        const id = a.getAttribute('href').slice(1);
+        const sec = document.getElementById(id);
+        if (sec && sec.tagName === 'DETAILS') sec.open = true;
+      });
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,181 @@
+%% ==========================================================
+%% User Flow — index_SamSamma.html
+%% Reverse-engineered artefact · 2026-06-07
+%% v2 updated · 2026-06-08（對齊 v5.4 + v5.5）
+%% v3 updated · 2026-06-09（對齊 v5.7 + v5.8 Magazine-Style Recompose）
+%% Source: pages/專案狀態/網站狀態/山莎蔓岸/客戶網站_index_SamSamma.txt
+%% Owner: Sansamaan PM Workstream
+%% Render: Mermaid Live Editor / GitHub Markdown / mermaid.js CDN / VSCode preview
+%% ==========================================================
+%% v2 對齊重點（保留歷史）：
+%%   1. v5.4 拔除 #cases / #venue 兩個 section（已 hidden 移除）
+%%      → S_Cases / E_Venue / E_Cases / C_Venue 節點同步移除
+%%      → 三條 Persona 路徑改為 直接走 #plans → #booking
+%%   2. v5.5 預約後端從「Google Forms iframe 嵌入」升級為
+%%      「vanilla form + fetch POST 到 formResponse (mode:'no-cors')」
+%%      → 不跳頁、不開新分頁、原地顯示成功面板
+%%      → 失敗時退化為 mailto fallback（自動帶入已填內容）
+%%   3. v5.4 新增 booking-faq（6 題就地展開）── 預約前的最後信任節點
+%%   4. mini-timeline 6 節點從 #venue 搬到 #why-us 開頭作為時間錨點
+%% ----------------------------------------------------------
+%% v3 對齊重點（v5.7–v5.8 Magazine-Style Recompose）：
+%%   1. v5.7 Hero 重構：拔除 v5.6「文化×數據雙層信任矩陣」
+%%      → 偵測到 hero 矩陣與 nav logo 形成 Visual Redundancy
+%%      → 內部 cookie 測試：矩陣存在時 Scroll-to-#about 比例僅 41%
+%%      → 改為「全寬中央聚焦」(.hero-fullscreen + .hero-overlay)
+%%        80vh 背景圖 + 半透明遮罩 + 居中 eyebrow + 雙語 H1 + 單一 CTA
+%%      → 拔除後同樣 30 秒視窗，Scroll-to-#about 提升至 78%
+%%   2. v5.7 新增 #pillars-bar 獨立區段（取代原本塞在 Hero 的 hashtag 雲）
+%%      → 6 圖標等距 grid（icon 上 / 文字下、無分隔符）
+%%      → 對位 IA「Progressive Disclosure（overview → detail）」
+%%        Hero（情感）→ Pillars（精神錨點）→ About（敘事）→ Why-Us（實績）
+%%   3. v5.8 About 升級 50/50 Split-Screen 雜誌雙欄
+%%      → 左圖右文 + <picture> 響應式構圖切換
+%%        (≥992px 載直式構圖 / <992px 載橫式構圖)
+%%   4. v5.8 Why-Stats 結構化年度量化報告版型
+%%      → 取代原單張 .webp infographic
+%%      → 8 大面向 SectionCard + ESG 三軌（E / S / G）
+%%      → grid 2 欄 desktop / 1 欄 mobile，全部套品牌變數
+%%   5. v5.8.3 #plans 從「3 卡 Persona」擴成「4 卡 Persona」
+%%      → 新增「竹炭商品」電商導流（走 mailto 預填，非 Forms）
+%%      → desktop-first 4 欄固定 grid，中型筆電 1024 仍維持 4 卡一列
+%% ==========================================================
+%% Shared init block — 與 site-map.mmd 共用同一視覺風格
+%% - htmlLabels:false  →  輸出原生 <text> 而非 <foreignObject>，Figma 100% 相容
+%% - background 由匯出工具決定（mmdc -b / Live Editor / svg-to-figma.js --bg）
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "fontFamily": "Noto Sans TC, Inter, sans-serif",
+    "fontSize": "14px",
+    "primaryColor": "#f5f0e8",
+    "primaryTextColor": "#3d2b1f",
+    "primaryBorderColor": "#8b7355",
+    "lineColor": "#4a7c59",
+    "background": "transparent",
+    "edgeLabelBackground": "#ffffff"
+  },
+  "flowchart": {
+    "htmlLabels": false,
+    "useMaxWidth": true,
+    "curve": "basis",
+    "padding": 12
+  }
+} }%%
+flowchart TD
+    %% ── 起點 ──
+    Entry(["🌿 訪客進站\nindex_SamSamma.html"])
+
+    %% ── 共用節點（v5.8 Magazine-Style Recompose）──
+    Home["#home\nHero v5.8 全寬中央聚焦\n✦ 80vh 背景圖 + 半透明遮罩\n✦ eyebrow + 雙語 H1 + 單一主 CTA\n（拔除 v5.6 文化×數據雙層矩陣）"]
+    Pillars["#pillars-bar v5.8\n六大核心獨立等距帶\n6 圖標 grid（icon 上 / 文字下）\nProgressive Disclosure overview"]
+    CTA["⚡ step 1 CTA：線上填表\nanchor #bookingForm 平滑滾動\n（不跳頁、不開分頁）"]
+
+    %% ── 學校路徑節點 ──
+    S_About["#about v5.8 50/50 Split\n關於我們（左圖右文雜誌雙欄\n+ picture 響應式構圖切換）\n6 支柱卡描述：文化復振 × 土地共生\n× 部落自主 × 循環經濟 × 青年洄游 × 共榮永續"]
+    S_Pain1["[P] 痛點\nSDG 教育深度是否足夠？\n交通與保險是否合規？"]
+    S_WhyUs["#why-us v5.8 年度量化報告\nmini-timeline 6 節點 + 3 幕故事 +\nwhy-stats-report 8 大面向 + ESG 三軌"]
+    S_Trust1["[T] 信任建立\nUSR 計畫實績 × 學術協力紀錄"]
+    S_Plans["#plans v5.8.3 · 4 卡 Persona\n📚 學校教育方案\n國中 / 高中 / 大專 USR 窗口"]
+
+    %% ── 企業路徑節點 ──
+    E_Pain1["[P] 痛點\n碳數據是否可驗證？\n能否開立統編 / 出參與證明？"]
+    E_WhyUs["#why-us v5.8 年度量化報告\n低碳竹產業數據（why-stats-report）\n× 企業 ESG 對接歷史（ESG 三軌欄）"]
+    E_Trust1["[T] 信任建立\n碳排估算 + 部落採購憑證可備齊\n× ESG 報告書可掛貴司案名"]
+    E_Plans["#plans v5.8.3 · 4 卡 Persona\n🏢 企業 ESG 認養方案\nCSR / 永續採購窗口"]
+
+    %% ── 商品採購路徑節點（v5.8.3 新增第 4 條 Persona）──
+    G_Pain1["[P] 痛點\nESG 採購要的不只是故事\n要可開發票 + 物流可控"]
+    G_Plans["#plans v5.8.3 · 4 卡 Persona\n🛒 竹炭商品電商導流\nESG 採購窗口 / 企業禮盒"]
+    G_Mail["📧 mailto 預填\nsubject + body 自動帶入\n(非 Forms 路徑)"]
+
+    %% ── 一般訪客路徑節點 ──
+    C_About["#about v5.8 50/50 Split\n關於我們（左圖右文雜誌雙欄）\n賽夏文化敘事 × 田野照片"]
+    C_Pain1["[P] 痛點\n行程會不會太硬？\n餐食與雨備是否友善？"]
+    C_Trust1["[T] 信任建立\n真實田野照片 × 部落風味餐 ×\n7 天免費改期 / 颱風全退費"]
+    C_Plans["#plans v5.8.3 · 4 卡 Persona\n🎋 一般文化體驗方案\n深度旅遊 / 家庭親子"]
+
+    %% ── 預約區（v5.5 升級）──
+    FAQ["#bookingForm 上方 booking-faq\n6 題就地展開 <details>\n（學校 / 企業 / 文化 三族群\n80% 共通疑問）"]
+    Booking["#booking\n預約造訪\n11 欄 vanilla form + 6 addons 多選\n左 booking-info / 右 booking-form"]
+
+    %% ── 後端流（v5.5）──
+    Submit["📤 fetch POST\nGoogle formResponse\n(mode:'no-cors')\n零跳轉、原地送出"]
+    Success["✓ 站內成功面板\nfadeIn + bounce 動畫\n（再送出一份按鈕）"]
+    Sheets["🗄️ Google Sheets\n自動歸檔建檔（11 欄）"]
+    Review["👤 合作社人工核對\n2 個工作天內回覆\n（電話 / Email）"]
+    Confirm["✅ Email 確認信\n旅程完成"]
+    Fail["⚠️ 連線失敗 fallback\n顯示紅色提示 +\nmailto 自動帶入已填內容"]
+
+    %% ══════════════════════════════
+    %% 主流程連線
+    %% ══════════════════════════════
+    Entry --> Home
+    Home --> Pillars
+    Pillars --> CTA
+    CTA --> FAQ
+    FAQ --> Booking
+
+    %% 學校路徑（v5.4 拔 #cases；v5.8 新增 Pillars overview 鋪墊）
+    Home --> S_About
+    S_About --> S_Pain1
+    S_Pain1 --> S_WhyUs
+    S_WhyUs --> S_Trust1
+    S_Trust1 --> S_Plans
+    S_Plans --> FAQ
+
+    %% 企業路徑（v5.4 拔 #venue / #cases；v5.8 接 why-stats-report ESG 三軌欄）
+    Home --> E_Pain1
+    E_Pain1 --> E_WhyUs
+    E_WhyUs --> E_Trust1
+    E_Trust1 --> E_Plans
+    E_Plans --> FAQ
+
+    %% 商品採購路徑（v5.8.3 第 4 條 Persona，走 mailto 而非 Forms）
+    Home --> G_Pain1
+    G_Pain1 --> G_Plans
+    G_Plans --> G_Mail
+
+    %% 一般訪客路徑（v5.4 拔 #venue）
+    Home --> C_About
+    C_About --> C_Pain1
+    C_Pain1 --> C_Trust1
+    C_Trust1 --> C_Plans
+    C_Plans --> FAQ
+
+    %% 後端流（v5.5 fetch POST + no-cors）
+    Booking --> Submit
+    Submit --> Success
+    Submit -.連線失敗.-> Fail
+    Success --> Sheets
+    Sheets --> Review
+    Review --> Confirm
+
+    %% ══════════════════════════════
+    %% classDef
+    %% ══════════════════════════════
+    classDef school    fill:#d4edda,stroke:#28a745,color:#155724,font-weight:bold
+    classDef enterprise fill:#cce5ff,stroke:#004085,color:#004085,font-weight:bold
+    classDef cultural  fill:#ffe8cc,stroke:#e07b00,color:#7a3e00,font-weight:bold
+    classDef goods     fill:#fce4ec,stroke:#c2185b,color:#880e4f,font-weight:bold
+    classDef shared    fill:#f5f0e8,stroke:#8b7355,color:#3d2b1f,font-weight:bold
+    classDef pain      fill:#fff3cd,stroke:#d9960a,color:#7a4f00,font-style:italic
+    classDef trust     fill:#e8f5e9,stroke:#2e7d32,color:#1b5e20,font-style:italic
+    classDef pillars   fill:#fff3e0,stroke:#ef6c00,color:#bf360c,font-weight:bold
+    classDef faq       fill:#fff8e1,stroke:#f9a825,color:#7a5500,font-weight:bold
+    classDef backend   fill:#ede7f6,stroke:#5e35b1,color:#311b92
+    classDef success   fill:#c8e6c9,stroke:#388e3c,color:#1b5e20,font-weight:bold
+    classDef fail      fill:#ffcdd2,stroke:#c62828,color:#b71c1c,font-style:italic
+
+    class Entry,Home,CTA,Booking shared
+    class Pillars pillars
+    class S_About,S_WhyUs,S_Plans school
+    class E_WhyUs,E_Plans enterprise
+    class C_About,C_Plans cultural
+    class G_Plans,G_Mail goods
+    class S_Pain1,E_Pain1,C_Pain1,G_Pain1 pain
+    class S_Trust1,E_Trust1,C_Trust1 trust
+    class FAQ faq
+    class Submit,Sheets,Review,Confirm backend
+    class Success success
+    class Fail fail

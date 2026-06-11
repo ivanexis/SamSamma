@@ -1,0 +1,250 @@
+%% ==========================================================
+%% Site Map — Triple-Track Architecture
+%% index_SamSamma.html (Experience) × SamSamma.html (Logic) ×
+%% samsamma-booking-react (PM Tech Showcase)
+%% Reverse-engineered artefact · 2026-06-07
+%% v2 updated · 2026-06-08（對齊 v5.4 + v5.5）
+%% v3 updated · 2026-06-09（對齊 v5.7 + v5.8 Magazine-Style Recompose）
+%% ==========================================================
+%% v2 對齊重點（保留歷史）：
+%%   1. v5.4 拔 A_Cases / A_Venue / A_Venue_Pool/Oven/Tree 整個子樹
+%%      → 客戶網站專注「故事 + 預約」，PM 設施清單應在 SamSamma.html 呈現
+%%   2. v5.4 nav 8→5 項，footer 同步瘦身
+%%      → 移除 #cases / #venue / #contact nav 節點
+%%   3. v5.5 A_GForms 從「Google Forms iframe 嵌入」
+%%      改為「vanilla form + fetch POST 站內直送」
+%%      → 新增 A_Success / A_Fail 兩個結果節點
+%%   4. v5.4 新增 A_FAQ（booking-faq 6 題就地展開）
+%%   5. 新增 SUBGRAPH D（samsamma-booking-react PM 技術展示）
+%%      雙軌升級為「三軌」：體驗 / 邏輯 / PM 技術
+%% ----------------------------------------------------------
+%% v3 對齊重點（v5.7–v5.8 Magazine-Style Recompose）：
+%%   1. A_Home 重寫：v5.6「文化×數據雙層信任矩陣」整段拔除
+%%      → v5.7 改為「全寬中央聚焦」(.hero-fullscreen + .hero-overlay)
+%%        80vh 背景圖 + 半透明遮罩 + 居中 H1 + 單一 CTA
+%%   2. 新增 A_Pillars（#pillars-bar）獨立節點
+%%      → 取代原本塞在 Hero 內的 hashtag 雲
+%%      → 對位 Progressive Disclosure（overview → detail）
+%%   3. A_About 升級 50/50 Split-Screen
+%%      → <picture> 響應式構圖：≥992px 直式 / <992px 橫式
+%%   4. A_WhyUs 升級「年度量化報告版型」(.why-stats-report)
+%%      → 取代原單張 .webp infographic
+%%      → 8 大面向 SectionCard + ESG 三軌（E/S/G）
+%%   5. A_Plans 從 3 卡擴 4 卡（v5.8.3）
+%%      → 新增 A_Plans_Goods 竹炭商品電商導流（走 mailto 非 Forms）
+%%      → desktop-first 4 欄固定 grid（中型筆電 1024 維持 4 卡一列）
+%% ==========================================================
+%% Compatibility note: subgraph titles intentionally avoid double-quoted
+%% strings and full-width spaces — these break older Mermaid parsers.
+%% Shared init block — 與 user-flow.mmd 共用同一視覺風格
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "fontFamily": "Noto Sans TC, Inter, sans-serif",
+    "fontSize": "14px",
+    "primaryColor": "#f5f0e8",
+    "primaryTextColor": "#3d2b1f",
+    "primaryBorderColor": "#8b7355",
+    "lineColor": "#4a7c59",
+    "background": "transparent",
+    "edgeLabelBackground": "#ffffff"
+  },
+  "flowchart": {
+    "htmlLabels": false,
+    "useMaxWidth": true,
+    "curve": "basis",
+    "padding": 12
+  }
+} }%%
+graph TD
+
+    %% --- i18n 頂層入口 ---
+    i18n([🌐 i18n 語系切換<br/>?lang=zh / ?lang=en])
+
+    %% ==========================================================
+    %% SUBGRAPH A — 體驗與策展層（v5.4 瘦身 + v5.8 雜誌式重構）
+    %% ==========================================================
+    subgraph EXP [🌿 體驗與策展層 · index_SamSamma.html · v5.8]
+        direction TB
+
+        A_Entry[index_SamSamma.html<br/>客戶官網入口]
+
+        A_Home[#home Hero v5.8 全寬中央聚焦<br/>.hero-fullscreen + .hero-overlay<br/>80vh 背景 + 半透明遮罩<br/>居中 eyebrow + 雙語 H1 + 單一 CTA<br/>拔除 v5.6 文化×數據雙層矩陣]
+        A_Pillars[#pillars-bar v5.8<br/>六大核心獨立等距帶<br/>6 圖標 grid（icon 上 / 文字下）<br/>Progressive Disclosure overview]
+        A_About[#about v5.8 50/50 Split-Screen<br/>左圖右文 + picture 響應式構圖<br/>≥992px 直式 / <992px 橫式]
+        A_WhyUs[#why-us v5.8 年度量化報告<br/>mini-timeline 24m 6 節點 +<br/>3 幕故事 部落→USR→京都 +<br/>.why-stats-report 8 大面向 + ESG 三軌]
+
+        A_Plans[#plans v5.8.3 · 4 卡 Persona<br/>desktop-first 4 欄固定 grid]
+        A_Plans_Edu[📚 文化體驗卡<br/>學校 USR / K-12 / 國際交流]
+        A_Plans_ESG[🏢 企業 ESG 卡<br/>CSR / 永續採購窗口]
+        A_Plans_Goods[🛒 竹炭商品卡<br/>ESG 採購 / 企業禮盒<br/>走 mailto 預填非 Forms]
+        A_Plans_Art[🎨 國際藝術卡<br/>2026 京都府龜岡市合作<br/>走 mailto 預填非 Forms]
+
+        A_FAQ[booking-faq<br/>就地展開 6 題<br/>details 摺疊式]
+
+        A_Booking[#booking v5.5 vanilla form<br/>左 booking-info / 右 booking-form<br/>11 欄 + 6 addons 多選]
+
+        A_Submit[fetch POST<br/>mode no-cors]
+        A_Success[✓ 站內成功面板<br/>fadeIn + bounce]
+        A_Fail[⚠️ mailto fallback<br/>已填內容自動帶入]
+
+        A_Footer[site-footer<br/>v5.4 拆出獨立 footer 黑底]
+    end
+
+    %% ==========================================================
+    %% SUBGRAPH B — 邏輯與治理層（PM 履歷頁不動）
+    %% ==========================================================
+    subgraph LOGIC [🔷 邏輯與治理層 · SamSamma.html]
+        direction TB
+
+        B_Entry[SamSamma.html<br/>PM 履歷頁入口]
+
+        B_Hero[Hero<br/>個人定位 × 專案導言]
+        B_Origin[#origin<br/>計畫起源]
+        B_Problem[#problem<br/>問題定義]
+        B_Exec[#execution<br/>執行策略]
+
+        B_VSM[#stakeholders<br/>VSM 利害關係人流程圖]
+
+        B_Pipeline[#data-pipeline<br/>核心資料底盤<br/>IDE Code Preview 展示]
+        B_JSON[📄 data/carbon-data.json<br/>真實碳排 JSON 資料檔]
+
+        B_Tech[#tech-stack<br/>技術選型說明]
+        B_UR[#user-research<br/>Persona × Interview Log × FAQ]
+        B_IA[#ia-artefacts<br/>User Flow × Site Map × Wireframe × Prototype]
+        B_DOCS[#docs-artefacts<br/>PRD × UAT × Manual × Backlog]
+        B_Impact[#impact<br/>成效與影響力]
+        B_Roadmap[#roadmap-info<br/>未來藍圖]
+        B_Bridge[#bridge<br/>跨頁銜接區塊]
+    end
+
+    %% ==========================================================
+    %% SUBGRAPH D — PM 技術展示資產（v5.5 新增）
+    %% ==========================================================
+    subgraph PMTECH [⚙️ PM 技術展示 · samsamma-booking-react]
+        direction TB
+
+        D_App[React + TS Vite App<br/>4-step 多步驟流程外殼]
+        D_Config[src/config.ts<br/>GOOGLE_FORM_ID + FIELD_MAP 11 欄]
+        D_Lib[lib/googleForm.ts<br/>buildPrefillUrl 預填 +<br/>submitFormResponse POST]
+        D_Steps[components/steps/<br/>PlanStep × ContactStep ×<br/>DetailsStep × ConfirmStep]
+        D_Dist[dist/ 已 build<br/>Cloudflare Pages Ready]
+    end
+
+    %% ==========================================================
+    %% SUBGRAPH C — 第三方外部服務
+    %% ==========================================================
+    subgraph EXT [☁️ 第三方外部服務]
+        direction TB
+
+        E_GForms[Google Forms<br/>formResponse 接收端點]
+        E_GSheets[Google Sheets<br/>DB 自動歸檔 11 欄]
+        E_Email[Email 系統<br/>人工核對 → 確認信]
+    end
+
+    %% ==========================================================
+    %% 體驗層內部連線（v5.4 瘦身後）
+    %% ==========================================================
+    i18n --> A_Entry
+    i18n --> B_Entry
+
+    A_Entry --> A_Home
+    A_Home --> A_Pillars
+    A_Pillars --> A_About
+    A_Home --> A_About
+    A_Home --> A_WhyUs
+    A_Home --> A_Plans
+    A_Home --> A_FAQ
+    A_Home --> A_Booking
+    A_Home --> A_Footer
+
+    A_Plans --> A_Plans_Edu
+    A_Plans --> A_Plans_ESG
+    A_Plans --> A_Plans_Goods
+    A_Plans --> A_Plans_Art
+
+    %% Forms 路徑（教育 / ESG 走 FAQ → Booking → Forms）
+    A_Plans_Edu --> A_FAQ
+    A_Plans_ESG --> A_FAQ
+
+    %% Mailto 路徑（商品 / 國際走 mailto 直接外送）
+    A_Plans_Goods -.mailto 預填.-> A_Fail
+    A_Plans_Art -.mailto 預填.-> A_Fail
+
+    A_FAQ --> A_Booking
+    A_Booking --> A_Submit
+    A_Submit --> A_Success
+    A_Submit -.連線失敗.-> A_Fail
+
+    %% ==========================================================
+    %% 邏輯層內部連線
+    %% ==========================================================
+    B_Entry --> B_Hero
+    B_Hero --> B_Origin
+    B_Origin --> B_Problem
+    B_Problem --> B_Exec
+    B_Exec --> B_VSM
+    B_VSM --> B_Pipeline
+    B_Pipeline --> B_Tech
+    B_Tech --> B_UR
+    B_UR --> B_IA
+    B_IA --> B_DOCS
+    B_DOCS --> B_Impact
+    B_Impact --> B_Roadmap
+    B_Roadmap --> B_Bridge
+
+    B_JSON -- 資料流注入 --> B_Pipeline
+
+    %% ==========================================================
+    %% PM 技術展示內部連線
+    %% ==========================================================
+    D_App --> D_Config
+    D_App --> D_Lib
+    D_App --> D_Steps
+    D_App --> D_Dist
+    D_Lib -- 共用 entry ID --> D_Config
+
+    %% ==========================================================
+    %% 外部服務連線（v5.5 雙軌共用同一 Google Form 後台）
+    %% ==========================================================
+    A_Success -- 11 欄資料 --> E_GForms
+    D_Lib -- 11 欄資料 --> E_GForms
+    E_GForms -- 自動寫入 --> E_GSheets
+    E_GSheets -- 人工核對觸發 --> E_Email
+
+    %% ==========================================================
+    %% 跨頁單向 Cross-Link
+    %% ==========================================================
+    B_Hero -- ⚡ Cross-Link 單向跳轉 --> A_Entry
+    B_IA -- 嵌入 mermaid 渲染 --> i18n
+    B_Tech -- 引用 PM 技術展示 --> D_App
+
+    %% ==========================================================
+    %% classDef 色彩定義
+    %% ==========================================================
+    classDef exp        fill:#d4edda,stroke:#28a745,color:#155724,font-weight:bold
+    classDef logic      fill:#cce5ff,stroke:#0056b3,color:#003875,font-weight:bold
+    classDef pmtech     fill:#fce4ec,stroke:#c2185b,color:#880e4f,font-weight:bold
+    classDef ext        fill:#e2e3e5,stroke:#6c757d,color:#383d41,font-weight:bold
+    classDef data       fill:#fff3cd,stroke:#d9960a,color:#7a4f00,font-weight:bold
+    classDef i18n_node  fill:#f3e5f5,stroke:#7b1fa2,color:#4a0072,font-weight:bold
+    classDef success    fill:#c8e6c9,stroke:#388e3c,color:#1b5e20,font-weight:bold
+    classDef fail       fill:#ffcdd2,stroke:#c62828,color:#b71c1c,font-style:italic
+    classDef faq        fill:#fff8e1,stroke:#f9a825,color:#7a5500
+    classDef pillars    fill:#fff3e0,stroke:#ef6c00,color:#bf360c,font-weight:bold
+    classDef goods      fill:#fce4ec,stroke:#c2185b,color:#880e4f,font-weight:bold
+
+    %% ==========================================================
+    %% 節點套用 class
+    %% ==========================================================
+    class A_Entry,A_Home,A_About,A_WhyUs,A_Plans,A_Plans_Edu,A_Plans_ESG,A_Booking,A_Submit,A_Footer exp
+    class A_Pillars pillars
+    class A_Plans_Goods,A_Plans_Art goods
+    class B_Entry,B_Hero,B_Origin,B_Problem,B_Exec,B_VSM,B_Pipeline,B_Tech,B_UR,B_IA,B_DOCS,B_Impact,B_Roadmap,B_Bridge logic
+    class D_App,D_Config,D_Lib,D_Steps,D_Dist pmtech
+    class E_GForms,E_GSheets,E_Email ext
+    class B_JSON data
+    class i18n i18n_node
+    class A_Success success
+    class A_Fail fail
+    class A_FAQ faq

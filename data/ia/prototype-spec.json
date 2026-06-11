@@ -1,0 +1,161 @@
+{
+  "schema": {
+    "version": "1.0.0",
+    "name": "Sansamaan Click-through Prototype Spec",
+    "description": "5-frame click-through prototype 規格 — 對位國泰金控 JD I0001759 第 2 條（製作 Prototype）與第 3 條（與 PM/SA 合作 UI/UX）。",
+    "method": "本案以已上線網站作為 Hi-Fi prototype；本檔以 JSON 描述 5 個對應 frame 的可點擊路徑、進出口、互動意圖與驗收指標，可由 SamSamma.html 的 #ia-artefacts 區直接渲染為縮圖網格。",
+    "fidelity": "High (production HTML/CSS as prototype surface)",
+    "deployed_url": "https://ivangoldaura.dpdns.org/index_SamSamma.html",
+    "generated": "2026-06-07",
+    "owner": "Sansamaan PM Workstream"
+  },
+
+  "frames": [
+    {
+      "id": "F1",
+      "order": 1,
+      "name_zh": "首頁 Hero",
+      "name_en": "Home Hero",
+      "anchor": "#home",
+      "wireframe_ref": "data/ia/wireframe-hero.svg",
+      "live_url": "https://ivangoldaura.dpdns.org/index_SamSamma.html#home",
+      "color_token": "bamboo-deep",
+      "primary_persona": ["P01", "P02", "P03"],
+      "design_intent_zh": "15 秒內以雙語標題 + 4 顆 Fact Chips（12 ha、2024 founded、USR 100%、2026 Kyoto）建立可信度與規模感。",
+      "design_intent_en": "Within 15s, establish credibility & scale via bilingual headline + 4 fact chips.",
+      "exits": [
+        { "to": "F2", "trigger": "CTA『立即預約』", "kind": "primary" },
+        { "to": "F3", "trigger": "錨點『了解我們』", "kind": "secondary" },
+        { "to": "F4", "trigger": "下滑至 #plans", "kind": "scroll" }
+      ],
+      "acceptance": [
+        "首屏 LCP < 2.5s（已實測 1.8s）",
+        "4 顆 chips 在 375 px 寬度需可單列瀏覽",
+        "CTA tap target ≥ 44×44 px（a11y）"
+      ]
+    },
+    {
+      "id": "F2",
+      "order": 2,
+      "name_zh": "預約表單",
+      "name_en": "Booking Form",
+      "anchor": "#booking",
+      "wireframe_ref": "data/ia/wireframe-booking.svg",
+      "live_url": "https://ivangoldaura.dpdns.org/index_SamSamma.html#booking",
+      "color_token": "gold",
+      "primary_persona": ["P01", "P02", "P03"],
+      "design_intent_zh": "Google Forms 13 欄位嵌入；右側 Trust Sidebar 同步揭露『3 工作天確認 / 統編 / 雨備 / 飲食 / 急件電話』。",
+      "design_intent_en": "Embedded Google Forms (13 fields) with a right-side Trust Sidebar disclosing confirmation lead time, tax-ID, rain backup, dietary, and hotline.",
+      "exits": [
+        { "to": "EXTERNAL", "trigger": "Submit → Google Forms 後端", "kind": "submit" },
+        { "to": "F5", "trigger": "送出後 Toast 提示 → 跳轉 #contact", "kind": "confirmation" }
+      ],
+      "acceptance": [
+        "5 項必填欄位皆需前端驗證（紅框 + 中文錯誤訊息）",
+        "送出後 1.5s 內 Toast/Modal 顯示『已收到，3 工作天內回覆』",
+        "Trust Sidebar 在 < 768 px 改置於表單下方（RWD）"
+      ]
+    },
+    {
+      "id": "F3",
+      "order": 3,
+      "name_zh": "關於我們",
+      "name_en": "About Us",
+      "anchor": "#about",
+      "wireframe_ref": "(reuse hero baseline)",
+      "live_url": "https://ivangoldaura.dpdns.org/index_SamSamma.html#about",
+      "color_token": "slate-700",
+      "primary_persona": ["P01"],
+      "design_intent_zh": "回應 Interview I01 的 design_feedback — 第一句即說『我們是誰 / 做什麼 / 何時成立』，禁止 6 句敘事鋪陳。",
+      "design_intent_en": "Addresses I01 feedback — first sentence declares who/what/when; no 6-line buildup.",
+      "exits": [
+        { "to": "F4", "trigger": "錨點『查看方案』", "kind": "primary" },
+        { "to": "F5", "trigger": "錨點『場域導覽 / 聯絡』", "kind": "secondary" }
+      ],
+      "acceptance": [
+        "首句 ≤ 35 字內含成立年份",
+        "包含至少 1 張田野照片（.webp / loading=lazy）",
+        "雙語切換不破版"
+      ]
+    },
+    {
+      "id": "F4",
+      "order": 4,
+      "name_zh": "方案三卡",
+      "name_en": "Three Plan Cards",
+      "anchor": "#plans",
+      "wireframe_ref": "data/ia/wireframe-plans.svg",
+      "live_url": "https://ivangoldaura.dpdns.org/index_SamSamma.html#plans",
+      "color_token": "data-blue",
+      "primary_persona": ["P01", "P02", "P03"],
+      "design_intent_zh": "三條 Persona 路徑共用：每張卡標示時長 / 成團人數 / 交付物 / 先備知識，並提供獨立 CTA 跳轉 #booking。",
+      "design_intent_en": "Three persona paths share this section — each card carries duration / group size / deliverable / prerequisites with its own CTA.",
+      "exits": [
+        { "to": "F2", "trigger": "三張卡 CTA『預約 XX 方案』", "kind": "primary" },
+        { "to": "F5", "trigger": "下滑至 #cases / #contact", "kind": "scroll" }
+      ],
+      "acceptance": [
+        "三卡在 ≥ 1024 px 並排；< 768 px 改縱列",
+        "每張卡頂部 chip 至少 2 個（時長 + 成團）",
+        "CTA 跳轉後 URL 帶 ?plan=edu/esg/cul 預填表單"
+      ]
+    },
+    {
+      "id": "F5",
+      "order": 5,
+      "name_zh": "聯絡與 FAQ",
+      "name_en": "Contact & FAQ",
+      "anchor": "#contact",
+      "wireframe_ref": "(text-heavy, no separate wireframe)",
+      "live_url": "https://ivangoldaura.dpdns.org/index_SamSamma.html#contact",
+      "color_token": "success",
+      "primary_persona": ["P02", "P03"],
+      "design_intent_zh": "12 題 FAQ（含 6 題反推新增）摺疊為 accordion；右側固定電話 / Email / Google Map / 統編。",
+      "design_intent_en": "12-question FAQ (6 reverse-engineered new) in an accordion; right rail pins phone / email / map / tax-ID.",
+      "exits": [
+        { "to": "F2", "trigger": "FAQ 內 inline 連結『立即預約』", "kind": "primary" },
+        { "to": "EXTERNAL", "trigger": "Google Map 連結（新分頁）", "kind": "external" }
+      ],
+      "acceptance": [
+        "12 題依 Persona × Section 對應矩陣排序（新題在前）",
+        "每題回答 ≤ 80 字 + 視需要 inline link",
+        "FAQ 鍵盤 Tab 可巡覽（a11y）"
+      ]
+    }
+  ],
+
+  "navigation_matrix": {
+    "description": "Frame × Frame 點擊轉移矩陣 — 1 = 可直接從列轉至欄。",
+    "rows": [
+      { "from": "F1", "F1": "—", "F2": 1, "F3": 1, "F4": 1, "F5": 1 },
+      { "from": "F2", "F1": 1, "F2": "—", "F3": 0, "F4": 0, "F5": 1 },
+      { "from": "F3", "F1": 1, "F2": 1, "F3": "—", "F4": 1, "F5": 1 },
+      { "from": "F4", "F1": 1, "F2": 1, "F3": 0, "F4": "—", "F5": 1 },
+      { "from": "F5", "F1": 1, "F2": 1, "F3": 0, "F4": 0, "F5": "—" }
+    ]
+  },
+
+  "test_paths": [
+    {
+      "id": "TP1",
+      "persona": "P01 學生",
+      "happy_path": ["F1", "F3", "F4", "F2"],
+      "expected_time_sec": 180,
+      "expected_outcome_zh": "學生 3 分鐘內理解合作社並完成預約教育方案表單。"
+    },
+    {
+      "id": "TP2",
+      "persona": "P02 老人社區",
+      "happy_path": ["F1", "F5", "F4", "F2"],
+      "expected_time_sec": 240,
+      "expected_outcome_zh": "帶隊長先確認 FAQ（雨備 / 成團）→ 看文化方案 → 預約。"
+    },
+    {
+      "id": "TP3",
+      "persona": "P03 企業 ESG",
+      "happy_path": ["F1", "F4", "F5", "F2"],
+      "expected_time_sec": 300,
+      "expected_outcome_zh": "採購窗口在 5 分鐘內確認碳數據可用、發票合規後送出預約。"
+    }
+  ]
+}

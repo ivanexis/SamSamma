@@ -1,0 +1,262 @@
+{
+  "schema": {
+    "version": "1.0.0",
+    "name": "Sansamaan Visitor Persona, Interview Log & FAQ Dataset",
+    "description": "山莎蔓岸合作社訪客研究資料底盤 — 3 條 Persona + 3 場 Interview Log + 12 題訪客 FAQ + Persona × Section 對應矩陣。對位國泰金控 JD I0001759 第 2 條（用戶訪談 / 設計工作坊 / 用戶測試）。",
+    "generated": "2026-06-07",
+    "owner": "山莎蔓岸 PM Workstream",
+    "license": "Internal Case-Study Use",
+    "method_disclosure": "Reverse-Engineered Artefact — 訪談紀錄基於合作社 2025-09 ~ 2025-11 真實接待場景反向整理；非開發前 waterfall 產出，符合敏捷精神。",
+    "source": [
+      "2025-09-07 明新科大 USR 學生入山實作（7 張紀實照片 + 現場互動）",
+      "2025-11-17 其他社區老人來園區參訪（3 張紀實照片 + 帶隊長對話）",
+      "2025-Q4 企業 ESG 採購窗口電話諮詢 1 場（合作社理事長口述回憶）"
+    ]
+  },
+
+  "personas": [
+    {
+      "id": "P01",
+      "code": "student",
+      "name_zh": "USR 學生 · 林同學",
+      "name_en": "USR Student · Lin",
+      "color_token": "success",
+      "icon": "fa-graduation-cap",
+      "demographics": {
+        "age_range": "19-22",
+        "role_zh": "明新科大 USR 計畫修課學生",
+        "role_en": "MUST USR program participant",
+        "channel_zh": "由學校老師帶隊，第一次接觸部落",
+        "channel_en": "Brought in by university faculty; first-time tribal visit"
+      },
+      "primary_motivation_zh": "完成 USR 學分要求 + 想了解低碳產業實作",
+      "primary_motivation_en": "Fulfill USR credit requirements + understand low-carbon industry hands-on",
+      "pain_points": [
+        { "zh": "這邊是什麼？做什麼？什麼時候成立？三秒內看不到答案就想退站", "en": "What is this place / what do you do / when founded — bounce in 3 seconds if unclear" },
+        { "zh": "怕被當免費勞動力，不想只去做完就走", "en": "Worry about being treated as free labor with no takeaway" },
+        { "zh": "看不懂網站的 ESG / 碳匯 / SDG 等專業術語", "en": "Cannot decode ESG / carbon-sink / SDG jargon" }
+      ],
+      "expectations": [
+        { "zh": "5 分鐘內理解合作社的事業全貌", "en": "Grasp the co-op's business in 5 minutes" },
+        { "zh": "看到過往學生實作的真實照片與成果", "en": "See real photos of previous students' work and outcomes" },
+        { "zh": "明確的時長 / 行程 / 安全須知", "en": "Clear duration / itinerary / safety briefing" }
+      ],
+      "key_questions": [
+        "Q1 這邊是什麼？",
+        "Q2 你們在做什麼？",
+        "Q3 什麼時候成立？",
+        "Q4 我來這邊會做什麼？",
+        "Q5 學分怎麼算？"
+      ],
+      "target_sections_on_client_site": ["#about", "#why-us", "#cases", "#plans (Education card)"]
+    },
+    {
+      "id": "P02",
+      "code": "senior_community",
+      "name_zh": "鄰近社區理事長 · 黃理事長",
+      "name_en": "Neighboring Community Chair · Huang",
+      "color_token": "warn",
+      "icon": "fa-users",
+      "demographics": {
+        "age_range": "55-70",
+        "role_zh": "鄰近社區發展協會理事長 / 帶隊長",
+        "role_en": "Neighboring community-association chair / tour leader",
+        "channel_zh": "口耳相傳 + 友社推薦，自費組團來訪",
+        "channel_en": "Word-of-mouth + peer-association referral; self-funded group visit"
+      },
+      "primary_motivation_zh": "為社區長輩規劃文化交流與健康活動",
+      "primary_motivation_en": "Plan cultural-exchange and wellness activities for community elders",
+      "pain_points": [
+        { "zh": "怕路途太遠、山路顛簸長輩受不了", "en": "Worry about long mountain drive being hard on elders" },
+        { "zh": "不知道有沒有無障礙設施、廁所、休息區", "en": "Unsure about accessibility, restrooms, and rest areas" },
+        { "zh": "團體 10-15 人成本能否壓在合理範圍", "en": "Group cost of 10-15 people staying within budget" }
+      ],
+      "expectations": [
+        { "zh": "預估車程 + 公車路線 + 停車空間明確說明", "en": "Clear driving time + bus routes + parking info" },
+        { "zh": "可選半日 / 一日的彈性方案", "en": "Flexible half-day / full-day options" },
+        { "zh": "活動內容偏輕量（不要太多走路、不要太多勞動）", "en": "Light activity load (less walking, less heavy labor)" }
+      ],
+      "key_questions": [
+        "Q1 我們也能來嗎？",
+        "Q2 路會不會太遠？",
+        "Q3 要花多少錢？",
+        "Q4 最少幾個人成團？",
+        "Q5 下雨會取消嗎？"
+      ],
+      "target_sections_on_client_site": ["#about", "#venue", "#plans (Senior card · NEW)", "#contact (FAQ)"]
+    },
+    {
+      "id": "P03",
+      "code": "enterprise_esg",
+      "name_zh": "企業 ESG 採購窗口 · 陳專員",
+      "name_en": "Enterprise ESG Procurement · Chen",
+      "color_token": "data-blue",
+      "icon": "fa-briefcase",
+      "demographics": {
+        "age_range": "30-45",
+        "role_zh": "上市公司 CSR / 永續部 / 採購窗口",
+        "role_en": "Listed company CSR / Sustainability / Procurement",
+        "channel_zh": "Google 搜尋『原民部落 ESG 採購』+ LinkedIn 找窗口",
+        "channel_en": "Google search 'indigenous ESG procurement' + LinkedIn outreach"
+      },
+      "primary_motivation_zh": "為公司年度 ESG 報告書找可被揭露的碳匯認養 / 員工 CSR 活動",
+      "primary_motivation_en": "Source disclosable carbon-sink adoption / CSR activities for annual ESG report",
+      "pain_points": [
+        { "zh": "碳數據沒辦法被會計師認列就無法寫進報告", "en": "Carbon data unverifiable by auditors cannot enter the report" },
+        { "zh": "需要能開立統編、可申報為合法成本的單據", "en": "Need invoices with tax-ID, deductible as legitimate cost" },
+        { "zh": "對口窗口分散（合作社、部落、政府）會讓採購流程拖三個月", "en": "Fragmented contacts (co-op / tribe / gov) stall procurement for 3 months" }
+      ],
+      "expectations": [
+        { "zh": "首頁就能看到具體碳匯數據（噸 / 公頃 / 年）", "en": "Concrete carbon metrics (tonnes / ha / year) visible on homepage" },
+        { "zh": "明確說明：1 份合約、1 個窗口、1 套發票流程", "en": "Clear messaging: one contract, one contact, one invoicing flow" },
+        { "zh": "至少 1 個企業合作 case study 可佐證", "en": "At least 1 enterprise case study to verify" }
+      ],
+      "key_questions": [
+        "Q1 碳數據可以列入我們 ESG 報告嗎？",
+        "Q2 能不能開立發票 / 統一編號？",
+        "Q3 你們有跟哪些企業合作過？",
+        "Q4 最低成團人數是多少？",
+        "Q5 從接洽到出貨 / 出團要多久？"
+      ],
+      "target_sections_on_client_site": ["#why-us", "#cases (Enterprise)", "#venue", "#contact (FAQ)"]
+    }
+  ],
+
+  "interview_logs": [
+    {
+      "id": "I01",
+      "persona_id": "P01",
+      "date": "2025-09-07",
+      "title_zh": "明新科大 USR 學生入山實作",
+      "title_en": "MUST USR Student Hands-on Workshop",
+      "participants_zh": "6 名學生 + 1 名指導老師 + 合作社理事長 + 竹編師傅",
+      "participants_en": "6 students + 1 faculty advisor + co-op chair + master bamboo craftsman",
+      "duration_h": 4,
+      "deliverable_zh": "完成入口竹柵欄 1 座",
+      "deliverable_en": "Completed 1 entrance bamboo fence",
+      "method_zh": "現場參與式觀察 + 結束前 30 分鐘焦點訪談",
+      "method_en": "Participatory observation + 30-min focus-group at end",
+      "S_situation_zh": "學生第一次踏入賽夏部落，對『竹炭怎麼做』、『為什麼要做』、『合作社是什麼』完全空白；理事長花了 20 分鐘口頭介紹，但學生眼神渙散，期待『實作』而非『聽課』。",
+      "S_situation_en": "Students stepping into the Saisiyat village for the first time; no prior knowledge of charcoal-making, motivation, or what a co-op is. The chair gave a 20-min verbal intro, but students lost focus — they expected hands-on, not a lecture.",
+      "T_task_zh": "讓學生在 4 小時內既完成實體交付（竹柵欄），又能帶走『合作社到底在做什麼』的清晰認知。",
+      "T_task_en": "Within 4 hours, deliver both a physical outcome (fence) and a clear takeaway: what the co-op actually does.",
+      "A_action_zh": "(1) 改先做後說 — 學生到場直接分組砍竹、削皮、組裝；(2) 過程中竹編師傅一邊做一邊用閩南語混台語介紹文化典故；(3) 結束前 30 分鐘把師傅、理事長、學校老師三方圍坐，學生自由發問。",
+      "A_action_en": "(1) Switched to do-first-explain-later — students harvested, peeled, assembled bamboo on arrival; (2) Master craftsman narrated cultural context in mixed Hokkien-Taiwanese while working; (3) Final 30-min open Q&A with master / chair / faculty in circle.",
+      "R_result_zh": "竹柵欄完工；學生 6 人在會議室報告心得時皆能正確回答『合作社做什麼』、『為什麼是合作社不是公司』、『竹炭跟一般炭差在哪』三題。指導老師當場詢問下一梯次合作時程。",
+      "R_result_en": "Fence completed; all 6 students correctly answered three core questions in the wrap-up. Faculty advisor immediately inquired about next batch scheduling.",
+      "design_feedback_for_client_site": [
+        { "zh": "客戶網站 #about 必須在第一句就說『我們是誰、做什麼』，禁止 6 句敘事鋪陳", "en": "Client site #about must declare who/what in first sentence — no 6-line buildup" },
+        { "zh": "#cases 必須有『學生實作』案例，而且要有照片佐證", "en": "#cases must include a 'student hands-on' case with photo evidence" },
+        { "zh": "#plans 教育卡要明確標示時長 + 交付物 + 是否需要先備知識", "en": "#plans Education card must show duration + deliverable + prerequisites" }
+      ]
+    },
+    {
+      "id": "I02",
+      "persona_id": "P02",
+      "date": "2025-11-17",
+      "title_zh": "鄰近社區老人來園區參訪",
+      "title_en": "Neighboring Community Elders Visit",
+      "participants_zh": "12 位社區長輩 + 黃理事長帶隊 + 合作社發起人接待",
+      "participants_en": "12 community elders + Chair Huang as leader + co-op founder hosting",
+      "duration_h": 3,
+      "deliverable_zh": "場域導覽 + 茶點交流 + 紀念合影",
+      "deliverable_en": "Site tour + tea & snacks + group photo",
+      "method_zh": "全程半結構式觀察 + 中場休息時與帶隊長 15 分鐘訪談",
+      "method_en": "Semi-structured observation + 15-min interview with tour leader during break",
+      "S_situation_zh": "長輩們對山路顛簸、上山時間長頗有微詞；下車後第一句話多是『廁所在哪』、『有沒有椅子』；發起人原本準備了 1 小時的『竹炭升級歷程』導覽，發現長輩 20 分鐘就累了。",
+      "S_situation_en": "Elders complained about bumpy mountain roads and long drive time; first questions off the bus were 'where's the restroom' and 'is there seating'; the founder's planned 1-hour 'charcoal upgrade journey' tour exhausted them at 20 min.",
+      "T_task_zh": "把原本『單向技術導覽』改為『雙向文化交流』，並補強體力相關設施／資訊。",
+      "T_task_en": "Pivot from one-way technical tour to two-way cultural exchange, plus strengthen physical/info accessibility.",
+      "A_action_zh": "(1) 把導覽路線砍半，留 40 分鐘在涼亭區喝茶聊天；(2) 帶隊長主動分享他們社區的竹工藝歷史，形成互動；(3) 結束前發起人記錄到『下次團體來訪前先發行前須知（距離、廁所、座位、最低成團）』。",
+      "A_action_en": "(1) Halved the tour route; kept 40 min for tea & chat at the pavilion; (2) Tour leader spontaneously shared their community's bamboo-craft history, creating exchange; (3) Founder logged 'send pre-visit notice (distance / restroom / seating / min group size) to future group bookings'.",
+      "R_result_zh": "長輩走時主動詢問下次什麼時候可以再來、能不能推薦給其他社區；3 張合影照片成為客戶網站 #cases 區的『社區參訪』類別補件。",
+      "R_result_en": "Elders proactively asked when they could return and whether they could recommend to other communities; 3 group photos became 'community-visit' category fillers for #cases.",
+      "design_feedback_for_client_site": [
+        { "zh": "客戶網站 #venue 必須加『找到我們』微區：地圖、車程、停車、廁所", "en": "Client site #venue needs a 'find us' micro-section: map / driving time / parking / restrooms" },
+        { "zh": "#plans 必須補一張『銀髮社區方案』，明確標示最低成團人數與輕量行程", "en": "#plans needs a new 'Senior Community' card with min group size and light itinerary" },
+        { "zh": "#contact FAQ 必須加『下雨會取消嗎』、『最低成團人數』兩題", "en": "#contact FAQ must add 'rain cancellation' and 'min group size' questions" }
+      ]
+    },
+    {
+      "id": "I03",
+      "persona_id": "P03",
+      "date": "2025-Q4",
+      "title_zh": "企業 ESG 採購窗口電話諮詢",
+      "title_en": "Enterprise ESG Procurement Phone Consultation",
+      "participants_zh": "某上市公司 CSR 部專員 1 名 + 合作社理事長",
+      "participants_en": "1 CSR specialist from a listed company + co-op chair",
+      "duration_h": 0.75,
+      "deliverable_zh": "提案需求書草稿（未成案，但建立窗口）",
+      "deliverable_en": "Draft proposal scope (no contract yet, but channel established)",
+      "method_zh": "首次來電 30 分鐘需求釐清 + 後續 Email 15 分鐘規格回覆",
+      "method_en": "First 30-min phone scoping + follow-up 15-min email specification reply",
+      "S_situation_zh": "對方來電第一句即問『你們的碳數據可以列入我們的 ESG 報告書嗎？』、『可以開立統編嗎？』── 兩個問題都決定『我們會不會繼續談下去』。理事長當下未能精準回答，整通電話折損 15 分鐘在釐清『碳數據怎麼算』。",
+      "S_situation_en": "Caller opened with two gating questions: 'Can your carbon data go into our ESG report?' and 'Can you issue invoices with our tax ID?' — both determine 'do we continue or not'. The chair couldn't answer precisely on the spot; 15 min wasted clarifying carbon-data methodology.",
+      "T_task_zh": "讓首頁 + 5 分鐘瀏覽即可獨立回答企業窗口的兩個 gating 問題。",
+      "T_task_en": "Make the homepage + 5-minute browse self-sufficient to answer both gating questions.",
+      "A_action_zh": "(1) 把 7,526 m² × 77.3 tC/ha 等具體數據塞進客戶網站 Hero fact chips；(2) FAQ 明確寫『可開立統編』與『碳數據揭露格式對齊 GHG Protocol』；(3) 把 carbon-data.json 開放下載，作為『可被會計師查驗』的證據。",
+      "A_action_en": "(1) Embedded 7,526 m² × 77.3 tC/ha figures into client-site Hero fact chips; (2) FAQ explicitly states 'tax-ID invoicing supported' and 'carbon data follows GHG Protocol disclosure'; (3) Made carbon-data.json publicly downloadable as auditor-verifiable evidence.",
+      "R_result_zh": "後續第二家企業電話來訪時，對方主動表示『你們網站上的數據我已經看過，今天想直接談合約』── 從 5 分鐘討論進入合約面，整體採購週期由 3 個月壓縮為 4 週。",
+      "R_result_en": "On the next enterprise call, the caller stated 'I've already reviewed your site data; today let's go straight to contract' — 5-min discussion to contract phase, compressing the procurement cycle from 3 months to 4 weeks.",
+      "design_feedback_for_client_site": [
+        { "zh": "客戶網站 Hero fact chips 必須包含碳匯具體數據", "en": "Client-site Hero fact chips must include concrete carbon metrics" },
+        { "zh": "FAQ 必須有『可開統編』、『ESG 報告書揭露』、『最低成團』、『接洽到出貨週期』四題", "en": "FAQ must cover invoicing / ESG disclosure / min group / lead-time" },
+        { "zh": "#why-us 必須連結 carbon-data.json 下載按鈕", "en": "#why-us must link to the carbon-data.json download button" }
+      ]
+    }
+  ],
+
+  "faq_reverse_engineered": {
+    "total": 12,
+    "existing_on_client_site": 6,
+    "to_add": 6,
+    "items": [
+      { "id": "F01", "from_persona": "P01", "section": "#about",   "status": "needs-section-update",
+        "q_zh": "山莎蔓岸是什麼？", "q_en": "What is Sansamaan?",
+        "a_zh": "2024 年 11 月成立的賽夏族大隘部落低碳竹產業合作社，主場在新竹縣五峰鄉 12 公頃竹林。", "a_en": "A Saisiyat-led low-carbon bamboo industry co-op founded in Nov 2024 at the Daai village, operating across 12 hectares of bamboo forest in Wufeng, Hsinchu." },
+      { "id": "F02", "from_persona": "P01", "section": "#about",   "status": "needs-section-update",
+        "q_zh": "你們在做什麼？", "q_en": "What do you do?",
+        "a_zh": "把竹子做成炭、把炭做成 ESG 採購案；同時提供學校 USR、企業 CSR、文化參訪三類體驗。", "a_en": "Turn bamboo into charcoal, charcoal into ESG procurement contracts; offer school USR, corporate CSR, and cultural-visit experiences." },
+      { "id": "F03", "from_persona": "P01", "section": "#why-us",  "status": "needs-section-update",
+        "q_zh": "什麼時候成立的？", "q_en": "When was it founded?",
+        "a_zh": "合作社於 2024 年 11 月正式登記，但合作社核心成員自 2021 年起便以個人身份投入大隘部落地方創生研究。", "a_en": "Co-op formally registered in Nov 2024; core members had been engaged in Daai-village revitalization research since 2021." },
+      { "id": "F04", "from_persona": "P02", "section": "#venue",   "status": "needs-section-update",
+        "q_zh": "從新竹市區開車過來要多久？", "q_en": "How long is the drive from Hsinchu City?",
+        "a_zh": "約 1 小時 10 分鐘（44 公里），全程鋪設路面；最後 5 公里為山區路段，建議自小客車前往。", "a_en": "About 1h 10min (44 km), fully paved; final 5 km is mountain road, sedan recommended." },
+      { "id": "F05", "from_persona": "P02", "section": "#contact", "status": "to-add",
+        "q_zh": "最低成團人數是多少？", "q_en": "What is the minimum group size?",
+        "a_zh": "教育與企業方案最少 10 人成團；文化體驗 4 人即可；銀髮社區方案 8 人成團，皆可加價彈性調整。", "a_en": "Education and Enterprise plans: min 10 people; Culture plan: min 4; Senior Community plan: min 8 — surcharge available for smaller groups." },
+      { "id": "F06", "from_persona": "P02", "section": "#contact", "status": "to-add",
+        "q_zh": "下雨會取消嗎？", "q_en": "Do you cancel on rainy days?",
+        "a_zh": "小雨照常（場域內有涼亭與室內竹炭屋遮蔽）；豪大雨依氣象署黃色警戒以上於前一日 17:00 前通知改期。", "a_en": "Light rain: proceed (pavilion & indoor charcoal house provide shelter); heavy rain (CWB yellow alert+): rescheduled with notice by 17:00 the prior day." },
+      { "id": "F07", "from_persona": "P02", "section": "#contact", "status": "to-add",
+        "q_zh": "可以選素食或特殊飲食嗎？", "q_en": "Can we request vegetarian or special diets?",
+        "a_zh": "可以，預約備註欄填寫即可；蛋奶素、純素、無麩質、過敏原皆能配合，需提前 3 天告知。", "a_en": "Yes, indicate in the booking notes; lacto-ovo, vegan, gluten-free, allergens supported with 3-day advance notice." },
+      { "id": "F08", "from_persona": "P03", "section": "#contact", "status": "to-add",
+        "q_zh": "能不能開立發票 / 統一編號？", "q_en": "Can you issue invoices with tax ID?",
+        "a_zh": "可以。合作社統一編號 95216178，可開立電子發票或紙本三聯式，符合營業稅法。", "a_en": "Yes. Co-op tax ID 95216178; e-invoice or paper triplicate, fully compliant with VAT regulations." },
+      { "id": "F09", "from_persona": "P03", "section": "#contact", "status": "to-add",
+        "q_zh": "碳數據可以列入我們企業的 ESG 報告嗎？", "q_en": "Can your carbon data be included in our ESG report?",
+        "a_zh": "可以。我們提供基於 RTK 多光譜空拍實測的 7,526.16 m² 樣區基線（77.3 tC/ha），對齊 GHG Protocol 揭露格式，可直接引用於 ESG 報告 Scope 3 章節。", "a_en": "Yes. We provide an RTK multispectral aerial baseline of 7,526.16 m² (77.3 tC/ha), aligned with GHG Protocol disclosure for ESG Scope 3 reporting." },
+      { "id": "F10", "from_persona": "P03", "section": "#contact", "status": "to-add",
+        "q_zh": "從接洽到出團 / 出貨要多久？", "q_en": "What is the lead time from inquiry to delivery?",
+        "a_zh": "標準體驗方案 2 週前敲定；企業客製 ESG 採購案 4-6 週；碳匯認養合約因需法律審視，建議預留 8 週。", "a_en": "Standard experience: 2 weeks; enterprise custom CSR: 4-6 weeks; carbon-sink adoption contracts (with legal review): 8 weeks recommended." },
+      { "id": "F11", "from_persona": "all", "section": "#contact", "status": "needs-section-update",
+        "q_zh": "可以團體預約或客製化嗎？", "q_en": "Can we book as a group or customize?",
+        "a_zh": "都可以。團體 10 人以上享 8 折優惠；客製化方案請於預約表單『備註』填寫需求，3 個工作天內回覆可行性與報價。", "a_en": "Both supported. Groups of 10+: 20% off; custom packages: note in booking form, get feasibility & quote within 3 business days." },
+      { "id": "F12", "from_persona": "all", "section": "#contact", "status": "needs-section-update",
+        "q_zh": "請問預約之後多久會收到確認？", "q_en": "How soon will I receive confirmation after booking?",
+        "a_zh": "3 個工作天內以 Email 回覆確認與行前須知；若 5 天未收到請來電 0975958121 確認。", "a_en": "Email confirmation + pre-visit notes within 3 business days; if not received within 5 days, please call 0975958121." }
+    ]
+  },
+
+  "persona_section_matrix": {
+    "description_zh": "Persona × 客戶網站 Section × 待解問題的對應矩陣 — 證明本案 IA 設計直接源自用戶研究。",
+    "description_en": "Persona × Section × Question matrix — proves IA design is grounded in user research.",
+    "rows": [
+      { "persona": "P01 學生",   "home": "看主視覺",       "about": "Q1+Q2",      "why_us": "Q3",       "plans": "Education 卡",                  "cases": "需學生實作 case", "venue": "—",            "contact": "F11/F12" },
+      { "persona": "P02 老人社區", "home": "看 fact chips", "about": "Q1",         "why_us": "—",        "plans": "需 Senior 卡",                  "cases": "需社區 case",     "venue": "F04 交通",     "contact": "F05/F06/F07" },
+      { "persona": "P03 企業 ESG", "home": "看碳數據 chip", "about": "—",          "why_us": "看 USR",   "plans": "Enterprise 卡",                 "cases": "需企業 case",     "venue": "看設施規模",   "contact": "F08/F09/F10" }
+    ]
+  }
+}

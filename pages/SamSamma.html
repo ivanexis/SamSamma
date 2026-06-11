@@ -22,7 +22,7 @@
     })();
   </script>
   <title>山莎蔓岸 數位轉型｜PM × 前端案例研究 - Ivan's Portfolio</title>
-  <meta name="description" content="賽夏族 12 公頃竹林聚落數位轉型案例 ── 從 2021 大學畢業設計到 2026 NT$12M 兩年期計畫提案（評審中），親手交付合作社官網與零伺服器預約工作流。">
+  <meta name="description" content="賽夏族 12 公頃竹林聚落數位轉型案例 ── 從 2021 大學畢業設計到 2026 NT$12M 兩年期計畫（已確認得標、公文核定中），親手交付合作社官網與零伺服器預約工作流。">
   <link rel="icon" type="image/webp" href="../images/logo_2.webp">
   <meta property="og:type" content="article">
   <meta property="og:title" content="山莎蔓岸 數位轉型｜PM × 前端案例研究">
@@ -458,12 +458,12 @@
        規範：col-lg-5 .offset-lg-7、側欄極簡（H2 + 1 句 + 1 CTA）
        ============================================================ */
     .pm-hero.pm-hero-magazine {
-      padding: 0;
-      min-height: 82vh;
+      padding: 4.5rem 0 5rem;
+      min-height: 62vh;
       display: flex;
       align-items: center;
       background:
-        linear-gradient(rgba(0,0,0,0.42), rgba(0,0,0,0.42)),
+        linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.7)),
         url('../images/SamSamma/效果圖/主視覺.webp') center / cover no-repeat;
       background-color: var(--bamboo-deep);
     }
@@ -479,58 +479,80 @@
       backdrop-filter: blur(8px);
     }
 
-    .hero-sidecard {
-      background: var(--white);
-      border-radius: var(--radius-xl, 20px);
-      padding: clamp(1.75rem, 3vw, 2.5rem);
-      box-shadow: 0 20px 50px rgba(0,0,0,0.18);
-      border-left: 5px solid var(--gold);
-    }
-    .hero-sidecard .sidecard-eyebrow {
+    /* ===== Hero Editorial（v6.1 全寬大字雜誌風） ===== */
+    .pm-hero-editorial .hero-eyebrow {
       display: inline-block;
       font-family: 'Inter', sans-serif;
-      font-size: 0.7rem; font-weight: 800;
-      letter-spacing: 0.14em;
-      color: var(--gold);
-      margin-bottom: 0.85rem;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      color: rgba(255, 255, 255, 0.78);
+      margin-bottom: 1.5rem;
       text-transform: uppercase;
     }
-    .hero-sidecard h2.sidecard-title {
-      font-size: clamp(1.5rem, 2.6vw, 2.05rem);
-      font-weight: 800;
-      color: var(--bamboo-deep);
-      line-height: 1.35;
-      margin-bottom: 1rem;
+    .pm-hero-editorial .eyebrow-accent {
+      color: var(--gold);
+      padding: 0.2rem 0.55rem;
+      border: 1px solid var(--gold);
+      border-radius: 4px;
+      margin-left: 0.5rem;
+      font-size: 0.92em;
     }
-    .hero-sidecard h2.sidecard-title strong { color: var(--gold); }
-    .hero-sidecard .sidecard-lede {
-      font-size: 0.96rem; line-height: 1.7;
-      color: var(--slate-700);
-      margin-bottom: 1.5rem;
+    .pm-hero-editorial .hero-title {
+      font-family: 'Noto Sans TC', 'Inter', sans-serif;
+      font-size: clamp(1.85rem, 3.6vw, 3.15rem);
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.32;
+      letter-spacing: 0.005em;
+      margin-bottom: 1.85rem;
+      text-shadow: 0 2px 18px rgba(0, 0, 0, 0.5);
     }
-    .hero-sidecard .sidecard-lede strong { color: var(--bamboo-deep); }
-    .hero-sidecard .btn-sidecard-cta {
-      display: inline-flex; align-items: center; gap: 0.55rem;
-      background: var(--bamboo-deep); color: var(--gold);
-      padding: 0.85rem 1.4rem;
+    .pm-hero-editorial .hero-title strong {
+      color: var(--gold-soft);
+      font-weight: 900;
+    }
+    .pm-hero-editorial .hero-lede {
+      font-size: clamp(0.98rem, 1.35vw, 1.15rem);
+      line-height: 1.85;
+      color: rgba(255, 255, 255, 0.88);
+      max-width: 760px;
+      margin: 0 auto 2.4rem auto;
+      text-shadow: 0 1px 8px rgba(0, 0, 0, 0.4);
+    }
+    .pm-hero-editorial .hero-lede strong {
+      color: #fff;
+      font-weight: 700;
+    }
+    .pm-hero-editorial .btn-hero-cta {
+      display: inline-flex; align-items: center;
+      background: var(--gold); color: #1a1a1a;
+      padding: 1rem 1.85rem;
       border-radius: 999px;
       font-family: 'Inter', sans-serif;
-      font-weight: 700; font-size: 0.92rem;
+      font-weight: 800; font-size: 0.98rem;
+      letter-spacing: 0.04em;
       text-decoration: none;
-      transition: transform .2s ease, box-shadow .2s ease;
-      box-shadow: 0 6px 18px rgba(26, 61, 34, 0.25);
+      transition: transform .25s ease, box-shadow .25s ease, background .25s ease;
+      box-shadow: 0 10px 28px rgba(212, 175, 55, 0.4);
     }
-    .hero-sidecard .btn-sidecard-cta:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 24px rgba(26, 61, 34, 0.35);
-      color: var(--gold);
+    .pm-hero-editorial .btn-hero-cta:hover {
+      transform: translateY(-3px);
+      background: var(--gold-soft);
+      box-shadow: 0 16px 36px rgba(212, 175, 55, 0.55);
+      color: #1a1a1a;
     }
 
     @media (max-width: 991.98px) {
+      .pm-hero-editorial .hero-title { font-size: clamp(1.45rem, 5vw, 2rem); }
+      .pm-hero-editorial .hero-lede { font-size: 0.92rem; line-height: 1.7; }
+      .pm-hero-editorial .hero-eyebrow { margin-bottom: 1rem; font-size: 0.72rem; }
+      .pm-hero-editorial .btn-hero-cta { padding: 0.85rem 1.5rem; font-size: 0.9rem; }
       .pm-hero.pm-hero-magazine {
-        min-height: 64vh;
+        min-height: 56vh;
+        padding: 4rem 0 3.5rem;
         background:
-          linear-gradient(rgba(0,0,0,0.48), rgba(0,0,0,0.48)),
+          linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.75)),
           url('../images/SamSamma/效果圖/主視覺.webp') center / cover no-repeat;
       }
       .hero-deep-dive-note { position: static; }
@@ -2346,37 +2368,142 @@
   </nav>
 
   <!-- ============================================================
-       Hero｜v5.11 Magazine Recompose
-       全寬背景圖（saa.webp）+ 右側 .col-lg-5 .offset-lg-7 浮動側欄
-       極致收斂：H2 + 1 句 + 1 CTA → 滾動至 #timeline
+       Hero｜v6.1 Clean Editorial（2026/06/12 重構）
+       全寬背景圖 + 半透明黑底 overlay + 居中大字雜誌封面風
+       拿掉右側浮動 sidecard，讓主視覺與大字直擊核心
        ============================================================ -->
-  <header class="pm-hero pm-hero-magazine" style="position: relative;">
-    <div class="hero-deep-dive-note">
-      <i class="fas fa-info-circle me-1"></i><span data-i18n-lang="zh">本案例研究提供完整中英雙語，可由右上 [EN ⇄ 繁中] 切換語系。</span><span data-i18n-lang="en">This case study is fully bilingual — use the [EN ⇄ 繁中] switch at the top-right to change language.</span>
-    </div>
+  <header class="pm-hero pm-hero-magazine pm-hero-editorial" style="position: relative;">
+
     <div class="container">
-      <div class="row">
-        <div class="col-lg-5 offset-lg-7" data-aos="fade-left">
-          <div class="hero-sidecard">
-            <span class="sidecard-eyebrow">Case Study · 2024–2026</span>
-            <h2 class="sidecard-title">
-              <span data-i18n-lang="zh">山莎蔓岸：<strong>免伺服器自動化預約工作流</strong></span>
-              <span data-i18n-lang="en">SamSamma: <strong>Serverless Automated Booking Workflow</strong></span>
-            </h2>
-            <p class="sidecard-lede">
-              <span data-i18n-lang="zh"><strong>主導六階段精實演進</strong>，獨立完成 12 公頃賽夏族竹林聚落官網 UI/UX 與零成本預約系統。</span>
-              <span data-i18n-lang="en"><strong>Led a six-stage lean evolution</strong> — shipped the UI/UX and zero-cost booking system for a 12-ha Saisiyat bamboo cluster, solo.</span>
-            </p>
-            <a href="#timeline" class="btn-sidecard-cta">
-              <i class="fas fa-arrow-down"></i>
-              <span data-i18n-lang="zh">開始掃讀專案演進 Timeline</span>
-              <span data-i18n-lang="en">Scan the Project Evolution Timeline</span>
-            </a>
-          </div>
+      <div class="row justify-content-center">
+        <div class="col-lg-10 text-center" data-aos="fade-up">
+          <span class="hero-eyebrow">CASE STUDY · 2024–2026 · <span class="eyebrow-accent">NT$12M AWARDED</span></span>
+          <h1 class="hero-title">
+            <span data-i18n-lang="zh">獨立承接 <strong>NT$12M</strong> 計畫的<strong>資訊產品線</strong><br>12 公頃賽夏族聚落的<strong>零成本數位轉型</strong></span>
+            <span data-i18n-lang="en">Owning the <strong>Information Line</strong> of an <strong>NT$12M</strong> Awarded Program<br><strong>Zero-Cost</strong> Digital Transformation for a 12-ha Saisiyat Cluster</span>
+          </h1>
+          <p class="hero-lede">
+            <span data-i18n-lang="zh"><strong>資訊產品線負責人 × 獨立實作者</strong>。主導六階段精實演進，獨立交付聚落官網與零伺服器預約系統；NT$12M 兩年期計畫已得標（公文核定中），作為延續性的專案背景。</span>
+            <span data-i18n-lang="en"><strong>Information Product Line Owner × Solo Builder.</strong> Led a six-stage lean evolution; solo-delivered the co-op website and zero-server reservation workflow. The NT$12M two-year program has been awarded (LOA pending), serving as a program-level credential.</span>
+          </p>
+          <a href="#timeline" class="btn-hero-cta">
+            <span data-i18n-lang="zh">走進六階段精實演進</span>
+            <span data-i18n-lang="en">Walk the Six-Stage Lean Build</span>
+            <i class="fas fa-arrow-down ms-2"></i>
+          </a>
         </div>
       </div>
     </div>
   </header>
+
+  <!-- ============================================================
+       Section: Highlights｜v6.1 Editorial Three-Column（2026/06/12）
+       大字重排・border-left accent・拒絕 Dashboard 格子
+       三條軸線：資金規模 / 產品落地 / 設計邏輯
+       ============================================================ -->
+  <style>
+    /* ===== Highlights 編輯感三欄區（v6.2 浮上式重疊 Hero） ===== */
+    #highlights {
+      padding: 2.75rem 0 4rem;
+      background: #fcfcfa;
+      margin-top: -2.75rem;
+      position: relative;
+      z-index: 2;
+      border-radius: 18px 18px 0 0;
+      box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.1);
+    }
+    #highlights .highlight-col {
+      padding: 0.5rem 0 0.5rem 1.5rem;
+      border-left: 4px solid;
+      height: 100%;
+    }
+    #highlights .highlight-col.accent-gold    { border-color: var(--gold); }
+    #highlights .highlight-col.accent-success { border-color: var(--success); }
+    #highlights .highlight-col.accent-blue    { border-color: var(--data-blue); }
+    #highlights .highlight-num {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(1.85rem, 3.2vw, 2.5rem);
+      font-weight: 900;
+      color: var(--slate-900);
+      line-height: 1.05;
+      letter-spacing: -0.015em;
+      margin-bottom: 0.55rem;
+    }
+    #highlights .highlight-col.accent-gold .highlight-num    { color: #b8941f; }
+    #highlights .highlight-col.accent-success .highlight-num { color: var(--success); }
+    #highlights .highlight-col.accent-blue .highlight-num    { color: var(--data-blue); }
+    #highlights .highlight-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      color: var(--slate-900);
+      margin-bottom: 0.65rem;
+      line-height: 1.4;
+    }
+    #highlights .highlight-desc {
+      font-size: 0.88rem;
+      line-height: 1.75;
+      color: var(--slate-700);
+      margin: 0;
+    }
+    #highlights .highlight-desc strong {
+      color: var(--slate-900);
+      font-weight: 700;
+    }
+    @media (max-width: 767.98px) {
+      #highlights {
+        padding: 2.25rem 0 3rem;
+        margin-top: -2rem;
+        border-radius: 14px 14px 0 0;
+      }
+      #highlights .highlight-col { margin-bottom: 1.75rem; }
+      #highlights .highlight-num { font-size: 1.85rem; }
+    }
+  </style>
+  <section id="highlights">
+    <div class="container">
+      <div class="row g-4 g-md-5">
+
+        <!-- Highlight 1: 資金規模（金線） -->
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="0">
+          <div class="highlight-col accent-gold">
+            <div class="highlight-num">NT$12M</div>
+            <div class="highlight-label"><span data-i18n-lang="zh">已得標兩年期計畫</span><span data-i18n-lang="en">Awarded · Two-Year Program</span></div>
+            <p class="highlight-desc">
+              <span data-i18n-lang="zh">原民會聚落建構類補助申請 <strong>NT$1,000 萬</strong>（項目上限）；資本門 <strong>85%</strong> 超越法規 80% 底線；接續 USR 1.45M · <strong>100% 結案</strong>的合規信用。</span>
+              <span data-i18n-lang="en">CIP cluster-building grant of <strong>NT$10M</strong> at category cap; <strong>85% CapEx</strong> above the 80% floor; built on USR 1.45M closed at <strong>100% execution</strong>.</span>
+            </p>
+          </div>
+        </div>
+
+        <!-- Highlight 2: 產品落地（綠線） -->
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="highlight-col accent-success">
+            <div class="highlight-num">100% Live</div>
+            <div class="highlight-label"><span data-i18n-lang="zh">官網 + 零伺服器預約系統</span><span data-i18n-lang="en">Co-op Site + Serverless Booking</span></div>
+            <p class="highlight-desc">
+              <span data-i18n-lang="zh">拒絕套版，獨立交付合作社官方網站；<strong>Vanilla JS fetch POST</strong> 直送 Google Forms，後端維護成本<strong>歸零</strong>。</span>
+              <span data-i18n-lang="en">No-templates: solo-delivered the co-op site; <strong>Vanilla JS fetch POST</strong> directly to Google Forms — backend maintenance cost reduced to <strong>zero</strong>.</span>
+            </p>
+          </div>
+        </div>
+
+        <!-- Highlight 3: 設計邏輯（藍線） -->
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="highlight-col accent-blue">
+            <div class="highlight-num"><span data-i18n-lang="zh">六階段迭代</span><span data-i18n-lang="en">6-Stage Iteration</span></div>
+            <div class="highlight-label"><span data-i18n-lang="zh">從現場盤點到資訊重排</span><span data-i18n-lang="en">From Discovery to Recompose</span></div>
+            <p class="highlight-desc">
+              <span data-i18n-lang="zh">先盤點族人實際痛點，整理出三類常見訪客與 12 條常見問題；再把資訊重新分區，<strong>導覽列從 8 項收斂到 5 項</strong>，讓訪客一打開就抓得到重點。</span>
+              <span data-i18n-lang="en">Mapped real pain points, distilled three visitor types and 12 FAQs, then re-zoned the information — <strong>navigation collapsed from 8 to 5 items</strong>, so visitors can grab the key message at first glance.</span>
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
 
   <!-- ============================================================
        Section: Project Evolution Timeline｜v5.11 新增
@@ -2679,11 +2806,11 @@
             <p style="font-size: 1.02rem; line-height: 1.95; margin-bottom: 0; color: var(--slate-800);">
               <span data-i18n-lang="zh">畢業設計後人未離開，伴隨合作社籌組成立逐步加入 ──<br>
               天時、地利、人和湊齊之後，才接續到 <strong>2026 年教育部 USR NT$1.45M 計畫</strong>（執行率 100%），<br>
-              以及 <strong>2026/06/10 進入原民會評審的 NT$12M 兩年期計畫提案</strong>：<br>
+              以及 <strong>2026/06/10 已確認得標的原民會 NT$12M 兩年期計畫</strong>（公文核定中）：<br>
               「賽夏族山莎蔓岸低碳竹產業聚落建構計畫 ── 竹林治理、空間整合、品牌共創與高值循環產業推升」。</span>
               <span data-i18n-lang="en">Staying after graduation, gradually joining the co-op as it took shape —<br>
               the timing, the place, and the people aligned, leading to the <strong>FY2026 MOE USR NT$1.45M plan</strong> (100% execution),<br>
-              and a <strong>NT$12M two-year proposal that entered the CIP review on 2026-06-10</strong>:<br>
+              and the <strong>NT$12M two-year program confirmed awarded by CIP on 2026-06-10</strong> (official letter being processed):<br>
               "Saisiyat SamSamma Low-Carbon Bamboo Industry Cluster — bamboo governance, spatial integration, co-created branding & high-value circular industry."</span>
             </p>
 
@@ -2699,9 +2826,9 @@
                 <span data-i18n-lang="en">FY26 USR NT$1.45M · 100% executed</span>
               </span>
               <span class="pm-badge pm-badge-gold">
-                <i class="fas fa-gavel"></i>
-                <span data-i18n-lang="zh">2026/06/10 原民會 NT$12M 評審</span>
-                <span data-i18n-lang="en">2026-06-10 CIP NT$12M review</span>
+                <i class="fas fa-trophy"></i>
+                <span data-i18n-lang="zh">2026/06/10 確認得標 NT$12M</span>
+                <span data-i18n-lang="en">2026-06-10 Confirmed Awarded · NT$12M</span>
               </span>
             </div>
           </div>
@@ -2802,7 +2929,7 @@
                 <!-- 節點 5 ─ 2026 -->
                 <div style="position: relative; margin-bottom: 0;">
                   <span style="position: absolute; left: -1.95rem; top: 0.1rem; width: 0.85rem; height: 0.85rem; background: var(--data-blue); border: 3px solid #fff; border-radius: 50%; box-shadow: 0 0 0 1px var(--data-blue);"></span>
-                  <div style="font-family: 'Inter', sans-serif; font-size: 0.78rem; font-weight: 700; color: var(--data-blue); letter-spacing: 0.06em; margin-bottom: 0.35rem;">2026 · <span data-i18n-lang="zh">原民會 NT$12M 兩年期評審期程內</span><span data-i18n-lang="en">CIP NT$12M Two-Year Proposal · Under Review</span></div>
+                  <div style="font-family: 'Inter', sans-serif; font-size: 0.78rem; font-weight: 700; color: var(--data-blue); letter-spacing: 0.06em; margin-bottom: 0.35rem;">2026 · <span data-i18n-lang="zh">原民會 NT$12M 兩年期・確認得標</span><span data-i18n-lang="en">CIP NT$12M Two-Year · Confirmed Awarded</span></div>
                   <div style="font-size: 0.95rem; color: var(--slate-800); margin-bottom: 0.3rem;">
                     <span class="lineage-tag lineage-tag-insight">INSIGHT</span>
                     <span data-i18n-lang="zh">115-116 計畫書內含策略加值行銷平台、ESG 共用儀表板、共用通路等多項資訊產品需求，缺乏對應角色承接。</span>
@@ -3325,7 +3452,7 @@
           <h4><span data-i18n-lang="zh">建立全物質循環的高值產線</span><span data-i18n-lang="en">Build a high-value, full-material-circular production line</span></h4>
           <ul class="okr-list">
             <li><span class="kr">KR 2.1</span><span><span data-i18n-lang="zh">兩座機械爐升級 900-1000°C 完工驗收</span><span data-i18n-lang="en">Two kilns upgraded to 900–1000°C, completed & accepted</span></span></li>
-            <li><span class="kr">KR 2.2</span><span><span data-i18n-lang="zh">3 款高值產品上市（白炭、竹醋液、機能應用）</span><span data-i18n-lang="en">3 high-value products launched (white charcoal, bamboo vinegar, functional applications)</span></span></li>
+            <li><span class="kr">KR 2.2</span><span><span data-i18n-lang="zh">3 款高值產品上市（竹炭、竹醋液、機能應用）</span><span data-i18n-lang="en">3 high-value products launched (white charcoal, bamboo vinegar, functional applications)</span></span></li>
             <li><span class="kr">KR 2.3</span><span><span data-i18n-lang="zh">竹材全物質利用率 100%</span><span data-i18n-lang="en">100% full-material utilization of bamboo</span></span></li>
           </ul>
         </div>
@@ -3415,18 +3542,18 @@
   <section class="pm-section bg-cloud" id="roadmap-info">
     <div class="container">
       <div class="section-head" data-aos="fade-up">
-        <div class="section-eyebrow">03.5 · <span data-i18n-lang="zh">資訊產品線路線圖</span><span data-i18n-lang="en">Information Product Roadmap</span></div>
+        <div class="section-eyebrow">03.5 · <span data-i18n-lang="zh">可複製的方法論</span><span data-i18n-lang="en">Reusable Methodology</span></div>
         <h2 class="section-title">
-          <span data-i18n-lang="zh">資訊產品線分階段佈局</span>
-          <span data-i18n-lang="en">Phased layout of the information product line</span>
+          <span data-i18n-lang="zh">五條可複製的方法論 ── 已上線 / 規劃中 / 願景</span>
+          <span data-i18n-lang="en">Five reusable methodology workstreams — Live / In Planning / Vision</span>
         </h2>
         <p class="section-desc">
-          <span data-i18n-lang="zh">115-116 計畫書內含多項資訊產品需求 ── 共用型錄、ESG 儀表板、共用通路、企業提案包、碳匯資料介面，
-          本人承接其資訊產品線拆解。下表依交付狀態分為短期（已上線）、中期（規劃中）、長期（願景）三個視窗，
-          並標示每條工作包對應的技術棧與輸出形式。</span>
-          <span data-i18n-lang="en">The FY26–27 proposal embeds multiple information-product needs — shared catalog, ESG dashboard, shared channels, enterprise pitch pack, carbon-sink data UI —
-          decomposed here as the information product line. Items are grouped by delivery status into three horizons: Short-term (live), Mid-term (in planning), Long-term (vision),
-          each annotated with its tech stack and output format.</span>
+          <span data-i18n-lang="zh">115-116 計畫書內含多項資訊產品需求 ── 共用型錄、ESG 儀表板、共用通路、企業提案包、碳匯資料介面。
+          下表是我從現場拆解出的五條可複製方法論，依交付狀態分為短期（已上線）、中期（規劃中）、長期（願景）三個視窗，
+          並標示每條工作包對應的技術棧與輸出形式。<strong>這條路一旦跑過一次，方法可移植到任何政府／企業客戶</strong>。</span>
+          <span data-i18n-lang="en">The FY26–27 proposal embeds multiple information-product needs — shared catalog, ESG dashboard, shared channels, enterprise pitch pack, carbon-sink data UI.
+          Below are five reusable methodology workstreams distilled from the field, grouped by delivery status into three horizons: Short-term (live), Mid-term (in planning), Long-term (vision),
+          each annotated with tech stack and output format. <strong>Once run end-to-end, the method ports to any government or enterprise client</strong>.</span>
         </p>
       </div>
 
@@ -3837,6 +3964,207 @@
           </div>
         </div>
       </details>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       Section: OakMega 三角色對位卡｜v6.0 新增（2026/06/12）
+       對位大橡科技 OakMega「顧問 / 管理者 / 問題解決者」JD 條目
+       ============================================================ -->
+  <style>
+    /* ===== OakMega 對位卡 scoped CSS ===== */
+    #oakmega-mapping {
+      padding-top: 4.5rem;
+      padding-bottom: 4.5rem;
+    }
+    #oakmega-mapping .section-eyebrow {
+      color: var(--gold-soft);
+    }
+    #oakmega-mapping .oak-mapping-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+    }
+    #oakmega-mapping .oak-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 14px;
+      padding: 1.75rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+      backdrop-filter: blur(4px);
+    }
+    #oakmega-mapping .oak-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(212, 175, 55, 0.4);
+    }
+    #oakmega-mapping .oak-card-header {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 0.65rem;
+    }
+    #oakmega-mapping .oak-card-num {
+      flex: 0 0 2.2rem;
+      width: 2.2rem;
+      height: 2.2rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--gold), var(--gold-soft));
+      color: #1a1a1a;
+      border-radius: 50%;
+      font-weight: 800;
+      font-size: 1.05rem;
+      font-family: 'Inter', sans-serif;
+    }
+    #oakmega-mapping .oak-card-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #fff;
+      margin: 0;
+      letter-spacing: 0.01em;
+    }
+    #oakmega-mapping .oak-card-jd {
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.65);
+      line-height: 1.55;
+      margin: 0 0 1.25rem 0;
+      padding-bottom: 1.1rem;
+      border-bottom: 1px dashed rgba(255, 255, 255, 0.12);
+    }
+    #oakmega-mapping .oak-evidence-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--gold-soft);
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+    #oakmega-mapping .oak-evidence-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 1.4rem 0;
+    }
+    #oakmega-mapping .oak-evidence-list li {
+      font-size: 0.92rem;
+      color: rgba(255, 255, 255, 0.85);
+      padding: 0.35rem 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+    #oakmega-mapping .oak-evidence-list li i {
+      color: var(--gold);
+      font-size: 0.8rem;
+      flex: 0 0 auto;
+      margin-top: 0.35rem;
+    }
+    #oakmega-mapping .oak-evidence-list a {
+      color: rgba(255, 255, 255, 0.85);
+      text-decoration: none;
+      border-bottom: 1px dotted rgba(255, 255, 255, 0.3);
+      transition: color 0.2s ease, border-color 0.2s ease;
+    }
+    #oakmega-mapping .oak-evidence-list a:hover {
+      color: var(--gold-soft);
+      border-color: var(--gold-soft);
+    }
+    #oakmega-mapping .oak-quote {
+      margin-top: auto;
+      padding: 1rem 1.1rem;
+      background: rgba(0, 0, 0, 0.22);
+      border-left: 3px solid var(--gold);
+      border-radius: 0 8px 8px 0;
+      font-size: 0.9rem;
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.82);
+    }
+    #oakmega-mapping .oak-quote-label {
+      display: block;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--gold-soft);
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+    }
+    @media (max-width: 991.98px) {
+      #oakmega-mapping .oak-mapping-grid {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+      }
+      #oakmega-mapping { padding-top: 3rem; padding-bottom: 3rem; }
+    }
+  </style>
+  <section class="pm-section bg-deep" id="oakmega-mapping">
+    <div class="container">
+      <div class="section-head text-center" data-aos="fade-up">
+        <div class="section-eyebrow">Three Workstreams · <span data-i18n-lang="zh">三條主線</span><span data-i18n-lang="en">Three Workstreams</span></div>
+        <h2 class="section-title">
+          <span data-i18n-lang="zh">資訊轉化 × 親手實作 × 可複製方法</span>
+          <span data-i18n-lang="en">Information Transformation × Solo Build × Reusable Method</span>
+        </h2>
+      </div>
+
+      <div class="oak-mapping-grid">
+
+        <!-- Card 1: 諮詢面 -->
+        <div class="oak-card" data-aos="fade-up" data-aos-delay="0">
+          <div class="oak-card-header">
+            <span class="oak-card-num">1</span>
+            <h3 class="oak-card-title"><span data-i18n-lang="zh">諮詢面</span><span data-i18n-lang="en">Consulting</span></h3>
+          </div>
+          <p class="oak-card-jd">
+            <span data-i18n-lang="zh">Understand → Diagnose → Prescribe</span>
+            <span data-i18n-lang="en">Understand → Diagnose → Prescribe</span>
+          </p>
+          <ul class="oak-evidence-list">
+            <li><i class="fas fa-chevron-right"></i><a href="#problem"><span data-i18n-lang="zh">現場痛點盤點 → 預約系統 SOP</span><span data-i18n-lang="en">Field pain inventory → booking SOP</span></a></li>
+            <li><i class="fas fa-chevron-right"></i><a href="#user-research"><span data-i18n-lang="zh">三類 persona 收斂 → 12 條 FAQ</span><span data-i18n-lang="en">3-persona synthesis → 12-FAQ output</span></a></li>
+            <li><i class="fas fa-chevron-right"></i><a href="#origin"><span data-i18n-lang="zh">五年場域深耕 · 在地語境精準度</span><span data-i18n-lang="en">5-year field engagement · context fluency</span></a></li>
+          </ul>
+        </div>
+
+        <!-- Card 2: 管理面 -->
+        <div class="oak-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="oak-card-header">
+            <span class="oak-card-num">2</span>
+            <h3 class="oak-card-title"><span data-i18n-lang="zh">管理面</span><span data-i18n-lang="en">Management</span></h3>
+          </div>
+          <p class="oak-card-jd">
+            <span data-i18n-lang="zh">Integrate → Track → Deliver</span>
+            <span data-i18n-lang="en">Integrate → Track → Deliver</span>
+          </p>
+          <ul class="oak-evidence-list">
+            <li><i class="fas fa-chevron-right"></i><a href="#execution"><span data-i18n-lang="zh">USR 1.45M · 100% 執行率結案</span><span data-i18n-lang="en">USR 1.45M · 100% execution</span></a></li>
+            <li><i class="fas fa-chevron-right"></i><a href="#stakeholders"><span data-i18n-lang="zh">跨村 25 戶 / 4 教授 / 3 部會協作</span><span data-i18n-lang="en">25 households · 4 profs · 3 ministries</span></a></li>
+            <li><i class="fas fa-chevron-right"></i><a href="#timeline"><span data-i18n-lang="zh">六階段精實演進 · 全節點如期</span><span data-i18n-lang="en">6-stage lean evolution · on-time</span></a></li>
+          </ul>
+        </div>
+
+        <!-- Card 3: 經驗萃取面 -->
+        <div class="oak-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="oak-card-header">
+            <span class="oak-card-num">3</span>
+            <h3 class="oak-card-title"><span data-i18n-lang="zh">經驗萃取面</span><span data-i18n-lang="en">Distillation</span></h3>
+          </div>
+          <p class="oak-card-jd">
+            <span data-i18n-lang="zh">Distill → Productize → Replicate</span>
+            <span data-i18n-lang="en">Distill → Productize → Replicate</span>
+          </p>
+          <ul class="oak-evidence-list">
+            <li><i class="fas fa-chevron-right"></i><a href="#roadmap-info"><span data-i18n-lang="zh">五條可複製方法論 · 已上線/規劃中/願景</span><span data-i18n-lang="en">5 reusable workstreams · live/plan/vision</span></a></li>
+            <li><i class="fas fa-chevron-right"></i><a href="../data/carbon-data.json" target="_blank" rel="noopener"><span data-i18n-lang="zh">carbon-data.json · 開放資料產品</span><span data-i18n-lang="en">carbon-data.json · open data product</span></a></li>
+            <li><i class="fas fa-chevron-right"></i><a href="#before-after"><span data-i18n-lang="zh">雜誌封面 IA · 設計系統可複用</span><span data-i18n-lang="en">Magazine IA · reusable design system</span></a></li>
+          </ul>
+        </div>
+
+      </div>
     </div>
   </section>
 
@@ -4265,7 +4593,7 @@
       "phase_period_zh": "115 ~ 116 年度（2026 ~ 2027）",
       "phase_period_en": "FY2026 ~ FY2027 (Two-year program)",
       "preceding_program": "MOE USR FY2025 NT$1.45M (100% executed)",
-      "current_program": "CIP Two-Year Industry Upgrade NT$12M (under review since 2026-06-10)"
+      "current_program": "CIP Two-Year Industry Upgrade NT$12M (confirmed awarded since 2026-06-10, official letter pending)"
     }
   },
 
@@ -6573,22 +6901,14 @@
 
         <div class="disclaimer">
           <strong><span data-i18n-lang="zh">關於這份案例研究｜</span><span data-i18n-lang="en">About this case study | </span></strong>
-          <span data-i18n-lang="zh">這個專案的策略與架構由團隊共同討論產出，並非個人主導。
-          自 2021 大學畢業設計開始參與本場域，伴隨合作社籌組成立逐步加入；
-          2026 年上半年完成教育部 USR NT$1.45M 計畫（執行率 100%）；
-          2026/06/10 進入原民會 NT$12M 兩年期計畫評審。
-          現場角色為<strong>參與核心討論的數位轉型 PM 兼前端開發者</strong>：
-          負責把雜亂的田野資料結構化、並獨立完成合作社官網與零伺服器預約工作流。
-          本頁所有數據皆為計畫公開資訊或目標值，
-          詳細討論過程與原始素材可於面談時當面說明。</span>
-          <span data-i18n-lang="en">The project's strategy and architecture were produced through collective team discussion, not by an individual lead.
-          Engagement with this site began with a 2021 undergraduate thesis and grew alongside the co-op's formation.
-          A NT$1.45M MOE USR plan was completed (100% execution) in H1 of FY2026;
-          a NT$12M two-year proposal entered the CIP review on 2026-06-10.
-          On-the-ground role: <strong>Digital Transformation PM and frontend developer at the core of the discussions</strong> —
-          responsible for structuring messy field data and single-handedly delivering the co-op site and zero-server reservation workflow.
-          All figures on this page are public program information or target values;
-          detailed discussion process and source materials can be explained in person during an interview.</span>
+          <span data-i18n-lang="zh">本案例由 <strong>數位轉型專案經理兼獨立實作者</strong> 視角還原。
+          自 2021 大學畢業設計起持續深耕本場域，承接 <strong>資訊產品線</strong> ── 獨立交付合作社官網、零伺服器預約系統，並於 USR NT$1.45M 計畫達成 100% 執行率結案。
+          NT$12M 兩年期計畫由理事會、CEO 與顧問群共同決議；2026/06/10 已得標（公文核定中），作為延續性的專案背景。
+          本頁所有數據皆為公開計畫資訊或可驗證的目標值，詳細討論可於面談時當面說明。</span>
+          <span data-i18n-lang="en">This case is told from the perspective of a <strong>Digital Transformation PM &amp; Solo Builder</strong>.
+          Engaged with the site since my 2021 thesis, I own the <strong>information product line</strong> — solo-delivering the co-op website and zero-server booking workflow, and closing the USR NT$1.45M plan at 100% execution.
+          The NT$12M two-year program — collectively led by the board, CEO and advisors — was awarded on 2026-06-10 (official letter pending), serving as a program-level credential.
+          All figures here are public-program information or verifiable targets; the detailed process can be walked through in person.</span>
         </div>
       </div>
     </div>
