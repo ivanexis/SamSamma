@@ -1,0 +1,229 @@
+{
+  "schema": {
+    "version": "1.0.0",
+    "name": "Sansamaan Carbon Baseline & Field Activity Dataset",
+    "description": "山莎蔓岸 12 公頃竹林聚落 — 碳匯科學數據 + 5~10 月現地施作日誌 + 場域資產交付，三大 Taxonomy Domain 結構化資料底盤。",
+    "generated": "2026-06-07",
+    "owner": "山莎蔓岸 PM Workstream",
+    "license": "Internal Case-Study Use",
+    "source": [
+      "明新科大 USR FY2025 樣區實測（7,526.16 m² 系統取樣）",
+      "原民會 115-116 年度產業推升計畫 — 聚落建構類推動計畫書",
+      "合作社 USR 實踐基地 114/05/01 ~ 114/10/15 施作工作日誌"
+    ]
+  },
+
+  "project": {
+    "id": "SAA-001",
+    "name_zh": "山莎蔓岸 賽夏族低碳竹產業聚落",
+    "name_en": "Sansamaan Saisiyat Low-Carbon Bamboo Industry Cluster",
+    "owner_org": "有限責任新竹縣山莎蔓岸竹木產業生產合作社",
+    "owner_org_en": "Sansamaan Bamboo-Wood Industry Co-operative, Hsinchu",
+    "co_op_founded": "2024-11",
+    "location": {
+      "region_zh": "新竹縣五峰鄉",
+      "region_en": "Wufeng Township, Hsinchu County",
+      "tribe_zh": "賽夏族大隘部落",
+      "tribe_en": "Saisiyat Daai Tribal Village",
+      "land_lots": ["434-1", "428", "428-3"],
+      "geo_centroid_lat": 24.5985,
+      "geo_centroid_lon": 121.0853
+    },
+    "scope": {
+      "total_field_area_hectares": 12,
+      "tribal_villages_covered": 4,
+      "phase_period_zh": "115 ~ 116 年度（2026 ~ 2027）",
+      "phase_period_en": "FY2026 ~ FY2027 (Two-year program)",
+      "preceding_program": "MOE USR FY2025 NT$1.45M (100% executed)",
+      "current_program": "CIP Two-Year Industry Upgrade NT$12M (under review since 2026-06-10)"
+    }
+  },
+
+  "taxonomy": {
+    "version": "v1",
+    "description_zh": "把原鄉林地龐雜的環境與勞務紀錄，清洗並重新定義為三大數據物件 Domain，作為前端展示、ESG 揭露與企業採購驗證的共同資料底盤。",
+    "description_en": "A three-domain classification that transforms chaotic field data into clean data objects, serving as the shared data backbone for frontend rendering, ESG disclosure, and enterprise-procurement verification.",
+    "domains": [
+      {
+        "key": "Carbon",
+        "name_zh": "碳匯科學數據",
+        "name_en": "Carbon Stock Data",
+        "scope": "RTK + 多光譜空拍樣區、株數密度、生物量、碳量基線",
+        "consumer": "ESG 報告書 / 企業採購方 / 主管機關"
+      },
+      {
+        "key": "Labor",
+        "name_zh": "勞務施作日誌",
+        "name_en": "Labor Activity Log",
+        "scope": "5~10 月份逐日施作紀錄 — 疏伐、運輸、烘烤、砌磚、組裝",
+        "consumer": "USR 期中末核銷 / SROI 計算 / 供應鏈可追溯"
+      },
+      {
+        "key": "Asset",
+        "name_zh": "場域資產交付",
+        "name_en": "Site Asset Delivery",
+        "scope": "實踐基地建置完成之硬體 — 殺青池、竹炭爐、涼亭、樹屋、貨櫃、曬竹架、竹炭屋、籬笆",
+        "consumer": "場域導覽 / 參訪預約 / 設備維保手冊"
+      }
+    ]
+  },
+
+  "carbon": {
+    "domain": "Carbon",
+    "survey_metadata": {
+      "method": "RTK + Multispectral (NDVI) Aerial Survey",
+      "method_zh": "RTK 高精度定位 + 多光譜空拍 + NDVI 植被指數分析",
+      "executor_zh": "明新科大 USR 計畫 × 合作社 4 位取得無人機證照之族人",
+      "executor_en": "MUST USR Team × 4 certified drone operators from the co-op",
+      "sampling_strategy": "Systematic sampling — 20m × 20m plot in main bamboo zone",
+      "survey_date": "2025-Q3",
+      "legally_approved_culms": {
+        "count": 1701,
+        "unit": "支",
+        "note_zh": "USR 計畫法定核可可採伐竹材數量",
+        "note_en": "Legally-approved harvestable culms under USR program"
+      }
+    },
+    "sample_plot": {
+      "plot_dimension": "20m × 20m",
+      "area_m2": 400,
+      "area_hectares": 0.04,
+      "species_zh": "桂竹",
+      "species_scientific": "Bambusa multiplex (or 近似種)",
+      "culm_count": 768,
+      "culm_density_per_m2": 1.92,
+      "mean_DBH_cm": "5.7 ~ 5.8",
+      "mean_DBH_note": "1.3 m 高處量測",
+      "mean_height_m": 11,
+      "basal_area_m2": 1.99,
+      "dry_volume_m3": 10.97,
+      "form_factor": 0.5,
+      "biomass_per_plot_t_dry": 6.58,
+      "carbon_stock_per_plot_tC": 3.09,
+      "carbon_conversion_factor": 0.47
+    },
+    "extrapolated_per_hectare": {
+      "culm_density_per_ha": 19200,
+      "basal_area_per_ha_m2": 49.0,
+      "biomass_per_ha_t": 164.5,
+      "carbon_stock_per_ha_tC": 77.3
+    },
+    "cluster_wide_aerial_baseline": {
+      "total_surveyed_m2": 7526.16,
+      "method": "RTK 空拍多光譜全聚落盤點",
+      "note_zh": "全聚落已完成空拍盤點面積，作為 ESG 揭露之碳匯潛力基線",
+      "esg_use_case": "可換算為企業 ESG 報告書揭露之『林業碳匯潛力』指標"
+    },
+    "two_year_targets": {
+      "cumulative_reduction_tCO2e": 25,
+      "cumulative_sequestration_tCO2e": 20,
+      "solar_kw": 10,
+      "water_recycling_tonnes": 1,
+      "note_zh": "115-116 兩年期累計目標（含太陽能 10 kW + 高溫窯升級節能 + 1 噸淨水循環）"
+    }
+  },
+
+  "labor": {
+    "domain": "Labor",
+    "log_period": "2025-05-01 / 2025-10-15",
+    "log_period_zh": "114 年 5/1 ~ 10/15（USR 實踐基地建置期）",
+    "site_zh": "新竹縣五峰鄉上大隘部落（地號 434-1 / 428 / 428-3）",
+    "executor_zh": "山莎蔓岸合作社 × 明新科大 USR 計畫團隊",
+    "entries": [
+      { "date": "2025-05-01~05-30", "month": 5, "activities": ["開工儀式", "開工準備與整備協調作業"], "tags": ["kickoff"] },
+      { "date": "2025-06-02~06-03", "month": 6, "activities": ["殺青池槽坑施作"], "tags": ["civil-work"] },
+      { "date": "2025-06-04",        "month": 6, "activities": ["修樹施作"], "tags": ["maintenance"] },
+      { "date": "2025-06-06",        "month": 6, "activities": ["聯外道路修樹（貨櫃進場準備）"], "tags": ["road-prep"] },
+      { "date": "2025-06-09",        "month": 6, "activities": ["殺青池週邊整理", "鐵架焊接施作", "貨櫃進場定位"], "tags": ["welding", "container-setup"] },
+      { "date": "2025-06-10",        "month": 6, "activities": ["生竹架鐵架施作", "貨櫃週邊整理"], "tags": ["welding"] },
+      { "date": "2025-06-11",        "month": 6, "activities": ["鐵架焊接施作"], "tags": ["welding"] },
+      { "date": "2025-06-13",        "month": 6, "activities": ["購買零件入場"], "tags": ["procurement"] },
+      { "date": "2025-06-16",        "month": 6, "activities": ["鐵架焊接施作"], "tags": ["welding"] },
+      { "date": "2025-06-17",        "month": 6, "activities": ["曬竹架屋頂焊接施作"], "tags": ["welding"] },
+      { "date": "2025-06-18",        "month": 6, "activities": ["竹炭所整理"], "tags": ["site-prep"] },
+      { "date": "2025-06-19",        "month": 6, "activities": ["曬竹架頂棚施作", "修樹整理"], "tags": ["assembly"] },
+      { "date": "2025-06-20",        "month": 6, "activities": ["殺青池沙坑底座施作"], "tags": ["civil-work"] },
+
+      { "date": "2025-07-03~07-04", "month": 7, "activities": ["竹林疏伐"], "tags": ["thinning"], "highlight": true },
+      { "date": "2025-07-08~07-14", "month": 7, "activities": ["桂竹子運輸施作"], "tags": ["transport"], "highlight": true },
+      { "date": "2025-07-15",       "month": 7, "activities": ["竹子烘烤施作"], "tags": ["drying"], "highlight": true },
+      { "date": "2025-07-16",       "month": 7, "activities": ["涼亭建物加強"], "tags": ["assembly"] },
+      { "date": "2025-07-18",       "month": 7, "activities": ["樹屋（瞭望台）施作"], "tags": ["assembly"] },
+      { "date": "2025-07-21",       "month": 7, "activities": ["殺青池底座施作"], "tags": ["civil-work"] },
+      { "date": "2025-07-22",       "month": 7, "activities": ["樹屋（瞭望台）施作", "涼亭竹材烘烤"], "tags": ["drying", "assembly"] },
+      { "date": "2025-07-30~07-31", "month": 7, "activities": ["樹屋施工", "涼亭屋頂上木條"], "tags": ["assembly"] },
+
+      { "date": "2025-08-05",       "month": 8, "activities": ["涼亭施作", "樹屋施工", "環境整理施作"], "tags": ["assembly"] },
+      { "date": "2025-08-17",       "month": 8, "activities": ["竹炭爐砌磚"], "tags": ["kiln-masonry"], "highlight": true },
+      { "date": "2025-08-18~08-19", "month": 8, "activities": ["竹炭製造所周圍整理", "耐火磚鋪設"], "tags": ["kiln-masonry"] },
+      { "date": "2025-08-20",       "month": 8, "activities": ["涼亭屋頂施作", "涼亭柵欄施作"], "tags": ["assembly"] },
+      { "date": "2025-08-21",       "month": 8, "activities": ["涼亭柵欄施作"], "tags": ["assembly"] },
+      { "date": "2025-08-22",       "month": 8, "activities": ["竹炭爐體管線施工"], "tags": ["kiln-piping"] },
+      { "date": "2025-08-25",       "month": 8, "activities": ["竹炭爐砌磚", "桂竹切料加工"], "tags": ["kiln-masonry", "cutting"], "highlight": true },
+      { "date": "2025-08-26~08-28", "month": 8, "activities": ["涼亭柵欄施作", "柵欄施作噴防鏽漆"], "tags": ["assembly", "coating"] },
+      { "date": "2025-08-29",       "month": 8, "activities": ["涼亭屋頂包竹", "耐火磚鋪設整理"], "tags": ["assembly", "kiln-masonry"] },
+
+      { "date": "2025-09-01~09-03", "month": 9, "activities": ["涼亭屋頂施作", "竹籬笆基座埋管", "竹炭爐頂施作", "燃燒爐火口施作"], "tags": ["assembly", "kiln-build"] },
+      { "date": "2025-09-04~09-05", "month": 9, "activities": ["殺青池底座施工", "工作平台 × 3 施作"], "tags": ["civil-work"] },
+      { "date": "2025-09-08~09-09", "month": 9, "activities": ["氣閥施作", "竹子烘乾備材", "廁所地基整理施作"], "tags": ["kiln-piping", "drying"] },
+      { "date": "2025-09-10",       "month": 9, "activities": ["殺青池水泥攪拌", "竹炭爐氣閥施作", "化糞池施作", "竹炭屋竹材備料"], "tags": ["civil-work", "kiln-piping"] },
+      { "date": "2025-09-11",       "month": 9, "activities": ["竹炭爐氣閥施作", "廁所基座鋼筋施工"], "tags": ["kiln-piping", "civil-work"] },
+      { "date": "2025-09-12",       "month": 9, "activities": ["竹炭爐竹材備料", "涼亭備材"], "tags": ["material-prep"] },
+      { "date": "2025-09-15~09-17", "month": 9, "activities": ["殺青池配管施作"], "tags": ["plumbing"] },
+      { "date": "2025-09-18",       "month": 9, "activities": ["安裝溫度控制器", "安裝外部控制閥", "貨櫃竹材包覆"], "tags": ["controls", "container-cladding"] },
+      { "date": "2025-09-19",       "month": 9, "activities": ["貨櫃竹材包覆", "AB 爐燃燒器定位", "溫度感測棒施作"], "tags": ["controls", "container-cladding"] },
+      { "date": "2025-09-22~09-23", "month": 9, "activities": ["涼亭竹材圓綁", "竹材備料"], "tags": ["assembly", "material-prep"] },
+      { "date": "2025-09-24~09-25", "month": 9, "activities": ["貨櫃竹材包覆"], "tags": ["container-cladding"] },
+      { "date": "2025-09-26",       "month": 9, "activities": ["涼亭備材", "涼亭屋頂施工"], "tags": ["assembly"] },
+      { "date": "2025-09-29",       "month": 9, "activities": ["竹炭屋內部框架施工"], "tags": ["assembly"] },
+
+      { "date": "2025-10-01",       "month": 10, "activities": ["曬竹架竹材備料", "涼亭修整"], "tags": ["material-prep", "maintenance"] },
+      { "date": "2025-10-07",       "month": 10, "activities": ["道路竹籬笆施作"], "tags": ["fencing"] },
+      { "date": "2025-10-08",       "month": 10, "activities": ["道路竹籬笆施作", "涼亭屋頂施工"], "tags": ["fencing", "assembly"] },
+      { "date": "2025-10-10",       "month": 10, "activities": ["竹籬笆加工"], "tags": ["fencing"] },
+      { "date": "2025-10-11",       "month": 10, "activities": ["實踐基地基礎建置完成"], "tags": ["milestone"], "milestone": true }
+    ],
+    "stats_by_month": {
+      "5":  { "log_entries": 1 },
+      "6":  { "log_entries": 12 },
+      "7":  { "log_entries": 8,  "thinning": 1, "transport": 1, "drying": 2 },
+      "8":  { "log_entries": 9,  "kiln_masonry": 3, "cutting": 1 },
+      "9":  { "log_entries": 13, "controls_install": 2 },
+      "10": { "log_entries": 5,  "milestone": 1 }
+    }
+  },
+
+  "asset": {
+    "domain": "Asset",
+    "delivered_facilities": [
+      { "id": "A01", "name_zh": "殺青池",                 "name_en": "Boiling / Soaking Pool",                     "status": "completed", "delivery_window": "2025-06 / 2025-09" },
+      { "id": "A02", "name_zh": "竹炭爐（砌磚＋氣閥＋燃燒器）", "name_en": "Bamboo Charcoal Kiln (masonry + valve + burner)", "status": "completed", "delivery_window": "2025-08 / 2025-09" },
+      { "id": "A03", "name_zh": "竹炭屋（含內部框架）",       "name_en": "Charcoal House (with internal frame)",        "status": "completed", "delivery_window": "2025-09 / 2025-10" },
+      { "id": "A04", "name_zh": "涼亭（屋頂包竹 + 柵欄）",     "name_en": "Pavilion (bamboo-clad roof + railing)",        "status": "completed", "delivery_window": "2025-07 / 2025-10" },
+      { "id": "A05", "name_zh": "樹屋（瞭望台）",             "name_en": "Treehouse (Observation Deck)",                "status": "completed", "delivery_window": "2025-07 / 2025-08" },
+      { "id": "A06", "name_zh": "曬竹架（鐵架 + 頂棚）",       "name_en": "Bamboo Drying Rack (steel frame + canopy)",   "status": "completed", "delivery_window": "2025-06 / 2025-10" },
+      { "id": "A07", "name_zh": "貨櫃（竹材包覆）",            "name_en": "Cargo Container (bamboo-clad)",               "status": "completed", "delivery_window": "2025-09" },
+      { "id": "A08", "name_zh": "道路竹籬笆",                "name_en": "Roadside Bamboo Fence",                      "status": "completed", "delivery_window": "2025-10" }
+    ],
+    "fy26_fy27_pipeline": [
+      { "id": "P01", "name_zh": "兩座機械爐升級至 900-1000°C", "stage": "planning",  "owner": "化材系 + 廠商", "year": "2026" },
+      { "id": "P02", "name_zh": "10 kW 太陽能 + 1 噸淨水循環", "stage": "planning",  "owner": "綠能廠商",       "year": "2026-2027" },
+      { "id": "P03", "name_zh": "竹材前處理動線（剖竹/碎竹/乾燥/砂磨）", "stage": "planning", "owner": "合作社 + 廠商", "year": "2026" }
+    ]
+  },
+
+  "esg_crosswalk": {
+    "domain": "Cross-domain",
+    "SDGs": [
+      { "id": "SDG 8",  "name_zh": "體面工作與經濟成長",   "evidence": "綠領青年返鄉 6 人在地就業（KR 5.3）" },
+      { "id": "SDG 12", "name_zh": "責任消費與生產",       "evidence": "竹材全物質利用 100%、零廢棄製程" },
+      { "id": "SDG 13", "name_zh": "氣候行動",             "evidence": "25 tCO₂e 累計減碳 + 10 kW 太陽能 + 高溫窯節能" },
+      { "id": "SDG 15", "name_zh": "陸域生態",             "evidence": "12 公頃竹林撫育、友善疏伐、生態教育節點" }
+    ],
+    "verification_chain": [
+      "Carbon → 7,526.16 m² 樣區實測 → 企業 ESG 報告書『林業碳匯潛力』揭露",
+      "Labor  → 47 筆施作紀錄 → 永續供應鏈勞動可追溯 / SROI 計算",
+      "Asset  → 8 項硬體交付 → 場域實體投資佐證 / 維保手冊"
+    ]
+  }
+}
