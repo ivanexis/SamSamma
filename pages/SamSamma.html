@@ -24,12 +24,12 @@
       if (!location.hash) window.scrollTo(0, 0);
     })();
   </script>
-  <title>山莎蔓岸 數位轉型｜PM × 前端案例研究 - Ivan's Portfolio</title>
-  <meta name="description" content="策略共創 × 資訊產品端到端負責人 ── 賽夏族 12 公頃聚落案例。場域解法與合作社夥伴持續共創；官網 IA、零伺服器預約與對外數位窗口由我端到端交付。接續 NT$12M 得標計畫脈絡。">
+  <title>SamSamma | PM × Frontend — Solo-Shipped Live Co-op Site · Ivan's Portfolio</title>
+  <meta name="description" content="Solo-shipped live co-op site: site IA, serverless booking, bilingual i18n. Nav 8→5, 3 personas, zero backend. PM × Frontend case study in an indigenous community.">
   <link rel="icon" type="image/webp" href="../images/logo_2.webp">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="山莎蔓岸 數位轉型｜PM × 前端案例研究">
-  <meta property="og:description" content="策略共創四大限制 · 獨立交付數位產品線 ── 合作社夥伴持續共創場域解法，數位轉譯與對外窗口端到端交付。">
+  <meta property="og:title" content="SamSamma | PM × Frontend — Solo-Shipped Live Co-op Site">
+  <meta property="og:description" content="Site IA · Serverless booking · Bilingual i18n. Nav 8→5, 3 personas, zero backend. PM × Frontend case study.">
   <meta property="og:image" content="../images/saa.webp">
   <meta property="og:url" content="https://ivangoldaura.dpdns.org/pages/SamSamma.html">
   <meta name="twitter:card" content="summary_large_image">
@@ -545,6 +545,34 @@
       box-shadow: 0 16px 36px rgba(212, 175, 55, 0.55);
       color: #1a1a1a;
     }
+    .pm-hero-editorial .hero-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      justify-content: center;
+      align-items: center;
+    }
+    .pm-hero-editorial .btn-hero-ghost {
+      background: transparent;
+      color: #fff;
+      border: 2px solid rgba(255, 255, 255, 0.55);
+      box-shadow: none;
+    }
+    .pm-hero-editorial .btn-hero-ghost:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.85);
+      color: #fff;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+    }
+    .pm-hero-editorial .hero-context {
+      display: block;
+      margin-top: 1rem;
+      font-size: 0.88em;
+      line-height: 1.65;
+      color: rgba(255, 255, 255, 0.62);
+      font-style: italic;
+    }
+    .i18n-en .hero-cta-row .i18n-zh-only-cta { display: none; }
 
     @media (max-width: 991.98px) {
       .pm-hero-editorial .hero-title { font-size: clamp(1.45rem, 5vw, 2rem); }
@@ -2361,7 +2389,7 @@
           <li class="nav-item"><a class="nav-link" href="#bridge"><span data-i18n-lang="zh">沉澱</span><span data-i18n-lang="en">Reflection</span></a></li>
           <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
             <a class="nav-link nav-cta co-op-site-link" href="https://ivangoldaura.pages.dev/" target="_blank" rel="noopener">
-              <i class="fas fa-external-link-alt me-1"></i><span data-i18n-lang="zh">查看合作社網站</span><span data-i18n-lang="en">Visit Co-op Site</span>
+              <i class="fas fa-external-link-alt me-1"></i><span data-i18n-lang="zh">查看合作社網站</span><span data-i18n-lang="en">View Live Co-op Site</span>
             </a>
           </li>
           <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
@@ -2385,20 +2413,32 @@
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-10 text-center" data-aos="fade-up">
-          <span class="hero-eyebrow">CASE STUDY · 2024–2026 · <span class="eyebrow-accent">NT$12M AWARDED</span></span>
+          <span class="hero-eyebrow">
+            <span data-i18n-lang="zh">案例研究 · 2024–2026 · <span class="eyebrow-accent">NT$12M 得標</span></span>
+            <span data-i18n-lang="en">CASE STUDY · PM × FRONTEND · <span class="eyebrow-accent">LIVE PRODUCT</span></span>
+          </span>
           <h1 class="hero-title">
             <span data-i18n-lang="zh">策略共創四大限制 · 獨立交付<strong>數位產品線</strong><br>賽夏族 12 公頃聚落 × <strong>NT$12M</strong> 計畫脈絡</span>
-            <span data-i18n-lang="en">Co-creating <strong>Four Constraints</strong> · Owning <strong>Digital Product Delivery</strong><br>12-ha Saisiyat Cluster × <strong>NT$12M</strong> Program Context</span>
+            <span data-i18n-lang="en"><strong>PM × Frontend</strong> · Solo-Shipped a <strong>Live Product</strong><br>Site IA · Serverless Booking · Bilingual i18n</span>
           </h1>
           <p class="hero-lede">
             <span data-i18n-lang="zh"><strong>策略共創 × 資訊產品端到端負責人</strong>。竹林盤點、跨村治理、產線升級與 ESG 品牌，與<strong>合作社夥伴持續共創</strong>；我端到端交付官網 IA、零伺服器預約與對外數位窗口。接續 NT$12M 得標計畫（公文核定中）的聚落脈絡。</span>
-            <span data-i18n-lang="en"><strong>Strategy Co-creation × End-to-End Information Product Owner.</strong> Forest inventory, cross-village governance, kiln upgrades, and ESG branding are <strong>co-created ongoing with co-op partners</strong>; I end-to-end deliver site IA, serverless booking, and the external digital window. Built within the awarded NT$12M two-year program (LOA pending).</span>
+            <span data-i18n-lang="en">No engineering team. No templates. <strong>I owned discovery through ship</strong>—cut nav from 8→5, mapped 3 visitor personas, and launched a zero-server booking flow in Vanilla JS on a live co-op site.
+            <span class="hero-context">Context: 12-ha Saisiyat indigenous co-op · awarded NT$12M two-year program (LOA pending).</span></span>
           </p>
-          <a href="#timeline" class="btn-hero-cta">
-            <span data-i18n-lang="zh">走進六階段精實演進</span>
-            <span data-i18n-lang="en">Walk the Six-Stage Lean Build</span>
-            <i class="fas fa-arrow-down ms-2"></i>
-          </a>
+          <div class="hero-cta-row">
+            <a href="https://ivangoldaura.pages.dev/" class="btn-hero-cta co-op-site-link" target="_blank" rel="noopener">
+              <i class="fas fa-globe me-2"></i><span data-i18n-lang="zh">查看合作社網站</span><span data-i18n-lang="en">View Live Co-op Site</span>
+            </a>
+            <a href="#ia-artefacts" class="btn-hero-cta btn-hero-ghost">
+              <i class="fas fa-layer-group me-2"></i><span data-i18n-lang="zh">查看 IA 產出物</span><span data-i18n-lang="en">View IA Artifacts</span>
+            </a>
+            <a href="#timeline" class="btn-hero-cta btn-hero-ghost i18n-zh-only-cta">
+              <span data-i18n-lang="zh">走進六階段精實演進</span>
+              <span data-i18n-lang="en">Explore the 6-Stage Build</span>
+              <i class="fas fa-arrow-down ms-2"></i>
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -2473,38 +2513,38 @@
     <div class="container">
       <div class="row g-4 g-md-5">
 
-        <!-- Highlight 1: 資金規模（金線） -->
+        <!-- Highlight 1: 產品落地（綠線）— 產品優先 -->
         <div class="col-md-4" data-aos="fade-up" data-aos-delay="0">
-          <div class="highlight-col accent-gold">
-            <div class="highlight-num">NT$12M</div>
-            <div class="highlight-label"><span data-i18n-lang="zh">已得標兩年期計畫</span><span data-i18n-lang="en">Awarded · Two-Year Program</span></div>
-            <p class="highlight-desc">
-              <span data-i18n-lang="zh">原民會聚落建構類補助申請 <strong>NT$1,000 萬</strong>（項目上限）；資本門 <strong>85%</strong> 超越法規 80% 底線；接續 USR 1.45M · <strong>100% 結案</strong>的合規信用。</span>
-              <span data-i18n-lang="en">CIP cluster-building grant of <strong>NT$10M</strong> at category cap; <strong>85% CapEx</strong> above the 80% floor; built on USR 1.45M closed at <strong>100% execution</strong>.</span>
-            </p>
-          </div>
-        </div>
-
-        <!-- Highlight 2: 產品落地（綠線） -->
-        <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
           <div class="highlight-col accent-success">
             <div class="highlight-num">100% Live</div>
             <div class="highlight-label"><span data-i18n-lang="zh">官網 + 零伺服器預約系統</span><span data-i18n-lang="en">Co-op Site + Serverless Booking</span></div>
             <p class="highlight-desc">
               <span data-i18n-lang="zh">拒絕套版，獨立交付合作社官方網站；<strong>Vanilla JS fetch POST</strong> 直送 Google Forms，後端維護成本<strong>歸零</strong>。</span>
-              <span data-i18n-lang="en">No-templates: solo-delivered the co-op site; <strong>Vanilla JS fetch POST</strong> directly to Google Forms — backend maintenance cost reduced to <strong>zero</strong>.</span>
+              <span data-i18n-lang="en">Custom-built—no templates. Solo-shipped the co-op site with <strong>Vanilla JS fetch POST</strong> to Google Forms—<strong>zero</strong> backend maintenance.</span>
             </p>
           </div>
         </div>
 
-        <!-- Highlight 3: 設計邏輯（藍線） -->
-        <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+        <!-- Highlight 2: 設計邏輯（藍線） -->
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
           <div class="highlight-col accent-blue">
             <div class="highlight-num"><span data-i18n-lang="zh">六階段迭代</span><span data-i18n-lang="en">6-Stage Iteration</span></div>
-            <div class="highlight-label"><span data-i18n-lang="zh">從現場盤點到資訊重排</span><span data-i18n-lang="en">From Discovery to Recompose</span></div>
+            <div class="highlight-label"><span data-i18n-lang="zh">從現場盤點到資訊重排</span><span data-i18n-lang="en">From Discovery to IA Restructure</span></div>
             <p class="highlight-desc">
               <span data-i18n-lang="zh">先盤點族人實際痛點，整理出三類常見訪客與 12 條常見問題；再把資訊重新分區，<strong>導覽列從 8 項收斂到 5 項</strong>，讓訪客一打開就抓得到重點。</span>
-              <span data-i18n-lang="en">Mapped real pain points, distilled three visitor types and 12 FAQs, then re-zoned the information — <strong>navigation collapsed from 8 to 5 items</strong>, so visitors can grab the key message at first glance.</span>
+              <span data-i18n-lang="en">Mapped real pain points, defined three visitor types and 12 FAQs, then restructured the IA—<strong>navigation cut from 8 to 5 items</strong> so visitors get the point on first scan.</span>
+            </p>
+          </div>
+        </div>
+
+        <!-- Highlight 3: 計畫脈絡（金線）— 降為第三欄 -->
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="highlight-col accent-gold">
+            <div class="highlight-num">NT$12M</div>
+            <div class="highlight-label"><span data-i18n-lang="zh">已得標兩年期計畫</span><span data-i18n-lang="en">Program Context</span></div>
+            <p class="highlight-desc">
+              <span data-i18n-lang="zh">原民會聚落建構類補助申請 <strong>NT$1,000 萬</strong>（項目上限）；資本門 <strong>85%</strong> 超越法規 80% 底線；接續 USR 1.45M · <strong>100% 結案</strong>的合規信用。</span>
+              <span data-i18n-lang="en">Awarded indigenous co-op program—the field context for this product work. Prior USR NT$1.45M closed at <strong>100% execution</strong>.</span>
             </p>
           </div>
         </div>
@@ -2527,7 +2567,7 @@
         </h2>
         <p class="section-desc">
           <span data-i18n-lang="zh">六階段精實演進 ── 從現場痛點到 Magazine-Style 收斂，每階段對位一份可稽核的 PM 產出。</span>
-          <span data-i18n-lang="en">Six-stage lean evolution — from field pain points to Magazine-Style recompose, each stage backed by an auditable PM deliverable.</span>
+          <span data-i18n-lang="en">A six-stage lean build—from field pain points to a magazine-style layout, each stage with a verifiable PM deliverable.</span>
         </p>
       </div>
 
@@ -2536,11 +2576,11 @@
           <h3 class="vtl-title">
             <span class="vtl-num">① INSIGHT</span>
             <span data-i18n-lang="zh"><strong>痛點盤點</strong>　角色扮演洞察</span>
-            <span data-i18n-lang="en"><strong>Map Pain Points</strong>　Role-Playing Insight</span>
+            <span data-i18n-lang="en"><strong>Map Pain Points</strong>　Role-Play Discovery</span>
           </h3>
           <p class="vtl-desc">
             <span data-i18n-lang="zh"><strong>參與式觀察 12 公頃場域</strong>，盤點理事長、工藝師、學員三方真實痛點，建立可行動 Persona。</span>
-            <span data-i18n-lang="en"><strong>Participatory observation across 12 ha</strong> — mapped chair, artisans, and students into actionable personas.</span>
+            <span data-i18n-lang="en"><strong>Participatory observation across 12 ha</strong>—turned field observations of the chair, artisans, and students into three actionable personas.</span>
           </p>
         </div>
 
@@ -2564,7 +2604,7 @@
           </h3>
           <p class="vtl-desc">
             <span data-i18n-lang="zh"><strong>深訪理事長 × 工藝師 × 學員</strong>，把 Persona 從「使用者」升級為「決策者」視角。</span>
-            <span data-i18n-lang="en"><strong>Interviewed chair × artisans × students</strong> — promoted personas from users to decision-makers.</span>
+            <span data-i18n-lang="en"><strong>Interviewed chair × artisans × students</strong>—reframed personas from end users to decision-makers.</span>
           </p>
         </div>
 
@@ -2576,7 +2616,7 @@
           </h3>
           <p class="vtl-desc">
             <span data-i18n-lang="zh"><strong>Nav 8 收斂為 5</strong>，建立 Hub + Nodes 架構，消除資訊雜訊與重複入口。</span>
-            <span data-i18n-lang="en"><strong>Converged nav from 8 to 5</strong> — Hub + Nodes IA killed redundancy and noise.</span>
+            <span data-i18n-lang="en"><strong>Converged nav from 8 to 5</strong>—hub-and-spoke IA cut redundancy and clutter.</span>
           </p>
         </div>
 
@@ -2588,7 +2628,7 @@
           </h3>
           <p class="vtl-desc">
             <span data-i18n-lang="zh"><strong>fetch POST 站內直送 Google Form</strong>，預約不離站，後端維護成本歸零。</span>
-            <span data-i18n-lang="en"><strong>Vanilla fetch POST in-page</strong> — bookings stay on-site, zero backend maintenance.</span>
+            <span data-i18n-lang="en"><strong>Vanilla fetch POST in-page</strong>—bookings never leave the site; no backend to maintain.</span>
           </p>
         </div>
 
@@ -2600,7 +2640,7 @@
           </h3>
           <p class="vtl-desc">
             <span data-i18n-lang="zh"><strong>砍除雙層矩陣與資訊牆</strong>，全寬中央聚焦，掃讀路徑收斂為清晰 F-Pattern。</span>
-            <span data-i18n-lang="en"><strong>Removed dual-matrix walls</strong> — full-width hero drives a clean F-Pattern scan.</span>
+            <span data-i18n-lang="en"><strong>Removed the dual-column info grid</strong>—full-width hero drives a clean F-pattern scan.</span>
           </p>
         </div>
       </div>
@@ -2622,7 +2662,7 @@
         </h2>
         <p class="section-desc">
           <span data-i18n-lang="zh">四份可稽核 PM 產出，配雜誌封面式 Wireframe 與互動 Prototype ── 證明從設計到落地的全流程能力。</span>
-          <span data-i18n-lang="en">Four auditable PM artifacts plus magazine-style Wireframe & live Prototype — proving end-to-end design-to-ship capability.</span>
+          <span data-i18n-lang="en">Four auditable PM artifacts, plus magazine-style wireframes and a live prototype—proof I took the work from design through launch.</span>
         </p>
       </div>
 
@@ -2683,14 +2723,14 @@
             <span class="deliv-design-tag">Wireframe · Before / After</span>
             <h3 class="deliv-design-title">
               <span data-i18n-lang="zh">低保真線框｜雜誌風重組</span>
-              <span data-i18n-lang="en">Low-Fi Wireframe · Magazine Recompose</span>
+              <span data-i18n-lang="en">Low-Fi Wireframe · Magazine Layout</span>
             </h3>
             <p class="deliv-design-desc">
               <span data-i18n-lang="zh"><strong>砍除雙層矩陣</strong>，Hero 收斂為全寬中央聚焦 ── 3 張關鍵畫面對照演進路徑。</span>
-              <span data-i18n-lang="en"><strong>Removed dual-matrix walls</strong> — Hero converged to a full-width center hero across 3 key frames.</span>
+              <span data-i18n-lang="en"><strong>Removed the dual-column info grid</strong>—hero became a full-width, centered layout across three key screens.</span>
             </p>
             <a href="#ia-artefacts" class="btn-deliv">
-              <i class="fas fa-layer-group"></i><span data-i18n-lang="zh">查看 IA 產出物區</span><span data-i18n-lang="en">View IA Artefacts</span>
+              <i class="fas fa-layer-group"></i><span data-i18n-lang="zh">查看 IA 產出物區</span><span data-i18n-lang="en">View IA Artifacts</span>
             </a>
           </div>
         </div>
@@ -2701,11 +2741,11 @@
             <span class="deliv-design-tag">Prototype · Live Click-Through</span>
             <h3 class="deliv-design-title">
               <span data-i18n-lang="zh">高保真原型｜合作社官方網站</span>
-              <span data-i18n-lang="en">High-Fi Prototype · Live Co-op Site</span>
+              <span data-i18n-lang="en">Hi-Fi Live Prototype · Co-op Site</span>
             </h3>
             <p class="deliv-design-desc">
               <span data-i18n-lang="zh"><strong>5 frame 互動原型已上線</strong> ── Vanilla JS + fetch POST，零成本自動化預約工作流。</span>
-              <span data-i18n-lang="en"><strong>5-frame interactive prototype is live</strong> — Vanilla JS + fetch POST, zero-cost booking workflow.</span>
+              <span data-i18n-lang="en"><strong>Five-screen interactive prototype is live</strong>—Vanilla JS + fetch POST, serverless booking workflow.</span>
             </p>
             <a href="https://ivangoldaura.pages.dev/" class="btn-deliv co-op-site-link" target="_blank" rel="noopener">
               <i class="fas fa-globe"></i><span data-i18n-lang="zh">點擊查看官網 Live</span><span data-i18n-lang="en">View Live Site</span>
@@ -2724,7 +2764,7 @@
       <div class="row g-4">
         <div class="col-6 col-md stat-item" data-aos="fade-up" data-aos-delay="0">
           <div class="stat-value num">12<span class="stat-unit"><span data-i18n-lang="zh">公頃</span><span data-i18n-lang="en">ha</span></span></div>
-          <div class="stat-label"><span data-i18n-lang="zh">跨四村竹林場域</span><span data-i18n-lang="en">Bamboo field across 4 villages</span></div>
+          <div class="stat-label"><span data-i18n-lang="zh">跨四村竹林場域</span><span data-i18n-lang="en">12 ha of bamboo forest spanning four villages</span></div>
         </div>
         <div class="col-6 col-md stat-item" data-aos="fade-up" data-aos-delay="100">
           <div class="stat-value num">3<span class="stat-unit"><span data-i18n-lang="zh">大利害關係人</span><span data-i18n-lang="en">stakeholders</span></span></div>
@@ -2758,14 +2798,14 @@
               在資源有限、現場資訊雜亂的地方創生現場，
               <strong style="color: var(--gold);">PM 的核心價值是「資訊轉化」，前端的核心價值是「親手把事做出來」</strong>。</span>
               <span data-i18n-lang="en">What this case study is really about:
-              on a resource-scarce, information-chaotic regional-revitalization site,
-              <strong style="color: var(--gold);">a PM's core value is "translating information," and a frontend developer's is "building it with your own hands."</strong></span>
+              in a resource-constrained, information-scattered rural revitalization project,
+              <strong style="color: var(--gold);">a PM's core job is turning chaos into clarity—and a frontend developer's is shipping what the team actually needs.</strong></span>
             </p>
             <div class="north-star-formula mt-4">
               <strong><span data-i18n-lang="zh">兩條主軸</span><span data-i18n-lang="en">Two pillars</span></strong>
               <span class="equiv">≡</span>
               <span data-i18n-lang="zh">把雜亂田野資料結構化 ＋ 親自打造合作社官網與零伺服器預約系統</span>
-              <span data-i18n-lang="en">Structuring messy field data ＋ hand-building the co-op site and a zero-server reservation system</span>
+              <span data-i18n-lang="en">Structuring messy field data ＋ building the co-op site and zero-server booking system solo</span>
             </div>
           </div>
         </div>
@@ -2818,8 +2858,8 @@
               「賽夏族山莎蔓岸低碳竹產業聚落建構計畫 ── 竹林治理、空間整合、品牌共創與高值循環產業推升」。</span>
               <span data-i18n-lang="en">Staying after graduation, gradually joining the co-op as it took shape —<br>
               the timing, the place, and the people aligned, leading to the <strong>FY2025 MOE USR NT$1.45M plan</strong> (100% execution),<br>
-              and the <strong>NT$12M two-year program confirmed awarded by CIP on 2026-06-10</strong> (official letter being processed):<br>
-              "Saisiyat SamSamma Low-Carbon Bamboo Industry Cluster — bamboo governance, spatial integration, co-created branding & high-value circular industry."</span>
+              and the <strong>NT$12M two-year program award confirmed by CIP on 2026-06-10</strong> (official letter being processed):<br>
+              "Saisiyat SamSamma Low-Carbon Bamboo Industry Cluster — bamboo governance, spatial integration, co-branded identity, and high-value circular production."</span>
             </p>
 
             <div class="origin-timeline" style="display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px dashed var(--slate-300);">
@@ -2836,7 +2876,7 @@
               <span class="pm-badge pm-badge-gold">
                 <i class="fas fa-trophy"></i>
                 <span data-i18n-lang="zh">2026/06/10 確認得標 NT$12M</span>
-                <span data-i18n-lang="en">2026-06-10 Confirmed Awarded · NT$12M</span>
+                <span data-i18n-lang="en">Award confirmed 2026-06-10 · NT$12M</span>
               </span>
             </div>
           </div>
@@ -2855,7 +2895,7 @@
               <i class="fas fa-stream" style="color: var(--gold);"></i>
               <span style="flex: 1;">
                 <span data-i18n-lang="zh">需求催生鏈 ── 場域洞察（Insight）→ 產品決策（Action）逐年因果脈絡</span>
-                <span data-i18n-lang="en">Needs Lineage — year-by-year causality from Field Insight to Product Action</span>
+                <span data-i18n-lang="en">How needs evolved—year by year, from field insight to product decisions</span>
               </span>
             </summary>
             <div style="padding: 0 1.75rem 1.75rem 1.75rem;">
@@ -2876,7 +2916,7 @@
                   <div style="font-size: 0.95rem; color: var(--slate-800); margin-bottom: 0.3rem;">
                     <span class="lineage-tag lineage-tag-insight">INSIGHT</span>
                     <span data-i18n-lang="zh">大隘部落缺乏對外溝通載體，文化資源隨耆老凋零持續流失，且未有量化盤點基礎。</span>
-                    <span data-i18n-lang="en">Daai village lacked any external communication channel; cultural assets were eroding with the elders, with no quantitative baseline in place.</span>
+                    <span data-i18n-lang="en">Daai village had no public channel to reach outsiders; cultural assets were eroding with the elders, with no quantitative baseline in place.</span>
                   </div>
                   <div style="font-size: 0.95rem; color: var(--slate-800);">
                     <span class="lineage-tag lineage-tag-action">ACTION</span>
@@ -2892,7 +2932,7 @@
                   <div style="font-size: 0.95rem; color: var(--slate-800); margin-bottom: 0.3rem;">
                     <span class="lineage-tag lineage-tag-insight">INSIGHT</span>
                     <span data-i18n-lang="zh">族人具備竹炭技術與土地資源，但缺乏對外展示載體，內部會議與訪視紀錄無人結構化。</span>
-                    <span data-i18n-lang="en">The community held charcoal know-how and land assets, yet lacked an external-facing showcase; meeting minutes and site-visit records remained unstructured.</span>
+                    <span data-i18n-lang="en">The community held charcoal know-how and land assets, yet had no public showcase for visitors or buyers; meeting minutes and site-visit records remained unstructured.</span>
                   </div>
                   <div style="font-size: 0.95rem; color: var(--slate-800);">
                     <span class="lineage-tag lineage-tag-action">ACTION</span>
@@ -2904,16 +2944,16 @@
                 <!-- 節點 3 ─ 2025-Q3 -->
                 <div style="position: relative; margin-bottom: 1.5rem;">
                   <span style="position: absolute; left: -1.95rem; top: 0.1rem; width: 0.85rem; height: 0.85rem; background: var(--gold); border: 3px solid #fff; border-radius: 50%; box-shadow: 0 0 0 1px var(--gold);"></span>
-                  <div style="font-family: 'Inter', sans-serif; font-size: 0.78rem; font-weight: 700; color: var(--gold); letter-spacing: 0.06em; margin-bottom: 0.35rem;">2025-Q3 · <span data-i18n-lang="zh">USR NT$1.45M 執行中</span><span data-i18n-lang="en">USR NT$1.45M In-flight</span></div>
+                  <div style="font-family: 'Inter', sans-serif; font-size: 0.78rem; font-weight: 700; color: var(--gold); letter-spacing: 0.06em; margin-bottom: 0.35rem;">2025-Q3 · <span data-i18n-lang="zh">USR NT$1.45M 執行中</span><span data-i18n-lang="en">USR NT$1.45M · In Progress</span></div>
                   <div style="font-size: 0.95rem; color: var(--slate-800); margin-bottom: 0.3rem;">
                     <span class="lineage-tag lineage-tag-insight">INSIGHT</span>
                     <span data-i18n-lang="zh">USR 計畫產生的訪視照片、會議紀錄、教授輸出尚未轉譯為對部落可操作的內容資產。</span>
-                    <span data-i18n-lang="en">USR-generated site-visit photos, meeting minutes, and academic outputs had not been transformed into tribe-actionable content assets.</span>
+                    <span data-i18n-lang="en">USR-generated site-visit photos, meeting minutes, and academic outputs hadn't been turned into content the co-op could actually use.</span>
                   </div>
                   <div style="font-size: 0.95rem; color: var(--slate-800);">
                     <span class="lineage-tag lineage-tag-action">ACTION</span>
                     <span data-i18n-lang="zh">建立「田野資料 → 結構化內容」標準工作流（= <strong>核心能力 1：資訊轉化 / Information Transformation</strong>）。</span>
-                    <span data-i18n-lang="en">Built a standard "field data → structured content" workflow (= <strong>Core Capability 1: Information Transformation</strong>).</span>
+                    <span data-i18n-lang="en">Built a standard "field data → structured content" workflow (= <strong>Core Capability 1: Content Architecture</strong>).</span>
                   </div>
                 </div>
 
@@ -2924,19 +2964,19 @@
                   <div style="font-size: 0.95rem; color: var(--slate-800); margin-bottom: 0.3rem;">
                     <span class="lineage-tag lineage-tag-insight">INSIGHT</span>
                     <span data-i18n-lang="zh">合作社具備對外接案需求，但受限於零工程預算 ── 3 家外部廠商報價均超出可承擔範圍。</span>
-                    <span data-i18n-lang="en">The co-op had clear external-booking demand but was capped by a zero engineering budget — three vendor quotes all exceeded the affordable range.</span>
+                    <span data-i18n-lang="en">The co-op had clear booking demand but zero budget for engineering—three vendor quotes all exceeded the affordable range.</span>
                   </div>
                   <div style="font-size: 0.95rem; color: var(--slate-800);">
                     <span class="lineage-tag lineage-tag-action">ACTION</span>
                     <span data-i18n-lang="zh">採零伺服器架構（Vanilla JS + Google Forms / Sheets），獨立完成合作社官網與自動化預約工作流（= <strong>核心能力 2：親手實作 / Hand-built Delivery</strong>）。</span>
-                    <span data-i18n-lang="en">Adopted a zero-server architecture (Vanilla JS + Google Forms / Sheets); delivered the co-op site and automated reservation workflow single-handedly (= <strong>Core Capability 2: Hand-built Delivery</strong>).</span>
+                    <span data-i18n-lang="en">Adopted a zero-server architecture (Vanilla JS + Google Forms / Sheets); built and launched the co-op site and automated booking workflow solo (= <strong>Core Capability 2: Hands-on Delivery</strong>).</span>
                   </div>
                 </div>
 
                 <!-- 節點 5 ─ 2026 -->
                 <div style="position: relative; margin-bottom: 0;">
                   <span style="position: absolute; left: -1.95rem; top: 0.1rem; width: 0.85rem; height: 0.85rem; background: var(--data-blue); border: 3px solid #fff; border-radius: 50%; box-shadow: 0 0 0 1px var(--data-blue);"></span>
-                  <div style="font-family: 'Inter', sans-serif; font-size: 0.78rem; font-weight: 700; color: var(--data-blue); letter-spacing: 0.06em; margin-bottom: 0.35rem;">2026 · <span data-i18n-lang="zh">原民會 NT$12M 兩年期・確認得標</span><span data-i18n-lang="en">CIP NT$12M Two-Year · Confirmed Awarded</span></div>
+                  <div style="font-family: 'Inter', sans-serif; font-size: 0.78rem; font-weight: 700; color: var(--data-blue); letter-spacing: 0.06em; margin-bottom: 0.35rem;">2026 · <span data-i18n-lang="zh">原民會 NT$12M 兩年期・確認得標</span><span data-i18n-lang="en">CIP NT$12M Two-Year Program · Award Confirmed</span></div>
                   <div style="font-size: 0.95rem; color: var(--slate-800); margin-bottom: 0.3rem;">
                     <span class="lineage-tag lineage-tag-insight">INSIGHT</span>
                     <span data-i18n-lang="zh">115-116 計畫書內含策略加值行銷平台、ESG 共用儀表板、共用通路等多項資訊產品需求，缺乏對應角色承接。</span>
@@ -2945,7 +2985,7 @@
                   <div style="font-size: 0.95rem; color: var(--slate-800);">
                     <span class="lineage-tag lineage-tag-action">ACTION</span>
                     <span data-i18n-lang="zh">角色定位升級為「資訊產品線負責人」，產出短／中／長期路線圖（詳見 <a href="#roadmap-info" style="color: var(--data-blue); text-decoration: underline;">§ 03.5 Information Product Roadmap</a> 與資料整理檔 § 單元零）。</span>
-                    <span data-i18n-lang="en">Role repositioned as "Information Product Line Owner," with a short / mid / long-term roadmap (see <a href="#roadmap-info" style="color: var(--data-blue); text-decoration: underline;">§ 03.5 Information Product Roadmap</a> and data file § Section 0).</span>
+                    <span data-i18n-lang="en">Role expanded to <strong>Information Product Lead</strong>, with short-, mid-, and long-term roadmaps (see <a href="#roadmap-info" style="color: var(--data-blue); text-decoration: underline;">§ 03.5 Information Product Roadmap</a> and data file § Section 0).</span>
                   </div>
                 </div>
 
@@ -3001,7 +3041,7 @@
         <p class="section-desc" style="margin-top: 0.35rem; font-size: 0.92rem; color: var(--slate-700); font-style: italic;">
           <i class="fas fa-handshake" style="margin-right: 0.4rem; color: var(--bamboo-mid);"></i>
           <span data-i18n-lang="zh">場域解法與合作社夥伴持續共創；數位轉譯與對外窗口由我端到端交付。</span>
-          <span data-i18n-lang="en">Field solutions are co-created ongoing with co-op partners; digital translation and the external window are end-to-end owned by me.</span>
+          <span data-i18n-lang="en">On-the-ground solutions were co-developed with co-op partners; I owned the digital layer—site IA, content structure, and the public site.</span>
         </p>
       </div>
 
@@ -3039,7 +3079,7 @@
               <span data-i18n-lang="zh">引進空拍 + RTK 多光譜技術，建立 <strong>7,526 m²</strong> 樣區
               (胸徑 5.7 cm、密度 19,200 株/ha、單位碳儲量 <strong>77.3 tC/ha</strong>) ── 從這裡開始，竹林才「有數字」可以講話</span>
               <span data-i18n-lang="en">Introduced aerial + RTK multispectral surveying to build a <strong>7,526 m²</strong> sample plot
-              (DBH 5.7 cm, density 19,200 stems/ha, carbon storage <strong>77.3 tC/ha</strong>) — only then did the forest finally have numbers to speak with</span>
+              (DBH 5.7 cm, density 19,200 stems/ha, carbon storage <strong>77.3 tC/ha</strong>)—only then did the forest have numbers we could cite</span>
             </span>
           </div>
           <div class="pain-row retention">
@@ -3082,7 +3122,7 @@
             <span class="pain-label"><i class="fas fa-key me-1"></i><span data-i18n-lang="zh">處理方式</span><span data-i18n-lang="en">Approach</span></span>
             <span class="pain-text">
               <span data-i18n-lang="zh">發起合作社治理平台、建立跨村協作名冊 (<strong>≥ 25 人/戶</strong>) ── 把「靠人情」升級為「靠制度」，並設立收益回流公共基金</span>
-              <span data-i18n-lang="en">Launched a co-op governance platform and a cross-village collaboration roster (<strong>≥ 25 people/households</strong>) — upgrading "relying on goodwill" to "relying on systems," plus a public revenue-return fund</span>
+              <span data-i18n-lang="en">Launched a co-op governance platform and a cross-village collaboration roster (<strong>≥ 25 people/households</strong>)—moving from informal goodwill to formal systems, plus a public revenue-return fund</span>
             </span>
           </div>
           <div class="pain-row retention">
@@ -3119,20 +3159,20 @@
           </div>
           <div class="pain-row">
             <span class="pain-label"><span data-i18n-lang="zh">場域的缺口</span><span data-i18n-lang="en">The gap on the ground</span></span>
-            <span class="pain-text"><span data-i18n-lang="zh">沒有高溫窯、沒有前處理設備，產線就只能停在這層樓</span><span data-i18n-lang="en">Without a high-temperature kiln or pre-processing equipment, the production line was stuck on this floor</span></span>
+            <span class="pain-text"><span data-i18n-lang="zh">沒有高溫窯、沒有前處理設備，產線就只能停在這層樓</span><span data-i18n-lang="en">Without a high-temperature kiln or pre-processing equipment, the production line couldn't move beyond this stage</span></span>
           </div>
           <div class="pain-row solution">
             <span class="pain-label"><i class="fas fa-key me-1"></i><span data-i18n-lang="zh">處理方式</span><span data-i18n-lang="en">Approach</span></span>
             <span class="pain-text">
               <span data-i18n-lang="zh">提案兩座機械爐升級至 <strong>900-1000°C</strong>、導入零廢棄 SOP，搭配 10 kW 太陽能與 1 噸淨水循環 ── 從「燒炭」升級為「碳負循環產線」</span>
-              <span data-i18n-lang="en">Proposed upgrading two mechanical kilns to <strong>900–1000°C</strong>, introduced a zero-waste SOP, paired with 10 kW solar and a 1-tonne water-recycling loop — upgrading "burning charcoal" into a "carbon-negative circular production line"</span>
+              <span data-i18n-lang="en">Proposed upgrading two mechanical kilns to <strong>900–1000°C</strong>, introduced a zero-waste SOP, paired with 10 kW solar and a 1-tonne water-recycling loop—turning basic charcoal production into a carbon-negative circular line</span>
             </span>
           </div>
           <div class="pain-row retention">
             <span class="pain-label"><i class="fas fa-seedling me-1"></i><span data-i18n-lang="zh">能力留存</span><span data-i18n-lang="en">Retention</span></span>
             <span class="pain-text">
               <span data-i18n-lang="zh">同步出版 <strong>零廢棄產線 SOP + 設備維保手冊 + 操作訓練教材</strong> ── 即使主要操作者離開，產線仍可運轉，SOP 留在窯邊</span>
-              <span data-i18n-lang="en">Documented <strong>a zero-waste production-line SOP, equipment maintenance manual, and operator training materials</strong> — even if the lead operator leaves, the line keeps running; the SOP stays at the kiln</span>
+              <span data-i18n-lang="en">Documented <strong>a zero-waste production-line SOP, equipment maintenance manual, and operator training materials</strong>—even if the lead operator leaves, the line keeps running; the SOP lives with the kiln team</span>
             </span>
           </div>
         </article>
@@ -3168,7 +3208,7 @@
             <span class="pain-label"><i class="fas fa-key me-1"></i><span data-i18n-lang="zh">處理方式</span><span data-i18n-lang="en">Approach</span></span>
             <span class="pain-text">
               <span data-i18n-lang="zh">建立「<strong>Saisiyat Raromaeh</strong>」共用品牌、做 ESG 採購提案包 (企業低碳禮盒 / ESG 參訪 / 永續採購) ── 讓部落第一次有「一份對外提案」可以遞出去</span>
-              <span data-i18n-lang="en">Built the "<strong>Saisiyat Raromaeh</strong>" shared brand and an ESG procurement package (corporate low-carbon gift sets / ESG visits / sustainable sourcing) — giving the tribe its first ever external proposal to hand out</span>
+              <span data-i18n-lang="en">Built the "<strong>Saisiyat Raromaeh</strong>" shared brand and an ESG procurement package (corporate low-carbon gift sets / ESG visits / sustainable sourcing)—giving the co-op its first packaged proposal for outside partners</span>
             </span>
           </div>
           <div class="pain-row retention">
@@ -3190,7 +3230,7 @@
     <div class="container">
       <div class="section-head" data-aos="fade-up">
         <div class="section-eyebrow">02 · The Execution · <span data-i18n-lang="zh">對齊目標</span><span data-i18n-lang="en">Aligning Goals</span></div>
-        <h2 class="section-title"><span data-i18n-lang="zh">Roadmap 桌上做的事：把抽象目標拆成可追的進度</span><span data-i18n-lang="en">At the roadmap table: breaking abstract goals into trackable progress</span></h2>
+        <h2 class="section-title"><span data-i18n-lang="zh">Roadmap 桌上做的事：把抽象目標拆成可追的進度</span><span data-i18n-lang="en">In planning sessions: turning abstract goals into trackable milestones</span></h2>
         <p class="section-desc">
           <span data-i18n-lang="zh">「地方創生」太大、太模糊，沒人扛得動。團隊討論時把它拆成
           <strong>治理 → 空間 → 資源 → 產線 → 品牌</strong> 五件具體事，
@@ -3225,9 +3265,9 @@
             <div class="roadmap-phase-body">
               <div class="roadmap-cell"><span data-i18n-lang="zh">聚落治理平台成立 + 跨村協作名冊（≥ 20 人/戶）</span><span data-i18n-lang="en">Cluster governance platform founded + cross-village roster (≥ 20 people/households)</span></div>
               <div class="roadmap-cell"><span data-i18n-lang="zh">竹徑文化講堂一期 + 櫻花步道一期（0.8 km）</span><span data-i18n-lang="en">Bamboo-path culture hall (phase 1) + cherry-blossom trail (phase 1, 0.8 km)</span></div>
-              <div class="roadmap-cell"><span data-i18n-lang="zh">供材分級制度 + 採伐→分類→集運 SOP（先行版）</span><span data-i18n-lang="en">Material grading system + harvest→sort→haul SOP (preliminary)</span></div>
+              <div class="roadmap-cell"><span data-i18n-lang="zh">供材分級制度 + 採伐→分類→集運 SOP（先行版）</span><span data-i18n-lang="en">Material grading system + harvest → sort → haul workflow (draft SOP)</span></div>
               <div class="roadmap-cell"><span data-i18n-lang="zh">碎竹/剖竹/砂磨/乾燥機到位 + 高溫窯升級規格書</span><span data-i18n-lang="en">Crushing/splitting/sanding/drying machines in place + high-temp kiln upgrade spec</span></div>
-              <div class="roadmap-cell"><span data-i18n-lang="zh">Saisiyat Raromaeh 品牌雛形 + 培力一期（≥ 80 人次）</span><span data-i18n-lang="en">Saisiyat Raromaeh brand prototype + training phase 1 (≥ 80 participant-times)</span></div>
+              <div class="roadmap-cell"><span data-i18n-lang="zh">Saisiyat Raromaeh 品牌雛形 + 培力一期（≥ 80 人次）</span><span data-i18n-lang="en">Saisiyat Raromaeh brand prototype + Phase 1 training (≥ 80 participants)</span></div>
             </div>
           </div>
 
@@ -3242,7 +3282,7 @@
               <div class="roadmap-cell"><span data-i18n-lang="zh">講堂/服務站二期完工 + 步道二期完工（1.5 km）+ 解說系統</span><span data-i18n-lang="en">Hall/service-station phase 2 + trail phase 2 (1.5 km) + interpretation system</span></div>
               <div class="roadmap-cell"><span data-i18n-lang="zh">供材紀錄全年化 + 公共基金入帳 + 導覽點位</span><span data-i18n-lang="en">Year-round supply records + public fund funded + guided-tour points</span></div>
               <div class="roadmap-cell"><span data-i18n-lang="zh">兩座爐升級 900-1000°C + 10 kW 太陽能 + 1 噸淨水</span><span data-i18n-lang="en">Two kilns upgraded to 900–1000°C + 10 kW solar + 1-tonne water recycling</span></div>
-              <div class="roadmap-cell"><span data-i18n-lang="zh">3 款產品上市 + 2 套遊程上架 + ESG 提案包與企業媒合</span><span data-i18n-lang="en">3 products launched + 2 tour packages live + ESG package & enterprise matchmaking</span></div>
+              <div class="roadmap-cell"><span data-i18n-lang="zh">3 款產品上市 + 2 套遊程上架 + ESG 提案包與企業媒合</span><span data-i18n-lang="en">3 products launched + 2 tour packages live + ESG package and enterprise outreach</span></div>
             </div>
           </div>
         </div>
@@ -3252,7 +3292,7 @@
           <div class="checkpoint-label"><i class="fas fa-flag-checkered me-2"></i><span data-i18n-lang="zh">Q2 期中查核</span><span data-i18n-lang="en">Q2 Mid-term Review</span></div>
           <div class="checkpoint-cell">
             <strong><span data-i18n-lang="zh">115 Q2 · 45% 進度</span><span data-i18n-lang="en">FY26 Q2 · 45% progress</span></strong>
-            <span data-i18n-lang="zh">盤點完成、平台發起會議、設計圖說、設備發包</span><span data-i18n-lang="en">Inventory done, platform kickoff meeting, design drawings, equipment tendered</span>
+            <span data-i18n-lang="zh">盤點完成、平台發起會議、設計圖說、設備發包</span><span data-i18n-lang="en">Inventory complete, governance kickoff, design docs, equipment procured</span>
           </div>
           <div class="checkpoint-cell">
             <strong><span data-i18n-lang="zh">116 Q2 · 50% 進度</span><span data-i18n-lang="en">FY27 Q2 · 50% progress</span></strong>
@@ -3307,7 +3347,7 @@
             </div>
           </div>
           <div class="stake-mission" style="color: var(--data-blue);">
-            <span data-i18n-lang="zh">把「自然資產」轉成「可揭露的數據」</span><span data-i18n-lang="en">Turning "natural assets" into "disclosable data"</span>
+            <span data-i18n-lang="zh">把「自然資產」轉成「可揭露的數據」</span><span data-i18n-lang="en">Turning natural assets into audit-ready data</span>
           </div>
           <ul class="stake-list">
             <li><i class="fas fa-check"></i><span data-i18n-lang="zh">明新科大 彭政雄／趙俊雄（化材／企管）：1000°C 高溫窯升級與 SOP</span><span data-i18n-lang="en">MUST — Peng & Chao (Chem. Eng. / Business): 1000°C kiln upgrade & SOP</span></li>
@@ -3334,7 +3374,7 @@
             </div>
           </div>
           <div class="stake-mission" style="color: #8a6d18;">
-            <span data-i18n-lang="zh">把「個體戶」轉成「聚落協作體」</span><span data-i18n-lang="en">Turning "individual operators" into a "collaborative cluster"</span>
+            <span data-i18n-lang="zh">把「個體戶」轉成「聚落協作體」</span><span data-i18n-lang="en">Turning solo operators into a coordinated cluster</span>
           </div>
           <ul class="stake-list">
             <li><i class="fas fa-check"></i><span data-i18n-lang="zh">合作社核心：理事長趙英文、CEO 林杏（tiwaS.tara）</span><span data-i18n-lang="en">Co-op core: Chairman Chao Ying-wen, CEO Lin Hsing (tiwaS.tara)</span></li>
@@ -3361,7 +3401,7 @@
             </div>
           </div>
           <div class="stake-mission" style="color: var(--bamboo-deep);">
-            <span data-i18n-lang="zh">把「補助申請」轉成「合規可驗收交付」</span><span data-i18n-lang="en">Turning "grant applications" into "compliant, acceptance-ready deliverables"</span>
+            <span data-i18n-lang="zh">把「補助申請」轉成「合規可驗收交付」</span><span data-i18n-lang="en">Turning grant paperwork into deliverables that pass review</span>
           </div>
           <ul class="stake-list">
             <li><i class="fas fa-check"></i><span data-i18n-lang="zh">原住民族委員會（產業推升計畫主辦單位）</span><span data-i18n-lang="en">Council of Indigenous Peoples (industry-upgrade program host)</span></li>
@@ -3375,7 +3415,7 @@
             <strong>DELIVERY</strong>
             <span data-i18n-lang="zh">協助整理迎檢資料、會議紀錄與簡報、Q2/Q4 期中期末查核文件，
             把現場進度翻譯為公部門看得懂的格式</span><span data-i18n-lang="en">Compiled audit-prep materials, meeting minutes & decks, Q2/Q4 review documents —
-            translating on-the-ground progress into formats the government understands</span>
+            translating on-the-ground progress into government-ready reports</span>
           </div>
         </article>
       </div>
@@ -3410,7 +3450,7 @@
           </div>
           <div class="dash-label">Carbon Storage / <span data-i18n-lang="zh">碳儲量</span><span data-i18n-lang="en">Carbon Storage</span></div>
           <div class="dash-value">77.3<span class="unit">tC/ha</span></div>
-          <div class="dash-desc"><span data-i18n-lang="zh">場域樣區竹林平均碳儲量，可換算為企業 ESG 報告書揭露的「林業碳匯潛力」。</span><span data-i18n-lang="en">Average carbon storage of the site's bamboo sample plot — convertible into the "forest carbon-sink potential" disclosed in corporate ESG reports.</span></div>
+          <div class="dash-desc"><span data-i18n-lang="zh">場域樣區竹林平均碳儲量，可換算為企業 ESG 報告書揭露的「林業碳匯潛力」。</span><span data-i18n-lang="en">Average carbon storage of the site's bamboo sample plot—usable as forest carbon-sink potential in corporate ESG reports.</span></div>
           <div class="dash-tooltip" role="tooltip">
             <strong><span data-i18n-lang="zh">資料源：</span><span data-i18n-lang="en">Source: </span></strong><span data-i18n-lang="zh">明新科大 USR 計畫 2025 樣區實測 7,526 m² 抽樣調查；
             參照農業部林業及自然保育署「竹林碳匯換算公式」。</span><span data-i18n-lang="en">MUST USR 2025 field measurement, 7,526 m² sample survey;
@@ -3424,7 +3464,7 @@
           </div>
           <div class="dash-label">Sample Area / <span data-i18n-lang="zh">樣區面積</span><span data-i18n-lang="en">Sample Area</span></div>
           <div class="dash-value">7,526<span class="unit">m²</span></div>
-          <div class="dash-desc"><span data-i18n-lang="zh">已完成科學樣區建置，可承接企業「碳匯認養 / 採購」需求的計算基礎。</span><span data-i18n-lang="en">A completed scientific sample plot — the calculation basis for enterprise "carbon-sink adoption / procurement" needs.</span></div>
+          <div class="dash-desc"><span data-i18n-lang="zh">已完成科學樣區建置，可承接企業「碳匯認養 / 採購」需求的計算基礎。</span><span data-i18n-lang="en">A completed scientific sample plot—the calculation basis for enterprise carbon-offset and procurement needs.</span></div>
           <div class="dash-tooltip" role="tooltip">
             <strong><span data-i18n-lang="zh">資料源：</span><span data-i18n-lang="en">Source: </span></strong><span data-i18n-lang="zh">2025 年度 USR 樣區建置完成資料；
             樣區位於主竹林經營區，採系統取樣法（systematic sampling）。</span><span data-i18n-lang="en">FY2025 USR sample-plot completion data;
@@ -3461,27 +3501,27 @@
 
         <div class="okr-card" data-aos="fade-up" data-aos-delay="80">
           <span class="obj-tag">O2 · PRODUCTION</span>
-          <h4><span data-i18n-lang="zh">建立全物質循環的高值產線</span><span data-i18n-lang="en">Build a high-value, full-material-circular production line</span></h4>
+          <h4><span data-i18n-lang="zh">建立全物質循環的高值產線</span><span data-i18n-lang="en">Build a high-value, zero-waste bamboo production line</span></h4>
           <ul class="okr-list">
             <li><span class="kr">KR 2.1</span><span><span data-i18n-lang="zh">兩座機械爐升級 900-1000°C 完工驗收</span><span data-i18n-lang="en">Two kilns upgraded to 900–1000°C, completed & accepted</span></span></li>
             <li><span class="kr">KR 2.2</span><span><span data-i18n-lang="zh">3 款高值產品上市（竹炭、竹醋液、機能應用）</span><span data-i18n-lang="en">3 high-value products launched (white charcoal, bamboo vinegar, functional applications)</span></span></li>
-            <li><span class="kr">KR 2.3</span><span><span data-i18n-lang="zh">竹材全物質利用率 100%</span><span data-i18n-lang="en">100% full-material utilization of bamboo</span></span></li>
+            <li><span class="kr">KR 2.3</span><span><span data-i18n-lang="zh">竹材全物質利用率 100%</span><span data-i18n-lang="en">100% zero-waste bamboo utilization</span></span></li>
           </ul>
         </div>
 
         <div class="okr-card" data-aos="fade-up" data-aos-delay="160">
           <span class="obj-tag">O3 · SUSTAINABILITY</span>
-          <h4><span data-i18n-lang="zh">把碳匯轉成可揭露 ESG 資產</span><span data-i18n-lang="en">Turn carbon sinks into disclosable ESG assets</span></h4>
+          <h4><span data-i18n-lang="zh">把碳匯轉成可揭露 ESG 資產</span><span data-i18n-lang="en">Turn carbon data into ESG assets teams can report on</span></h4>
           <ul class="okr-list">
             <li><span class="kr">KR 3.1</span><span><span data-i18n-lang="zh">累計減碳 25 噸 CO₂e、固碳 20 噸 tCO₂e</span><span data-i18n-lang="en">Cumulative reduction 25 t CO₂e, sequestration 20 t CO₂e</span></span></li>
             <li><span class="kr">KR 3.2</span><span><span data-i18n-lang="zh">10 kW 太陽能 + 1 噸淨水循環運轉</span><span data-i18n-lang="en">10 kW solar + 1-tonne water-recycling loop in operation</span></span></li>
-            <li><span class="kr">KR 3.3</span><span><span data-i18n-lang="zh">ESG 指標儀表板與企業可揭露資料包</span><span data-i18n-lang="en">ESG-metrics dashboard and enterprise-disclosable data pack</span></span></li>
+            <li><span class="kr">KR 3.3</span><span><span data-i18n-lang="zh">ESG 指標儀表板與企業可揭露資料包</span><span data-i18n-lang="en">ESG metrics dashboard and enterprise-ready disclosure pack</span></span></li>
           </ul>
         </div>
 
         <div class="okr-card" data-aos="fade-up" data-aos-delay="240">
           <span class="obj-tag">O4 · MARKET</span>
-          <h4><span data-i18n-lang="zh">讓聚落產品被企業看見、買單、共創</span><span data-i18n-lang="en">Get cluster products seen, bought, and co-created by enterprises</span></h4>
+          <h4><span data-i18n-lang="zh">讓聚落產品被企業看見、買單、共創</span><span data-i18n-lang="en">Get cluster products discovered, purchased, and co-developed with enterprises</span></h4>
           <ul class="okr-list">
             <li><span class="kr">KR 4.1</span><span><span data-i18n-lang="zh">品牌上架 5 項產品、2 套遊程</span><span data-i18n-lang="en">5 products and 2 tour packages live under the brand</span></span></li>
             <li><span class="kr">KR 4.2</span><span><span data-i18n-lang="zh">跨域合作單位 5 個（產學／公部門／企業）</span><span data-i18n-lang="en">5 cross-domain partners (academia / government / enterprise)</span></span></li>
@@ -3493,7 +3533,7 @@
           <span class="obj-tag">O5 · TALENT</span>
           <h4><span data-i18n-lang="zh">建立聚落綠領團隊</span><span data-i18n-lang="en">Build a green-collar team for the cluster</span></h4>
           <ul class="okr-list">
-            <li><span class="kr">KR 5.1</span><span><span data-i18n-lang="zh">培力人次 230（115:80 + 116:150）</span><span data-i18n-lang="en">230 training participant-times (FY26: 80 + FY27: 150)</span></span></li>
+            <li><span class="kr">KR 5.1</span><span><span data-i18n-lang="zh">培力人次 230（115:80 + 116:150）</span><span data-i18n-lang="en">230 people trained (FY26: 80 + FY27: 150)</span></span></li>
             <li><span class="kr">KR 5.2</span><span><span data-i18n-lang="zh">專業證照 10 人取得</span><span data-i18n-lang="en">10 people obtain professional licenses</span></span></li>
             <li><span class="kr">KR 5.3</span><span><span data-i18n-lang="zh">穩定在地就業 6 人</span><span data-i18n-lang="en">6 stable local jobs created</span></span></li>
           </ul>
@@ -3508,7 +3548,7 @@
             <span data-i18n-lang="zh">SDGs × ESG 對齊（給企業說故事用）</span><span data-i18n-lang="en">SDGs × ESG Alignment (for enterprise storytelling)</span>
           </h4>
           <p style="color: rgba(255, 255, 255, 0.65); font-size: 0.9rem;">
-            <span data-i18n-lang="zh">把計畫的環境、社會、治理成果，翻譯為企業可揭露、可採購、可共創的合作語言。</span><span data-i18n-lang="en">Translating the project's environmental, social, and governance outcomes into a language enterprises can disclose, procure, and co-create with.</span>
+            <span data-i18n-lang="zh">把計畫的環境、社會、治理成果，翻譯為企業可揭露、可採購、可共創的合作語言。</span><span data-i18n-lang="en">Translating the project's environmental, social, and governance outcomes into language enterprises can use to report, buy, and partner.</span>
           </p>
         </div>
       </div>
@@ -3565,7 +3605,7 @@
           並標示每條工作包對應的技術棧與輸出形式。<strong>這條路一旦跑過一次，方法可移植到任何政府／企業客戶</strong>。</span>
           <span data-i18n-lang="en">The FY26–27 proposal embeds multiple information-product needs — shared catalog, ESG dashboard, shared channels, enterprise pitch pack, carbon-sink data UI.
           Below are five reusable methodology workstreams distilled from the field, grouped by delivery status into three horizons: Short-term (live), Mid-term (in planning), Long-term (vision),
-          each annotated with tech stack and output format. <strong>Once run end-to-end, the method ports to any government or enterprise client</strong>.</span>
+          each annotated with tech stack and output format. <strong>Run once end to end, and the playbook transfers to other government or enterprise clients</strong>.</span>
         </p>
       </div>
 
@@ -3605,7 +3645,7 @@
                 <strong><span data-i18n-lang="zh">③ PM 案例研究頁（v5 雙語）</span><span data-i18n-lang="en">③ PM Case Study Page (v5 bilingual)</span></strong>
                 <small style="display: block; margin-top: 0.3rem; color: var(--slate-500);">
                   <span data-i18n-lang="zh">對應本頁面 SamSamma.html</span>
-                  <span data-i18n-lang="en">Corresponds to SamSamma.html</span>
+                  <span data-i18n-lang="en">This page (SamSamma.html)</span>
                 </small>
               </li>
             </ul>
@@ -3679,7 +3719,7 @@
                 <strong><span data-i18n-lang="zh">⑧ 碳匯資料可視化開放 API</span><span data-i18n-lang="en">⑧ Open API for carbon-sink data viz</span></strong>
                 <small style="display: block; margin-top: 0.3rem; color: var(--slate-500);">
                   <span data-i18n-lang="zh">7,526 m² RTK+NDVI 成果 → 其他原鄉可複製的 GeoJSON 介面</span>
-                  <span data-i18n-lang="en">7,526 m² RTK+NDVI outputs → reproducible GeoJSON interface for other indigenous regions</span>
+                  <span data-i18n-lang="en">7,526 m² RTK+NDVI outputs → GeoJSON schema reusable by other indigenous regions</span>
                 </small>
               </li>
               <li style="padding: 0.7rem 0; font-size: 0.92rem; color: var(--slate-700); line-height: 1.55;">
@@ -3710,9 +3750,9 @@
                 原有兩項核心能力（資訊轉化、親手實作）外，補上第三項 ──
                 <strong style="color: var(--gold);">資訊產品線規劃與分階段交付</strong>，
                 構成完整 PM 三軸：Discovery → Roadmap → Scoping。</span>
-                <span data-i18n-lang="en">Role repositioned from "frontend developer" to "<strong style="color: var(--gold);">Information Product Line Owner</strong>."
-                The two existing core capabilities (Information Transformation, Hand-built Delivery) are extended by a third —
-                <strong style="color: var(--gold);">product-line planning and phased delivery</strong> —
+                <span data-i18n-lang="en">Role expanded from "frontend developer" to "<strong style="color: var(--gold);">Information Product Lead</strong>."
+                The two existing core capabilities (content architecture, hands-on delivery) are extended by a third —
+                <strong style="color: var(--gold);">roadmap planning and phased rollout</strong> —
                 completing the PM trio: Discovery → Roadmap → Scoping.</span>
               </p>
             </div>
@@ -3956,11 +3996,11 @@
             </div>
             <div class="lesson-block">
               <h5><span class="badge-letter">A</span>Action</h5>
-              <p><span data-i18n-lang="zh">建立「顧問團—工作包—交付成果」常態制度：每季 1 次聚落顧問會議、每年 4 次現地輔導，並把每位教授的輔導內容拆解為可被部落操作的<strong>工作包（Work Package）</strong>—包含 SOP、訓練教材、設備維保手冊、結訓證明。PM 自己充當「技術語言 ↔ 部落語言」的翻譯層。</span><span data-i18n-lang="en">Built a standing "advisors — work packages — deliverables" system: one quarterly cluster advisory meeting, four on-site coaching sessions a year, and broke each professor's guidance into tribe-operable <strong>work packages</strong> — SOPs, training materials, equipment-maintenance manuals, completion certificates. As PM, I personally served as the "technical language ↔ tribal language" translation layer.</span></p>
+              <p><span data-i18n-lang="zh">建立「顧問團—工作包—交付成果」常態制度：每季 1 次聚落顧問會議、每年 4 次現地輔導，並把每位教授的輔導內容拆解為可被部落操作的<strong>工作包（Work Package）</strong>—包含 SOP、訓練教材、設備維保手冊、結訓證明。PM 自己充當「技術語言 ↔ 部落語言」的翻譯層。</span><span data-i18n-lang="en">Built a standing "advisors — work packages — deliverables" system: one quarterly cluster advisory meeting, four on-site coaching sessions a year, and broke each professor's guidance into tribe-operable <strong>work packages</strong>—SOPs, training materials, equipment-maintenance manuals, completion certificates. As PM, I bridged academic jargon and everyday community language.</span></p>
             </div>
             <div class="lesson-block">
               <h5><span class="badge-letter">R</span>Result</h5>
-              <p><span data-i18n-lang="zh">把 USR 一次性成果，轉化為合作社可長期維運的 SOP、培力人次 230、證照取得 10 人，形成「自主運作的綠領團隊」。技術不再綁定在外部教授身上。</span><span data-i18n-lang="en">Turned one-off USR outputs into long-term, co-op-maintainable SOPs, 230 training participant-times, and 10 licensed members — forming a "self-operating green-collar team." The know-how was no longer tied to external professors.</span></p>
+              <p><span data-i18n-lang="zh">把 USR 一次性成果，轉化為合作社可長期維運的 SOP、培力人次 230、證照取得 10 人，形成「自主運作的綠領團隊」。技術不再綁定在外部教授身上。</span><span data-i18n-lang="en">Turned one-off USR outputs into long-term, co-op-maintainable SOPs, 230 people trained, and 10 licensed members—a self-sustaining green-collar team. The know-how was no longer tied to external professors.</span></p>
             </div>
           </div>
           <div class="lesson-result">
@@ -3972,7 +4012,7 @@
             <span data-i18n-lang="en">What hit me most here was the question of "how knowledge stays."
             Professors leave, contracts end — but SOPs / materials / licensed talent staying is what's real.
             This is exactly what big tech calls "knowledge transfer" —
-            your job isn't to make yourself irreplaceable, but to make the project run even without you.</span>
+            your job isn't to become irreplaceable—it's to leave a system that runs without you.</span>
           </div>
         </div>
       </details>
@@ -4119,7 +4159,7 @@
         <div class="section-eyebrow">Three Workstreams · <span data-i18n-lang="zh">三條主線</span><span data-i18n-lang="en">Three Workstreams</span></div>
         <h2 class="section-title">
           <span data-i18n-lang="zh">資訊轉化 × 親手實作 × 可複製方法</span>
-          <span data-i18n-lang="en">Information Transformation × Solo Build × Reusable Method</span>
+          <span data-i18n-lang="en">Content Architecture × Solo Build × Repeatable Playbook</span>
         </h2>
       </div>
 
@@ -4136,8 +4176,8 @@
             <span data-i18n-lang="en">Understand → Diagnose → Prescribe</span>
           </p>
           <ul class="oak-evidence-list">
-            <li><i class="fas fa-chevron-right"></i><a href="#problem"><span data-i18n-lang="zh">現場痛點盤點 → 預約系統 SOP</span><span data-i18n-lang="en">Field pain inventory → booking SOP</span></a></li>
-            <li><i class="fas fa-chevron-right"></i><a href="#user-research"><span data-i18n-lang="zh">三類 persona 收斂 → 12 條 FAQ</span><span data-i18n-lang="en">3-persona synthesis → 12-FAQ output</span></a></li>
+            <li><i class="fas fa-chevron-right"></i><a href="#problem"><span data-i18n-lang="zh">現場痛點盤點 → 預約系統 SOP</span><span data-i18n-lang="en">Field pain mapping → booking SOP</span></a></li>
+            <li><i class="fas fa-chevron-right"></i><a href="#user-research"><span data-i18n-lang="zh">三類 persona 收斂 → 12 條 FAQ</span><span data-i18n-lang="en">Three personas synthesized → 12-question FAQ</span></a></li>
             <li><i class="fas fa-chevron-right"></i><a href="#origin"><span data-i18n-lang="zh">五年場域深耕 · 在地語境精準度</span><span data-i18n-lang="en">5-year field engagement · context fluency</span></a></li>
           </ul>
         </div>
@@ -4155,7 +4195,7 @@
           <ul class="oak-evidence-list">
             <li><i class="fas fa-chevron-right"></i><a href="#execution"><span data-i18n-lang="zh">USR 1.45M · 100% 執行率結案</span><span data-i18n-lang="en">USR 1.45M · 100% execution</span></a></li>
             <li><i class="fas fa-chevron-right"></i><a href="#stakeholders"><span data-i18n-lang="zh">跨村 25 戶 / 4 教授 / 3 部會協作</span><span data-i18n-lang="en">25 households · 4 profs · 3 ministries</span></a></li>
-            <li><i class="fas fa-chevron-right"></i><a href="#timeline"><span data-i18n-lang="zh">六階段精實演進 · 全節點如期</span><span data-i18n-lang="en">6-stage lean evolution · on-time</span></a></li>
+            <li><i class="fas fa-chevron-right"></i><a href="#timeline"><span data-i18n-lang="zh">六階段精實演進 · 全節點如期</span><span data-i18n-lang="en">Six-stage lean rollout · on schedule</span></a></li>
           </ul>
         </div>
 
@@ -4187,7 +4227,7 @@
     <div class="container">
       <div class="section-head text-center" data-aos="fade-up">
         <div class="section-eyebrow" style="display: inline-flex;">02 · The Execution · <span data-i18n-lang="zh">工作流程</span><span data-i18n-lang="en">Workflow</span></div>
-        <h2 class="section-title"><span data-i18n-lang="zh">把「資源」變成「可以交付的成果」</span><span data-i18n-lang="en">Turning "resources" into "deliverable outcomes"</span></h2>
+        <h2 class="section-title"><span data-i18n-lang="zh">把「資源」變成「可以交付的成果」</span><span data-i18n-lang="en">Turning scattered resources into shippable outcomes</span></h2>
         <p class="section-desc">
           <span data-i18n-lang="zh">一張圖看完每天的工作：
           把「政府補助、學術技術、在地勞動力」這三股原本互不講話的力量，
@@ -4195,7 +4235,7 @@
           中間那一欄，是我的核心工作。</span>
           <span data-i18n-lang="en">One diagram of what I did every day:
           integrating three forces that didn't talk to each other — "government grants, academic tech, local labor" —
-          into three market-legible outputs: "physical site, data assets, brand & business."
+          into three outputs outsiders can understand: the site, the data, and the brand.
           The middle column is my core work.</span>
         </p>
       </div>
@@ -4226,7 +4266,7 @@
               </span>
             </div>
             <div class="vsm-item"><i class="fas fa-code"></i><span data-i18n-lang="zh">獨立完成官網 UI/UX + 前端</span><span data-i18n-lang="en">Build the site UI/UX + frontend solo</span></div>
-            <div class="vsm-item"><i class="fas fa-language"></i><span data-i18n-lang="zh">語言轉譯（技術 ↔ 在地 ↔ 政府）</span><span data-i18n-lang="en">Language translation (tech ↔ local ↔ government)</span></div>
+            <div class="vsm-item"><i class="fas fa-language"></i><span data-i18n-lang="zh">語言轉譯（技術 ↔ 在地 ↔ 政府）</span><span data-i18n-lang="en">Cross-stakeholder translation (academic ↔ community ↔ government)</span></div>
             <div class="vsm-item"><i class="fas fa-users"></i><span data-i18n-lang="zh">參與核心討論、整理會議共識</span><span data-i18n-lang="en">Join core discussions, distill meeting consensus</span></div>
           </div>
 
@@ -4238,7 +4278,7 @@
             <div class="vsm-item"><i class="fas fa-globe"></i><span data-i18n-lang="zh">合作社官方網站（Vanilla JS 獨立完成）</span><span data-i18n-lang="en">Co-op official website (built solo in Vanilla JS)</span></div>
             <div class="vsm-item"><i class="fas fa-calendar-check"></i><span data-i18n-lang="zh">零伺服器自動化預約工作流</span><span data-i18n-lang="en">Zero-server automated reservation workflow</span></div>
             <div class="vsm-item"><i class="fas fa-chart-line"></i><span data-i18n-lang="zh">結構化的數據資產：12 公頃碳匯 Baseline</span><span data-i18n-lang="en">Structured data assets: 12-hectare carbon baseline</span></div>
-            <div class="vsm-item"><i class="fas fa-tag"></i><span data-i18n-lang="zh">對外可遞出去的品牌語言與內容</span><span data-i18n-lang="en">Externally shareable brand language and content</span></div>
+            <div class="vsm-item"><i class="fas fa-tag"></i><span data-i18n-lang="zh">對外可遞出去的品牌語言與內容</span><span data-i18n-lang="en">Brand messaging and content ready for outside partners</span></div>
           </div>
         </div>
       </div>
@@ -4440,7 +4480,7 @@
         <div class="section-eyebrow">02.3.5 · <span data-i18n-lang="zh">資料管線與資料分類學</span><span data-i18n-lang="en">Data Pipeline &amp; Taxonomy</span></div>
         <h2 class="section-title">
           <span data-i18n-lang="zh">資料底盤：把現場混沌煉成可揭露的 ESG 結構</span>
-          <span data-i18n-lang="en">Data Backbone: refining field chaos into a disclosable ESG structure</span>
+          <span data-i18n-lang="en">Data Backbone: turning messy field data into an ESG-ready data model</span>
         </h2>
         <p class="section-desc">
           <span data-i18n-lang="zh">承接 Value Stream Map 的「結構化數據資產」OUTPUT，本區具體展示資料工程實作 ──
@@ -4448,10 +4488,10 @@
           <strong>Taxonomy（資料分類學）</strong>三大 Domain 清洗，
           最終輸出為前端可即時渲染、企業 ESG 採購方可驗證的標準化 JSON。
           下方 IDE 視窗即時讀取本案實際使用的 <code>carbon-data.json</code> 並依 Domain 切片預覽。</span>
-          <span data-i18n-lang="en">Extending the "structured data asset" OUTPUT from the Value Stream Map, this section unfolds the actual data-engineering work —
+          <span data-i18n-lang="en">Extending the "structured data asset" OUTPUT from the Value Stream Map, this section shows the data work behind the scenes—
           unstructured field data (photos, paper logs, drone imagery) is cleaned through a
-          <strong>three-domain Taxonomy</strong>, and finally emitted as a standardized JSON
-          ready for live frontend rendering and enterprise ESG-procurement verification.
+          <strong>three-domain taxonomy</strong>, and outputs standardized JSON
+          ready for live frontend rendering and enterprise ESG procurement verification.
           The IDE pane below reads the real <code>carbon-data.json</code> shipped with this case and previews each domain slice.</span>
         </p>
       </div>
@@ -4467,7 +4507,7 @@
             <span data-i18n-lang="zh">原始田野非結構化數據</span><span data-i18n-lang="en">Unstructured Field Data</span>
           </div>
           <ul>
-            <li><i class="fas fa-camera"></i><span data-i18n-lang="zh">手機拍攝的施作照片（每日多張）</span><span data-i18n-lang="en">Phone-captured site photos (daily multiple)</span></li>
+            <li><i class="fas fa-camera"></i><span data-i18n-lang="zh">手機拍攝的施作照片（每日多張）</span><span data-i18n-lang="en">Daily phone photos from the field</span></li>
             <li><i class="fas fa-scroll"></i><span data-i18n-lang="zh">林業署採伐許可證（PDF 掃描）</span><span data-i18n-lang="en">Forestry Agency harvest permits (scanned PDF)</span></li>
             <li><i class="fas fa-clipboard"></i><span data-i18n-lang="zh">紙本工作日誌（手寫，OCR）</span><span data-i18n-lang="en">Hand-written work logs (paper, OCR'd)</span></li>
             <li><i class="fas fa-helicopter"></i><span data-i18n-lang="zh">無人機 RTK 多光譜圖資</span><span data-i18n-lang="en">Drone RTK multispectral imagery</span></li>
@@ -4482,11 +4522,11 @@
           <div class="dp-stage-num">02 · TAXONOMY PROCESSING</div>
           <div class="dp-stage-title">
             <i class="fas fa-sitemap"></i>
-            <span data-i18n-lang="zh">資料分類學三 Domain 清洗</span><span data-i18n-lang="en">Three-Domain Cleansing</span>
+            <span data-i18n-lang="zh">資料分類學三 Domain 清洗</span><span data-i18n-lang="en">Three-Domain Normalization</span>
           </div>
           <ul>
-            <li><i class="fas fa-cog"></i><span data-i18n-lang="zh">去 OCR 噪訊、欄位正規化、單位統一</span><span data-i18n-lang="en">De-OCR noise, field normalization, unit unification</span></li>
-            <li><i class="fas fa-tags"></i><span data-i18n-lang="zh">依語意分派至 Carbon / Labor / Asset</span><span data-i18n-lang="en">Semantic dispatch to Carbon / Labor / Asset</span></li>
+            <li><i class="fas fa-cog"></i><span data-i18n-lang="zh">去 OCR 噪訊、欄位正規化、單位統一</span><span data-i18n-lang="en">Clean OCR noise, normalize fields, standardize units</span></li>
+            <li><i class="fas fa-tags"></i><span data-i18n-lang="zh">依語意分派至 Carbon / Labor / Asset</span><span data-i18n-lang="en">Route records into Carbon / Labor / Asset domains</span></li>
             <li><i class="fas fa-link"></i><span data-i18n-lang="zh">建立跨 Domain 關聯與 SDG 對齊鍵</span><span data-i18n-lang="en">Cross-domain links and SDG alignment keys</span></li>
           </ul>
           <div class="dp-domain-chips">
@@ -4507,7 +4547,7 @@
           </div>
           <ul>
             <li><i class="fas fa-globe"></i><span data-i18n-lang="zh">前端即時渲染（本頁與客戶官網共用）</span><span data-i18n-lang="en">Live frontend rendering (this page &amp; co-op site)</span></li>
-            <li><i class="fas fa-check-double"></i><span data-i18n-lang="zh">企業 ESG 採購方可驗證的揭露格式</span><span data-i18n-lang="en">ESG-procurement-grade disclosure format</span></li>
+            <li><i class="fas fa-check-double"></i><span data-i18n-lang="zh">企業 ESG 採購方可驗證的揭露格式</span><span data-i18n-lang="en">Disclosure format suitable for ESG procurement reviews</span></li>
             <li><i class="fas fa-download"></i><span data-i18n-lang="zh">可下載作為共用資料 API 雛型</span><span data-i18n-lang="en">Downloadable as a shared data-API prototype</span></li>
             <li><i class="fas fa-recycle"></i><span data-i18n-lang="zh">可被其他原鄉直接複用的 schema</span><span data-i18n-lang="en">Schema reusable by other indigenous regions</span></li>
           </ul>
@@ -4523,7 +4563,7 @@
           </div>
           <div class="dp-ide-filename">~/blog_uiux/data/<strong style="color:#d8e8dc;">carbon-data</strong><span class="ext">.json</span></div>
           <div class="dp-ide-meta">
-            <span data-i18n-lang="zh">本案實際資料底盤・v</span><span data-i18n-lang="en">live data backbone · v</span><span id="dp-meta-ver">1.0.0</span>
+            <span data-i18n-lang="zh">本案實際資料底盤・v</span><span data-i18n-lang="en">Production dataset · v</span><span id="dp-meta-ver">1.0.0</span>
           </div>
         </div>
 
@@ -4922,16 +4962,16 @@
     <div class="container">
       <div class="section-head text-center" data-aos="fade-up">
         <div class="section-eyebrow" style="justify-content: center; display: inline-flex;">02 · The Execution · <span data-i18n-lang="zh">流程導入</span><span data-i18n-lang="en">Implementation</span></div>
-        <h2 class="section-title"><span data-i18n-lang="zh">親手完成的兩件事：把雜亂資訊變成內容、把預約流程變成系統</span><span data-i18n-lang="en">Two things built end-to-end: turning messy information into content, and the booking process into a system</span></h2>
+        <h2 class="section-title"><span data-i18n-lang="zh">親手完成的兩件事：把雜亂資訊變成內容、把預約流程變成系統</span><span data-i18n-lang="en">Two deliverables I owned: structured content from messy field data, and a booking system that actually runs</span></h2>
         <p class="section-desc">
           <span data-i18n-lang="zh">這一區是「說了算」的範圍 ──
           別人聊策略時我也參與討論，但<strong>內容轉化</strong>與<strong>網站實作</strong>是我獨立完成的部分。
           下面這些工具的選擇不是技術秀肌肉，而是回答一個問題：
           「在偏鄉沒有預算養工程師的條件下，怎麼讓族人 3 天內就能用上一個能跑的預約系統？」</span>
-          <span data-i18n-lang="en">This is the part where my role "called the shots" —
-          I joined the strategy discussions too, but <strong>content transformation</strong> and <strong>site implementation</strong> were mine, done solo.
-          The tool choices below aren't about flexing tech; they answer one question:
-          "With no budget to hire engineers in a rural area, how do you get the community a working reservation system within 3 days?"</span>
+          <span data-i18n-lang="en">This is where I owned delivery—
+          I joined strategy discussions, but <strong>content architecture</strong> and <strong>site implementation</strong> were mine, solo.
+          The tool choices below aren't tech for tech's sake; they answer one question:
+          "With no budget to hire engineers in a rural co-op, how do you ship a working booking system in 3 days?"</span>
         </p>
       </div>
 
@@ -4946,7 +4986,7 @@
           <div class="tech-icon"><i class="fas fa-eye"></i></div>
           <h4>AOS</h4>
           <span class="tech-tag">Animation</span>
-          <p><span data-i18n-lang="zh">滾動進場動畫，增強敘事節奏與閱讀體驗，使履歷頁面具備簡報級的視覺說服力。</span><span data-i18n-lang="en">Scroll-reveal animations that strengthen narrative rhythm and reading experience, giving the page presentation-grade visual persuasion.</span></p>
+          <p><span data-i18n-lang="zh">滾動進場動畫，增強敘事節奏與閱讀體驗，使履歷頁面具備簡報級的視覺說服力。</span><span data-i18n-lang="en">Scroll-reveal animations that pace the narrative and keep readers engaged—presentation-quality visual flow.</span></p>
         </div>
         <div class="tech-card" data-aos="fade-up" data-aos-delay="160">
           <div class="tech-icon"><i class="fab fa-google"></i></div>
@@ -4985,13 +5025,13 @@
           <strong style="color: var(--gold);">零伺服器自動化預約工作流</strong>做出來，
           解決合作社『沒預算養工程師』的真實痛點。」</span>
           <span data-i18n-lang="en">"The two hard-skill contributions I made on this project:
-          <strong style="color: var(--gold);">structuring the site's chaotic event records, site-visit findings, and field photos
-          into content visitors could actually understand</strong>;
+          <strong style="color: var(--gold);">turning event logs, visit notes, and field photos
+          into content visitors can scan in minutes</strong>;
           and personally building the website and a
-          <strong style="color: var(--gold);">zero-server automated reservation workflow</strong> in Vanilla JS,
+          <strong style="color: var(--gold);">zero-server automated booking workflow</strong> in Vanilla JS,
           solving the co-op's real pain point of 'no budget to hire engineers.'"</span>
         </p>
-        <div class="pov-cite">My Take · <span data-i18n-lang="zh">資訊轉化 × 親手實作</span><span data-i18n-lang="en">Information Translation × Hands-on Build</span></div>
+        <div class="pov-cite">My Take · <span data-i18n-lang="zh">資訊轉化 × 親手實作</span><span data-i18n-lang="en">Content Architecture × Solo Build</span></div>
       </div>
     </div>
   </section>
@@ -5177,7 +5217,7 @@
         </h2>
         <p class="section-desc">
           <span data-i18n-lang="zh">三條 Persona 收斂自 3 場真實接待現場（USR 學生入山、鄰社老人來訪、企業 ESG 來電）的 Field Validation；其 design feedback 直接驅動 12 題 FAQ 與三卡方案的版面決策。對位 Lean UX 用戶訪談 / 設計工作坊 / 用戶測試之 PM 產出物，所有原始素材可於 <code>data/persona-data.json</code> 查驗。</span>
-          <span data-i18n-lang="en">Three personas are converged from 3 real hosting sessions (USR students, neighboring elders, enterprise ESG call) of field validation. Their design feedback directly drives the 12-question FAQ and the three-card plan layout. All raw material is verifiable in <code>data/persona-data.json</code>.</span>
+          <span data-i18n-lang="en">Three personas synthesized from three real hosting sessions—validated in the field (USR students, neighboring elders, enterprise ESG call). Their design feedback directly drives the 12-question FAQ and the three-card plan layout. All raw material is verifiable in <code>data/persona-data.json</code>.</span>
         </p>
       </div>
 
@@ -5202,7 +5242,7 @@
           <ul>
             <li><span data-i18n-lang="zh">3 秒內看不到「是誰／做什麼／何時成立」就退站</span><span data-i18n-lang="en">Bounces in 3s if who/what/when is unclear</span></li>
             <li><span data-i18n-lang="zh">怕被當免費勞動力，無學習收穫</span><span data-i18n-lang="en">Worries about being free labor with no takeaway</span></li>
-            <li><span data-i18n-lang="zh">看不懂 ESG / 碳匯 / SDG 等專業術語</span><span data-i18n-lang="en">Cannot decode ESG / carbon-sink / SDG jargon</span></li>
+            <li><span data-i18n-lang="zh">看不懂 ESG / 碳匯 / SDG 等專業術語</span><span data-i18n-lang="en">Can't parse ESG, carbon, or SDG jargon</span></li>
           </ul>
           <h6><span data-i18n-lang="zh">期待</span><span data-i18n-lang="en">Expectations</span></h6>
           <ul>
@@ -5246,13 +5286,13 @@
             <span class="ur-persona-avatar"><i class="fas fa-briefcase"></i></span>
             <div>
               <div class="ur-persona-id">P03 · ENTERPRISE ESG</div>
-              <div class="ur-persona-name" id="ur-p03-name"><span data-i18n-lang="zh">企業 ESG 採購窗口 · 陳專員</span><span data-i18n-lang="en">Enterprise ESG Procurement · Chen</span></div>
+              <div class="ur-persona-name" id="ur-p03-name"><span data-i18n-lang="zh">企業 ESG 採購窗口 · 陳專員</span><span data-i18n-lang="en">Enterprise ESG Buyer · Chen</span></div>
               <div class="ur-persona-role"><span data-i18n-lang="zh">上市公司 CSR / 永續部 · 30-45 歲</span><span data-i18n-lang="en">Listed-co CSR / Sustainability · age 30-45</span></div>
             </div>
           </div>
           <div class="ur-persona-motiv">
             <span data-i18n-lang="zh">為年度 ESG 報告找可揭露之碳匯認養 / 員工 CSR 活動；Google 搜尋 + LinkedIn outreach。</span>
-            <span data-i18n-lang="en">Sources disclosable carbon-sink / CSR for annual ESG report; via Google + LinkedIn.</span>
+            <span data-i18n-lang="en">Needs report-ready carbon and CSR proof for the annual ESG report; found us via Google + LinkedIn.</span>
           </div>
           <h6><span data-i18n-lang="zh">痛點</span><span data-i18n-lang="en">Pain Points</span></h6>
           <ul>
@@ -5320,7 +5360,7 @@
               <div><span class="ur-iv-tag s">SIT</span><span><span data-i18n-lang="zh">長輩對山路顛簸、上山時間長頗有微詞；下車後第一句多是『廁所在哪』『有沒有椅子』；原本 1 小時的『竹炭升級歷程』導覽，長輩 20 分鐘就累了。</span><span data-i18n-lang="en">Elders complained of long bumpy drive; first questions were 'where's the restroom' and 'is there seating'; the 1-hr tour exhausted them at 20 min.</span></span></div>
               <div><span class="ur-iv-tag t">TASK</span><span><span data-i18n-lang="zh">把原本『單向技術導覽』改為『雙向文化交流』，補強體力相關設施與資訊。</span><span data-i18n-lang="en">Pivot from one-way tour to two-way exchange; strengthen physical/info accessibility.</span></span></div>
               <div><span class="ur-iv-tag a">ACT</span><span><span data-i18n-lang="zh">(1) 導覽路線砍半，留 40 分鐘在涼亭區喝茶；(2) 帶隊長主動分享社區竹工藝歷史，形成互動；(3) 發起人記下『下次團體前先發行前須知』。</span><span data-i18n-lang="en">(1) Halved the tour, 40 min tea & chat at pavilion; (2) Leader shared community bamboo-craft history, creating exchange; (3) Founder logged 'pre-visit notice' as standard.</span></span></div>
-              <div><span class="ur-iv-tag r">RES</span><span><span data-i18n-lang="zh">長輩走時主動詢問下次什麼時候再來、能否推薦其他社區；3 張合影成為客戶網站 #cases『社區參訪』類別補件。</span><span data-i18n-lang="en">Elders asked when they could return and whether they could recommend; 3 group photos filled the 'community visit' category in #cases.</span></span></div>
+              <div><span class="ur-iv-tag r">RES</span><span><span data-i18n-lang="zh">長輩走時主動詢問下次什麼時候再來、能否推薦其他社區；3 張合影成為客戶網站 #cases『社區參訪』類別補件。</span><span data-i18n-lang="en">Elders asked when they could return and whether they could recommend others; three group photos became #cases community-visit assets.</span></span></div>
             </div>
             <div class="ur-iv-fb">
               <strong><span data-i18n-lang="zh">▸ Design Feedback → 客戶網站</span><span data-i18n-lang="en">▸ Design Feedback → Client Site</span></strong>
@@ -5343,12 +5383,12 @@
             <div class="ur-iv-meta">
               <strong>Participants:</strong> <span data-i18n-lang="zh">某上市公司 CSR 部專員 × 1 + 合作社理事長</span><span data-i18n-lang="en">1 listed-co CSR specialist + co-op chair</span> ·
               <strong>Duration:</strong> 45 min ·
-              <strong>Deliverable:</strong> <span data-i18n-lang="zh">提案需求書草稿（未成案但建立窗口）</span><span data-i18n-lang="en">Draft scope (no contract yet, channel established)</span> ·
+              <strong>Deliverable:</strong> <span data-i18n-lang="zh">提案需求書草稿（未成案但建立窗口）</span><span data-i18n-lang="en">Draft proposal (no deal yet, relationship opened)</span> ·
               <strong>Method:</strong> <span data-i18n-lang="zh">首次來電 30' 需求釐清 + Email 15' 規格回覆</span><span data-i18n-lang="en">30' phone scoping + 15' email spec reply</span>
             </div>
             <div class="ur-iv-star">
-              <div><span class="ur-iv-tag s">SIT</span><span><span data-i18n-lang="zh">對方第一句即問『你們的碳數據可以列入我們的 ESG 報告書嗎？』『可以開立統編嗎？』── 兩個問題決定是否繼續談下去。理事長當下無法精準回答，整通電話 15 分鐘耗在釐清『碳數據怎麼算』。</span><span data-i18n-lang="en">Caller opened with two gating questions; both decide 'continue or not'. Chair couldn't answer precisely; 15 min wasted on clarifying carbon methodology.</span></span></div>
-              <div><span class="ur-iv-tag t">TASK</span><span><span data-i18n-lang="zh">讓首頁 + 5 分鐘瀏覽即可獨立回答企業窗口的兩個 gating 問題。</span><span data-i18n-lang="en">Make homepage + 5-min browse self-sufficient to answer both gating questions.</span></span></div>
+              <div><span class="ur-iv-tag s">SIT</span><span><span data-i18n-lang="zh">對方第一句即問『你們的碳數據可以列入我們的 ESG 報告書嗎？』『可以開立統編嗎？』── 兩個問題決定是否繼續談下去。理事長當下無法精準回答，整通電話 15 分鐘耗在釐清『碳數據怎麼算』。</span><span data-i18n-lang="en">Caller opened with two deal-breaker questions that decide whether to continue. Chair couldn't answer precisely; 15 min wasted on clarifying carbon methodology.</span></span></div>
+              <div><span class="ur-iv-tag t">TASK</span><span><span data-i18n-lang="zh">讓首頁 + 5 分鐘瀏覽即可獨立回答企業窗口的兩個 gating 問題。</span><span data-i18n-lang="en">Let the homepage answer both in under five minutes—no phone call required.</span></span></div>
               <div><span class="ur-iv-tag a">ACT</span><span><span data-i18n-lang="zh">(1) 7,526 m² × 77.3 tC/ha 等具體數據塞進客戶網站 Hero fact chips；(2) FAQ 明確寫『可開立統編』與『碳數據對齊 GHG Protocol』；(3) carbon-data.json 開放下載作為可查驗證據。</span><span data-i18n-lang="en">(1) Embedded 7,526 m² × 77.3 tC/ha in Hero fact chips; (2) FAQ states 'tax-ID supported' and 'GHG Protocol aligned'; (3) carbon-data.json publicly downloadable as auditor-verifiable evidence.</span></span></div>
               <div><span class="ur-iv-tag r">RES</span><span><span data-i18n-lang="zh">後續第二家企業來電時，對方主動表示『你們網站上的數據我已經看過，今天想直接談合約』── 從 5 分鐘討論進入合約面，採購週期由 3 個月壓縮為 4 週。</span><span data-i18n-lang="en">Next enterprise call: 'I've reviewed your site data; let's go to contract today' — procurement cycle compressed from 3 months to 4 weeks.</span></span></div>
             </div>
@@ -5366,10 +5406,10 @@
 
       <!-- 12 題 FAQ 收斂矩陣（Lean-Evolved from I02/I03 interviews）-->
       <div data-aos="fade-up" data-aos-delay="300">
-        <div class="ur-faq-head"><span data-i18n-lang="zh">▸ FAQ 收斂矩陣｜12 題（既有 6 + 訪談收斂新增 6）</span><span data-i18n-lang="en">▸ FAQ Convergence Matrix · 12 (6 existing + 6 converged from interviews)</span></div>
+        <div class="ur-faq-head"><span data-i18n-lang="zh">▸ FAQ 收斂矩陣｜12 題（既有 6 + 訪談收斂新增 6）</span><span data-i18n-lang="en">▸ FAQ Matrix · 12 (6 existing + 6 from interview insights)</span></div>
         <p class="ur-faq-sub">
           <span data-i18n-lang="zh">每題均回溯至特定 Persona 之 gating question，並對應客戶網站具體 Section。</span>
-          <span data-i18n-lang="en">Every question traces back to a Persona's gating question and maps to a specific client-site section.</span>
+          <span data-i18n-lang="en">Every question traces back to a persona's must-answer question and maps to a specific site section.</span>
         </p>
         <div class="ur-faq-table-wrap">
           <table class="ur-faq-table">
@@ -5492,7 +5532,7 @@
         </div>
         <p class="ur-pain-sub">
           <span data-i18n-lang="zh">三方痛點交叉佐證：① <strong>參與式觀察</strong>（多場實作工作坊與 25 場跨校活動）；② <strong>利害關係人訪談</strong>（理事長 · 工藝師 · 學員）；③ <strong>官方計畫書認證痛點</strong>。對位 Case Study 第 02 階段 Research &amp; Persona。</span>
-          <span data-i18n-lang="en">Cross-validated by 3 sources: ① <strong>Participatory observation</strong> (workshops &amp; 25 cross-school events); ② <strong>Stakeholder interviews</strong> (co-op chair · artisans · students); ③ <strong>Officially documented pain points</strong>. Mirrors Case Study stage 02 (Research &amp; Persona).</span>
+          <span data-i18n-lang="en">Validated across three sources: participatory observation (workshops and 25 cross-school events), stakeholder interviews (co-op chair, artisans, students), and officially documented pain points. Mirrors case study stage 02 (Research &amp; Persona).</span>
         </p>
 
         <div class="ur-pain-grid">
@@ -5565,7 +5605,7 @@
               </li>
               <li>
                 <span class="pain-text"><span data-i18n-lang="zh">重複問題佔用大量時間</span><span data-i18n-lang="en">Repeat questions consume bulk time</span></span>
-                <span class="pain-fix"><span data-i18n-lang="zh">12 題 FAQ（6 新增） · 客服重複詢問 −83%</span><span data-i18n-lang="en">12-Q FAQ (6 new) · repeat inquiries −83%</span> <code>#before-after</code></span>
+                <span class="pain-fix"><span data-i18n-lang="zh">12 題 FAQ（6 新增） · 客服重複詢問 −83%</span><span data-i18n-lang="en">12-Q FAQ (6 new) · repeat inquiries down 83%</span> <code>#before-after</code></span>
               </li>
               <li>
                 <span class="pain-text"><span data-i18n-lang="zh">不知道來訪對象是誰、來歷不明</span><span data-i18n-lang="en">Unknown visitor identity, no context for prep</span></span>
@@ -5700,7 +5740,7 @@
         </h2>
         <p class="section-desc">
           <span data-i18n-lang="zh">呈現 Lean &amp; Evolutionary 第 4 階段「Convergence」── 不衝量化、建立聚落層級數位治理基礎。每維度對位「個體 → 集體」升級目標。</span>
-          <span data-i18n-lang="en">Stage 4 "Convergence" of Lean &amp; Evolutionary Design — not chasing metrics, building cluster-level digital governance. Each dimension maps to the "individual → collective" upgrade.</span>
+          <span data-i18n-lang="en">Stage 4 "Convergence" of Lean &amp; Evolutionary Design—less about vanity metrics, more about cluster-level digital governance. Each dimension maps to the "individual → collective" upgrade.</span>
         </p>
         <div class="ba-arrow" data-aos="fade-up" data-aos-delay="100">
           <span class="ba-arrow-from"><i class="fas fa-users"></i> <span data-i18n-lang="zh">個體分散經營</span><span data-i18n-lang="en">Individual Silos</span></span>
@@ -5726,7 +5766,7 @@
                 <small>How visitors first reach out</small>
               </td>
               <td class="ba-cell-before"><span data-i18n-lang="zh">散布在工藝師、接待戶、導覽員個別 LINE / 電話 / FB 私訊</span><span data-i18n-lang="en">Scattered across individual LINE / phone / FB DMs of artisans, hosts, guides</span></td>
-              <td class="ba-cell-after"><span data-i18n-lang="zh">統一線上意向表單收集（#booking · 13 欄一次收齊）</span><span data-i18n-lang="en">Unified online intent form (#booking · 13 fields in one shot)</span></td>
+              <td class="ba-cell-after"><span data-i18n-lang="zh">統一線上意向表單收集（#booking · 13 欄一次收齊）</span><span data-i18n-lang="en">Unified online intent form (#booking · 13 fields captured in one form)</span></td>
               <td class="ba-cell-delta">N → 1 <span data-i18n-lang="zh">入口</span><span data-i18n-lang="en">entries</span></td>
             </tr>
             <tr>
@@ -5744,7 +5784,7 @@
                 <small>How enterprises engage cluster</small>
               </td>
               <td class="ba-cell-before"><span data-i18n-lang="zh">散客式溝通難承接百人規模參訪，跨工坊串聯成本高</span><span data-i18n-lang="en">Ad-hoc model can't absorb 100-person ESG visits, high cross-workshop coordination cost</span></td>
-              <td class="ba-cell-after"><span data-i18n-lang="zh">核心 Hub（基地）統籌跨村工坊 ESG 參訪 + carbon-data.json 一次性揭露</span><span data-i18n-lang="en">Hub orchestrates cross-village ESG visits + one-shot carbon-data.json disclosure</span></td>
+              <td class="ba-cell-after"><span data-i18n-lang="zh">核心 Hub（基地）統籌跨村工坊 ESG 參訪 + carbon-data.json 一次性揭露</span><span data-i18n-lang="en">Hub orchestrates cross-village ESG visits + carbon-data.json published as a single disclosure pack</span></td>
               <td class="ba-cell-delta"><span data-i18n-lang="zh">無法承接 → 可承接</span><span data-i18n-lang="en">unable → ready</span></td>
             </tr>
             <tr>
@@ -5762,7 +5802,7 @@
                 <small>raromaeh storytelling</small>
               </td>
               <td class="ba-cell-before"><span data-i18n-lang="zh">賽夏 raromaeh 文化散落於各工坊口述與田野照片</span><span data-i18n-lang="en">Saisiyat raromaeh culture scattered across workshop oral histories and field photos</span></td>
-              <td class="ba-cell-after"><span data-i18n-lang="zh">數位化敘事整合（#about）+ 多場工作坊成果轉譯為導覽 / 教育敘事</span><span data-i18n-lang="en">Digitized narrative (#about) + multi-session workshop outputs translated into tour & education content</span></td>
+              <td class="ba-cell-after"><span data-i18n-lang="zh">數位化敘事整合（#about）+ 多場工作坊成果轉譯為導覽 / 教育敘事</span><span data-i18n-lang="en">Digitized narrative (#about) + workshop outputs turned into tour and education copy</span></td>
               <td class="ba-cell-delta"><span data-i18n-lang="zh">散落 → 一致</span><span data-i18n-lang="en">scattered → coherent</span></td>
             </tr>
             <tr>
@@ -5790,7 +5830,7 @@
               </td>
               <td class="ba-cell-before"><span data-i18n-lang="zh">無多語系（中文本地為主），國際 ESG 客戶與京都府龜岡市對接困難</span><span data-i18n-lang="en">No i18n (Chinese-only), hard to engage international ESG clients & Kameoka City of Kyoto</span></td>
               <td class="ba-cell-after"><span data-i18n-lang="zh">zh / en 雙語 + URL ?lang= 持久化 + i18n 頂層切換</span><span data-i18n-lang="en">zh / en bilingual + URL ?lang= persistence + i18n top toggle</span></td>
-              <td class="ba-cell-delta">0 → 1 <span data-i18n-lang="zh">國際 ready</span><span data-i18n-lang="en">int'l ready</span></td>
+              <td class="ba-cell-delta">0 → 1 <span data-i18n-lang="zh">國際 ready</span><span data-i18n-lang="en">international-ready</span></td>
             </tr>
           </tbody>
         </table>
@@ -5804,7 +5844,7 @@
         </div>
         <p style="margin: 0;">
           <span data-i18n-lang="zh">8 維度證明：精實演進的價值不是「衝量化」，而是<strong>建立聚落層級數位治理基礎設施</strong>。為後續<strong>「核心 Hub + 衛星 Nodes」</strong>與<strong>「Saisiyat Raromaeh 母品牌」</strong>戰略奠定基礎 ── 這是 0 到 1 的流程標準化價值，不是 1 到 N 的成長數字。</span>
-          <span data-i18n-lang="en">8 dimensions prove: Lean Evolution's value is not metric-chasing — it is <strong>building cluster-level digital governance infrastructure</strong>, laying the foundation for <strong>"Core Hub + Satellite Nodes"</strong> linkage and the <strong>"Saisiyat Raromaeh"</strong> master-brand strategy. 0-to-1 standardization value, not 1-to-N growth metrics.</span>
+          <span data-i18n-lang="en">Eight dimensions show the win wasn't chasing metrics—it was <strong>building cluster-level digital governance infrastructure</strong>, laying groundwork for <strong>Core Hub + Satellite Nodes</strong> linkage and the <strong>Saisiyat Raromaeh</strong> master-brand strategy. Foundational standardization, not growth KPIs.</span>
         </p>
       </div>
     </div>
@@ -6090,14 +6130,14 @@
 
     <div class="container">
       <div class="ia-section-head text-center" data-aos="fade-up">
-        <div class="section-eyebrow" style="justify-content: center; display: inline-flex;">02.6 · <span data-i18n-lang="zh">資訊架構產出物</span><span data-i18n-lang="en">IA Artefacts</span></div>
+        <div class="section-eyebrow" style="justify-content: center; display: inline-flex;">02.6 · <span data-i18n-lang="zh">資訊架構產出物</span><span data-i18n-lang="en">IA Artifacts</span></div>
         <h2 class="section-title">
           <span data-i18n-lang="zh">User Flow × Site Map × Wireframe × Prototype</span>
           <span data-i18n-lang="en">User Flow × Site Map × Wireframe × Prototype</span>
         </h2>
         <p class="section-desc">
           <span data-i18n-lang="zh">對位 Lean UX 標準路徑 — <strong>UR → IA → Visual Hierarchy → Zero-Friction Submit → Magazine-Style Recompose</strong>，六階段持續收斂。</span>
-          <span data-i18n-lang="en">Mirrors Lean UX path — <strong>UR → IA → Visual Hierarchy → Zero-Friction Submit → Magazine-Style Recompose</strong>, six-stage convergence.</span>
+          <span data-i18n-lang="en">Mirrors the Lean UX path—<strong>UR → IA → Visual Hierarchy → Zero-Friction Submit → Magazine-Style Layout</strong>, six stages of iterative refinement.</span>
         </p>
       </div>
 
@@ -6112,7 +6152,7 @@
         <div class="ia-method-timeline">
           <div class="ia-method-step">
             <span class="ia-method-step-num">① INSIGHT</span>
-            <span class="ia-method-step-title"><span data-i18n-lang="zh">角色扮演洞察</span><span data-i18n-lang="en">Role-Playing Insight</span></span>
+            <span class="ia-method-step-title"><span data-i18n-lang="zh">角色扮演洞察</span><span data-i18n-lang="en">Role-Play Discovery</span></span>
             <span class="ia-method-step-tag"><span data-i18n-lang="zh">參與式觀察 · 現場洞察</span><span data-i18n-lang="en">Participatory observation</span></span>
           </div>
           <div class="ia-method-step">
@@ -6137,8 +6177,8 @@
           </div>
           <div class="ia-method-step">
             <span class="ia-method-step-num">⑥ RECOMPOSE</span>
-            <span class="ia-method-step-title"><span data-i18n-lang="zh">Magazine-Style Recompose</span><span data-i18n-lang="en">Magazine-Style Recompose</span></span>
-            <span class="ia-method-step-tag"><span data-i18n-lang="zh">拔資訊牆 · Pillars-Bar</span><span data-i18n-lang="en">Anti info-wall · Pillars-Bar</span></span>
+            <span class="ia-method-step-title"><span data-i18n-lang="zh">Magazine-Style Recompose</span><span data-i18n-lang="en">Magazine-Style Layout</span></span>
+            <span class="ia-method-step-tag"><span data-i18n-lang="zh">拔資訊牆 · Pillars-Bar</span><span data-i18n-lang="en">No info walls · Pillars bar</span></span>
           </div>
         </div>
 
@@ -6298,7 +6338,7 @@
             <div class="ia-mermaid-foot">
               <strong><span data-i18n-lang="zh">設計決策｜</span><span data-i18n-lang="en">Design rationale: </span></strong>
               <span data-i18n-lang="zh">Cross-Link 單向 · 邏輯層背書體驗層；三軌共用同一 Google Sheet，作為 PM 技術選型對照。</span>
-              <span data-i18n-lang="en">One-way cross-link · logic layer underwrites experience layer; triple-track shares one Sheet for PM tech-stack contrast.</span>
+              <span data-i18n-lang="en">One-way cross-link—the case-study layer backs up the live site; triple-track shares one Sheet for PM tech-stack contrast.</span>
             </div>
           </div>
         </div>
@@ -6339,7 +6379,7 @@
                 <ul>
                   <li><b>H1</b><span data-i18n-lang="zh"><strong>拔除雙層矩陣</strong>，拒絕 Banner Blindness 反模式。</span><span data-i18n-lang="en"><strong>Removed dual matrix</strong> — reject Banner Blindness.</span></li>
                   <li><b>H2</b><span data-i18n-lang="zh"><strong>抽出 Pillars-Bar</strong>，落實 Progressive Disclosure。</span><span data-i18n-lang="en"><strong>Extracted Pillars-Bar</strong> — Progressive Disclosure.</span></li>
-                  <li><b>H3</b><span data-i18n-lang="zh"><strong>雙語 H1 並置</strong>，同步觸達 zh 學校與 en 國際窗口。</span><span data-i18n-lang="en"><strong>Bilingual H1</strong> reaches zh schools and en partners.</span></li>
+                  <li><b>H3</b><span data-i18n-lang="zh"><strong>雙語 H1 並置</strong>，同步觸達 zh 學校與 en 國際窗口。</span><span data-i18n-lang="en"><strong>Bilingual headline</strong> serves local schools and international partners.</span></li>
                 </ul>
               </div>
               <div>
@@ -6377,7 +6417,7 @@
               <div>
                 <strong>VALIDATION</strong>
                 <ul>
-                  <li><b>V1</b><span data-i18n-lang="zh"><strong>四 Persona 對位</strong>官方認證服務客群。</span><span data-i18n-lang="en"><strong>Four personas mapped</strong> to verified client groups.</span></li>
+                  <li><b>V1</b><span data-i18n-lang="zh"><strong>四 Persona 對位</strong>官方認證服務客群。</span><span data-i18n-lang="en"><strong>Four personas aligned</strong> to verified audience segments.</span></li>
                   <li><b>V2</b><span data-i18n-lang="zh"><strong>解決教師重輸</strong>與商品詢價打字痛點。</span><span data-i18n-lang="en"><strong>Eliminated re-entry</strong> and goods-inquiry typing friction.</span></li>
                   <li><b>V3</b><span data-i18n-lang="zh"><strong>1024 對稱測試</strong>：4 欄不破版。</span><span data-i18n-lang="en"><strong>1024 symmetry test</strong>: 4-col holds without break.</span></li>
                 </ul>
@@ -6395,7 +6435,7 @@
             <div class="ia-wf-body">
               <span class="ia-wf-id">WF-03</span>
               <div class="ia-wf-name"><span data-i18n-lang="zh">#booking · Vanilla 站內直送（v5.5）</span><span data-i18n-lang="en">#booking · Vanilla Direct Submit (v5.5)</span></div>
-              <div class="ia-wf-desc"><span data-i18n-lang="zh">雙欄｜左 Trust Sidebar 揭露 gating；右 11 欄表單 4 section + <code>fetch POST</code> 直送，mailto fallback。</span><span data-i18n-lang="en">2-col｜left Trust Sidebar exposes gating; right 11-field 4-section form + <code>fetch POST</code>, mailto fallback.</span></div>
+              <div class="ia-wf-desc"><span data-i18n-lang="zh">雙欄｜左 Trust Sidebar 揭露 gating；右 11 欄表單 4 section + <code>fetch POST</code> 直送，mailto fallback。</span><span data-i18n-lang="en">2-col｜left trust sidebar answers deal-breaker questions; right 11-field 4-section form + <code>fetch POST</code>, mailto fallback.</span></div>
             </div>
             <div class="ia-wf-hypothesis">
               <div>
@@ -6410,7 +6450,7 @@
                 <strong>VALIDATION</strong>
                 <ul>
                   <li><b>V1</b><span data-i18n-lang="zh"><strong>取代散客 LINE / 電話</strong>，收斂為單一可追蹤漏斗。</span><span data-i18n-lang="en"><strong>Replaced scattered LINE / phone</strong> with a single trackable funnel.</span></li>
-                  <li><b>V2</b><span data-i18n-lang="zh"><strong>Sidebar 揭露</strong> SLA / 統編 / 雨備，命中 gating。</span><span data-i18n-lang="en"><strong>Sidebar exposes</strong> SLA / tax-ID / rain — hits gating.</span></li>
+                  <li><b>V2</b><span data-i18n-lang="zh"><strong>Sidebar 揭露</strong> SLA / 統編 / 雨備，命中 gating。</span><span data-i18n-lang="en"><strong>Sidebar surfaces</strong> SLA, invoicing, and rain policy upfront.</span></li>
                   <li><b>V3</b><span data-i18n-lang="zh"><strong>Vanilla + React 雙軌</strong>，作為 PM 技術選型對照。</span><span data-i18n-lang="en"><strong>Vanilla + React dual-track</strong> — PM tech-stack contrast.</span></li>
                 </ul>
               </div>
@@ -6443,7 +6483,7 @@
             <span class="ia-disclosure field" title="v5.5: vanilla form + fetch POST direct submit, converged from scattered LINE / phone inquiries"><i class="fas fa-check-circle"></i>FIELD-VALIDATED</span>
             <div class="ia-pt-head"><span class="ia-pt-id">F2</span><a href="https://ivangoldaura.pages.dev/#booking" class="ia-pt-anchor co-op-site-link" data-co-op-hash="#booking" target="_blank" rel="noopener">#booking ↗</a></div>
             <div class="ia-pt-name"><span data-i18n-lang="zh">預約表單（v5.5）</span><span data-i18n-lang="en">Booking Form (v5.5)</span></div>
-            <div class="ia-pt-intent"><span data-i18n-lang="zh">11 欄表單 + Trust Sidebar 揭露 gating；fetch POST 直送，失敗退 mailto。</span><span data-i18n-lang="en">11-field form + Trust Sidebar gating; fetch POST submit, mailto fallback.</span></div>
+            <div class="ia-pt-intent"><span data-i18n-lang="zh">11 欄表單 + Trust Sidebar 揭露 gating；fetch POST 直送，失敗退 mailto。</span><span data-i18n-lang="en">11-field form + trust sidebar for pre-booking questions; fetch POST submit, mailto fallback.</span></div>
             <div class="ia-pt-foot">
               <div class="ia-pt-persona"><span>P01</span><span>P02</span><span>P03</span></div>
               <div>5 必填 · fetch POST → Sheets &lt; 3s</div>
@@ -6476,7 +6516,7 @@
             <span class="ia-disclosure scale" title="v5.4: booking-faq 6 details replaced standalone #contact section; architecture ready for FAQ automation & ESG disclosure data dashboard"><i class="fas fa-expand"></i>SCALE-READY</span>
             <div class="ia-pt-head"><span class="ia-pt-id">F5</span><a href="https://ivangoldaura.pages.dev/#bookingForm" class="ia-pt-anchor co-op-site-link" data-co-op-hash="#bookingForm" target="_blank" rel="noopener">#bookingForm 上方 booking-faq ↗</a></div>
             <div class="ia-pt-name"><span data-i18n-lang="zh">booking-faq · 6 題就地展開（v5.4）</span><span data-i18n-lang="en">booking-faq · 6 In-Page Details (v5.4)</span></div>
-            <div class="ia-pt-intent"><span data-i18n-lang="zh">減法檢驗三問拔 #contact；12 題 FAQ 收斂為 6 題 details 就地展開作信任緩衝。</span><span data-i18n-lang="en">Subtraction test removed #contact; 12 FAQs converged into 6 in-page details as trust buffer.</span></div>
+            <div class="ia-pt-intent"><span data-i18n-lang="zh">減法檢驗三問拔 #contact；12 題 FAQ 收斂為 6 題 details 就地展開作信任緩衝。</span><span data-i18n-lang="en">Subtraction audit removed #contact; 12 FAQs distilled into six expandable details as a pre-booking trust step.</span></div>
             <div class="ia-pt-foot">
               <div class="ia-pt-persona"><span>P01</span><span>P02</span><span>P03</span></div>
               <div><span data-i18n-lang="zh">a11y native details</span><span data-i18n-lang="en">a11y native details</span></div>
@@ -6686,19 +6726,19 @@
 
     <div class="container">
       <div class="doc-section-head text-center" data-aos="fade-up">
-        <div class="section-eyebrow" style="justify-content: center; display: inline-flex;">02.7 · <span data-i18n-lang="zh">文件產出物</span><span data-i18n-lang="en">Documentation Artefacts</span></div>
+        <div class="section-eyebrow" style="justify-content: center; display: inline-flex;">02.7 · <span data-i18n-lang="zh">文件產出物</span><span data-i18n-lang="en">Documentation Artifacts</span></div>
         <h2 class="section-title">
           <span data-i18n-lang="zh">PRD × UAT × Manual × Sprint Backlog</span>
           <span data-i18n-lang="en">PRD × UAT × Manual × Sprint Backlog</span>
         </h2>
         <p class="section-desc">
           <span data-i18n-lang="zh">Lean MVP 上線後依工作坊訪談收斂制度化的 4 份 PM 文件，對位「需求 → 驗收 → 教育訓練 → 工時治理」全套產出鏈，證明有產品亦有可稽核的文件治理。</span>
-          <span data-i18n-lang="en">Four PM documents institutionalized post-MVP from workshop interviews, covering "requirements → acceptance → enablement → effort governance" — auditable documentation discipline alongside the product.</span>
+          <span data-i18n-lang="en">Four PM documents formalized after MVP, informed by workshop interviews—covering requirements → acceptance → enablement → effort governance. Auditable documentation discipline alongside the product.</span>
         </p>
         <span class="doc-disclosure">
           <i class="fas fa-arrow-trend-up"></i>
           <span data-i18n-lang="zh">Disclosure：Lean-Evolved Artefact｜原始檔 data/docs/*.md</span>
-          <span data-i18n-lang="en">Disclosure: Lean-Evolved Artefact · Source: data/docs/*.md</span>
+          <span data-i18n-lang="en">Note: Iterated after field feedback · Source: data/docs/*.md</span>
         </span>
       </div>
 
@@ -6746,7 +6786,7 @@
           </div>
           <p class="doc-card-purpose">
             <span data-i18n-lang="zh"><strong>記錄 12 案例驗收</strong>（3 條 Persona × Happy Path 為單元），替代傳統 Function-by-Function 列表。3 件缺陷皆已修復並標版本（v5.0.1 / v5.0.2）。</span>
-            <span data-i18n-lang="en"><strong>Logged 12 test cases</strong> by Persona × Happy Path — replaces traditional function-by-function lists. Reverse-logged post-launch; 3 defects fixed with version tags (v5.0.1 / v5.0.2).</span>
+            <span data-i18n-lang="en"><strong>Logged 12 test cases</strong> by Persona × Happy Path—replacing traditional function-by-function lists. Logged after launch; 3 defects fixed with version tags (v5.0.1 / v5.0.2).</span>
           </p>
           <div class="doc-card-metrics">
             <div class="doc-metric"><div class="doc-metric-num" style="color: var(--success);">12</div><div class="doc-metric-label">Test Cases</div></div>
@@ -6756,10 +6796,10 @@
           <ul class="doc-card-toc">
             <li><span data-i18n-lang="zh">Test Strategy / 退場條件 / Sign-off</span><span data-i18n-lang="en">Test Strategy / Exit Criteria / Sign-off</span></li>
             <li><span data-i18n-lang="zh">12 TC（TC-01 ~ TC-12）× P0/P1 嚴重度</span><span data-i18n-lang="en">12 TCs (TC-01~12) × P0/P1 severity</span></li>
-            <li><span data-i18n-lang="zh">D-01~D-03 缺陷紀錄 + Post-launch D+30 監控</span><span data-i18n-lang="en">D-01~D-03 defect log + D+30 monitoring</span></li>
+            <li><span data-i18n-lang="zh">D-01~D-03 缺陷紀錄 + Post-launch D+30 監控</span><span data-i18n-lang="en">D-01~D-03 defect log + 30-day post-launch monitoring</span></li>
           </ul>
           <div class="doc-card-foot">
-            <span><span data-i18n-lang="zh">D+30 持續監控</span><span data-i18n-lang="en">D+30 ongoing monitoring</span> · 2026-Q1</span>
+            <span><span data-i18n-lang="zh">D+30 持續監控</span><span data-i18n-lang="en">30-day post-launch monitoring</span> · 2026-Q1</span>
             <span class="badge bg-secondary doc-card-jd">JD-CATHAY · §3 UAT</span>
           </div>
         </article>
@@ -6837,22 +6877,21 @@
             <span data-i18n-lang="en">This case covers <strong>5 of 5</strong> JD work-content items via 3 Personas, 3 Interview Logs, 4 PM docs, 3 Wireframes, and 2 Mermaid IA diagrams.</span>
           </div>
           <p class="doc-cov-desc">
-            <span data-i18n-lang="zh">完整對位策略與每項 JD 工作對應之檔案藍圖，記載於 <code style="background:rgba(255,255,255,0.1); padding:0.1rem 0.35rem; border-radius:3px;">製作總網路策略.txt · PART L</code>。</span>
-            <span data-i18n-lang="en">Full mapping strategy and per-JD artefact blueprint is documented in <code style="background:rgba(255,255,255,0.1); padding:0.1rem 0.35rem; border-radius:3px;">製作總網路策略.txt · PART L</code>.</span>
+            <span data-i18n-lang="en">Full mapping strategy and per-JD artifact blueprint is documented in <code style="background:rgba(255,255,255,0.1); padding:0.1rem 0.35rem; border-radius:3px;">製作總網路策略.txt · PART L</code>.</span>
           </p>
         </div>
         <div class="doc-cov-stats">
           <div class="doc-cov-stat">
             <div class="doc-cov-stat-num">5 / 5</div>
-            <div class="doc-cov-stat-label"><span data-i18n-lang="zh">JD 工作內容覆蓋</span><span data-i18n-lang="en">JD Work-Content Coverage</span></div>
+            <div class="doc-cov-stat-label"><span data-i18n-lang="zh">JD 工作內容覆蓋</span><span data-i18n-lang="en">JD Coverage</span></div>
           </div>
           <div class="doc-cov-stat">
             <div class="doc-cov-stat-num">12</div>
-            <div class="doc-cov-stat-label"><span data-i18n-lang="zh">PM Artefacts 已交付</span><span data-i18n-lang="en">PM Artefacts Delivered</span></div>
+            <div class="doc-cov-stat-label"><span data-i18n-lang="zh">PM Artefacts 已交付</span><span data-i18n-lang="en">PM Artifacts Delivered</span></div>
           </div>
           <div class="doc-cov-stat">
             <div class="doc-cov-stat-num">3</div>
-            <div class="doc-cov-stat-label"><span data-i18n-lang="zh">Persona 實證來源</span><span data-i18n-lang="en">Personas Field-Validated</span></div>
+            <div class="doc-cov-stat-label"><span data-i18n-lang="zh">Persona 實證來源</span><span data-i18n-lang="en">Field-Validated Personas</span></div>
           </div>
           <div class="doc-cov-stat">
             <div class="doc-cov-stat-num">0</div>
@@ -6886,11 +6925,11 @@
           </div>
           <div class="info-block">
             <div class="info-key">MY ROLE</div>
-            <div class="info-val"><span data-i18n-lang="zh">數位轉型 PM ×<br>前端開發 × 內容轉化</span><span data-i18n-lang="en">Digital Transformation PM ×<br>Frontend × Content Translation</span></div>
+            <div class="info-val"><span data-i18n-lang="zh">數位轉型 PM ×<br>前端開發 × 內容轉化</span><span data-i18n-lang="en">Digital Transformation PM ×<br>Frontend × Content Architecture</span></div>
           </div>
           <div class="info-block">
             <div class="info-key">SOLO DELIVERY</div>
-            <div class="info-val"><span data-i18n-lang="zh">合作社官網 UI/UX + 前端<br>零伺服器預約工作流</span><span data-i18n-lang="en">Co-op site UI/UX + frontend<br>Zero-server reservation workflow</span></div>
+            <div class="info-val"><span data-i18n-lang="zh">合作社官網 UI/UX + 前端<br>零伺服器預約工作流</span><span data-i18n-lang="en">Co-op site UI/UX + frontend<br>Serverless booking workflow</span></div>
           </div>
           <div class="info-block">
             <div class="info-key">SCALE</div>
@@ -6900,7 +6939,7 @@
 
         <div class="cta-row">
           <a href="https://ivangoldaura.pages.dev/" class="btn-pm-primary co-op-site-link" target="_blank" rel="noopener">
-            <i class="fas fa-globe"></i><span data-i18n-lang="zh">查看合作社官方網站</span><span data-i18n-lang="en">Visit the Co-op Website</span>
+            <i class="fas fa-globe"></i><span data-i18n-lang="zh">查看合作社官方網站</span><span data-i18n-lang="en">View Live Co-op Site</span>
           </a>
           <a href="../index.html#works" class="btn-pm-ghost">
             <i class="fas fa-arrow-left"></i><span data-i18n-lang="zh">返回作品集</span><span data-i18n-lang="en">Back to Portfolio</span>
@@ -6917,9 +6956,9 @@
           NT$12M 兩年期計畫由理事會、CEO 與顧問群共同決議；2026/06/10 已得標（公文核定中），作為延續性的專案背景。
           本頁所有數據皆為公開計畫資訊或可驗證的目標值，詳細討論可於面談時當面說明。</span>
           <span data-i18n-lang="en">This case is told from the perspective of a <strong>Digital Transformation PM &amp; Solo Builder</strong>.
-          Engaged with the site since my 2021 thesis, I own the <strong>information product line</strong> — solo-delivering the co-op website and zero-server booking workflow, and closing the USR NT$1.45M plan at 100% execution.
-          The NT$12M two-year program — collectively led by the board, CEO and advisors — was awarded on 2026-06-10 (official letter pending), serving as a program-level credential.
-          All figures here are public-program information or verifiable targets; the detailed process can be walked through in person.</span>
+          Engaged with the site since my 2021 thesis, I own the <strong>information product line</strong>—built and launched the co-op site and serverless booking flow solo, and closed the USR NT$1.45M plan at 100% execution.
+          The NT$12M two-year program—collectively led by the board, CEO, and advisors—was awarded on 2026-06-10 (official letter pending), included here as program background.
+          All figures here are public-program data or verifiable targets; happy to walk through the full process in person.</span>
         </div>
       </div>
     </div>
@@ -6939,9 +6978,9 @@
             本頁以「挑戰 → 解法 → 成果 → 沉澱」結構，
             還原現場做過的「資訊轉化」與「親手把網站做出來」這兩件事。</span>
             <span data-i18n-lang="en">SamSamma is a real case where Ivan Zhao has been involved since his 2021 undergraduate thesis,
-            and as Digital Transformation PM & front-end developer, hand-delivered the official site and zero-server reservation system.
-            This page uses a "Challenge → Approach → Impact → Reflection" structure
-            to reconstruct two things actually done on the ground: information translation and building the site end-to-end.</span>
+            and as Digital Transformation PM &amp; frontend developer, solo-shipped the live site and zero-server booking system.
+            This page follows a Challenge → Approach → Impact → Reflection arc,
+            showing two things delivered on the ground: clearer content and a live site.</span>
           </p>
         </div>
         <div class="col-md-3">

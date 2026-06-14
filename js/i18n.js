@@ -132,7 +132,7 @@
 
     /* ===== Work Card · 靜態三件 (山莎蔓岸 / 本網站 / JF) ===== */
     'work.title.samsamma': {
-      en: 'SamSamma Bamboo Industry Co-op',
+      en: 'SamSamma Bamboo Co-op',
       zh: '山莎蔓岸竹炭合作社'
     },
     'work.title.thisSite': {
@@ -195,7 +195,7 @@
       zh: '1998 年生，現居新北永和。兼具全端開發、視覺設計與景觀規劃背景，工作模式聚焦於「需求收斂與技術轉譯」。'
     },
     'home.about.p2': {
-      en: 'Co-founded SamSamma Co-op for regional digital transformation, architecting a zero-server-cost reservation workflow. Concurrently shipped enterprise-grade backend at Cathay General Hospital — forging rigorous engineering discipline.',
+      en: 'Co-founded SamSamma Co-op for place-based digital transformation—architected a zero-server booking workflow and solo-shipped the live site. Concurrently maintained enterprise backend systems at Cathay General Hospital, building rigorous engineering discipline.',
       zh: '與族人共同創辦山莎蔓岸合作社，獨立打造零伺服器成本的自動化預約工作流；同時於國泰醫院負責正式後端維護與功能迭代，培養出嚴謹的工程邏輯。'
     },
     'home.about.p3': {
@@ -246,7 +246,7 @@
       zh: '2025 年進入<strong>國泰世華總醫院</strong>擔任資訊維運工程師（助理程式師），完成第一年正職實戰。這一年具體沉澱出對「生產系統」與「練習專案」的差距感：問卷／表單類功能的迭代與訪談、醫療與行政單位的<strong>需求收斂與技術轉譯</strong>、核心 Web 系統由 <strong>IE 遷移到 Chrome／Edge</strong> 的 Legacy 升級專案、跨部門溝通與 UAT 上線。這段大型醫療系統的維運經驗，培養出 Technical PM 最重要的「<strong>嚴謹的工程邏輯</strong>」── 在團隊內用工程師聽得懂的語言進行精準的 MVP 範疇切片。'
     },
     'aboutPage.p4': {
-      en: 'In parallel, I co-founded <strong>SamSamma Bamboo Industry Co-op</strong> with Saisiyat indigenous community members, serving as Digital Transformation PM and solo frontend builder. My role: <strong>converting scattered field notes, academic site-visit photos, and ethnographic material into a clean, structured digital content architecture</strong>. To solve the real-world constraint that rural co-ops can\'t afford a full-time engineering team, I independently <strong>architected a zero-server-cost automated reservation workflow</strong> — fully replacing manual phone bookings. In a multi-stakeholder environment, I became the bridge: translating team consensus into concrete technical specs.',
+      en: 'In parallel, I co-founded <strong>SamSamma Bamboo Industry Co-op</strong> with Saisiyat community members, serving as Digital Transformation PM and solo frontend builder. I turned scattered field notes, academic site-visit photos, and ethnographic material into a clear, structured content architecture. To meet the real constraint that rural co-ops can\'t afford a full-time engineering team, I <strong>architected a zero-server booking workflow</strong>—fully replacing manual phone reservations. In a multi-stakeholder environment, I bridged team consensus and concrete technical specs.',
       zh: '與醫院實務並行，與賽夏族族人共同創辦<strong>山莎蔓岸竹木產業生產合作社</strong>，擔任數位轉型 PM 兼前端開發者。職責是把現場零散的活動紀錄、學術訪視照片與田野素材，<strong>結構化為清晰的數位內容架構</strong>；同時針對偏鄉沒有預算養工程師的真實痛點，獨立打造<strong>零伺服器成本的自動化預約工作流</strong>，取代傳統人工電話登錄。在多方協作的環境中擔任溝通橋樑，把團隊共識轉譯為清晰的技術規格。'
     },
     'aboutPage.p5': {
