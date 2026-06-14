@@ -1,0 +1,130 @@
+%% ==========================================================
+%% Site Map — Functional / 純結構版（無 Persona · 無商業標籤）
+%% 用途：回答「網站長什麼樣、有哪些區塊、連到哪」
+%% 對照：index_SamSamma.html v5.8 · SamSamma.html · /booking/
+%% 更新：2026-06-12
+%% 匯出：mermaid.live → SVG/PNG → 網站 / Figma
+%% 中文對照：3.功能架構圖-site-map-functional.mmd
+%% ==========================================================
+%%{init: {
+  "look": "classic",
+  "theme": "base",
+  "themeVariables": {
+    "fontFamily": "Noto Sans TC, Inter, sans-serif",
+    "fontSize": "14px",
+    "primaryColor": "#f5f0e8",
+    "primaryTextColor": "#3d2b1f",
+    "primaryBorderColor": "#8b7355",
+    "lineColor": "#4a7c59",
+    "background": "#ffffff"
+  },
+  "flowchart": {
+    "htmlLabels": false,
+    "useMaxWidth": true,
+    "curve": "basis",
+    "padding": 12
+  }
+} }%%
+graph TD
+    Root([index_SamSamma.html<br/>單頁 Landing Page])
+
+    subgraph NAV ["全域 Nav 錨點"]
+        N1["#home"]
+        N2["#about"]
+        N3["#why-us"]
+        N4["#plans"]
+        N5["#booking"]
+    end
+
+    subgraph SEC ["Section 滾動順序（DOM 由上而下）"]
+        S1["#home<br/>section.hero-fullscreen"]
+        S2["#pillars-bar<br/>section.pillars-bar-section"]
+        S3["#about<br/>section.about-split-section"]
+        S4["#why-us<br/>section.why-section"]
+        S5["#plans<br/>section.plans-section"]
+        S6["#booking<br/>section.booking-section"]
+        S7["site-footer<br/>footer"]
+    end
+
+    subgraph PLANS ["#plans 子結構 · plan-grid"]
+        P1["article.plan-card<br/>data-plan=culture"]
+        P2["article.plan-card<br/>data-plan=corporate"]
+        P3["article.plan-card<br/>data-plan=commerce"]
+        P4["article.plan-card<br/>data-plan=art"]
+    end
+
+    subgraph BOOK ["#booking 子結構"]
+        B1[".booking-info 左欄<br/>地址·對象·時段·聯絡"]
+        B2["#bookingForm 右欄<br/>11 欄 · 4 段"]
+        B3[".booking-faq<br/>6 × details"]
+        B4["#bookingSuccess<br/>成功面板 hidden"]
+    end
+
+    subgraph FORM ["#bookingForm 欄位群"]
+        F1["1 方案 plan select"]
+        F2["2 聯絡 orgName·contactName·email·phone"]
+        F3["3 活動 participants·date·duration·budget"]
+        F4["4 備註 notes + addon checkbox×6"]
+    end
+
+    subgraph EXT ["外部系統 · 非 HTML 節點"]
+        E1["/booking/<br/>React 子應用"]
+        E2["Google Forms formResponse"]
+        E3["Google Sheets"]
+        E4["mailto:"]
+    end
+
+    subgraph PM ["SamSamma.html · 獨立頁 PM 案例"]
+        M1["#ia-artefacts<br/>引用本資料夾 .mmd"]
+        M2["#user-research<br/>Persona 定義"]
+        M3["#docs-artefacts<br/>PRD·UAT"]
+    end
+
+    Root --> NAV
+    Root --> SEC
+
+    S1 --> S2 --> S3 --> S4 --> S5 --> S6 --> S7
+
+    S5 --> P1
+    S5 --> P2
+    S5 --> P3
+    S5 --> P4
+
+    S6 --> B1
+    S6 --> B2
+    S6 --> B3
+    B2 --> B4
+    B2 --> FORM
+
+    P1 -->|CTA click| E1
+    P2 -->|CTA click| E1
+    P3 -->|a href| E4
+    P4 -->|a href| E4
+
+    S1 -->|CTA href=#booking| S6
+    N5 --> S6
+
+    B2 -->|fetch POST| E2
+    E1 -->|submitFormResponse| E2
+    E2 --> E3
+    B2 -.fail.-> E4
+
+    PM --> M1
+    M1 -.引用.-> Root
+    M2 -.定義 Persona·非結構邊.-> S3
+    M2 -.非結構邊.-> S4
+    M2 -.非結構邊.-> S5
+
+    classDef page fill:#f5f0e8,stroke:#8b7355,color:#3d2b1f
+    classDef section fill:#d4edda,stroke:#28a745,color:#155724
+    classDef component fill:#e8f5e9,stroke:#4a7c59,color:#2e5a3a
+    classDef ext fill:#e2e3e5,stroke:#6c757d,color:#383d41
+    classDef nav fill:#fff3cd,stroke:#d9960a,color:#7a4f00
+    classDef pm fill:#cce5ff,stroke:#0056b3,color:#003875
+
+    class Root page
+    class S1,S2,S3,S4,S5,S6,S7 section
+    class P1,P2,P3,P4,B1,B2,B3,B4,F1,F2,F3,F4 component
+    class E1,E2,E3,E4 ext
+    class N1,N2,N3,N4,N5 nav
+    class M1,M2,M3 pm

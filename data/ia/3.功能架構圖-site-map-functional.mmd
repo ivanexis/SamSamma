@@ -1,0 +1,131 @@
+%% ==========================================================
+%% ③ 功能架構圖（純物理結構 · 中文版）
+%% 英文技術對照：3.site-map-functional.mmd
+%% 用途：回答「網站有哪些區塊、錨點、表單、連到哪」
+%% 禁止：Persona · 痛點 · 商業目的（那些看 4.使用者流程圖）
+%% 對照：index_SamSamma.html v5.8
+%% 信任漏斗：見 0.5 · 設計邏輯絲路流程.txt §一-B
+%% 更新：2026-06-14
+%% ==========================================================
+%%{init: {
+  "look": "classic",
+  "theme": "base",
+  "themeVariables": {
+    "fontFamily": "Noto Sans TC, Inter, sans-serif",
+    "fontSize": "14px",
+    "primaryColor": "#f5f0e8",
+    "primaryTextColor": "#3d2b1f",
+    "primaryBorderColor": "#8b7355",
+    "lineColor": "#4a7c59",
+    "background": "#ffffff"
+  },
+  "flowchart": {
+    "htmlLabels": false,
+    "useMaxWidth": true,
+    "curve": "basis",
+    "padding": 12
+  }
+} }%%
+graph TD
+    Root([客戶官網 index_SamSamma.html<br/>單頁式著陸頁])
+
+    subgraph NAV ["頂部導覽 Nav 錨點（5 項）"]
+        N1["首頁 #home"]
+        N2["關於 #about"]
+        N3["我們的足跡 #why-us"]
+        N4["來山裡走走 #plans"]
+        N5["預約 #booking"]
+    end
+
+    subgraph SEC ["頁面區塊順序（DOM 由上而下 · F1-F6 信任漏斗）"]
+        S1["F1 首屏 Hero<br/>#home<br/>吸引注意·Primary CTA"]
+        S2["F2 六大核心價值<br/>#pillars-bar<br/>拉高格局<br/>※不在 Nav 內"]
+        S3["F3 關於我們 50/50<br/>#about<br/>建立實體信任"]
+        S4["F4 五幕故事與量化報告<br/>#why-us<br/>USR/ESG 硬證據"]
+        S5["F5 方案四卡區<br/>#plans<br/>精準分流"]
+        S6["F6 預約區<br/>#booking<br/>收口變現"]
+        S7["頁尾<br/>site-footer"]
+    end
+
+    subgraph PLANS ["#plans 內 · 四張方案卡"]
+        P1["竹文化體驗<br/>data-plan=culture"]
+        P2["ESG 企業參訪<br/>data-plan=corporate"]
+        P3["竹炭商品<br/>data-plan=commerce"]
+        P4["國際竹構藝術<br/>data-plan=art"]
+    end
+
+    subgraph BOOK ["#booking 內 · 子區塊"]
+        B1["左欄 · 預約資訊<br/>地址·適合對象·時段·聯絡"]
+        B2["右欄 · 線上預約表單<br/>#bookingForm"]
+        B3["下方 · 預約常見問題<br/>booking-faq 共 6 題<br/>防禦性設計·P01/P03"]
+        B4["送出後 · 成功面板<br/>#bookingSuccess 預設隱藏"]
+    end
+
+    subgraph FORM ["表單欄位（11 欄 · 4 段）"]
+        F1["第 1 段 · 選擇方案"]
+        F2["第 2 段 · 聯絡資訊 4 欄"]
+        F3["第 3 段 · 活動需求 4 欄"]
+        F4["第 4 段 · 備註 + 加購多選 6 項"]
+    end
+
+    subgraph EXT ["外部系統（非網頁節點）"]
+        E1["React 預約子應用<br/>/booking/"]
+        E2["Google 表單接收端<br/>formResponse"]
+        E3["Google 試算表<br/>回應後台"]
+        E4["Email mailto"]
+    end
+
+    subgraph PM ["PM 案例頁 SamSamma.html（獨立頁）"]
+        M1["IA 產出物區<br/>#ia-artefacts"]
+        M2["使用者研究<br/>#user-research"]
+        M3["專案文件<br/>#docs-artefacts PRD·UAT"]
+    end
+
+    Root --> NAV
+    Root --> SEC
+
+    S1 --> S2 --> S3 --> S4 --> S5 --> S6 --> S7
+
+    S5 --> P1
+    S5 --> P2
+    S5 --> P3
+    S5 --> P4
+
+    S6 --> B1
+    S6 --> B2
+    S6 --> B3
+    B2 --> B4
+    B2 --> FORM
+
+    P1 -->|按鈕| E1
+    P2 -->|按鈕| E1
+    P3 -->|郵件連結| E4
+    P4 -->|郵件連結| E4
+
+    S1 -->|立即預約 CTA| S6
+    N5 --> S6
+
+    B2 -->|fetch 送出| E2
+    E1 -->|表單送出| E2
+    E2 -->|寫入| E3
+    B2 -.連線失敗.-> E4
+
+    PM --> M1
+    M1 -.文件引用.-> Root
+    M2 -.Persona 定義·非 DOM 連線.-> S3
+    M2 -.非 DOM 連線.-> S4
+    M2 -.非 DOM 連線.-> S5
+
+    classDef page fill:#f5f0e8,stroke:#8b7355,color:#3d2b1f
+    classDef section fill:#d4edda,stroke:#28a745,color:#155724
+    classDef component fill:#e8f5e9,stroke:#4a7c59,color:#2e5a3a
+    classDef ext fill:#e2e3e5,stroke:#6c757d,color:#383d41
+    classDef nav fill:#fff3cd,stroke:#d9960a,color:#7a4f00
+    classDef pm fill:#cce5ff,stroke:#0056b3,color:#003875
+
+    class Root page
+    class S1,S2,S3,S4,S5,S6,S7 section
+    class P1,P2,P3,P4,B1,B2,B3,B4,F1,F2,F3,F4 component
+    class E1,E2,E3,E4 ext
+    class N1,N2,N3,N4,N5 nav
+    class M1,M2,M3 pm

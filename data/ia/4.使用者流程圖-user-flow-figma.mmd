@@ -1,0 +1,82 @@
+%% ==========================================================
+%% ④ 使用者流程圖（心理行為 · 中文版）
+%% 英文技術對照：4.user-flow-figma.mmd
+%% 用途：回答「使用者可能怎麼逛、在哪分流、怎麼收口」
+%% 禁止：當成 DOM 結構圖（結構看 3.功能架構圖）
+%% 虛線 = 可跳過的非必經路徑
+%% 對照結構：3.功能架構圖-site-map-functional.mmd
+%% 更新：2026-06-12
+%% ==========================================================
+%%{init: {
+  "look": "classic",
+  "theme": "base",
+  "themeVariables": {
+    "fontFamily": "Noto Sans TC, Inter, sans-serif",
+    "fontSize": "13px",
+    "lineColor": "#4a7c59"
+  }
+} }%%
+flowchart TD
+    Entry(["使用者進站"])
+    Home["首屏 Hero<br/>#home"]
+    Pillars["六大價值帶<br/>#pillars-bar"]
+
+    SharedAbout["關於我們<br/>#about<br/>※全類型訪客共用"]
+    SharedWhy["我們的足跡<br/>#why-us<br/>※全類型訪客共用"]
+
+    Split{{"方案四卡區 #plans<br/>★ 結構分流點"}}
+
+    P1["文化體驗卡<br/>culture"]
+    P2["ESG 企業卡<br/>corporate"]
+    P3["竹炭商品卡<br/>commerce"]
+    P4["國際藝術卡<br/>art"]
+
+    R1["React 多步驟預約<br/>/booking/?plan=culture"]
+    R2["React 多步驟預約<br/>/booking/?plan=corporate"]
+    M1["Email 採購洽詢<br/>mailto"]
+    M2["Email 合作洽談<br/>mailto"]
+
+    Direct["直達預約區<br/>#booking<br/>Hero 或 Nav 捷徑"]
+    Form["站內 11 欄表單<br/>#bookingForm"]
+    FAQ["常見問題 6 題<br/>※DOM 在表單下方"]
+    Submit["表單送出<br/>fetch POST"]
+    Success["站內成功面板<br/>不跳外部頁"]
+    Fail["備援<br/>mailto 帶入已填資料"]
+
+    Entry --> Home --> Pillars
+    Pillars --> SharedAbout
+    SharedAbout --> SharedWhy
+    SharedWhy --> Split
+    Home -.急件·跳過敘事.-> Direct
+    Pillars -.略過 About/Why-us.-> Split
+
+    Split --> P1 --> R1
+    Split --> P2 --> R2
+    Split --> P3 --> M1
+    Split --> P4 --> M2
+
+    R1 --> Submit
+    R2 --> Submit
+    Direct --> Form
+    Form --> Submit
+    Form --> FAQ
+    Submit --> Success
+    Submit -.連線失敗.-> Fail
+
+    classDef shared fill:#f5f0e8,stroke:#8b7355,color:#3d2b1f
+    classDef common fill:#e8eaf6,stroke:#3949ab,color:#1a237e
+    classDef school fill:#d4edda,stroke:#28a745,color:#155724
+    classDef enterprise fill:#cce5ff,stroke:#004085,color:#004085
+    classDef mail fill:#ffe0b2,stroke:#ef6c00,color:#7a3e00
+    classDef split fill:#fff3cd,stroke:#d9960a,color:#7a4f00
+    classDef backend fill:#c8e6c9,stroke:#388e3c,color:#1b5e20
+    classDef fail fill:#ffcdd2,stroke:#c62828,color:#b71c1c
+
+    class Entry,Home,Pillars,Direct,Form,FAQ shared
+    class SharedAbout,SharedWhy common
+    class P1,R1 school
+    class P2,R2 enterprise
+    class P3,P4,M1,M2 mail
+    class Split split
+    class Submit,Success backend
+    class Fail fail

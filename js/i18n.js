@@ -343,11 +343,22 @@
 
   /* ─────────── 內部連結自動補當前 lang query ─────────── */
   function rewriteInternalHrefs() {
+    /* 語言切換：以 pathname 重建 URL，避免 ?lang=zh 上再疊 ?lang=en → ??lang= */
+    document.querySelectorAll('.lang-switch a[data-lang-btn]').forEach((anchor) => {
+      const code = anchor.getAttribute('data-lang-btn');
+      const u = new URL(window.location.href);
+      u.hash = '';
+      if (code === 'zh') u.searchParams.set('lang', 'zh');
+      else u.searchParams.delete('lang');
+      anchor.setAttribute('href', u.pathname + u.search);
+    });
+
     document.querySelectorAll('a[href]').forEach((anchor) => {
       const href = anchor.getAttribute('href');
       if (!href) return;
-      // 語言切換鈕：保留自身指定的 ?lang，不被覆寫
+      /* 語言切換鈕：已於上方處理 */
       if (anchor.hasAttribute('data-i18n-skip') || anchor.closest('.lang-switch')) return;
+      if (anchor.classList.contains('co-op-site-link')) return;
       if (href.startsWith('http') || href.startsWith('mailto:') || href.startsWith('tel:')) return;
       if (href.startsWith('#')) return; // 純錨點不動
 
@@ -358,8 +369,28 @@
       const hashStr = hashIdx !== -1 ? href.slice(hashIdx) : '';
 
       const params = new URLSearchParams(queryStr);
-      params.set('lang', currentLang);
-      anchor.setAttribute('href', `${base}?${params.toString()}${hashStr}`);
+      if (currentLang === DEFAULT_LANG) {
+        params.delete('lang');
+      } else {
+        params.set('lang', currentLang);
+      }
+      const qs = params.toString();
+      anchor.setAttribute('href', `${base}${qs ? `?${qs}` : ''}${hashStr}`);
+    });
+  }
+
+  /* ─────────── 合作社官網外連：依當前語言帶正確 query ─────────── */
+  function rewriteCoOpSiteLinks() {
+    const isZh = currentLang === 'zh';
+    document.querySelectorAll('a.co-op-site-link').forEach((anchor) => {
+      const hash = anchor.getAttribute('data-co-op-hash') || '';
+      const suffix = hash ? (hash.charAt(0) === '#' ? hash : `#${hash}`) : '';
+      anchor.setAttribute(
+        'href',
+        isZh
+          ? `https://ivangoldaura.pages.dev/${suffix}`
+          : `https://ivangoldaura.pages.dev/?lang=en${suffix}`
+      );
     });
   }
 
@@ -370,17 +401,19 @@
     DEFAULT_LANG,
     t,
     applyDom,
-    rewriteInternalHrefs
+    rewriteInternalHrefs,
+    rewriteCoOpSiteLinks
   };
 
   /* ─────────── 自動執行 ─────────── */
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => {
-      applyDom();
-      rewriteInternalHrefs();
-    });
-  } else {
+  function runI18n() {
     applyDom();
     rewriteInternalHrefs();
+    rewriteCoOpSiteLinks();
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', runI18n);
+  } else {
+    runI18n();
   }
 })();

@@ -1,0 +1,105 @@
+%% ==========================================================
+%% Site Map — Figma / PPT 匯出專用（商業邏輯 IA 版）
+%% 來源：index_SamSamma.html v5.8 + SamSamma.html PM 案例頁
+%% 用途：貼到 https://mermaid.live → Actions → SVG / PNG → 拖進 Figma
+%% 更新：2026-06-12
+%% ==========================================================
+%%{init: {
+  "look": "classic",
+  "theme": "base",
+  "themeVariables": {
+    "fontFamily": "Noto Sans TC, Inter, sans-serif",
+    "fontSize": "13px",
+    "primaryColor": "#f5f0e8",
+    "primaryTextColor": "#3d2b1f",
+    "primaryBorderColor": "#8b7355",
+    "lineColor": "#4a7c59",
+    "background": "#ffffff",
+    "edgeLabelBackground": "#ffffff"
+  },
+  "flowchart": {
+    "htmlLabels": false,
+    "useMaxWidth": true,
+    "curve": "basis",
+    "padding": 12
+  }
+} }%%
+graph TD
+    i18n(["i18n ?lang=zh/en<br/>商業目的：國際訪客與 ESG 採購窗口"])
+
+    subgraph EXP ["體驗層 EXP · index_SamSamma.html 單頁 Landing"]
+        A_Entry["入口 Entry<br/>商業：品牌第一印象 + Nav 錨點"]
+        A_Home["#home Hero 全寬中央<br/>商業：30 秒情感共鳴 · Primary CTA"]
+        A_Pillars["#pillars-bar 6 圖標<br/>商業：Progressive Disclosure 價值標籤"]
+        A_About["#about 50/50 Split<br/>商業：Trust Building 文化敘事"]
+        A_Why["#why-us 五幕量化報告<br/>商業：B2B 背書 · 碳匯/USR 可稽核"]
+        A_Plans["#plans 4 卡 Persona<br/>商業：方案分流 · Self-Selection"]
+        A_PlanCulture["文化卡 culture<br/>商業：Conversion → React /booking/"]
+        A_PlanCorp["ESG 卡 corporate<br/>商業：Conversion → React /booking/"]
+        A_PlanMail["竹炭/國際卡 commerce·art<br/>商業：High-Ticket → mailto"]
+        A_Booking["#booking 雙欄<br/>商業：Conversion 收口"]
+        A_FAQ["booking-faq 6 題<br/>商業：Objection Handling 就地消除疑慮"]
+        A_Form["#bookingForm 11 欄<br/>商業：Zero-Friction 站內填寫"]
+        A_Submit["fetch POST no-cors<br/>商業：不跳頁 · 長輩友善"]
+        A_Success["站內成功面板<br/>商業：Confirmation · 降低重填焦慮"]
+        A_Footer["site-footer 聯絡<br/>商業：Fallback 信任錨點"]
+    end
+
+    subgraph LOGIC ["邏輯層 LOGIC · SamSamma.html PM 案例頁"]
+        B_Entry["PM 履歷頁入口<br/>商業：Recruiter 驗證交付物"]
+        B_Hero["Hero + Highlights<br/>商業：30 秒專案摘要"]
+        B_Origin["#origin 需求催生<br/>商業：Problem Framing"]
+        B_UR["#user-research 3 Persona<br/>商業：Design Rationale"]
+        B_IA["#ia-artefacts<br/>商業：Site Map / Flow / Wireframe"]
+        B_Tech["#tech-stack 雙軌預約<br/>商業：Technical Decision Record"]
+        B_DOCS["#docs-artefacts PRD/UAT<br/>商業：Audit Trail"]
+    end
+
+    subgraph EXT ["外部服務層 EXT · External Integrations"]
+        E_GForms["Google Forms formResponse<br/>商業：零伺服器後端"]
+        E_GSheets["Google Sheets 回應表<br/>商業：理事長日常維護"]
+        E_Email["Email 通知 / mailto fallback<br/>商業：Fail-safe 不漏單"]
+        E_React["React App /booking/<br/>商業：多步驟體驗強化"]
+    end
+
+    i18n --> A_Entry
+    i18n --> B_Entry
+
+    A_Entry --> A_Home --> A_Pillars --> A_About --> A_Why --> A_Plans
+    A_Plans --> A_PlanCulture
+    A_Plans --> A_PlanCorp
+    A_Plans --> A_PlanMail
+    A_Plans --> A_Booking
+    A_Booking --> A_FAQ --> A_Form --> A_Submit --> A_Success
+    A_Booking --> A_Footer
+
+    B_Entry --> B_Hero --> B_Origin --> B_UR --> B_IA --> B_Tech --> B_DOCS
+    B_Hero -->|Cross-Link| A_Entry
+    B_IA -->|引用| A_Plans
+    B_Tech -->|展示| E_React
+
+    A_PlanCulture --> E_React
+    A_PlanCorp --> E_React
+    A_PlanMail --> E_Email
+    A_Submit -->|11 欄 FIELD_MAP| E_GForms
+    E_React -->|共用 form id| E_GForms
+    E_GForms -->|寫入| E_GSheets
+    E_GSheets -->|觸發| E_Email
+    A_Submit -.連線失敗.-> E_Email
+
+    classDef exp fill:#d4edda,stroke:#28a745,color:#155724
+    classDef logic fill:#cce5ff,stroke:#0056b3,color:#003875
+    classDef ext fill:#e2e3e5,stroke:#6c757d,color:#383d41
+    classDef i18n_node fill:#f3e5f5,stroke:#7b1fa2,color:#4a0072
+    classDef success fill:#c8e6c9,stroke:#388e3c,color:#1b5e20
+    classDef faq fill:#fff8e1,stroke:#f9a825,color:#7a5500
+    classDef mail fill:#ffe0b2,stroke:#ef6c00,color:#7a3e00
+
+    class A_Entry,A_Home,A_Pillars,A_About,A_Why,A_Plans,A_Booking,A_Form,A_Submit,A_Footer exp
+    class A_PlanCulture,A_PlanCorp exp
+    class A_PlanMail mail
+    class B_Entry,B_Hero,B_Origin,B_UR,B_IA,B_Tech,B_DOCS logic
+    class E_GForms,E_GSheets,E_Email,E_React ext
+    class i18n i18n_node
+    class A_Success success
+    class A_FAQ faq

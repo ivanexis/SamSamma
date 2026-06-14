@@ -1,0 +1,156 @@
+%% ==========================================================
+%% ① 設計歷程圖 · 由設計學習.txt 推導
+%% 北極星：對內=即時說明書（服務清單）· 對外=價值證明書（為什麼找我們）
+%% 網站本質：數位敘事代理人（預約為目標·敘事為論證·歸屬為資產）
+%% 對照：設計學習.txt · 115-116計畫書 · index_SamSamma v5.8 · Roadmap v6+
+%% 更新：2026-06-14
+%% ==========================================================
+%%{init: {
+  "look": "classic",
+  "theme": "base",
+  "themeVariables": {
+    "fontFamily": "Noto Sans TC, Inter, sans-serif",
+    "fontSize": "11px",
+    "lineColor": "#4a7c59"
+  }
+} }%%
+flowchart TB
+    NS_IN(["對內北極星<br/>族人/親友·即時說明書<br/>一秒服務清單"])
+    NS_OUT(["對外北極星<br/>企業/遊客·價值證明書<br/>一秒為什麼找我們"])
+
+    subgraph L0IN ["L0-A 對內動機 · 釐清與認同"]
+        L0A1["自我對話<br/>寫故事→更理解<br/>合作社在做什麼、為何創立"]
+        L0A2["部落溝通<br/>族人問「你們在忙什麼？」<br/>網站=即時說明書·服務清單"]
+    end
+
+    subgraph L0OUT ["L0-B 對外動機 · 回應與延伸"]
+        L0B1["企業/採購<br/>想預約前先問<br/>「為什麼找你們·有證據嗎？」"]
+        L0B2["帶隊者離場<br/>無法向校方/人資交代<br/>「這趟值不值得」"]
+    end
+
+    subgraph L0PAIN ["L0-C 痛點正名 · UX 核心"]
+        L0C1["決策焦慮<br/>帶隊老師·採購主管<br/>需要可轉發的硬證據"]
+        L0C2["重複客服負擔<br/>人數·交通·天候·發票<br/>同一問題每天講"]
+    end
+
+    subgraph L0DEF ["L0-D 產品定義 · 一句話"]
+        L0D1["不是炫技名片<br/>是決策者的價值證明書<br/>可轉發·可驗證"]
+        L0D2["預約為目標·敘事為論證·歸屬為資產<br/>充分信任後填表<br/>為未來商品鋪文化底"]
+        L0D3["營運邊界<br/>預約制·學校/社區團體<br/>一定人數·非散客隨時入園"]
+    end
+
+    subgraph L0READ ["L0-E 讀者優先序"]
+        L0E1["第一讀者<br/>自己+部落族人"]
+        L0E2["第二讀者<br/>帶隊老師·企業採購<br/>需要證明書才敢提案"]
+        L0E3["第三讀者<br/>準備填表預約的人"]
+    end
+
+    subgraph L1 ["L1 研究錨定 · 痛點→對象"]
+        L1A["田調/問卷/現場觀察<br/>計畫書：USR彙整·缺口分析"]
+        L1B["3 場接待驗證<br/>USR學校·社區長輩·ESG來電"]
+        L1C["→ Persona<br/>P01學校帶隊 P03企業ESG P04高單價"]
+        L1D["→ FAQ 6 題<br/>防禦性設計·營運邊界轉門檻"]
+        L1E["USR114 承襲<br/>文化·碳匯·培力→#about #why-us"]
+    end
+
+    subgraph L2 ["L2 收斂 · 價值論證+預約 MVP"]
+        L2A["IA 原則<br/>六階信任漏斗 F1-F6<br/>Booking 收口+多捷徑"]
+        L2B["減法三問<br/>拔 #cases·PM元素→SamSamma.html"]
+        L2C["技術邊界<br/>一週MVP·零伺服器·不跳外部頁"]
+        L2D["成功定義<br/>決策者可轉發價值證明書<br/>意向者完成團體預約"]
+    end
+
+    subgraph L3 ["L3 物理 IA · v5.8"]
+        L3A["信任漏斗 F1-F6<br/>home→pillars→about→why→plans→booking"]
+        L3B["F3-F4 必經論證<br/>About信任→Why-us背書"]
+        L3C["分流+收口<br/>Plans四卡→Booking"]
+        L3D["3.功能架構圖"]
+    end
+
+    subgraph L4 ["L4 行為 · 漏斗怎麼被走"]
+        L4A["帶隊/採購<br/>轉發連結給決策者<br/>讀 F3-F4 背書鏈"]
+        L4B["學校/企業<br/>F5 選卡→預約"]
+        L4C["4.使用者流程圖"]
+    end
+
+    subgraph L5 ["L5 設計假說"]
+        L5A["F1 Hero 30秒一句<br/>Primary CTA·急件直達"]
+        L5B["F3 About + F4 Why-us<br/>信任→硬證據·論證鏈"]
+        L5C["F6 Booking+FAQ6<br/>防禦性收口·邊界轉門檻"]
+    end
+
+    subgraph L6 ["L6 已交付 · 短期"]
+        L6A["index_SamSamma v5.8"]
+        L6B["Vanilla+React 雙軌預約"]
+        L6C["SamSamma PM 案例頁"]
+    end
+
+    subgraph MID ["中期 v6 · 計畫書四平台"]
+        MID1["#catalog 型錄商品<br/>文化底蘊上長果實"]
+        MID2["#dashboard 永續數據"]
+        MID3["ESG 提案包"]
+    end
+
+    subgraph LONG ["長期 v7/v8"]
+        LONG1["Hub+四村衛星"]
+        LONG2["多語系·API·中台"]
+    end
+
+    NS_IN --> L0IN
+    NS_OUT --> L0OUT
+    L0A1 --> L0A2
+    L0B1 --> L0B2
+    L0B2 --> L0PAIN
+    L0C1 --> L0C2
+    L0C2 --> L0DEF
+    L0IN --> L0DEF
+    L0OUT --> L0DEF
+    L0D1 --> L0D2 --> L0D3
+    L0DEF --> L0READ
+    L0E1 --> L0E2 --> L0E3
+
+    L0READ --> L1A
+    L1A --> L1B --> L1C
+    L1B --> L1D
+    L1A --> L1E
+    L1C --> L2A
+    L1E --> L2A
+    L2A --> L2B --> L2C --> L2D
+
+    L2D --> L3A --> L3B --> L3C --> L3D
+    L3D --> L4A --> L4B --> L4C
+    L4C --> L5A --> L5B --> L5C
+    L5C --> L6A --> L6B --> L6C
+    L6C --> MID1 --> LONG1
+    L6C --> MID2 --> LONG2
+    L6C --> MID3 --> LONG2
+
+    classDef north fill:#ffcdd2,stroke:#b71c1c,color:#7f0000,stroke-width:2px
+    classDef l0in fill:#ffebee,stroke:#c62828,color:#b71c1c
+    classDef l0out fill:#fce4ec,stroke:#ad1457,color:#880e4f
+    classDef l0pain fill:#f3e5f5,stroke:#6a1b9a,color:#4a148c
+    classDef l0def fill:#fff3e0,stroke:#ef6c00,color:#e65100
+    classDef l0read fill:#fff8e1,stroke:#f9a825,color:#f57f17
+    classDef l1 fill:#ffe0b2,stroke:#e65100,color:#bf360c
+    classDef l2 fill:#fff9c4,stroke:#f9a825,color:#f57f17
+    classDef l3 fill:#f1f8e9,stroke:#689f38,color:#33691e
+    classDef l4 fill:#e8f5e9,stroke:#43a047,color:#1b5e20
+    classDef l5 fill:#e0f2f1,stroke:#00897b,color:#004d40
+    classDef l6 fill:#e3f2fd,stroke:#1e88e5,color:#0d47a1
+    classDef mid fill:#ede7f6,stroke:#5e35b1,color:#311b92
+    classDef long fill:#d1c4e9,stroke:#4527a0,color:#311b92
+
+    class NS_IN,NS_OUT north
+    class L0A1,L0A2 l0in
+    class L0B1,L0B2 l0out
+    class L0C1,L0C2 l0pain
+    class L0D1,L0D2,L0D3 l0def
+    class L0E1,L0E2,L0E3 l0read
+    class L1A,L1B,L1C,L1D,L1E l1
+    class L2A,L2B,L2C,L2D l2
+    class L3A,L3B,L3C,L3D l3
+    class L4A,L4B,L4C l4
+    class L5A,L5B,L5C l5
+    class L6A,L6B,L6C l6
+    class MID1,MID2,MID3 mid
+    class LONG1,LONG2 long

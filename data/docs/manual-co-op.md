@@ -82,7 +82,7 @@
 > 預期頻率：每年 0-2 次。
 
 1. **不要慌**。第一步：用手機 4G 開站，確認是否家裡 wifi 問題。
-2. 若仍打不開：用其他電腦試 `https://ivangoldaura.dpdns.org/index_SamSamma.html`。
+2. 若仍打不開：用其他電腦試 `https://ivangoldaura.pages.dev/`。
 3. **2 小時內無法恢復**：
    - 在合作社 FB 粉專貼公告：「網站維護中，請來電 0975-958-121」。
    - LINE 通知 PM（聯絡方式見聯絡清單）。

@@ -25,11 +25,11 @@
     })();
   </script>
   <title>山莎蔓岸 數位轉型｜PM × 前端案例研究 - Ivan's Portfolio</title>
-  <meta name="description" content="賽夏族 12 公頃竹林聚落數位轉型案例 ── 從 2021 大學畢業設計到 2026 NT$12M 兩年期計畫（已確認得標、公文核定中），親手交付合作社官網與零伺服器預約工作流。">
+  <meta name="description" content="策略共創 × 資訊產品端到端負責人 ── 賽夏族 12 公頃聚落案例。場域解法與合作社夥伴持續共創；官網 IA、零伺服器預約與對外數位窗口由我端到端交付。接續 NT$12M 得標計畫脈絡。">
   <link rel="icon" type="image/webp" href="../images/logo_2.webp">
   <meta property="og:type" content="article">
   <meta property="og:title" content="山莎蔓岸 數位轉型｜PM × 前端案例研究">
-  <meta property="og:description" content="賽夏族 12 公頃竹林聚落數位轉型案例 ── 結構化田野紀錄、零伺服器預約工作流。">
+  <meta property="og:description" content="策略共創四大限制 · 獨立交付數位產品線 ── 合作社夥伴持續共創場域解法，數位轉譯與對外窗口端到端交付。">
   <meta property="og:image" content="../images/saa.webp">
   <meta property="og:url" content="https://ivangoldaura.dpdns.org/pages/SamSamma.html">
   <meta name="twitter:card" content="summary_large_image">
@@ -710,9 +710,11 @@
     }
 
     /* ============================================================
-       v5.11 Deep-Collapse｜02.6 / 02.7 包進 <details> 預設摺疊
-       讓首屏入口（#timeline / #deliverables）成主視覺，深度區供面試展開
+       v5.11 Deep-Collapse｜02.6 / 02.7 改為 v6.2 預設展開
        ============================================================ */
+    .pm-section-anchor {
+      scroll-margin-top: 110px;
+    }
     details.deep-collapse {
       background: var(--cloud, #f6f3ec);
       border: 1px solid var(--slate-200, #e5e7eb);
@@ -2358,7 +2360,7 @@
           <li class="nav-item"><a class="nav-link" href="#impact"><span data-i18n-lang="zh">成果</span><span data-i18n-lang="en">Impact</span></a></li>
           <li class="nav-item"><a class="nav-link" href="#bridge"><span data-i18n-lang="zh">沉澱</span><span data-i18n-lang="en">Reflection</span></a></li>
           <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
-            <a class="nav-link nav-cta" href="index_SamSamma.html">
+            <a class="nav-link nav-cta co-op-site-link" href="https://ivangoldaura.pages.dev/" target="_blank" rel="noopener">
               <i class="fas fa-external-link-alt me-1"></i><span data-i18n-lang="zh">查看合作社網站</span><span data-i18n-lang="en">Visit Co-op Site</span>
             </a>
           </li>
@@ -2385,12 +2387,12 @@
         <div class="col-lg-10 text-center" data-aos="fade-up">
           <span class="hero-eyebrow">CASE STUDY · 2024–2026 · <span class="eyebrow-accent">NT$12M AWARDED</span></span>
           <h1 class="hero-title">
-            <span data-i18n-lang="zh">獨立承接 <strong>NT$12M</strong> 計畫的<strong>資訊產品線</strong><br>12 公頃賽夏族聚落的<strong>零成本數位轉型</strong></span>
-            <span data-i18n-lang="en">Owning the <strong>Information Line</strong> of an <strong>NT$12M</strong> Awarded Program<br><strong>Zero-Cost</strong> Digital Transformation for a 12-ha Saisiyat Cluster</span>
+            <span data-i18n-lang="zh">策略共創四大限制 · 獨立交付<strong>數位產品線</strong><br>賽夏族 12 公頃聚落 × <strong>NT$12M</strong> 計畫脈絡</span>
+            <span data-i18n-lang="en">Co-creating <strong>Four Constraints</strong> · Owning <strong>Digital Product Delivery</strong><br>12-ha Saisiyat Cluster × <strong>NT$12M</strong> Program Context</span>
           </h1>
           <p class="hero-lede">
-            <span data-i18n-lang="zh"><strong>資訊產品線負責人 × 獨立實作者</strong>。主導六階段精實演進，獨立交付聚落官網與零伺服器預約系統；NT$12M 兩年期計畫已得標（公文核定中），作為延續性的專案背景。</span>
-            <span data-i18n-lang="en"><strong>Information Product Line Owner × Solo Builder.</strong> Led a six-stage lean evolution; solo-delivered the co-op website and zero-server reservation workflow. The NT$12M two-year program has been awarded (LOA pending), serving as a program-level credential.</span>
+            <span data-i18n-lang="zh"><strong>策略共創 × 資訊產品端到端負責人</strong>。竹林盤點、跨村治理、產線升級與 ESG 品牌，與<strong>合作社夥伴持續共創</strong>；我端到端交付官網 IA、零伺服器預約與對外數位窗口。接續 NT$12M 得標計畫（公文核定中）的聚落脈絡。</span>
+            <span data-i18n-lang="en"><strong>Strategy Co-creation × End-to-End Information Product Owner.</strong> Forest inventory, cross-village governance, kiln upgrades, and ESG branding are <strong>co-created ongoing with co-op partners</strong>; I end-to-end deliver site IA, serverless booking, and the external digital window. Built within the awarded NT$12M two-year program (LOA pending).</span>
           </p>
           <a href="#timeline" class="btn-hero-cta">
             <span data-i18n-lang="zh">走進六階段精實演進</span>
@@ -2545,12 +2547,12 @@
         <div class="vtl-step" data-aos="fade-up" data-aos-delay="60">
           <h3 class="vtl-title">
             <span class="vtl-num">② MVP</span>
-            <span data-i18n-lang="zh"><strong>MVP 快速上線</strong>　Low-Fi 一週原型</span>
-            <span data-i18n-lang="en"><strong>Ship MVP in 1 Week</strong>　Low-Fi Prototype</span>
+            <span data-i18n-lang="zh"><strong>MVP 快速上線</strong>　Low-Fi 原型</span>
+            <span data-i18n-lang="en"><strong>Ship MVP in 2 Weeks</strong>　Low-Fi Prototype</span>
           </h3>
           <p class="vtl-desc">
-            <span data-i18n-lang="zh"><strong>Google Forms 一週上線</strong>，零成本驗證流量與需求假設，跳過工程預算瓶頸。</span>
-            <span data-i18n-lang="en"><strong>Shipped MVP in one week</strong> — Google Forms validated intent without any server or engineering cost.</span>
+            <span data-i18n-lang="zh"><strong>Google Forms 兩週上線</strong>，零成本驗證流量與需求假設，跳過工程預算瓶頸。</span>
+            <span data-i18n-lang="en"><strong>Shipped MVP in two weeks</strong> — Google Forms validated intent without any server or engineering cost.</span>
           </p>
         </div>
 
@@ -2688,7 +2690,7 @@
               <span data-i18n-lang="en"><strong>Removed dual-matrix walls</strong> — Hero converged to a full-width center hero across 3 key frames.</span>
             </p>
             <a href="#ia-artefacts" class="btn-deliv">
-              <i class="fas fa-layer-group"></i><span data-i18n-lang="zh">展開 3 張 Wireframe 深讀</span><span data-i18n-lang="en">Open 3 Wireframes</span>
+              <i class="fas fa-layer-group"></i><span data-i18n-lang="zh">查看 IA 產出物區</span><span data-i18n-lang="en">View IA Artefacts</span>
             </a>
           </div>
         </div>
@@ -2705,7 +2707,7 @@
               <span data-i18n-lang="zh"><strong>5 frame 互動原型已上線</strong> ── Vanilla JS + fetch POST，零成本自動化預約工作流。</span>
               <span data-i18n-lang="en"><strong>5-frame interactive prototype is live</strong> — Vanilla JS + fetch POST, zero-cost booking workflow.</span>
             </p>
-            <a href="index_SamSamma.html" class="btn-deliv" target="_blank" rel="noopener">
+            <a href="https://ivangoldaura.pages.dev/" class="btn-deliv co-op-site-link" target="_blank" rel="noopener">
               <i class="fas fa-globe"></i><span data-i18n-lang="zh">點擊查看官網 Live</span><span data-i18n-lang="en">View Live Site</span>
             </a>
           </div>
@@ -2811,11 +2813,11 @@
 
             <p style="font-size: 1.02rem; line-height: 1.95; margin-bottom: 0; color: var(--slate-800);">
               <span data-i18n-lang="zh">畢業設計後人未離開，伴隨合作社籌組成立逐步加入 ──<br>
-              天時、地利、人和湊齊之後，才接續到 <strong>2026 年教育部 USR NT$1.45M 計畫</strong>（執行率 100%），<br>
+              天時、地利、人和湊齊之後，才接續到 <strong>2025 年教育部 USR NT$1.45M 計畫</strong>（執行率 100%），<br>
               以及 <strong>2026/06/10 已確認得標的原民會 NT$12M 兩年期計畫</strong>（公文核定中）：<br>
               「賽夏族山莎蔓岸低碳竹產業聚落建構計畫 ── 竹林治理、空間整合、品牌共創與高值循環產業推升」。</span>
               <span data-i18n-lang="en">Staying after graduation, gradually joining the co-op as it took shape —<br>
-              the timing, the place, and the people aligned, leading to the <strong>FY2026 MOE USR NT$1.45M plan</strong> (100% execution),<br>
+              the timing, the place, and the people aligned, leading to the <strong>FY2025 MOE USR NT$1.45M plan</strong> (100% execution),<br>
               and the <strong>NT$12M two-year program confirmed awarded by CIP on 2026-06-10</strong> (official letter being processed):<br>
               "Saisiyat SamSamma Low-Carbon Bamboo Industry Cluster — bamboo governance, spatial integration, co-created branding & high-value circular industry."</span>
             </p>
@@ -2828,8 +2830,8 @@
               </span>
               <span class="pm-badge">
                 <i class="fas fa-check-circle"></i>
-                <span data-i18n-lang="zh">2026 USR NT$1.45M・100% 執行</span>
-                <span data-i18n-lang="en">FY26 USR NT$1.45M · 100% executed</span>
+                <span data-i18n-lang="zh">2025 USR NT$1.45M・100% 執行</span>
+                <span data-i18n-lang="en">FY25 USR NT$1.45M · 100% executed</span>
               </span>
               <span class="pm-badge pm-badge-gold">
                 <i class="fas fa-trophy"></i>
@@ -2848,14 +2850,13 @@
            ============================================================ -->
       <div class="row justify-content-center mt-4" data-aos="fade-up">
         <div class="col-lg-10">
-          <details class="lineage-details" style="background: #fff; border: 1px solid var(--slate-200); border-radius: 16px; padding: 0; overflow: hidden;">
-            <summary style="cursor: pointer; padding: 1.25rem 1.75rem; display: flex; align-items: center; gap: 0.75rem; font-weight: 600; color: var(--bamboo-deep); list-style: none; user-select: none;">
+          <details class="lineage-details" open style="background: #fff; border: 1px solid var(--slate-200); border-radius: 16px; padding: 0; overflow: hidden;">
+            <summary style="cursor: default; padding: 1.25rem 1.75rem; display: flex; align-items: center; gap: 0.75rem; font-weight: 600; color: var(--bamboo-deep); list-style: none; user-select: none;">
               <i class="fas fa-stream" style="color: var(--gold);"></i>
               <span style="flex: 1;">
-                <span data-i18n-lang="zh">展開「需求催生鏈」── 場域洞察（Insight）→ 產品決策（Action）逐年因果脈絡</span>
-                <span data-i18n-lang="en">Expand "Needs Lineage" — year-by-year causality from Field Insight to Product Action</span>
+                <span data-i18n-lang="zh">需求催生鏈 ── 場域洞察（Insight）→ 產品決策（Action）逐年因果脈絡</span>
+                <span data-i18n-lang="en">Needs Lineage — year-by-year causality from Field Insight to Product Action</span>
               </span>
-              <i class="fas fa-chevron-down lineage-chev" style="color: var(--slate-500); transition: transform 0.3s;"></i>
             </summary>
             <div style="padding: 0 1.75rem 1.75rem 1.75rem;">
               <p style="font-size: 0.92rem; color: var(--slate-600); margin-bottom: 1.5rem; padding-top: 0.5rem; border-top: 1px dashed var(--slate-200);">
@@ -2996,6 +2997,11 @@
           <i class="fas fa-tags" style="margin-right: 0.4rem;"></i>
           <span data-i18n-lang="zh">每張卡左上角的藍色標籤標示對應的限制條件類別（Data / Org / Tech / Market），構成 Constraints-driven Design 的四類起點。</span>
           <span data-i18n-lang="en">The blue tag on each card classifies the constraint type (Data / Org / Tech / Market), forming the four entry points of Constraints-driven Design.</span>
+        </p>
+        <p class="section-desc" style="margin-top: 0.35rem; font-size: 0.92rem; color: var(--slate-700); font-style: italic;">
+          <i class="fas fa-handshake" style="margin-right: 0.4rem; color: var(--bamboo-mid);"></i>
+          <span data-i18n-lang="zh">場域解法與合作社夥伴持續共創；數位轉譯與對外窗口由我端到端交付。</span>
+          <span data-i18n-lang="en">Field solutions are co-created ongoing with co-op partners; digital translation and the external window are end-to-end owned by me.</span>
         </p>
       </div>
 
@@ -3583,7 +3589,7 @@
                 <strong><span data-i18n-lang="zh">① 合作社官網 v5（紀錄片化 + 雙語 i18n）</span><span data-i18n-lang="en">① Co-op site v5 (documentary + bilingual i18n)</span></strong>
                 <small style="display: block; margin-top: 0.3rem; color: var(--slate-500);">
                   <span data-i18n-lang="zh">已上線：</span><span data-i18n-lang="en">Live at: </span>
-                  <a href="index_SamSamma.html" style="color: var(--data-blue);">index_SamSamma.html</a>
+                  <a href="https://ivangoldaura.pages.dev/" class="co-op-site-link" target="_blank" rel="noopener" style="color: var(--data-blue);">ivangoldaura.pages.dev</a>
                 </small>
               </li>
               <li style="padding: 0.7rem 0; border-bottom: 1px dashed var(--slate-200); font-size: 0.92rem; color: var(--slate-700); line-height: 1.55;">
@@ -5805,22 +5811,11 @@
   </section>
 
   <!-- ============================================================
-       Section 02.6 — IA Artefacts｜v5.11 包裝為深度查證區
-       首屏入口見 #timeline + #deliverables；面試官可展開深讀
-       Source: data/ia/user-flow.mmd, site-map.mmd, wireframe-*.svg, prototype-spec.json
+       Section 02.6 — IA Artefacts｜v6.2 預設展開（不再摺疊）
+       首屏入口見 #timeline + #deliverables
+       Source: data/ia/4.* · 3.* · wireframe-*.svg · prototype-spec.json
        ============================================================ -->
-  <details class="deep-collapse" id="ia-artefacts">
-    <summary>
-      <span class="deep-icon"><i class="fas fa-layer-group"></i></span>
-      <span class="deep-text">
-        <span data-i18n-lang="zh"><strong>02.6 · 資訊架構產出物</strong>｜深度查證區</span><span data-i18n-lang="en"><strong>02.6 · IA Artefacts</strong>｜Deep-Dive</span>
-        <small>
-          <span data-i18n-lang="zh">展開：六階段精實演進細節 × 3 張 Wireframe × 9 點 Hypothesis × 9 點 Validation × 5 Prototype Frames × User Flow × Site Map</span>
-          <span data-i18n-lang="en">Expand: 6-stage lean evolution · 3 wireframes · 9 hypotheses · 9 validations · 5 prototype frames · user flow · site map</span>
-        </small>
-      </span>
-      <span class="deep-chev"><i class="fas fa-chevron-down"></i></span>
-    </summary>
+  <div id="ia-artefacts" class="pm-section-anchor">
   <section class="pm-section bg-cloud" style="padding-top: 4rem;">
     <style>
       .ia-section-head { margin-bottom: 2.5rem; }
@@ -6123,7 +6118,7 @@
           <div class="ia-method-step">
             <span class="ia-method-step-num">② MVP</span>
             <span class="ia-method-step-title"><span data-i18n-lang="zh">Low-Fi MVP</span><span data-i18n-lang="en">Low-Fi MVP</span></span>
-            <span class="ia-method-step-tag"><span data-i18n-lang="zh">Forms 一週上線收意向</span><span data-i18n-lang="en">Forms intent collection</span></span>
+            <span class="ia-method-step-tag"><span data-i18n-lang="zh">Forms 兩週上線收意向</span><span data-i18n-lang="en">Forms · 2-week ship</span></span>
           </div>
           <div class="ia-method-step">
             <span class="ia-method-step-num">③ FIELD</span>
@@ -6310,8 +6305,10 @@
 
         <p class="ia-mermaid-foot" style="text-align: right; margin-top: 0.85rem;">
           <i class="fas fa-file-code" style="color: var(--slate-500);"></i>
-          <span data-i18n-lang="zh">原始 .mmd 檔｜</span><span data-i18n-lang="en">Source .mmd files: </span>
-          <code>data/ia/user-flow.mmd</code> · <code>data/ia/site-map.mmd</code>
+          <span data-i18n-lang="zh">SSOT 原始檔｜</span><span data-i18n-lang="en">Source SSOT: </span>
+          <code>data/ia/4.使用者流程圖-user-flow-figma.mmd</code> · <code>data/ia/3.功能架構圖-site-map-functional.mmd</code>
+          <span data-i18n-lang="zh">（網頁為精簡子集 · 詳見 </span><span data-i18n-lang="en">(inline subset · see </span>
+          <code>設計流程/MMD流程圖總覽.txt</code><span data-i18n-lang="zh">）</span><span data-i18n-lang="en">)</span>
         </p>
       </div>
 
@@ -6433,7 +6430,7 @@
         <div class="ia-pt-grid">
           <article class="ia-pt">
             <span class="ia-disclosure field" title="Validated by direct CTA path from workshop stakeholder interviews"><i class="fas fa-check-circle"></i>FIELD-VALIDATED</span>
-            <div class="ia-pt-head"><span class="ia-pt-id">F1</span><a href="index_SamSamma.html#home" class="ia-pt-anchor" target="_blank" rel="noopener">#home ↗</a></div>
+            <div class="ia-pt-head"><span class="ia-pt-id">F1</span><a href="https://ivangoldaura.pages.dev/#home" class="ia-pt-anchor co-op-site-link" data-co-op-hash="#home" target="_blank" rel="noopener">#home ↗</a></div>
             <div class="ia-pt-name"><span data-i18n-lang="zh">首頁 Hero</span><span data-i18n-lang="en">Home Hero</span></div>
             <div class="ia-pt-intent"><span data-i18n-lang="zh">15 秒以雙語標題 + 4 顆 Fact Chips 建立信任與規模感。</span><span data-i18n-lang="en">Establish trust & scale in 15s via bilingual H1 + 4 fact chips.</span></div>
             <div class="ia-pt-foot">
@@ -6444,7 +6441,7 @@
 
           <article class="ia-pt">
             <span class="ia-disclosure field" title="v5.5: vanilla form + fetch POST direct submit, converged from scattered LINE / phone inquiries"><i class="fas fa-check-circle"></i>FIELD-VALIDATED</span>
-            <div class="ia-pt-head"><span class="ia-pt-id">F2</span><a href="index_SamSamma.html#booking" class="ia-pt-anchor" target="_blank" rel="noopener">#booking ↗</a></div>
+            <div class="ia-pt-head"><span class="ia-pt-id">F2</span><a href="https://ivangoldaura.pages.dev/#booking" class="ia-pt-anchor co-op-site-link" data-co-op-hash="#booking" target="_blank" rel="noopener">#booking ↗</a></div>
             <div class="ia-pt-name"><span data-i18n-lang="zh">預約表單（v5.5）</span><span data-i18n-lang="en">Booking Form (v5.5)</span></div>
             <div class="ia-pt-intent"><span data-i18n-lang="zh">11 欄表單 + Trust Sidebar 揭露 gating；fetch POST 直送，失敗退 mailto。</span><span data-i18n-lang="en">11-field form + Trust Sidebar gating; fetch POST submit, mailto fallback.</span></div>
             <div class="ia-pt-foot">
@@ -6455,7 +6452,7 @@
 
           <article class="ia-pt">
             <span class="ia-disclosure field" title="Validated by I01 interview feedback — students grasp who/what/when within first sentence"><i class="fas fa-check-circle"></i>FIELD-VALIDATED</span>
-            <div class="ia-pt-head"><span class="ia-pt-id">F3</span><a href="index_SamSamma.html#about" class="ia-pt-anchor" target="_blank" rel="noopener">#about ↗</a></div>
+            <div class="ia-pt-head"><span class="ia-pt-id">F3</span><a href="https://ivangoldaura.pages.dev/#about" class="ia-pt-anchor co-op-site-link" data-co-op-hash="#about" target="_blank" rel="noopener">#about ↗</a></div>
             <div class="ia-pt-name"><span data-i18n-lang="zh">關於我們</span><span data-i18n-lang="en">About Us</span></div>
             <div class="ia-pt-intent"><span data-i18n-lang="zh">回應 I01 design feedback — 首句即說『我們是誰／做什麼／何時成立』。</span><span data-i18n-lang="en">Addresses I01 feedback — first sentence declares who/what/when.</span></div>
             <div class="ia-pt-foot">
@@ -6466,7 +6463,7 @@
 
           <article class="ia-pt">
             <span class="ia-disclosure scale" title="Architecture ready for enterprise ESG procurement & Saisiyat Raromaeh brand expansion"><i class="fas fa-expand"></i>SCALE-READY</span>
-            <div class="ia-pt-head"><span class="ia-pt-id">F4</span><a href="index_SamSamma.html#plans" class="ia-pt-anchor" target="_blank" rel="noopener">#plans ↗</a></div>
+            <div class="ia-pt-head"><span class="ia-pt-id">F4</span><a href="https://ivangoldaura.pages.dev/#plans" class="ia-pt-anchor co-op-site-link" data-co-op-hash="#plans" target="_blank" rel="noopener">#plans ↗</a></div>
             <div class="ia-pt-name"><span data-i18n-lang="zh">方案三卡 · ESG 採購擴充接口</span><span data-i18n-lang="en">Three Plan Cards · ESG-Ready</span></div>
             <div class="ia-pt-intent"><span data-i18n-lang="zh">四 Persona 共用；CTA 帶 <code>?plan=</code> 預填，預留 ESG 採購與母品牌授權位。</span><span data-i18n-lang="en">Four personas share; CTA passes <code>?plan=</code>, reserved for ESG procurement & master-brand licensing.</span></div>
             <div class="ia-pt-foot">
@@ -6477,7 +6474,7 @@
 
           <article class="ia-pt">
             <span class="ia-disclosure scale" title="v5.4: booking-faq 6 details replaced standalone #contact section; architecture ready for FAQ automation & ESG disclosure data dashboard"><i class="fas fa-expand"></i>SCALE-READY</span>
-            <div class="ia-pt-head"><span class="ia-pt-id">F5</span><a href="index_SamSamma.html#bookingForm" class="ia-pt-anchor" target="_blank" rel="noopener">#bookingForm 上方 booking-faq ↗</a></div>
+            <div class="ia-pt-head"><span class="ia-pt-id">F5</span><a href="https://ivangoldaura.pages.dev/#bookingForm" class="ia-pt-anchor co-op-site-link" data-co-op-hash="#bookingForm" target="_blank" rel="noopener">#bookingForm 上方 booking-faq ↗</a></div>
             <div class="ia-pt-name"><span data-i18n-lang="zh">booking-faq · 6 題就地展開（v5.4）</span><span data-i18n-lang="en">booking-faq · 6 In-Page Details (v5.4)</span></div>
             <div class="ia-pt-intent"><span data-i18n-lang="zh">減法檢驗三問拔 #contact；12 題 FAQ 收斂為 6 題 details 就地展開作信任緩衝。</span><span data-i18n-lang="en">Subtraction test removed #contact; 12 FAQs converged into 6 in-page details as trust buffer.</span></div>
             <div class="ia-pt-foot">
@@ -6519,13 +6516,13 @@
           console.warn('[ia-artefacts] mermaid init failed:', err);
         }
 
-        var iaDetails = document.getElementById('ia-artefacts');
-        if (!iaDetails) return;
+        var iaSection = document.getElementById('ia-artefacts');
+        if (!iaSection) return;
 
         function renderIaMermaid() {
-          if (iaDetails.dataset.mermaidReady === '1') return;
-          iaDetails.dataset.mermaidReady = '1';
-          var nodes = iaDetails.querySelectorAll('.mermaid');
+          if (iaSection.dataset.mermaidReady === '1') return;
+          iaSection.dataset.mermaidReady = '1';
+          var nodes = iaSection.querySelectorAll('.mermaid');
           if (nodes.length) {
             window.mermaid.run({ nodes: nodes }).catch(function (err) {
               console.warn('[ia-artefacts] mermaid render failed:', err);
@@ -6533,36 +6530,22 @@
           }
         }
 
-        iaDetails.addEventListener('toggle', function () {
-          if (iaDetails.open) renderIaMermaid();
-        });
-
-        if (iaDetails.open || location.hash === '#ia-artefacts') {
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', renderIaMermaid);
+        } else {
           renderIaMermaid();
         }
       })();
     </script>
   </section>
-  </details>
-  <!-- /02.6 deep-collapse -->
+  </div>
+  <!-- /02.6 ia-artefacts -->
 
   <!-- ============================================================
-       Section 02.7 — Documentation Artefacts｜v5.11 包裝為深度查證區
-       首屏入口見 #deliverables；面試官可展開深讀完整 4 份 PM 文件
+       Section 02.7 — Documentation Artefacts｜v6.2 預設展開
        Source: data/docs/*.md
        ============================================================ -->
-  <details class="deep-collapse" id="docs-artefacts">
-    <summary>
-      <span class="deep-icon"><i class="fas fa-folder-open"></i></span>
-      <span class="deep-text">
-        <span data-i18n-lang="zh"><strong>02.7 · 文件產出物</strong>｜深度查證區</span><span data-i18n-lang="en"><strong>02.7 · Documentation Artefacts</strong>｜Deep-Dive</span>
-        <small>
-          <span data-i18n-lang="zh">展開：PRD v1.0 (13 欄位) × UAT 12 TCs × 平台教育手冊 5 SOPs × Sprint Backlog (v4 → v5 真實工時)</span>
-          <span data-i18n-lang="en">Expand: PRD v1.0 (13 fields) · UAT 12 TCs · Platform Manual 5 SOPs · Sprint Backlog (v4 → v5 actual hours)</span>
-        </small>
-      </span>
-      <span class="deep-chev"><i class="fas fa-chevron-down"></i></span>
-    </summary>
+  <div id="docs-artefacts" class="pm-section-anchor">
   <section class="pm-section" style="padding-top: 4rem;">
     <style>
       .doc-section-head { margin-bottom: 2.5rem; }
@@ -6879,8 +6862,8 @@
       </div>
     </div>
   </section>
-  </details>
-  <!-- /02.7 deep-collapse -->
+  </div>
+  <!-- /02.7 docs-artefacts -->
 
   <!-- ============================================================
        Project Info & CTA
@@ -6916,7 +6899,7 @@
         </div>
 
         <div class="cta-row">
-          <a href="index_SamSamma.html" class="btn-pm-primary">
+          <a href="https://ivangoldaura.pages.dev/" class="btn-pm-primary co-op-site-link" target="_blank" rel="noopener">
             <i class="fas fa-globe"></i><span data-i18n-lang="zh">查看合作社官方網站</span><span data-i18n-lang="en">Visit the Co-op Website</span>
           </a>
           <a href="../index.html#works" class="btn-pm-ghost">
@@ -6966,7 +6949,7 @@
           <ul class="list-unstyled" style="line-height: 2.2;">
             <li><a href="../index.html"><span data-i18n-lang="zh">作品集首頁</span><span data-i18n-lang="en">Portfolio Home</span></a></li>
             <li><a href="../aboutme.html"><span data-i18n-lang="zh">關於我</span><span data-i18n-lang="en">About Me</span></a></li>
-            <li><a href="index_SamSamma.html"><span data-i18n-lang="zh">合作社官方網站</span><span data-i18n-lang="en">Co-op Official Site</span></a></li>
+            <li><a href="https://ivangoldaura.pages.dev/" class="co-op-site-link" target="_blank" rel="noopener"><span data-i18n-lang="zh">合作社官方網站</span><span data-i18n-lang="en">Co-op Official Site</span></a></li>
             <li><a href="../index.html#contact"><span data-i18n-lang="zh">聯絡方式</span><span data-i18n-lang="en">Contact</span></a></li>
           </ul>
         </div>
