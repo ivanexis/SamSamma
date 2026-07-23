@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}山莎蔓岸後台管理{% endblock %}</title>
+  <style>
+    :root {
+      --ink: #1a3d22;
+      --accent: #2d6a4f;
+      --line: #c5d5c8;
+      --err: #9b2226;
+      --ok: #1b4332;
+      --side: #163528;
+      --side-text: #d8e6dc;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Noto Sans TC", "Segoe UI", sans-serif;
+      background: #eef2f0;
+      color: var(--ink);
+      min-height: 100vh;
+    }
+    a { color: var(--accent); }
+    .card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+    }
+    h1 { font-size: 1.2rem; margin: 0 0 .5rem; }
+    .lede { color: #456; font-size: .9rem; line-height: 1.5; margin-bottom: 1rem; }
+    .breadcrumb { font-size: .82rem; color: #666; margin-bottom: .75rem; }
+    .breadcrumb a { text-decoration: none; }
+    label { display: block; font-weight: 600; font-size: .88rem; margin-bottom: .35rem; }
+    .field { margin-bottom: 1rem; }
+    input, select, textarea {
+      width: 100%;
+      padding: .55rem .7rem;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      font: inherit;
+    }
+    .error { color: var(--err); font-size: .82rem; margin-top: .25rem; }
+    button, .btn {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      border: 0;
+      border-radius: 6px;
+      padding: .55rem .95rem;
+      font: inherit;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    button.btn-muted, .btn-muted { background: #5a6b5e; }
+    button.btn-danger, .btn-danger { background: var(--err); }
+    .flash { padding: .75rem 1rem; border-radius: 6px; margin-bottom: 1rem; }
+    .flash.success { background: #d8f3dc; color: var(--ok); }
+    .flash.error { background: #fde8e8; color: var(--err); }
+    table.admin-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .88rem;
+      margin-top: .75rem;
+    }
+    table.admin-table th,
+    table.admin-table td {
+      border-bottom: 1px solid var(--line);
+      padding: .65rem .4rem;
+      text-align: left;
+      vertical-align: top;
+    }
+    table.admin-table th { font-size: .78rem; color: #666; font-weight: 600; }
+    .pill {
+      display: inline-block;
+      padding: .12rem .45rem;
+      border-radius: 4px;
+      font-size: .75rem;
+      background: #e8f0ea;
+    }
+    .pill.is-new { background: #ffe5e5; color: #9b2226; }
+    .filters { margin: .75rem 0; font-size: .88rem; }
+    .toolbar { display: flex; gap: .5rem; flex-wrap: wrap; align-items: center; margin: 1rem 0; }
+    .dash-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+    }
+    .dash-card {
+      display: block;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 1.25rem;
+      text-decoration: none;
+      color: inherit;
+    }
+    .dash-card:hover { border-color: var(--accent); }
+    .dash-card .k { font-size: .85rem; color: #666; }
+    .dash-card .n { font-size: 1.75rem; font-weight: 700; margin: .25rem 0; }
+    .dash-card .h { font-weight: 700; margin: 0; }
+    .app-shell {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      min-height: 100vh;
+    }
+    .sidebar {
+      background: var(--side);
+      color: var(--side-text);
+      padding: 1.1rem 0 2rem;
+    }
+    .sidebar .brand {
+      display: block;
+      padding: .4rem 1.1rem 1rem;
+      color: #fff;
+      font-weight: 700;
+      text-decoration: none;
+      font-size: .95rem;
+      line-height: 1.35;
+      border-bottom: 1px solid rgba(255,255,255,.12);
+      margin-bottom: .75rem;
+    }
+    .sidebar .nav-label {
+      display: block;
+      padding: .55rem 1.1rem .25rem;
+      font-size: .72rem;
+      color: rgba(255,255,255,.45);
+    }
+    .sidebar a.nav-link {
+      display: block;
+      padding: .4rem 1.1rem;
+      color: var(--side-text);
+      text-decoration: none;
+      font-size: .88rem;
+    }
+    .sidebar a.nav-link:hover { background: rgba(255,255,255,.06); }
+    .sidebar a.nav-link.is-active {
+      background: rgba(255,255,255,.12);
+      color: #fff;
+      font-weight: 600;
+    }
+    .sidebar a.nav-link.indent { padding-left: 1.6rem; font-size: .84rem; }
+    .main-col { display: flex; flex-direction: column; min-width: 0; }
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: .75rem 1.25rem;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+    }
+    .topbar .page-title { font-weight: 700; font-size: 1rem; margin: 0; }
+    .topbar-actions { display: flex; align-items: center; gap: .75rem; font-size: .85rem; color: #666; }
+    .content { padding: 1.25rem; max-width: 1100px; }
+    .login-wrap { max-width: 420px; margin: 3rem auto; padding: 0 1rem 3rem; }
+    .guest-header {
+      display: flex;
+      justify-content: space-between;
+      padding: .85rem 1.25rem;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+    }
+    .guest-header .brand { font-weight: 700; color: var(--ink); text-decoration: none; }
+    @media (max-width: 800px) {
+      .app-shell { grid-template-columns: 1fr; }
+      .dash-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+  {% block head_extra %}{% endblock %}
+</head>
+<body>
+{% block body %}{% endblock %}
+</body>
+</html>

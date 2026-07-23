@@ -1,0 +1,72 @@
+{% extends "admin_layout.html" %}
+{% block title %}{{ module.label }} · 山莎蔓岸後台管理{% endblock %}
+{% block page_title %}{{ module.label }}{% endblock %}
+{% block content %}
+<div class="card">
+  <div style="display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;align-items:flex-start;">
+    <div>
+      <h1>{{ module.label }}</h1>
+      <p class="lede" style="margin-bottom:0;">有效 {{ total }}｜新進 {{ new_count }}</p>
+    </div>
+    <a class="btn" href="{{ url_for(module.create_endpoint) }}">新增</a>
+  </div>
+
+  <form class="toolbar" method="get" action="{{ url_for(module.list_endpoint) }}">
+    <input type="search" name="q" value="{{ q }}" placeholder="{% if module.key == 'activity' %}搜尋姓名／電話／單位／方案{% else %}搜尋姓名／電話／商品／數量{% endif %}" style="flex:1;min-width:200px;">
+    {% if status_filter %}<input type="hidden" name="status" value="{{ status_filter }}">{% endif %}
+    <button type="submit">搜尋</button>
+    {% if q %}
+    <a class="btn btn-muted" href="{{ url_for(module.list_endpoint, status=status_filter or None) }}">清除</a>
+    {% endif %}
+  </form>
+
+  <p class="filters">
+    狀態
+    <a href="{{ url_for(module.list_endpoint, q=q or None) }}">全部有效</a>
+    {% for code, label in status_choices %}
+      · <a href="{{ url_for(module.list_endpoint, status=code, q=q or None) }}">{{ label }}</a>
+    {% endfor %}
+  </p>
+
+  {% if rows %}
+  <table class="admin-table">
+    <thead>
+      <tr>
+        <th>#</th>
+        {% if module.key == 'activity' %}
+        <th>方案</th>
+        <th>單位</th>
+        {% else %}
+        <th>商品</th>
+        <th>數量</th>
+        {% endif %}
+        <th>聯絡人</th>
+        <th>狀態</th>
+        <th>建立</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for b in rows %}
+      <tr>
+        <td>{{ b.id }}</td>
+        {% if module.key == 'activity' %}
+        <td>{{ b.plan or '—' }}</td>
+        <td>{{ b.org_name or '—' }}</td>
+        {% else %}
+        <td>{{ b.product_name or '—' }}</td>
+        <td>{{ b.quantity or '—' }}</td>
+        {% endif %}
+        <td>{{ b.contact_name }}<br><span style="color:#666;font-size:.8rem;">{{ b.phone }}</span></td>
+        <td><span class="pill {% if b.status=='new' %}is-new{% endif %}">{{ b.status_label() }}</span></td>
+        <td style="font-size:.8rem;color:#666;white-space:nowrap;">{{ b.created_at }}</td>
+        <td><a href="{{ url_for('main.admin_detail', booking_id=b.id) }}">檢視</a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p class="lede" style="margin-top:1rem;">目前沒有符合條件的案件。</p>
+  {% endif %}
+</div>
+{% endblock %}

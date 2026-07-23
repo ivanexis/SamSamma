@@ -1,21 +1,19 @@
 (function () {
-  /* 待合作社建立 Google 採購表單後替換（建置步驟見 data/docs/procurement-google-form-setup.md） */
-  var FORM_ID = '';
-  var FORM_RESPONSE_URL = FORM_ID
-    ? 'https://docs.google.com/forms/d/e/' + FORM_ID + '/formResponse'
-    : '';
+  /* 山莎蔓岸訂購表單 — FORM_ID / entry 來自 Google viewform FB_PUBLIC_LOAD_DATA_（2026-07-23） */
+  var FORM_ID = '1FAIpQLSfYtxaYu4OnWSkS9AFdB8xRcjR7FyRoS_P_idODyCZHXuFf1w';
+  var FORM_RESPONSE_URL = 'https://docs.google.com/forms/d/e/' + FORM_ID + '/formResponse';
 
   var FIELD_MAP = {
-    product: 'entry.000000001',
-    company: 'entry.000000002',
-    taxId: 'entry.000000003',
-    contactName: 'entry.000000004',
-    email: 'entry.000000005',
-    phone: 'entry.000000006',
-    quantity: 'entry.000000007',
-    needInvoice: 'entry.000000008',
-    delivery: 'entry.000000009',
-    notes: 'entry.000000010'
+    product: 'entry.2124265472',
+    company: 'entry.1956664878',
+    taxId: 'entry.1668368198',
+    contactName: 'entry.1365136276',
+    email: 'entry.1258305091',
+    phone: 'entry.1834958036',
+    quantity: 'entry.954046029',
+    needInvoice: 'entry.1921148235',
+    delivery: 'entry.554810776',
+    notes: 'entry.823967188'
   };
 
   var form = document.getElementById('procurementForm');
@@ -37,23 +35,30 @@
     if (opt) form.elements.product.value = productId;
   }
 
+  function fieldValue(key) {
+    var el = form.elements[key];
+    if (!el) return '';
+    if (key === 'product' && el.selectedOptions && el.selectedOptions[0]) {
+      return (el.selectedOptions[0].text || '').trim();
+    }
+    return (el.value || '').toString().trim();
+  }
+
   function buildBody() {
     var body = new FormData();
     ['product', 'company', 'taxId', 'contactName', 'email', 'phone',
       'quantity', 'needInvoice', 'delivery', 'notes'].forEach(function (key) {
-      var el = form.elements[key];
-      if (!el) return;
-      var v = (el.value || '').toString().trim();
-      if (v && FORM_ID) body.append(FIELD_MAP[key], v);
+      var v = fieldValue(key);
+      if (v) body.append(FIELD_MAP[key], v);
     });
     return body;
   }
 
   function buildMailtoBody() {
     var lines = [
-      '【山莎蔓岸 · 企業採購詢價】',
+      '【山莎蔓岸 · 訂購聯繫】',
       '',
-      '品項：' + (form.elements.product.selectedOptions[0]?.text || form.elements.product.value),
+      '品項：' + fieldValue('product'),
       '公司：' + form.elements.company.value,
       '統編：' + form.elements.taxId.value,
       '聯絡人：' + form.elements.contactName.value,
@@ -77,8 +82,21 @@
     successPanel.scrollIntoView({ behavior: 'smooth', block: 'center' });
   }
 
+  function validatePhone() {
+    var el = form.elements.phone;
+    if (!el) return true;
+    var digits = (el.value || '').replace(/\D/g, '');
+    if (digits.length < 8 || digits.length > 13) {
+      el.setCustomValidity('電話請填 8～13 位數字（可含 - 或空格，例如 0912345678）');
+      return false;
+    }
+    el.setCustomValidity('');
+    return true;
+  }
+
   form.addEventListener('submit', async function (e) {
     e.preventDefault();
+    validatePhone();
     if (!form.checkValidity()) {
       form.reportValidity();
       return;
@@ -99,19 +117,19 @@
       } else {
         /* 示範版：無 Google Form 時以 mailto 交付 + 顯示成功（面試/demo 用） */
         var mailto = 'mailto:jeff11051212@gmail.com?subject=' +
-          encodeURIComponent('山莎蔓岸 · 企業採購詢價') +
+          encodeURIComponent('山莎蔓岸 · 訂購聯繫') +
           '&body=' + encodeURIComponent(buildMailtoBody());
         showSuccess(true);
         window.location.href = mailto;
       }
     } catch (err) {
-      var mailto = 'mailto:jeff11051212@gmail.com?subject=' +
-        encodeURIComponent('山莎蔓岸 · 企業採購詢價（連線失敗）') +
+      var mailtoFail = 'mailto:jeff11051212@gmail.com?subject=' +
+        encodeURIComponent('山莎蔓岸 · 訂購聯繫（連線失敗）') +
         '&body=' + encodeURIComponent(buildMailtoBody());
       alert(document.documentElement.classList.contains('i18n-zh')
         ? '連線失敗，將開啟 Email 讓您直接寄出'
         : 'Connection failed — opening email client');
-      window.location.href = mailto;
+      window.location.href = mailtoFail;
     } finally {
       submitBtn.disabled = false;
       submitBtn.innerHTML = originalHtml;

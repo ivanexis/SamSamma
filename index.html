@@ -658,37 +658,6 @@
       transform: translateY(0);
     }
 
-    /* 回到頂部按鈕 */
-    .back-to-top {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      background: var(--primary-green);
-      color: white;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      opacity: 0;
-      visibility: hidden;
-      z-index: 1000;
-    }
-
-    .back-to-top.visible {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .back-to-top:hover {
-      background: var(--gold);
-      color: var(--primary-green);
-      transform: translateY(-3px);
-    }
-
     /* ============================================================
        v2 預約系統升級｜圖片預留系統 + 方案 + 流程 + 信任 + FAQ
        使用方式：把 <img src="..."> 設定為你的圖片路徑即會自動顯示
@@ -1484,6 +1453,72 @@
       box-shadow: inset 0 8px 16px rgba(0, 0, 0, 0.3);
     }
 
+    /* 右下角固定｜商店快捷（購物車圖示） */
+    .fab-shop {
+      position: fixed;
+      right: 1rem;
+      bottom: 1.25rem;
+      z-index: 1040;
+      width: 4.75rem;
+      height: 4.75rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--primary-green, #1a3d22);
+      color: #d4af37;
+      border: 2px solid rgba(212, 175, 55, 0.75);
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
+      text-decoration: none;
+      font-size: 1.55rem;
+      transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+    }
+    .fab-shop:hover {
+      color: #1a3d22;
+      background: #d4af37;
+      transform: translateY(-3px) scale(1.04);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+      border-color: #d4af37;
+    }
+    .fab-shop span {
+      position: absolute;
+      right: 5.2rem;
+      left: auto;
+      white-space: nowrap;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #fff;
+      background: rgba(26, 61, 34, 0.94);
+      padding: 0.4rem 0.75rem;
+      border-radius: 999px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+    }
+    .fab-shop:hover span,
+    .fab-shop:focus-visible span {
+      opacity: 1;
+    }
+    @media (max-width: 575.98px) {
+      .fab-shop { width: 4.25rem; height: 4.25rem; font-size: 1.35rem; }
+      .fab-shop span { display: none; }
+    }
+
+    /* 導覽｜商店醒目（預約後方） */
+    .navbar .nav-link-shop {
+      color: #d4af37 !important;
+      font-weight: 700;
+      border: 1px solid rgba(212, 175, 55, 0.65);
+      border-radius: 999px;
+      padding: 0.35rem 0.9rem !important;
+      margin-left: 0.15rem;
+    }
+    .navbar .nav-link-shop:hover,
+    .navbar .nav-link-shop:focus {
+      background: rgba(212, 175, 55, 0.18);
+      color: #f0d78c !important;
+    }
+
     /* --- 預約資訊強化 --- */
     .booking-info-img {
       margin-bottom: 1.25rem;
@@ -1610,8 +1645,8 @@
     }
 
     select.form-control option {
-      background: var(--primary-green);
-      color: white;
+      background-color: #ffffff;
+      color: #1a3d22;
     }
 
     .form-check-group {
@@ -4072,12 +4107,10 @@
             <a class="nav-link" href="#plans"><span data-i18n-lang="zh">來山裡走走</span><span data-i18n-lang="en">Visit Us</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="shop.html"><span data-i18n-lang="zh">選物</span><span data-i18n-lang="en">Shop</span></a>
-          </li>
-          <!-- v5.4 P0-4-B/P0-5-B/額外問題 #2｜nav 8→5 項瘦身：
-               已拔除 #cases（已 hidden 移除）、#venue（已 hidden 移除）、#contact（聯絡資訊已併入 #booking 區） -->
-          <li class="nav-item">
             <a class="nav-link" href="#booking"><span data-i18n-lang="zh">預約</span><span data-i18n-lang="en">Book</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-shop" href="shop.html"><span data-i18n-lang="zh">商店</span><span data-i18n-lang="en">Shop</span></a>
           </li>
           <li class="nav-item ms-lg-2">
             <span class="lang-switch" aria-label="Language switch">
@@ -4934,7 +4967,7 @@
               every purchase becomes real cash flow for the tribal economy.</span>
             </p>
             <ul class="plan-card-features">
-              <li><i class="fas fa-check-circle"></i> <span data-i18n-lang="zh">竹炭除臭包 · 除濕包 · 冰箱除臭磚</span><span data-i18n-lang="en">Deodorizers · Dehumidifiers · Fridge bricks</span></li>
+              <li><i class="fas fa-check-circle"></i> <span data-i18n-lang="zh">竹炭除臭包 · 除濕包 · 除臭竹炭磚</span><span data-i18n-lang="en">Deodorizers · Dehumidifiers · Charcoal bricks</span></li>
               <li><i class="fas fa-check-circle"></i> <span data-i18n-lang="zh">車用除臭系列 · 竹醋液生活用品</span><span data-i18n-lang="en">Car-use line · Bamboo-vinegar living goods</span></li>
               <li><i class="fas fa-check-circle"></i> <span data-i18n-lang="zh">ESG 企業禮盒 · 可開立企業發票</span><span data-i18n-lang="en">ESG corporate gift sets · invoiced</span></li>
               <li><i class="fas fa-check-circle"></i> <span data-i18n-lang="zh">天然環保 · 循環經濟 · 支持部落產業</span><span data-i18n-lang="en">Natural · circular · tribe-supporting</span></li>
@@ -4943,7 +4976,7 @@
               <span data-i18n-lang="zh">瀏覽商品</span><span data-i18n-lang="en">Browse products</span> <i class="fas fa-store"></i>
             </a>
             <a class="plan-card-cta plan-card-cta--secondary" href="procurement.html" style="margin-top:0.5rem;background:transparent;border:2px solid var(--primary-green);color:var(--primary-green);">
-              <span data-i18n-lang="zh">企業採購詢價</span><span data-i18n-lang="en">B2B inquiry</span> <i class="fas fa-file-invoice"></i>
+              <span data-i18n-lang="zh">聯繫我們訂購</span><span data-i18n-lang="en">Contact to order</span> <i class="fas fa-envelope"></i>
             </a>
           </div>
         </article>
@@ -5460,7 +5493,7 @@
                 </div>
                 <div class="form-group">
                   <label class="form-label required" for="phone"><span data-i18n-lang="zh">聯絡電話</span><span data-i18n-lang="en">Phone</span></label>
-                  <input type="tel" class="form-control" id="phone" name="phone" placeholder="0912-345-678" required>
+                  <input type="tel" class="form-control" id="phone" name="phone" placeholder="0912-345-678" required minlength="8" maxlength="20" inputmode="tel" autocomplete="tel" title="請填 8～13 位數字（可含 - 或空格）">
                 </div>
               </div>
 
@@ -5632,8 +5665,8 @@
             <li><a href="#now" style="color: #ccc; text-decoration: none;"><span data-i18n-lang="zh">近期動態</span><span data-i18n-lang="en">Latest</span></a></li>
             <li><a href="#why-us" style="color: #ccc; text-decoration: none;"><span data-i18n-lang="zh">我們的足跡</span><span data-i18n-lang="en">Our Story</span></a></li>
             <li><a href="#plans" style="color: #ccc; text-decoration: none;"><span data-i18n-lang="zh">來山裡走走</span><span data-i18n-lang="en">Visit Us</span></a></li>
-            <li><a href="shop.html" style="color: #ccc; text-decoration: none;"><span data-i18n-lang="zh">永續選物</span><span data-i18n-lang="en">Shop</span></a></li>
-            <li><a href="procurement.html" style="color: #ccc; text-decoration: none;"><span data-i18n-lang="zh">企業採購</span><span data-i18n-lang="en">B2B</span></a></li>
+            <li><a href="shop.html" style="color: #ccc; text-decoration: none;"><span data-i18n-lang="zh">商店</span><span data-i18n-lang="en">Shop</span></a></li>
+            <li><a href="procurement.html" style="color: #ccc; text-decoration: none;"><span data-i18n-lang="zh">聯繫訂購</span><span data-i18n-lang="en">Order</span></a></li>
             <!-- v5.4 P0-4-B/P0-5-B｜footer 慢慢逛同步拔除「真實案例」「場域導覽」 -->
             <li><a href="#booking" style="color: #ccc; text-decoration: none;"><span data-i18n-lang="zh">預約造訪</span><span data-i18n-lang="en">Book a Visit</span></a></li>
           </ul>
@@ -5641,15 +5674,16 @@
       </div>
 
       <div class="footer-bottom">
-        <p>&copy; 2025 <span data-i18n-lang="zh">山莎蔓岸竹木產業生產合作社 · 版權所有 · 100% 原住民合作社</span><span data-i18n-lang="en">SamSamma Bamboo Industry Production Co-op · All rights reserved · 100% Indigenous co-op</span></p>
+        <p>&copy; 2026 <span data-i18n-lang="zh">山莎蔓岸竹木產業生產合作社 · 版權所有 · 100% 原住民合作社</span><span data-i18n-lang="en">SamSamma Bamboo Industry Production Co-op · All rights reserved · 100% Indigenous co-op</span></p>
       </div>
     </div>
   </footer>
 
-  <!-- 回到頂部按鈕 -->
-  <div class="back-to-top" id="backToTop">
-    <i class="fas fa-chevron-up"></i>
-                </div>
+  <!-- 右下｜商店固定快捷 -->
+  <a class="fab-shop" href="shop.html" aria-label="商店">
+    <i class="fas fa-shopping-cart" aria-hidden="true"></i>
+    <span data-i18n-lang="zh">商店</span><span data-i18n-lang="en">Shop</span>
+  </a>
 
   <!-- 雙語：處理原生下拉選單 / placeholder / 跨頁連結語系（CSS 無法套用於 <option>） -->
   <script>
@@ -5686,7 +5720,7 @@
       offset: 100
     });
 
-    // 平滑滾動導航
+    // 平滑滾動導航（略）— 回頂箭頭已移除
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
         e.preventDefault();
@@ -5698,24 +5732,6 @@
           behavior: 'smooth'
         });
         }
-      });
-    });
-
-    // 回到頂部按鈕
-    const backToTop = document.getElementById('backToTop');
-
-    window.addEventListener('scroll', () => {
-      if (window.pageYOffset > 300) {
-        backToTop.classList.add('visible');
-      } else {
-        backToTop.classList.remove('visible');
-      }
-    });
-
-    backToTop.addEventListener('click', () => {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
       });
     });
 
@@ -5856,9 +5872,8 @@
     });
   </script>
 
-  <!-- v5.5｜預約表單 submitHandler：fetch POST 到 Google formResponse（mode:'no-cors'）
-       對齊 samsamma-booking-react/src/config.ts 的 GOOGLE_FORM_ID + FIELD_MAP（11 欄）
-       使用者按送出後完全不跳頁、原地顯示成功面板；fail 時退化為 mailto fallback -->
+  <!-- v5.5｜預約表單：Google Forms（營運主路徑）＋可選雙寫學習站 DB（面試展示）
+       LAB 失敗不擋成功畫面；Cloudflare 正式環境若無公網 Lab 會靜默略過 -->
   <script>
     (function () {
       var FORM_ID = '1FAIpQLSfhSYzYnh8V59c-zchjE0SjthxKK4H8t_9teOzj4EJuhsJXDQ';
@@ -5875,6 +5890,13 @@
         budget: 'entry.320472804',
         addons: 'entry.1679134241',
         notes: 'entry.917513591',
+      };
+
+      /* 本機 Live Server 示範雙寫；正式 Cloudflare 可設 enabled:false 或改公網 Lab URL */
+      var LAB = {
+        enabled: true,
+        apiUrl: 'http://127.0.0.1:5001/api/v1/bookings',
+        apiKey: ''
       };
 
       var form = document.getElementById('bookingForm');
@@ -5898,6 +5920,39 @@
           if (cb.value) body.append(FIELD_MAP.addons, cb.value);
         });
         return body;
+      }
+
+      function buildLabPayload() {
+        var addons = [];
+        form.querySelectorAll('input[name="addon"]:checked').forEach(function (cb) {
+          if (cb.value) addons.push(cb.value);
+        });
+        return {
+          plan: (form.elements.plan && form.elements.plan.value) || '',
+          orgName: (form.elements.orgName && form.elements.orgName.value) || '',
+          contactName: (form.elements.contactName && form.elements.contactName.value) || '',
+          email: (form.elements.email && form.elements.email.value) || '',
+          phone: (form.elements.phone && form.elements.phone.value) || '',
+          participants: (form.elements.participants && form.elements.participants.value) || '',
+          date: (form.elements.date && form.elements.date.value) || '',
+          duration: (form.elements.duration && form.elements.duration.value) || '',
+          budget: (form.elements.budget && form.elements.budget.value) || '',
+          addons: addons,
+          notes: (form.elements.notes && form.elements.notes.value) || ''
+        };
+      }
+
+      function mirrorToLab() {
+        if (!LAB.enabled || !LAB.apiUrl) return Promise.resolve();
+        var headers = { 'Content-Type': 'application/json' };
+        if (LAB.apiKey) headers['X-Lab-Key'] = LAB.apiKey;
+        return fetch(LAB.apiUrl, {
+          method: 'POST',
+          headers: headers,
+          body: JSON.stringify(buildLabPayload())
+        }).catch(function () {
+          /* Lab 未開／CORS／正式站無後端 → 忽略，不影響 Google 成功 */
+        });
       }
 
       function showSuccess() {
@@ -5933,8 +5988,22 @@
         form.insertBefore(msg, submitBtn);
       }
 
+      function validatePhoneField() {
+        var el = form.elements.phone;
+        if (!el) return true;
+        var raw = (el.value || '').trim();
+        var digits = raw.replace(/\D/g, '');
+        if (digits.length < 8 || digits.length > 13) {
+          el.setCustomValidity('電話請填 8～13 位數字（可含 - 或空格，例如 0912345678）');
+          return false;
+        }
+        el.setCustomValidity('');
+        return true;
+      }
+
       form.addEventListener('submit', async function (e) {
         e.preventDefault();
+        validatePhoneField();
         if (!form.checkValidity()) {
           form.reportValidity();
           return;
@@ -5948,7 +6017,7 @@
             mode: 'no-cors',
             body: buildBody(),
           });
-          // no-cors 模式無法讀回應，只要 fetch 沒丟錯就視為成功（Google Forms 公認做法）
+          await mirrorToLab();
           showSuccess();
         } catch (err) {
           showError();

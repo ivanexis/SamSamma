@@ -1,15 +1,17 @@
 {
   "meta": {
-    "version": "1.0.0",
-    "status": "demo",
-    "updated": "2026-06-12",
-    "note": "合作社確認 SKU / 價格 / 平台連結後，僅需更新此 JSON，shop.html 自動渲染"
+    "version": "1.2.0",
+    "status": "catalog-coming-soon",
+    "updated": "2026-07-23",
+    "note": "B2C：審核前不啟用購買連結。預計館網 pinkoi.com/store/samsamma；通過上架後 enabled=true。申請草稿見 pages/專案狀態/pinkoi/申請草稿.md"
   },
   "channels": {
     "pinkoi": {
-      "url": "https://www.pinkoi.com/store/samsamma-demo",
-      "enabled": true,
-      "label": { "zh": "Pinkoi 選購", "en": "Buy on Pinkoi" }
+      "url": "",
+      "plannedStoreUrl": "https://www.pinkoi.com/store/samsamma",
+      "applicationUrl": "https://www.pinkoi.com/page/shop-application",
+      "enabled": false,
+      "label": { "zh": "即將於 Pinkoi 開賣", "en": "Coming soon on Pinkoi" }
     },
     "shopee": {
       "url": "",
@@ -68,7 +70,7 @@
       "status": "preorder",
       "priceTwd": 420,
       "priceNote": { "zh": "預購", "en": "pre-order" },
-      "name": { "zh": "冰箱除臭竹炭磚", "en": "Fridge Charcoal Brick" },
+      "name": { "zh": "除臭竹炭磚", "en": "Charcoal Deodorizer Brick" },
       "desc": {
         "zh": "高溫炭化竹材，長效吸附冰箱異味，可重複日曬再生。",
         "en": "High-temp carbonized bamboo — long-lasting fridge odor control, sun-rechargeable."

@@ -1,0 +1,49 @@
+{% extends "admin_layout.html" %}
+{% block title %}總覽 · 山莎蔓岸後台管理{% endblock %}
+{% block page_title %}總覽{% endblock %}
+{% block content %}
+<div class="dash-grid">
+  <a class="dash-card" href="{{ url_for('main.admin_activities', status='new') }}">
+    <p class="h">活動預約</p>
+    <div class="n">{{ activity_new }}</div>
+    <div class="k">新進待處理｜有效案件 {{ activity_total }}</div>
+  </a>
+  <a class="dash-card" href="{{ url_for('main.admin_products', status='new') }}">
+    <p class="h">商品訂購</p>
+    <div class="n">{{ product_new }}</div>
+    <div class="k">新進待處理｜有效案件 {{ product_total }}</div>
+  </a>
+</div>
+
+<div class="card">
+  <h1 style="font-size:1rem;">最近案件</h1>
+  {% if recent %}
+  <table class="admin-table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>類型</th>
+        <th>主旨</th>
+        <th>聯絡人</th>
+        <th>狀態</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for b in recent %}
+      <tr>
+        <td>{{ b.id }}</td>
+        <td><span class="pill">{{ b.type_label() }}</span></td>
+        <td>{{ b.summary_title() }}</td>
+        <td>{{ b.contact_name }}</td>
+        <td><span class="pill {% if b.status=='new' %}is-new{% endif %}">{{ b.status_label() }}</span></td>
+        <td><a href="{{ url_for('main.admin_detail', booking_id=b.id) }}">檢視</a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p class="lede" style="margin:0.75rem 0 0;">尚無案件。請從側欄新增活動或商品。</p>
+  {% endif %}
+</div>
+{% endblock %}

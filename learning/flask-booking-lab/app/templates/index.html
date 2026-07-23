@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}山莎蔓岸後台管理{% endblock %}
+{% block content %}
+<div class="card">
+  <h1>山莎蔓岸後台管理</h1>
+  <p class="lede">請登入以管理預約與訂購案件。</p>
+  <p><a class="btn" href="{{ url_for('main.admin_login') }}">登入後台</a></p>
+</div>
+{% endblock %}

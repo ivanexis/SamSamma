@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block body %}
+<div class="app-shell">
+  <aside class="sidebar">
+    <a class="brand" href="{{ url_for('main.admin_dashboard') }}">山莎蔓岸<br>後台管理</a>
+
+    <span class="nav-label">主選單</span>
+    <a class="nav-link {% if nav == 'dashboard' %}is-active{% endif %}" href="{{ url_for('main.admin_dashboard') }}">總覽</a>
+
+    <span class="nav-label">活動預約</span>
+    <a class="nav-link indent {% if nav == 'activities' and not status_filter %}is-active{% endif %}" href="{{ url_for('main.admin_activities') }}">全部案件</a>
+    <a class="nav-link indent {% if nav == 'activities' and status_filter == 'new' %}is-active{% endif %}" href="{{ url_for('main.admin_activities', status='new') }}">新進待處理</a>
+    <a class="nav-link indent {% if nav == 'activities_new' %}is-active{% endif %}" href="{{ url_for('main.admin_activity_create') }}">新增活動</a>
+
+    <span class="nav-label">商品訂購</span>
+    <a class="nav-link indent {% if nav == 'products' and not status_filter %}is-active{% endif %}" href="{{ url_for('main.admin_products') }}">全部案件</a>
+    <a class="nav-link indent {% if nav == 'products' and status_filter == 'new' %}is-active{% endif %}" href="{{ url_for('main.admin_products', status='new') }}">新進待處理</a>
+    <a class="nav-link indent {% if nav == 'products_new' %}is-active{% endif %}" href="{{ url_for('main.admin_product_create') }}">新增商品</a>
+
+    <span class="nav-label">其他</span>
+    <a class="nav-link {% if nav == 'voided' %}is-active{% endif %}" href="{{ url_for('main.admin_voided') }}">作廢區</a>
+  </aside>
+  <div class="main-col">
+    <div class="topbar">
+      <p class="page-title">{% block page_title %}後台{% endblock %}</p>
+      <div class="topbar-actions">
+        <span>已登入</span>
+        <form method="post" action="{{ url_for('main.admin_logout') }}" style="margin:0;">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+          <button type="submit" class="btn-muted" style="padding:.35rem .7rem;font-size:.82rem;">登出</button>
+        </form>
+      </div>
+    </div>
+    <div class="content">
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% for category, message in messages %}
+          <div class="flash {{ category }}">{{ message }}</div>
+        {% endfor %}
+      {% endwith %}
+      {% block content %}{% endblock %}
+    </div>
+  </div>
+</div>
+{% endblock %}

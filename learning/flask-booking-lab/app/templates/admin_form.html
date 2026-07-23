@@ -1,0 +1,77 @@
+{% extends "admin_layout.html" %}
+{% block title %}{{ title }} · 山莎蔓岸後台管理{% endblock %}
+{% block page_title %}{{ title }}{% endblock %}
+{% block content %}
+<p class="breadcrumb">
+  <a href="{{ url_for(module.list_endpoint) }}">{{ module.label }}</a>
+  · 新增
+</p>
+<div class="card">
+  <form method="post" novalidate id="inquiryForm">
+    {{ form.hidden_tag() }}
+    {{ form.record_type(style='display:none') }}
+
+    {% if locked_type == 'activity' %}
+    <div id="block-activity">
+      <div class="field">
+        {{ form.plan.label }}
+        {{ form.plan() }}
+        {% for e in form.plan.errors %}<div class="error">{{ e }}</div>{% endfor %}
+      </div>
+    </div>
+    {% else %}
+    <div id="block-product">
+      <div class="field">
+        {{ form.product_name.label }}
+        {{ form.product_name() }}
+        {% for e in form.product_name.errors %}<div class="error">{{ e }}</div>{% endfor %}
+      </div>
+      <div class="field">
+        {{ form.quantity.label }}
+        {{ form.quantity() }}
+        {% for e in form.quantity.errors %}<div class="error">{{ e }}</div>{% endfor %}
+      </div>
+      <div class="field">
+        {{ form.tax_id.label }}
+        {{ form.tax_id() }}
+      </div>
+      <div class="field">
+        {{ form.need_invoice.label }}
+        {{ form.need_invoice() }}
+      </div>
+      <div class="field">
+        {{ form.delivery.label }}
+        {{ form.delivery() }}
+      </div>
+    </div>
+    {% endif %}
+
+    <div class="field">
+      {{ form.org_name.label }}
+      {{ form.org_name() }}
+      {% for e in form.org_name.errors %}<div class="error">{{ e }}</div>{% endfor %}
+    </div>
+    <div class="field">
+      {{ form.contact_name.label }}
+      {{ form.contact_name() }}
+      {% for e in form.contact_name.errors %}<div class="error">{{ e }}</div>{% endfor %}
+    </div>
+    <div class="field">
+      {{ form.email.label }}
+      {{ form.email() }}
+      {% for e in form.email.errors %}<div class="error">{{ e }}</div>{% endfor %}
+    </div>
+    <div class="field">
+      {{ form.phone.label }}
+      {{ form.phone() }}
+      {% for e in form.phone.errors %}<div class="error">{{ e }}</div>{% endfor %}
+    </div>
+    <div class="field">
+      {{ form.notes.label }}
+      {{ form.notes(rows=3) }}
+    </div>
+    {{ form.submit() }}
+    <a class="btn btn-muted" href="{{ url_for(module.list_endpoint) }}" style="margin-left:.5rem;">取消</a>
+  </form>
+</div>
+{% endblock %}

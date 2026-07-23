@@ -1,0 +1,98 @@
+{% extends "admin_layout.html" %}
+{% block title %}#{{ booking.id }} · 山莎蔓岸後台管理{% endblock %}
+{% block page_title %}{{ module.label }} · #{{ booking.id }}{% endblock %}
+{% block content %}
+<p class="breadcrumb">
+  <a href="{{ url_for(module.list_endpoint) }}">{{ module.label }}</a>
+  · #{{ booking.id }}
+</p>
+<div class="card">
+  <p class="lede" style="margin-top:0;">
+    {{ booking.status_label() }}
+    ｜來源 {% if booking.source == 'official_site' %}官網{% elif booking.source == 'admin' %}後台新增{% else %}表單{% endif %}
+    {% if booking.notify_sent %}｜已寄通知{% endif %}
+  </p>
+
+  <form method="post" novalidate>
+    {{ form.hidden_tag() }}
+    {{ form.record_type(style='display:none') }}
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:0 1.25rem;">
+      {% if booking.record_type == 'activity' %}
+      <div class="field" style="grid-column:1/-1;">
+        {{ form.plan.label }}
+        {{ form.plan() }}
+      </div>
+      {% else %}
+      <div class="field">
+        {{ form.product_name.label }}
+        {{ form.product_name() }}
+      </div>
+      <div class="field">
+        {{ form.quantity.label }}
+        {{ form.quantity() }}
+      </div>
+      <div class="field">
+        {{ form.tax_id.label }}
+        {{ form.tax_id() }}
+      </div>
+      <div class="field">
+        {{ form.need_invoice.label }}
+        {{ form.need_invoice() }}
+      </div>
+      <div class="field" style="grid-column:1/-1;">
+        {{ form.delivery.label }}
+        {{ form.delivery() }}
+      </div>
+      {% endif %}
+      <div class="field">
+        {{ form.org_name.label }}
+        {{ form.org_name() }}
+      </div>
+      <div class="field">
+        {{ form.contact_name.label }}
+        {{ form.contact_name() }}
+        {% for e in form.contact_name.errors %}<div class="error">{{ e }}</div>{% endfor %}
+      </div>
+      <div class="field">
+        {{ form.email.label }}
+        {{ form.email() }}
+        {% for e in form.email.errors %}<div class="error">{{ e }}</div>{% endfor %}
+      </div>
+      <div class="field">
+        {{ form.phone.label }}
+        {{ form.phone() }}
+        {% for e in form.phone.errors %}<div class="error">{{ e }}</div>{% endfor %}
+      </div>
+      <div class="field" style="grid-column:1/-1;">
+        {{ form.notes.label }}
+        {{ form.notes(rows=2) }}
+      </div>
+      <div class="field">
+        {{ form.status.label }}
+        {{ form.status() }}
+      </div>
+      <div class="field">
+        {{ form.admin_note.label }}
+        {{ form.admin_note(rows=2) }}
+      </div>
+    </div>
+    <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.5rem;">
+      {{ form.submit() }}
+      <a class="btn btn-muted" href="{{ url_for(module.list_endpoint) }}">回列表</a>
+    </div>
+  </form>
+
+  {% if booking.status != 'voided' %}
+  <form method="post" action="{{ url_for('main.admin_void', booking_id=booking.id) }}" style="margin-top:1.5rem;padding-top:1rem;border-top:1px solid var(--line);" onsubmit="return confirm('確定作廢此案件？');">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    <button type="submit" class="btn-danger">作廢此案件</button>
+  </form>
+  {% endif %}
+</div>
+<style>
+  @media (max-width:700px) {
+    form .field { grid-column: 1 / -1 !important; }
+    div[style*="grid-template-columns"] { grid-template-columns: 1fr !important; }
+  }
+</style>
+{% endblock %}

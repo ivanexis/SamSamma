@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}已建立 · 山莎蔓岸{% endblock %}
+{% block body %}
+<div class="login-wrap">
+  <div class="card">
+    <h1>案件已建立</h1>
+    <p class="lede">編號 #{{ booking.id }}｜{{ booking.type_label() }}｜{{ booking.status_label() }}</p>
+    <p><a class="btn" href="{{ url_for('main.admin_login') }}">前往後台登入</a></p>
+  </div>
+</div>
+{% endblock %}

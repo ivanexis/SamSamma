@@ -66,6 +66,19 @@ body {
 .navbar-nav .nav-link.is-active {
   color: var(--gold) !important;
 }
+
+.navbar .nav-link-shop {
+  color: #d4af37 !important;
+  font-weight: 700;
+  border: 1px solid rgba(212, 175, 55, 0.65);
+  border-radius: 999px;
+  padding: 0.35rem 0.9rem !important;
+}
+.navbar .nav-link-shop:hover,
+.navbar .nav-link-shop.is-active {
+  background: rgba(212, 175, 55, 0.18);
+  color: #f0d78c !important;
+}
 .navbar-nav .nav-item { display: flex; align-items: center; }
 
 .section-eyebrow {
@@ -463,6 +476,19 @@ body {
   background: rgba(255, 255, 255, 0.08);
   color: white;
   font-size: 0.9rem;
+}
+.booking-form select.form-control {
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' fill='%23ffffff' viewBox='0 0 16 16'%3E%3Cpath d='M3.204 5L8 10.481 12.796 5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  appearance: none;
+  -webkit-appearance: none;
+  padding-right: 2.5rem;
+}
+/* 下拉清單在系統層是淺底，option 必須深色字，否則反白／選項看不見 */
+.booking-form select.form-control option {
+  background-color: #ffffff;
+  color: #1a3d22;
 }
 .booking-form .form-control::placeholder {
   color: rgba(255, 255, 255, 0.45);

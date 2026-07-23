@@ -34,18 +34,20 @@
     }).join('');
 
     var actions = '';
-    if (product.b2c && channels.pinkoi.enabled) {
+    /* 每件商品統一兩顆：Pinkoi（即將或已開賣）＋聯繫訂購 */
+    if (channels.pinkoi && channels.pinkoi.enabled && channels.pinkoi.url) {
       actions += '<a class="btn-gold" href="' + channels.pinkoi.url + '" target="_blank" rel="noopener">' +
-        '<i class="fas fa-store"></i> ' + t(channels.pinkoi.label) + '</a>';
-    } else if (product.b2c) {
+        '<i class="fas fa-store"></i> ' + t(channels.pinkoi.label || { zh: '前往 Pinkoi', en: 'Buy on Pinkoi' }) + '</a>';
+    } else {
+      var soon = (channels.pinkoi && channels.pinkoi.label)
+        ? t(channels.pinkoi.label)
+        : t({ zh: '即將於 Pinkoi 開賣', en: 'Coming soon on Pinkoi' });
       actions += '<span class="btn-gold is-disabled" aria-disabled="true">' +
-        '<i class="fas fa-store"></i> <span data-i18n-lang="zh">平台連結待上架</span><span data-i18n-lang="en">Store link coming soon</span></span>';
+        '<i class="fas fa-clock"></i> ' + soon + '</span>';
     }
-    if (product.b2b) {
-      var procUrl = 'procurement.html?product=' + encodeURIComponent(product.id);
-      actions += '<a class="btn-outline-green" href="' + procUrl + '">' +
-        '<i class="fas fa-building"></i> <span data-i18n-lang="zh">企業採購詢價</span><span data-i18n-lang="en">B2B inquiry</span></a>';
-    }
+    var procUrl = 'procurement.html?product=' + encodeURIComponent(product.id);
+    actions += '<a class="btn-outline-green" href="' + procUrl + '">' +
+      '<i class="fas fa-envelope"></i> <span data-i18n-lang="zh">聯繫我們訂購</span><span data-i18n-lang="en">Contact to order</span></a>';
 
     card.innerHTML =
       '<div class="product-card-img">' +

@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}登入 · 山莎蔓岸後台管理{% endblock %}
+{% block body %}
+<div class="guest-header">
+  <a class="brand" href="{{ url_for('main.admin_login') }}">山莎蔓岸後台管理</a>
+  <a href="{{ url_for('main.admin_login') }}">登入</a>
+</div>
+<div class="login-wrap">
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% for category, message in messages %}
+      <div class="flash {{ category }}">{{ message }}</div>
+    {% endfor %}
+  {% endwith %}
+  <div class="card">
+    <h1>登入</h1>
+    {% if show_hint %}
+    <p class="lede">開發環境預設：admin / 1234</p>
+    {% endif %}
+    <form method="post" novalidate>
+      {{ form.hidden_tag() }}
+      <div class="field">
+        {{ form.username.label }}
+        {{ form.username() }}
+        {% for e in form.username.errors %}<div class="error">{{ e }}</div>{% endfor %}
+      </div>
+      <div class="field">
+        {{ form.password.label }}
+        {{ form.password() }}
+        {% for e in form.password.errors %}<div class="error">{{ e }}</div>{% endfor %}
+      </div>
+      {{ form.submit() }}
+    </form>
+  </div>
+</div>
+{% endblock %}

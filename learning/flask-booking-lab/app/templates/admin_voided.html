@@ -1,0 +1,37 @@
+{% extends "admin_layout.html" %}
+{% block title %}作廢區 · 山莎蔓岸後台管理{% endblock %}
+{% block page_title %}作廢區{% endblock %}
+{% block content %}
+<div class="card">
+  <h1>作廢區</h1>
+  <p class="lede">已作廢案件不出現在活動／商品列表。</p>
+  {% if rows %}
+  <table class="admin-table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>類型</th>
+        <th>主旨</th>
+        <th>聯絡人</th>
+        <th>內部備註</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for b in rows %}
+      <tr>
+        <td>{{ b.id }}</td>
+        <td><span class="pill">{{ b.type_label() }}</span></td>
+        <td>{{ b.summary_title() }}</td>
+        <td>{{ b.contact_name }}</td>
+        <td>{{ b.admin_note or '—' }}</td>
+        <td><a href="{{ url_for('main.admin_detail', booking_id=b.id) }}">檢視</a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p class="lede">目前沒有作廢案件。</p>
+  {% endif %}
+</div>
+{% endblock %}

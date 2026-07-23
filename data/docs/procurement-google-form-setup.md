@@ -79,22 +79,24 @@ https://docs.google.com/forms/d/e/1FAIpQLScxxxxxxxxxxxxxxxxxxxxxxxxx/viewform
 
 開啟 `blog_uiux/js/procurement-form.js`：
 
-```javascript
-var FORM_ID = '貼上你的 FORM_ID';
+```
+var FORM_ID = '1FAIpQLSfYtxaYu4OnWSkS9AFdB8xRcjR7FyRoS_P_idODyCZHXuFf1w';
 
 var FIELD_MAP = {
-  product:      'entry.___________',
-  company:      'entry.___________',
-  taxId:        'entry.___________',
-  contactName:  'entry.___________',
-  email:        'entry.___________',
-  phone:        'entry.___________',
-  quantity:     'entry.___________',
-  needInvoice:  'entry.___________',
-  delivery:     'entry.___________',
-  notes:        'entry.___________'
+  product:      'entry.2124265472',
+  company:      'entry.1956664878',
+  taxId:        'entry.1668368198',
+  contactName:  'entry.1365136276',
+  email:        'entry.1258305091',
+  phone:        'entry.1834958036',
+  quantity:     'entry.954046029',
+  needInvoice:  'entry.1921148235',
+  delivery:     'entry.554810776',
+  notes:        'entry.823967188'
 };
 ```
+
+> 已於 2026-07-23 寫入 `js/procurement-form.js`。下文 Step 5 可略過；改做試送驗收。
 
 儲存後，打開 `procurement.html` 試送一筆 → 確認試算表新增一列。
 

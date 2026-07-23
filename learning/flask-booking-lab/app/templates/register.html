@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% block title %}新增案件 · 山莎蔓岸{% endblock %}
+{% block body %}
+<div class="guest-header">
+  <a class="brand" href="{{ url_for('main.admin_login') }}">山莎蔓岸後台管理</a>
+  <a href="{{ url_for('main.admin_login') }}">登入</a>
+</div>
+<div class="login-wrap" style="max-width:560px;">
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% for category, message in messages %}
+      <div class="flash {{ category }}">{{ message }}</div>
+    {% endfor %}
+  {% endwith %}
+  <div class="card">
+    <h1>新增案件</h1>
+    <p class="lede">測試用公開入口。正式補單請登入後台側欄操作。</p>
+    <form method="post" novalidate id="inquiryForm">
+      {{ form.hidden_tag() }}
+      <div class="field">
+        {{ form.record_type.label }}
+        {{ form.record_type(id='recordType') }}
+      </div>
+      <div id="block-activity" class="type-block">
+        <div class="field">
+          {{ form.plan.label }}
+          {{ form.plan() }}
+          {% for e in form.plan.errors %}<div class="error">{{ e }}</div>{% endfor %}
+        </div>
+      </div>
+      <div id="block-product" class="type-block" hidden>
+        <div class="field">
+          {{ form.product_name.label }}
+          {{ form.product_name() }}
+          {% for e in form.product_name.errors %}<div class="error">{{ e }}</div>{% endfor %}
+        </div>
+        <div class="field">
+          {{ form.quantity.label }}
+          {{ form.quantity() }}
+          {% for e in form.quantity.errors %}<div class="error">{{ e }}</div>{% endfor %}
+        </div>
+      </div>
+      <div class="field">
+        {{ form.org_name.label }}
+        {{ form.org_name() }}
+      </div>
+      <div class="field">
+        {{ form.contact_name.label }}
+        {{ form.contact_name() }}
+      </div>
+      <div class="field">
+        {{ form.email.label }}
+        {{ form.email() }}
+      </div>
+      <div class="field">
+        {{ form.phone.label }}
+        {{ form.phone() }}
+      </div>
+      <div class="field">
+        {{ form.notes.label }}
+        {{ form.notes(rows=3) }}
+      </div>
+      {{ form.submit() }}
+    </form>
+  </div>
+</div>
+<script>
+(function () {
+  var sel = document.getElementById('recordType');
+  var act = document.getElementById('block-activity');
+  var prod = document.getElementById('block-product');
+  function sync() {
+    act.hidden = sel.value !== 'activity';
+    prod.hidden = sel.value !== 'product';
+  }
+  sel.addEventListener('change', sync);
+  sync();
+})();
+</script>
+{% endblock %}

@@ -1,15 +1,9 @@
-# SamSamma
+# SamSamma｜文件入口
 
-SamSamma 官網與相關 UI/UX 原型（由 `blog_uiux` 演進）。
+- [資料記在哪／後台怎麼管](data/docs/WHERE-IS-MY-DATA.md) ← **先讀這篇**
+- [小企業營運手冊](data/docs/OPS-小企業營運手冊.md)
+- [功能盤點與停損](data/docs/SCOPE-功能盤點與停損.md)
+- [學習站](learning/flask-booking-lab/README.md)
 
-## 本機預覽
-
-以靜態網站方式開啟根目錄的 `index.html`，或使用任意靜態伺服器：
-
-```bash
-npx serve .
-```
-
-## 部署
-
-預計與 Cloudflare（Pages / Workers）串接。相關忽略設定見 `.wranglerignore`。
+後台（本機）：`cd learning/flask-booking-lab` → `python run.py` → http://127.0.0.1:5001/admin  
+官網頁面上**不會**放後台入口（給訪客看會很怪）。

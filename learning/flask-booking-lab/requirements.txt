@@ -1,0 +1,8 @@
+Flask>=3.0,<4
+Flask-SQLAlchemy>=3.1,<4
+Flask-WTF>=1.2,<2
+WTForms>=3.1,<4
+email-validator>=2.0,<3
+python-dotenv>=1.0,<2
+# PostgreSQL（選用；本機預設 SQLite 即可）
+# psycopg[binary]>=3.1,<4
