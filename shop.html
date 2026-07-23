@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    (function () {
+      var p = new URLSearchParams(location.search).get('lang');
+      var lang = (p === 'en') ? 'en' : 'zh';
+      var d = document.documentElement;
+      d.classList.add('i18n-' + lang);
+      d.setAttribute('lang', lang === 'zh' ? 'zh-TW' : 'en');
+      var s = document.createElement('style');
+      s.textContent = '.i18n-en [data-i18n-lang="zh"]{display:none!important}.i18n-zh [data-i18n-lang="en"]{display:none!important}'
+        + '.lang-switch{display:inline-flex;gap:.25rem}'
+        + '.lang-switch a{display:inline-block;padding:.2rem .6rem;border:1px solid rgba(212,175,55,.6);border-radius:999px;color:#d4af37;font-size:.8rem;font-weight:600;text-decoration:none}'
+        + '.i18n-en .lang-switch a[data-lang-btn=en],.i18n-zh .lang-switch a[data-lang-btn=zh]{background:#d4af37;color:#1a3d22;pointer-events:none}';
+      d.appendChild(s);
+    })();
+  </script>
+  <title>選物 · 山莎蔓岸合作社</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/samsamma-subpages.css">
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <img src="images/sa.webp" alt="山莎蔓岸合作社" class="navbar-logo">
+        <span class="brand-title">
+          <span class="brand-name">山莎蔓岸合作社</span>
+          <span class="legal-name"><span data-i18n-lang="zh">有限責任新竹縣山莎蔓岸竹木產業生產合作社</span><span data-i18n-lang="en">SamSamma Co-op</span></span>
+        </span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" style="filter:invert(1)">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html"><span data-i18n-lang="zh">首頁</span><span data-i18n-lang="en">Home</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#about"><span data-i18n-lang="zh">關於</span><span data-i18n-lang="en">About</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#plans"><span data-i18n-lang="zh">來山裡走走</span><span data-i18n-lang="en">Visit</span></a></li>
+          <li class="nav-item"><a class="nav-link is-active" href="shop.html"><span data-i18n-lang="zh">選物</span><span data-i18n-lang="en">Shop</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#booking"><span data-i18n-lang="zh">預約</span><span data-i18n-lang="en">Book</span></a></li>
+          <li class="nav-item ms-lg-2">
+            <span class="lang-switch" aria-label="Language">
+              <a href="?lang=en" data-lang-btn="en">EN</a>
+              <a href="?lang=zh" data-lang-btn="zh">繁中</a>
+            </span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <header class="shop-hero">
+    <div class="container" data-aos="fade-up">
+      <span class="section-eyebrow" style="color:var(--gold);">Shop · <span data-i18n-lang="zh">永續選物</span><span data-i18n-lang="en">Sustainable Goods</span></span>
+      <h1><span data-i18n-lang="zh">來自大隘竹林的循環好物</span><span data-i18n-lang="en">Circular goods from Daai bamboo</span></h1>
+      <p>
+        <span data-i18n-lang="zh">官網展示商品故事與規格；個人小單前往平台選購，企業大宗請走採購詢價。金流與出貨由平台／合作社分工，無需自建購物車。</span>
+        <span data-i18n-lang="en">Browse stories and specs here. Retail via marketplace; bulk B2B via inquiry form. Payments and fulfillment split between platform and co-op — no custom checkout.</span>
+      </p>
+      <div class="shop-hero-badges">
+        <span class="shop-badge is-demo"><i class="fas fa-flask"></i> Phase 6 · <span data-i18n-lang="zh">展示版</span><span data-i18n-lang="en">Demo</span></span>
+        <span class="shop-badge"><i class="fas fa-leaf"></i> <span data-i18n-lang="zh">100% 原住民合作社</span><span data-i18n-lang="en">100% Indigenous co-op</span></span>
+        <span class="shop-badge"><i class="fas fa-recycle"></i> <span data-i18n-lang="zh">循環經濟</span><span data-i18n-lang="en">Circular economy</span></span>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <section class="dual-path" data-aos="fade-up">
+      <article class="dual-path-card">
+        <h3><i class="fas fa-user"></i> <span data-i18n-lang="zh">路徑 A · 個人選購（B2C）</span><span data-i18n-lang="en">Path A · Retail (B2C)</span></h3>
+        <p><span data-i18n-lang="zh">在這裡看商品 → 點「Pinkoi 選購」到外部平台付款。PCI、物流由平台處理，合作社負責出貨。</span><span data-i18n-lang="en">Browse here → tap "Buy on Pinkoi" for external checkout. Platform handles PCI &amp; logistics; co-op fulfills.</span></p>
+        <ul>
+          <li><span data-i18n-lang="zh">零自建金流成本</span><span data-i18n-lang="en">Zero custom payment stack</span></li>
+          <li><span data-i18n-lang="zh">一人資訊可維護（只更新 JSON）</span><span data-i18n-lang="en">Solo maintainer — JSON updates only</span></li>
+        </ul>
+        <a class="btn-gold" href="https://www.pinkoi.com/store/samsamma-demo" target="_blank" rel="noopener"><i class="fas fa-external-link-alt"></i> Pinkoi</a>
+      </article>
+      <article class="dual-path-card">
+        <h3><i class="fas fa-building"></i> <span data-i18n-lang="zh">路徑 B · 企業採購（B2B）</span><span data-i18n-lang="en">Path B · Corporate (B2B)</span></h3>
+        <p><span data-i18n-lang="zh">ESG 禮盒、大宗採購 → 填採購詢價表 → 合作社 2–3 工作天報價、開發票、匯款出貨。</span><span data-i18n-lang="en">ESG gift sets &amp; bulk orders → inquiry form → quote in 2–3 business days, invoice, wire transfer.</span></p>
+        <ul>
+          <li><span data-i18n-lang="zh">同預約表單 Zero-Server 架構</span><span data-i18n-lang="en">Same Zero-Server as booking</span></li>
+          <li><span data-i18n-lang="zh">可附 ESG 報告素材</span><span data-i18n-lang="en">ESG report assets available</span></li>
+        </ul>
+        <a class="btn-outline-green" href="procurement.html"><i class="fas fa-file-invoice"></i> <span data-i18n-lang="zh">企業採購詢價</span><span data-i18n-lang="en">B2B inquiry</span></a>
+      </article>
+    </section>
+
+    <div class="text-center" data-aos="fade-up">
+      <span class="section-eyebrow">Catalog · <span data-i18n-lang="zh">商品型錄</span><span data-i18n-lang="en">Product catalog</span></span>
+      <h2 class="section-title"><span data-i18n-lang="zh">竹林循環系列</span><span data-i18n-lang="en">Bamboo circular collection</span></h2>
+    </div>
+
+    <div class="shop-filters" id="shopFilters" data-aos="fade-up"></div>
+    <div class="shop-grid" id="shopGrid" data-aos="fade-up"></div>
+
+    <p style="text-align:center;color:var(--text-light);font-size:0.88rem;margin-bottom:3rem;">
+      <span data-i18n-lang="zh">※ 價格與庫存為展示用；正式上線前由合作社確認。新增商品只需編輯 <code>data/products.json</code>。</span>
+      <span data-i18n-lang="en">※ Prices &amp; stock are for demo. Co-op confirms before launch. Add products via <code>data/products.json</code>.</span>
+    </p>
+  </main>
+
+  <footer class="footer site-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h5><span data-i18n-lang="zh">合作社資訊</span><span data-i18n-lang="en">Co-op</span></h5>
+          <p><span data-i18n-lang="zh">有限責任新竹縣山莎蔓岸竹木產業生產合作社</span><span data-i18n-lang="en">SamSamma Bamboo Industry Co-op</span></p>
+        </div>
+        <div class="footer-section">
+          <h5><span data-i18n-lang="zh">聯絡</span><span data-i18n-lang="en">Contact</span></h5>
+          <p><i class="fas fa-envelope me-2"></i>jeff11051212@gmail.com</p>
+        </div>
+        <div class="footer-section">
+          <h5><span data-i18n-lang="zh">慢慢逛</span><span data-i18n-lang="en">Explore</span></h5>
+          <ul>
+            <li><a href="index.html"><span data-i18n-lang="zh">回官網首頁</span><span data-i18n-lang="en">Back to home</span></a></li>
+            <li><a href="procurement.html"><span data-i18n-lang="zh">企業採購</span><span data-i18n-lang="en">B2B inquiry</span></a></li>
+            <li><a href="pages/Phase6-Commerce-Demo.html"><span data-i18n-lang="zh">Phase 6 方案說明（PM）</span><span data-i18n-lang="en">Phase 6 overview (PM)</span></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 <span data-i18n-lang="zh">山莎蔓岸竹木產業生產合作社</span><span data-i18n-lang="en">SamSamma Co-op</span></p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="back-to-top" id="backToTop"><i class="fas fa-chevron-up"></i></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 700, once: true });
+    (function () {
+      var lang = document.documentElement.classList.contains('i18n-zh') ? 'zh' : 'en';
+      if (lang === 'en') document.title = 'Shop · SamSamma Co-op';
+      document.querySelectorAll('a[href$=".html"]').forEach(function (a) {
+        if (a.closest('.lang-switch')) return;
+        var href = a.getAttribute('href');
+        if (!href || /^https?:|^mailto:|^#/.test(href)) return;
+        if (href.indexOf('?') === -1) a.setAttribute('href', href + '?lang=' + lang);
+      });
+      var btt = document.getElementById('backToTop');
+      window.addEventListener('scroll', function () {
+        btt.classList.toggle('show', window.scrollY > 400);
+      });
+      btt.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+    })();
+  </script>
+  <script src="js/products.js"></script>
+</body>
+</html>

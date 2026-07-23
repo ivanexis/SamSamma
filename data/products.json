@@ -1,0 +1,140 @@
+{
+  "meta": {
+    "version": "1.0.0",
+    "status": "demo",
+    "updated": "2026-06-12",
+    "note": "合作社確認 SKU / 價格 / 平台連結後，僅需更新此 JSON，shop.html 自動渲染"
+  },
+  "channels": {
+    "pinkoi": {
+      "url": "https://www.pinkoi.com/store/samsamma-demo",
+      "enabled": true,
+      "label": { "zh": "Pinkoi 選購", "en": "Buy on Pinkoi" }
+    },
+    "shopee": {
+      "url": "",
+      "enabled": false,
+      "label": { "zh": "蝦皮賣場", "en": "Shopee store" }
+    }
+  },
+  "categories": [
+    { "id": "all", "label": { "zh": "全部", "en": "All" } },
+    { "id": "charcoal", "label": { "zh": "竹炭系列", "en": "Bamboo Charcoal" } },
+    { "id": "vinegar", "label": { "zh": "竹醋液", "en": "Bamboo Vinegar" } },
+    { "id": "craft", "label": { "zh": "竹工藝", "en": "Bamboo Crafts" } },
+    { "id": "gift", "label": { "zh": "企業禮盒", "en": "Corporate Gifts" } }
+  ],
+  "products": [
+    {
+      "id": "charcoal-deodorizer",
+      "category": "charcoal",
+      "status": "available",
+      "priceTwd": 280,
+      "priceNote": { "zh": "起", "en": "from" },
+      "name": { "zh": "竹炭除臭包", "en": "Bamboo Charcoal Deodorizer" },
+      "desc": {
+        "zh": "大隘竹林備長炭研磨，適用衣櫃、鞋櫃、車內除味除濕。",
+        "en": "Charcoal from Daai bamboo groves — for closets, shoes, and car deodorizing."
+      },
+      "image": "images/SamSamma/園區建物拍攝/竹炭製作所圖片.webp",
+      "tags": [
+        { "zh": "循環經濟", "en": "Circular" },
+        { "zh": "ESG 禮品", "en": "ESG gift" }
+      ],
+      "b2c": true,
+      "b2b": true
+    },
+    {
+      "id": "charcoal-humidifier",
+      "category": "charcoal",
+      "status": "available",
+      "priceTwd": 350,
+      "priceNote": { "zh": "起", "en": "from" },
+      "name": { "zh": "竹炭除濕包", "en": "Bamboo Charcoal Dehumidifier" },
+      "desc": {
+        "zh": "天然吸濕不反潮，梅雨季與山區室內環境適用。",
+        "en": "Natural moisture absorption — ideal for humid seasons and mountain homes."
+      },
+      "image": "images/SamSamma/20251023竹炭爐企業教育社員課程/竹炭爐製造所內部社員講師教學照片.webp",
+      "tags": [
+        { "zh": "生活日用", "en": "Daily use" }
+      ],
+      "b2c": true,
+      "b2b": true
+    },
+    {
+      "id": "charcoal-fridge",
+      "category": "charcoal",
+      "status": "preorder",
+      "priceTwd": 420,
+      "priceNote": { "zh": "預購", "en": "pre-order" },
+      "name": { "zh": "冰箱除臭竹炭磚", "en": "Fridge Charcoal Brick" },
+      "desc": {
+        "zh": "高溫炭化竹材，長效吸附冰箱異味，可重複日曬再生。",
+        "en": "High-temp carbonized bamboo — long-lasting fridge odor control, sun-rechargeable."
+      },
+      "image": "images/SamSamma/園區建物拍攝/竹炭製作所圖片.webp",
+      "tags": [
+        { "zh": "開發中", "en": "In dev." }
+      ],
+      "b2c": true,
+      "b2b": false
+    },
+    {
+      "id": "vinegar-spray",
+      "category": "vinegar",
+      "status": "available",
+      "priceTwd": 380,
+      "priceNote": { "zh": "起", "en": "from" },
+      "name": { "zh": "竹醋液生活噴霧", "en": "Bamboo Vinegar Living Spray" },
+      "desc": {
+        "zh": "竹炭窯凝結精華，居家環境清潔與除臭輔助。",
+        "en": "Condensed essence from the charcoal kiln — for home cleaning and deodorizing."
+      },
+      "image": "images/SamSamma/園區建物拍攝/竹炭製作所圖片.webp",
+      "tags": [
+        { "zh": "天然", "en": "Natural" }
+      ],
+      "b2c": false,
+      "b2b": true
+    },
+    {
+      "id": "craft-basket",
+      "category": "craft",
+      "status": "available",
+      "priceTwd": 680,
+      "priceNote": { "zh": "起", "en": "from" },
+      "name": { "zh": "賽夏竹編小籃", "en": "Saisiyat Woven Bamboo Basket" },
+      "desc": {
+        "zh": "族人手工編織，每款紋路承載部落記憶，適合文化禮贈。",
+        "en": "Hand-woven by tribal artisans — each pattern carries cultural memory."
+      },
+      "image": "images/SamSamma/20251115活動纏繞畫/LINE_ALBUM_20251115_260521_1.webp",
+      "tags": [
+        { "zh": "手工", "en": "Handmade" },
+        { "zh": "文化禮品", "en": "Cultural gift" }
+      ],
+      "b2c": true,
+      "b2b": true
+    },
+    {
+      "id": "esg-gift-box",
+      "category": "gift",
+      "status": "available",
+      "priceTwd": 0,
+      "priceDisplay": { "zh": "依數量報價", "en": "Quote by volume" },
+      "name": { "zh": "ESG 企業永續禮盒", "en": "ESG Corporate Gift Set" },
+      "desc": {
+        "zh": "竹炭 × 竹醋 × 工藝組合，可客製 logo、統編發票、ESG 報告引用素材。",
+        "en": "Charcoal × vinegar × craft combo — custom branding, tax invoice, ESG report assets."
+      },
+      "image": "images/SamSamma/20251023竹炭爐企業教育社員課程/竹炭爐製造所內部社員講師教學照片.webp",
+      "tags": [
+        { "zh": "B2B 專屬", "en": "B2B only" },
+        { "zh": "可開發票", "en": "Invoice available" }
+      ],
+      "b2c": false,
+      "b2b": true
+    }
+  ]
+}

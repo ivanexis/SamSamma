@@ -1,0 +1,79 @@
+%% ==========================================================
+%% User Flow — Figma / PPT 匯出專用（對齊 SamSamma.html §02.6 簡化版）
+%% 用途：貼到 https://mermaid.live → Actions → SVG / PNG → 拖進 Figma
+%% 與網站同色：theme base + lineColor #4a7c59 + classic 平面色（無 neo 漸層）
+%% 更新：2026-06-12
+%% ==========================================================
+%%{init: {
+  "look": "classic",
+  "theme": "base",
+  "themeVariables": {
+    "fontFamily": "Noto Sans TC, Inter, sans-serif",
+    "fontSize": "14px",
+    "primaryColor": "#f5f0e8",
+    "primaryTextColor": "#3d2b1f",
+    "primaryBorderColor": "#8b7355",
+    "lineColor": "#4a7c59",
+    "background": "#ffffff",
+    "edgeLabelBackground": "#ffffff"
+  },
+  "flowchart": {
+    "htmlLabels": false,
+    "useMaxWidth": true,
+    "curve": "basis",
+    "padding": 12
+  }
+} }%%
+flowchart TD
+    Entry(["訪客進站 index_SamSamma.html"])
+    Home["#home Hero v5.8 全寬中央聚焦"]
+    Pillars["#pillars-bar 6 圖標等距帶"]
+    CTA["CTA 錨點 #bookingForm"]
+
+    S_About["#about 學校敘事"]
+    S_Pain1["痛點 SDG 深度足夠？"]
+    S_Plans["#plans 教育卡"]
+
+    E_Pain1["痛點 碳數據可驗證？"]
+    E_WhyUs["#why-us 企業背書"]
+    E_Plans["#plans ESG 卡"]
+
+    C_About["#about 文化敘事"]
+    C_Pain1["痛點 行程會不會太硬？"]
+    C_Plans["#plans 文化卡"]
+
+    FAQ["booking-faq 6 題就地展開"]
+    Booking["#booking 11 欄表單"]
+    Submit["fetch POST no-cors"]
+    Success["站內成功面板"]
+    Fail["mailto fallback"]
+    Sheets["Google Sheets"]
+    Confirm["2 工作天確認信"]
+
+    Entry --> Home --> Pillars --> CTA --> FAQ --> Booking
+    Home --> S_About --> S_Pain1 --> S_Plans --> FAQ
+    Home --> E_Pain1 --> E_WhyUs --> E_Plans --> FAQ
+    Home --> C_About --> C_Pain1 --> C_Plans --> FAQ
+    Booking --> Submit
+    Submit --> Success --> Sheets --> Confirm
+    Submit -.連線失敗.-> Fail
+
+    classDef school fill:#d4edda,stroke:#28a745,color:#155724
+    classDef enterprise fill:#cce5ff,stroke:#004085,color:#004085
+    classDef cultural fill:#ffe8cc,stroke:#e07b00,color:#7a3e00
+    classDef shared fill:#f5f0e8,stroke:#8b7355,color:#3d2b1f
+    classDef pain fill:#fff3cd,stroke:#d9960a,color:#7a4f00
+    classDef faq fill:#fff8e1,stroke:#f9a825,color:#7a5500
+    classDef backend fill:#ede7f6,stroke:#5e35b1,color:#311b92
+    classDef success fill:#c8e6c9,stroke:#388e3c,color:#1b5e20
+    classDef fail fill:#ffcdd2,stroke:#c62828,color:#b71c1c
+
+    class Entry,Home,Pillars,CTA,Booking shared
+    class S_About,S_Plans school
+    class E_WhyUs,E_Plans enterprise
+    class C_About,C_Plans cultural
+    class S_Pain1,E_Pain1,C_Pain1 pain
+    class FAQ faq
+    class Submit,Sheets,Confirm backend
+    class Success success
+    class Fail fail
