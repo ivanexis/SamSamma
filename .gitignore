@@ -35,3 +35,8 @@ learning/flask-booking-lab-for-pa.zip
 *.db
 腳色*.TXT
 腳色*.txt
+
+.dev.vars*
+!.dev.vars.example
+.env*
+!.env.example
