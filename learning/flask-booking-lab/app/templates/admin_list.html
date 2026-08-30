@@ -36,6 +36,7 @@
         {% if module.key == 'activity' %}
         <th>方案</th>
         <th>單位</th>
+        <th>活動日期</th>
         {% else %}
         <th>商品</th>
         <th>數量</th>
@@ -53,6 +54,7 @@
         {% if module.key == 'activity' %}
         <td>{{ b.plan or '—' }}</td>
         <td>{{ b.org_name or '—' }}</td>
+        <td>{{ b.preferred_date or '—' }}</td>
         {% else %}
         <td>{{ b.product_name or '—' }}</td>
         <td>{{ b.quantity or '—' }}</td>
